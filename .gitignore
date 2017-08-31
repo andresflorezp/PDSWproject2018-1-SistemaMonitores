@@ -1,3 +1,4 @@
+<<<<<<< 26070ea26ae372ca4a71b9d627db2f5469bc8c47
 /target/
 nbactions.xml
 nb-configuration.xml
@@ -5,4 +6,7 @@ nb-configuration.xml
 *.iml
 *.log
 Primefaces-Netbeans-GuessANumber.*
+=======
+>>>>>>> first commit
 .~*
+target
