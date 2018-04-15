@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Consulta asistencia</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h:form id="formFiltro">
+            <center>
+                <p:panel header="Filtrar consulta" id="panelFiltro">
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <p:outputLabel value="Filtrar por:"/>
+                        <p:selectCheckboxMenu id="menufiltro" value="#{SistemaMonitoria.selectedFiltro}" label="Filtrar"
+                              filter="true" filterMatchMode="startsWith">
+                            <f:selectItems value="#{SistemaMonitoria.opcionesFiltro}"/>
+                        </p:selectCheckboxMenu>
+                        <p:commandButton value="Filtrar" actionListener="AccionFiltroBean" update=":form:asesoria panelFiltro">
+                            <p:resetInput target="panelFiltro"/>
+                        </p:commandButton>
+                    </h:panelGrid>
+                </p:panel>
+            </center>
+        </h:form>
+        <h:form id="form">
+            <p:dataTable var="asesorias" value="" id="asesoria">
+                <f:facet name="header">
+                    <h:outputText value="Consultar asistencia a las asesorías"/>
+                </f:facet>
+                <p:column headerText="Model">
+                    <f:facet name="header">
+                        <h:outputText value="Fecha"/>
+                    </f:facet>
+                    <h:outputText value="beanFecha"/>
+                </p:column>
+                <p:column headerText="Model">
+                    <f:facet name="header">
+                        <h:outputText value="Tema"/>
+                    </f:facet>
+                    <h:outputText value="beanTema"/>
+                </p:column>
+                <p:column headerText="Model">
+                    <f:facet name="header">
+                        <h:outputText value="Profesor"/>
+                    </f:facet>
+                    <h:outputText value="beanProfesor"/>
+                </p:column>
+                <p:column headerText="Model">
+                    <f:facet name="header">
+                        <h:outputText value="Descripción"/>
+                    </f:facet>
+                    <h:outputText value="beanDescripcion"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
