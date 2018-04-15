@@ -13,6 +13,7 @@
                 <p:panel header="Filtrar consulta" id="panelFiltro">
                     <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel value="Filtrar por:"/>
+<<<<<<< 75eadc78db1addc329c8c2fbde3e194ea3a98611
                         <p:selectCheckboxMenu id="menufiltro" value="#{SistemaMonitoria.selectedFiltro}" label="Filtrar" multiple="true"
                                               filter="true" filterMatchMode="startsWith">
                             <f:selectItems value="#{SistemaMonitoria.optionsFiltro}"/>
@@ -24,6 +25,16 @@
                     <p:commandButton value="Filtrar" update=":form:asesoria panelFiltro">
                         <p:resetInput target="panelFiltro"/>
                     </p:commandButton>
+=======
+                        <p:selectCheckboxMenu id="menufiltro" value="#{SistemaMonitoria.selectedFiltro}" label="Filtrar"
+                              filter="true" filterMatchMode="startsWith">
+                            <f:selectItems value="#{SistemaMonitoria.opcionesFiltro}"/>
+                        </p:selectCheckboxMenu>
+                        <p:commandButton value="Filtrar" actionListener="AccionFiltroBean" update=":form:asesoria panelFiltro">
+                            <p:resetInput target="panelFiltro"/>
+                        </p:commandButton>
+                    </h:panelGrid>
+>>>>>>> Base GUI consulta
                 </p:panel>
             </center>
         </h:form>
