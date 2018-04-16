@@ -13,11 +13,15 @@
                 <p:panel header="Filtrar consulta" id="panelFiltro">
                     <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel value="Filtrar por:"/>
+<<<<<<< 6e7a7e556f54b1c1d8df950ede961211f3ce7023
 <<<<<<< 75eadc78db1addc329c8c2fbde3e194ea3a98611
+=======
+>>>>>>> Adicion filtro consulta GUI
                         <p:selectCheckboxMenu id="menufiltro" value="#{SistemaMonitoria.selectedFiltro}" label="Filtrar" multiple="true"
                                               filter="true" filterMatchMode="startsWith">
                             <f:selectItems value="#{SistemaMonitoria.optionsFiltro}"/>
                             <p:ajax event="change" update="menufiltro"/>
+<<<<<<< 6e7a7e556f54b1c1d8df950ede961211f3ce7023
                         </p:selectCheckboxMenu>
                         <p:outputLabel for="chips" value="Argumentos:"/>
                         <p:chips id="chips" value="#{SistemaMonitoria.selectedOptions}"/>
@@ -29,12 +33,19 @@
                         <p:selectCheckboxMenu id="menufiltro" value="#{SistemaMonitoria.selectedFiltro}" label="Filtrar"
                               filter="true" filterMatchMode="startsWith">
                             <f:selectItems value="#{SistemaMonitoria.opcionesFiltro}"/>
+=======
+>>>>>>> Adicion filtro consulta GUI
                         </p:selectCheckboxMenu>
-                        <p:commandButton value="Filtrar" actionListener="AccionFiltroBean" update=":form:asesoria panelFiltro">
-                            <p:resetInput target="panelFiltro"/>
-                        </p:commandButton>
+                        <p:outputLabel for="chips" value="Argumentos:"/>
+                        <p:chips id="chips" value="#{SistemaMonitoria.selectedOptions}"/>
                     </h:panelGrid>
+<<<<<<< 6e7a7e556f54b1c1d8df950ede961211f3ce7023
 >>>>>>> Base GUI consulta
+=======
+                    <p:commandButton value="Filtrar" update=":form:asesoria panelFiltro">
+                        <p:resetInput target="panelFiltro"/>
+                    </p:commandButton>
+>>>>>>> Adicion filtro consulta GUI
                 </p:panel>
             </center>
         </h:form>
