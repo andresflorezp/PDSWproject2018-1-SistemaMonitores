@@ -24,7 +24,7 @@ import javax.faces.bean.SessionScoped;
  *
  * @author hcadavid
  */
-public class OrdersManagedBean {
+public class GuessManagedBean {
     
     
     
