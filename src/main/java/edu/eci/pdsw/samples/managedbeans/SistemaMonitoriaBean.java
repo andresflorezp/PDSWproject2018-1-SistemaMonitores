@@ -19,16 +19,17 @@ import javax.faces.bean.SessionScoped;
 public class SistemaMonitoriaBean {
     
     private String[] selectedFiltro;
-    private List<String> opcionesFiltro;
+    private List<String> optionsFiltro;
+    private List<String> selectedOptions;
     
     public SistemaMonitoriaBean(){
-        opcionesFiltro = new ArrayList<>();
-        opcionesFiltro.add("Fecha");
-        opcionesFiltro.add("Carnet");
-        opcionesFiltro.add("Tema");
-        opcionesFiltro.add("Profesor");
-        opcionesFiltro.add("Materia");
-        opcionesFiltro.add("Grupo");
+        optionsFiltro = new ArrayList<>();
+        optionsFiltro.add("Fecha");
+        optionsFiltro.add("Carnet");
+        optionsFiltro.add("Tema");
+        optionsFiltro.add("Profesor");
+        optionsFiltro.add("Materia");
+        optionsFiltro.add("Grupo");
     }
 
     public String[] getSelectedFiltro() {
@@ -39,13 +40,22 @@ public class SistemaMonitoriaBean {
         this.selectedFiltro = selectedFiltro;
     }
 
-    public List<String> getOpcionesFiltro() {
-        return opcionesFiltro;
+    public List<String> getOptionsFiltro() {
+        return optionsFiltro;
     }
 
-    public void setOpcionesFiltro(List<String> opcionesFiltro) {
-        this.opcionesFiltro = opcionesFiltro;
+    public void setOptionsFiltro(List<String> optionsFiltro) {
+        this.optionsFiltro = optionsFiltro;
     }
+
+    public List<String> getSelectedOptions() {
+        return selectedOptions;
+    }
+
+    public void setSelectedOptions(List<String> selectedOptions) {
+        this.selectedOptions = selectedOptions;
+    }
+    
     
     
     

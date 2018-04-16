@@ -1,1 +1,6 @@
 /target/
+nbactions.xml
+nb-configuration.xml
+.idea
+*.iml
+*.log
