@@ -11,6 +11,7 @@
         <h:outputStylesheet name="css/default.css"/>
         <h:outputStylesheet name="css/cssLayout.css"/>
         <h:outputStylesheet name="css/Cabecera.css"/>
+        <h:outputStylesheet name="css/StyleButton.css"/>
         <title>Facelets Template</title>
     </h:head>
 
@@ -29,12 +30,12 @@
             <div id="left">
                 <ui:insert name="left">
                     <div id="Menu">
-                        <h:form>
+                        <h:form style="margin-top: 100">
                             <p:growl>
                             </p:growl>
 
-                            <p:panelMenu style="width:200px">
-                                <p:submenu label="Registrar Monitoria">
+                            <p:panelMenu style="width:200px;">
+                                <p:submenu label="Registrar Monitoria" >
                           
                                 </p:submenu>
                                 <p:submenu label="Registrar Estudiante">
@@ -46,15 +47,15 @@
                                 </p:submenu>
                             </p:panelMenu>
                         </h:form>
-                        
+                        <h:form></h:form>
                         
                         
                     </div>
                 </ui:insert>
             </div>
-            <div id="content">
+            <div id="content"  >
                 <ui:insert name="content">                 
-                    </ui:insert>
+                </ui:insert>
             </div>
             
         </div>
