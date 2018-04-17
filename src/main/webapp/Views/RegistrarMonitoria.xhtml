@@ -1,10 +1,10 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+      
     <body>
 
         <ui:composition template="./../Templeates/plantilla.xhtml">
@@ -13,9 +13,9 @@
                 <h:form>
                 <div id="progreso">
                     <p:steps activeIndex="0" styleClass="custom" readonly="false">
-                        <p:menuitem value="Registrar Monitoria" url="http://localhost:8080/faces/Views/PaginaCliente.xhtml"/>
-                        <p:menuitem value="Iniciar Monitoria" url="http://localhost:8080/faces/Views/ProgresoMonitoria.xhtml"/>
-                        <p:menuitem value="Progreso Monitoria" url="#"/>
+                        <p:menuitem value="Registrar Monitoria" url="http://localhost:8080/faces/Views/RegistrarMonitoria.xhtml"/>
+                        <p:menuitem value="Iniciar Monitoria" url="http://localhost:8080/faces/Views/IniciarMonitoria.xhtml"/>
+                        <p:menuitem value="Progreso Monitoria" url="http://localhost:8080/faces/Views/ProgresoMonitoria.xhtml"/>
                       
                     </p:steps>
                     
@@ -61,12 +61,12 @@
 
                         <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
                             <p:outputLabel for="console" value="Materia" />
-                            <p:selectOneMenu id="console"  style="width:125px">
+                            <p:selectOneMenu id="console"  style="width:125px" value="#{SistemaMonitoria.materia}">
                                 <f:selectItem itemLabel="" itemValue="" />
-                                <f:selectItem itemLabel="PDSW" itemValue="PDSW" value="#{SistemaMonitoria.materia}"/>
-                                <f:selectItem itemLabel="MDIS" itemValue="MDIS" value="#{SistemaMonitoria.materia}"/>
-                                <f:selectItem itemLabel="PIMO" itemValue="PIMO" value="#{SistemaMonitoria.materia}"/>
-                                <f:selectItem itemLabel="LCAL" itemValue="LCAL" value="#{SistemaMonitoria.materia}"/>
+                                <f:selectItem itemLabel="PDSW" itemValue="PDSW" />
+                                <f:selectItem itemLabel="MDIS" itemValue="MDIS" />
+                                <f:selectItem itemLabel="PIMO" itemValue="PIMO" />
+                                <f:selectItem itemLabel="LCAL" itemValue="LCAL" />
                             </p:selectOneMenu>
                         </h:panelGrid>
                         
@@ -86,17 +86,15 @@
                     </h:form>
                         
                 </div>
-                    
+                
                  
                 <div id="Botones" style="margin-left: 500px">
-                    <p:button  value="Limpiar" icon="ui-icon-star" >    
-                       
-                    </p:button>
-                    <p:button value="Registrar" icon="ui-icon-star" >
-              
-                    </p:button>
-
-                        
+                   
+                    <h:form>
+                    <p:button  value="Limpiar" icon="ui-icon-star" />    
+                    <p:commandButton value="Registrar"  icon="ui-icon-star" action="IniciarMonitoria" actionListener="#{SistemaMonitoria.guardarRegistro()}"/>
+                    </h:form>
+         
                 </div>
        
             </ui:define>

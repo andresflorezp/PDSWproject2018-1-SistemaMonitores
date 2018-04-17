@@ -6,6 +6,7 @@
 package edu.eci.pdsw.samples.managedbeans;
 
 import edu.eci.pdsw.samples.entities.Asesoria;
+import edu.eci.pdsw.samples.entities.Registro;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,10 +27,15 @@ public class SistemaMonitoriaBean {
     private List<String> optionsFiltro;
     private List<String> selectedOptions;
     private List<Asesoria> asesorias;
+    private List<Registro> registros;
     private String Materia;
     private String Fecha;
+
+    
+    
     
     public SistemaMonitoriaBean(){
+        registros=new ArrayList<>();
         optionsFiltro = new ArrayList<>();
         optionsFiltro.add("Monitor");
         optionsFiltro.add("Carnet");
@@ -89,6 +95,24 @@ public class SistemaMonitoriaBean {
 
     public void setAsesorias(List<Asesoria> asesorias) {
         this.asesorias = asesorias;
+    }
+    public List<Registro> getRegistros() {
+        return registros;
+    }
+
+    public void setRegistros(List<Registro> registros) {
+        this.registros = registros;
+    }
+    public void guardarRegistro(){
+        registros.add(new Registro(Fecha, Materia));
+        
+      
+        
+    }
+    public void mirarRegistros(){
+         Logger.getLogger(SistemaMonitoriaBean.class.getName()).log(Level.SEVERE,"Filtro:"+registros+ "\nArgumentos:"+selectedOptions.toString());     
+        
+        
     }
     
     
