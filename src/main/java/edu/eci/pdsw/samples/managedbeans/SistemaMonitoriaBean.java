@@ -30,9 +30,6 @@ public class SistemaMonitoriaBean {
     private List<Registro> registros;
     private String Materia;
     private String Fecha;
-
-    
-    
     
     public SistemaMonitoriaBean(){
         registros=new ArrayList<>();
@@ -109,6 +106,7 @@ public class SistemaMonitoriaBean {
       
         
     }
+    
     public void mirarRegistros(){
          Logger.getLogger(SistemaMonitoriaBean.class.getName()).log(Level.SEVERE,"Filtro:"+registros+ "\nArgumentos:"+selectedOptions.toString());     
         

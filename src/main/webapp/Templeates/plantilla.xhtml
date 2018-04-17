@@ -33,18 +33,13 @@
                             <p:growl>
                             </p:growl>
 
-                            <p:panelMenu style="width:200px;">
-                                <p:submenu label="Registrar Monitoria" >
-                          
-                                </p:submenu>
-                                <p:submenu label="Registrar Estudiante">
-                                  
-                                </p:submenu>
+                            <p:panel style="width:200px;">
+                                <p:commandButton value="Registrar Monitoria" action="/faces/Views/RegistrarMonitoria.xhtml"/>
                                 <p:separator />
-                                <p:submenu label="Consultar Monitorias Prestadas">
-                                    
-                                </p:submenu>
-                            </p:panelMenu>
+                                <p:commandButton value="Registrar Estudiante" action="/faces/registrarAsistenciaEstudiante.xhtml"/>
+                                <p:separator />
+                                <p:commandButton value="Consultar Monitorias Prestadas" action="/faces/AsistenciaAsesorias.xhtml"/>       
+                            </p:panel>
                         </h:form>
                         <h:form></h:form>
                         

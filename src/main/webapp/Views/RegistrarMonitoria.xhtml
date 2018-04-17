@@ -54,7 +54,7 @@
                 </div>
                  </h:form>
                  <div id="Materia" style="margin-left: 500px">
-                    <h:form>
+                     <h:form id="formregistro">
                         <p:messages>
 
                         </p:messages>
@@ -92,9 +92,10 @@
                    
                     <h:form>
                     <p:button  value="Limpiar" icon="ui-icon-star" />    
-                    <p:commandButton value="Registrar"  icon="ui-icon-star" action="IniciarMonitoria" actionListener="#{SistemaMonitoria.guardarRegistro()}"/>
+                    <p:commandButton value="Registrar" icon="ui-icon-star" action="IniciarMonitoria" actionListener="#{SistemaMonitoria.guardarRegistro()}" update=":formregistro:console">
+                        <p:resetInput target=":formregistro:console"/>
+                    </p:commandButton>
                     </h:form>
-         
                 </div>
        
             </ui:define>
