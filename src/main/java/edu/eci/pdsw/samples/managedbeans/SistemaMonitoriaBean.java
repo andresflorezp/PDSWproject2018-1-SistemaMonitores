@@ -26,6 +26,8 @@ public class SistemaMonitoriaBean {
     private List<String> optionsFiltro;
     private List<String> selectedOptions;
     private List<Asesoria> asesorias;
+    private String Materia;
+    private String Fecha;
     
     public SistemaMonitoriaBean(){
         optionsFiltro = new ArrayList<>();
@@ -37,6 +39,23 @@ public class SistemaMonitoriaBean {
         optionsFiltro.add("Grupo");
         optionsFiltro.add("Fecha");
     }
+
+    public String getMateria() {
+        return Materia;
+    }
+
+    public void setMateria(String Materia) {
+        this.Materia = Materia;
+    }
+
+    public String getFecha() {
+        return Fecha;
+    }
+
+    public void setFecha(String Fecha) {
+        this.Fecha = Fecha;
+    }
+    
     public void filtrar(){
         Logger.getLogger(SistemaMonitoriaBean.class.getName()).log(Level.SEVERE,"Filtro:"+Arrays.toString(selectedFiltro) + "\nArgumentos:"+selectedOptions.toString());     
     }

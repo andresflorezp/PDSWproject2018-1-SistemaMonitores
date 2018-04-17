@@ -63,10 +63,10 @@
                             <p:outputLabel for="console" value="Materia" />
                             <p:selectOneMenu id="console"  style="width:125px">
                                 <f:selectItem itemLabel="" itemValue="" />
-                                <f:selectItem itemLabel="PDSW" itemValue="PDSW" value="#{PaginaCliente.materia}"/>
-                                <f:selectItem itemLabel="MDIS" itemValue="MDIS" value="#{PaginaCliente.materia}"/>
-                                <f:selectItem itemLabel="PIMO" itemValue="PIMO" value="#{PaginaCliente.materia}"/>
-                                <f:selectItem itemLabel="LCAL" itemValue="LCAL" value="#{PaginaCliente.materia}"/>
+                                <f:selectItem itemLabel="PDSW" itemValue="PDSW" value="#{SistemaMonitoria.materia}"/>
+                                <f:selectItem itemLabel="MDIS" itemValue="MDIS" value="#{SistemaMonitoria.materia}"/>
+                                <f:selectItem itemLabel="PIMO" itemValue="PIMO" value="#{SistemaMonitoria.materia}"/>
+                                <f:selectItem itemLabel="LCAL" itemValue="LCAL" value="#{SistemaMonitoria.materia}"/>
                             </p:selectOneMenu>
                         </h:panelGrid>
                         
@@ -81,7 +81,7 @@
 
                     <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel for="button" value="Fecha: " />
-                        <p:calendar id="button" value="#{PaginaCliente.fecha}" showOn="button" />
+                        <p:calendar id="button" value="#{SistemaMonitoria.fecha}" showOn="button" />
                     </h:panelGrid>
                     </h:form>
                         
