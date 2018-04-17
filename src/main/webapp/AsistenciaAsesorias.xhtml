@@ -21,40 +21,64 @@
                         <p:outputLabel for="chips" value="Argumentos:"/>
                         <p:chips id="chips" value="#{SistemaMonitoria.selectedOptions}"/>
                     </h:panelGrid>
-                    <p:commandButton value="Filtrar" update=":form:asesoria panelFiltro">
+                    <p:commandButton value="Filtrar" update=":form:asesoria panelFiltro" action="#{SistemaMonitoria.filtrar()}">
                         <p:resetInput target="panelFiltro"/>
                     </p:commandButton>
                 </p:panel>
             </center>
         </h:form>
         <h:form id="form">
-            <p:dataTable var="asesorias" value="" id="asesoria">
+            <p:dataTable var="asesorias" value="#{SistemaMonitoria.asesorias}" id="asesoria">
                 <f:facet name="header">
                     <h:outputText value="Consultar asistencia a las asesorías"/>
                 </f:facet>
                 <p:column headerText="Model">
                     <f:facet name="header">
-                        <h:outputText value="Fecha"/>
+                        <h:outputText value="Monitor"/>
                     </f:facet>
-                    <h:outputText value="beanFecha"/>
+                    <h:outputText value="#{asesorias.monitor}"/>
+                </p:column>
+                <p:column headerText="Model">
+                    <f:facet name="header">
+                        <h:outputText value="Carnet asistente"/>
+                    </f:facet>
+                    <h:outputText value="#{asesorias.carnetAsistente}"/>
                 </p:column>
                 <p:column headerText="Model">
                     <f:facet name="header">
                         <h:outputText value="Tema"/>
                     </f:facet>
-                    <h:outputText value="beanTema"/>
+                    <h:outputText value="#{asesorias.tema}"/>
                 </p:column>
                 <p:column headerText="Model">
                     <f:facet name="header">
                         <h:outputText value="Profesor"/>
                     </f:facet>
-                    <h:outputText value="beanProfesor"/>
+                    <h:outputText value="#{asesorias.profesor}"/>
+                </p:column>
+                <p:column headerText="Model">
+                    <f:facet name="header">
+                        <h:outputText value="Materia"/>
+                    </f:facet>
+                    <h:outputText value="#{asesorias.materia}"/>
+                </p:column>
+                <p:column headerText="Model">
+                    <f:facet name="header">
+                        <h:outputText value="Grupo"/>
+                    </f:facet>
+                    <h:outputText value="#{asesorias.grupo}"/>
+                </p:column>
+                <p:column headerText="Model">
+                    <f:facet name="header">
+                        <h:outputText value="Fecha"/>
+                    </f:facet>
+                    <h:outputText value="#{asesorias.fecha}"/>
                 </p:column>
                 <p:column headerText="Model">
                     <f:facet name="header">
                         <h:outputText value="Descripción"/>
                     </f:facet>
-                    <h:outputText value="beanDescripcion"/>
+                    <h:outputText value="#{asesorias.descripcion}"/>
                 </p:column>
             </p:dataTable>
         </h:form>

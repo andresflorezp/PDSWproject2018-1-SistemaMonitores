@@ -5,8 +5,12 @@
  */
 package edu.eci.pdsw.samples.managedbeans;
 
+import edu.eci.pdsw.samples.entities.Asesoria;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -21,18 +25,22 @@ public class SistemaMonitoriaBean {
     private String[] selectedFiltro;
     private List<String> optionsFiltro;
     private List<String> selectedOptions;
+    private List<Asesoria> asesorias;
     
     public SistemaMonitoriaBean(){
         optionsFiltro = new ArrayList<>();
-        optionsFiltro.add("Fecha");
+        optionsFiltro.add("Monitor");
         optionsFiltro.add("Carnet");
         optionsFiltro.add("Tema");
         optionsFiltro.add("Profesor");
         optionsFiltro.add("Materia");
         optionsFiltro.add("Grupo");
+        optionsFiltro.add("Fecha");
     }
-
-    public String[] getSelectedFiltro() {
+    public void filtrar(){
+        Logger.getLogger(SistemaMonitoriaBean.class.getName()).log(Level.SEVERE,"Filtro:"+Arrays.toString(selectedFiltro) + "\nArgumentos:"+selectedOptions.toString());     
+    }
+    public String[] getSelectedFiltro(){
         return selectedFiltro;
     }
 
@@ -55,5 +63,14 @@ public class SistemaMonitoriaBean {
     public void setSelectedOptions(List<String> selectedOptions) {
         this.selectedOptions = selectedOptions;
     }
+
+    public List<Asesoria> getAsesorias() {
+        return asesorias;
+    }
+
+    public void setAsesorias(List<Asesoria> asesorias) {
+        this.asesorias = asesorias;
+    }
+    
     
 }
