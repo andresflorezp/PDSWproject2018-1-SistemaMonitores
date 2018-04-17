@@ -13,8 +13,8 @@
                 <h:form>
                 <div id="progreso">
                     <p:steps activeIndex="0" styleClass="custom" readonly="false">
-                        <p:menuitem value="Registrar Monitoria" url="#"/>
-                        <p:menuitem value="Iniciar Monitoria" url="#"/>
+                        <p:menuitem value="Registrar Monitoria" url="http://localhost:8080/faces/Views/PaginaCliente.xhtml"/>
+                        <p:menuitem value="Iniciar Monitoria" url="http://localhost:8080/faces/Views/ProgresoMonitoria.xhtml"/>
                         <p:menuitem value="Progreso Monitoria" url="#"/>
                       
                     </p:steps>
@@ -63,23 +63,25 @@
                             <p:outputLabel for="console" value="Materia" />
                             <p:selectOneMenu id="console"  style="width:125px">
                                 <f:selectItem itemLabel="" itemValue="" />
-                                <f:selectItem itemLabel="PDSW" itemValue="PDSW" />
-                                <f:selectItem itemLabel="MDIS" itemValue="MDIS" />
-                                <f:selectItem itemLabel="PIMO" itemValue="PIMO" />
-                                <f:selectItem itemLabel="LCAL" itemValue="LCAL" />
+                                <f:selectItem itemLabel="PDSW" itemValue="PDSW" value="#{PaginaCliente.materia}"/>
+                                <f:selectItem itemLabel="MDIS" itemValue="MDIS" value="#{PaginaCliente.materia}"/>
+                                <f:selectItem itemLabel="PIMO" itemValue="PIMO" value="#{PaginaCliente.materia}"/>
+                                <f:selectItem itemLabel="LCAL" itemValue="LCAL" value="#{PaginaCliente.materia}"/>
                             </p:selectOneMenu>
                         </h:panelGrid>
+                        
                         
                     </h:form>
                         
                 </div>
+                
                 <div id="Fecha" style="margin-left: 500px">
                     <h:form id="form">
                     <p:growl id="msgs" showDetail="true" />
 
                     <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel for="button" value="Fecha: " />
-                        <p:calendar id="button" value="#{calendarView.date3}" showOn="button" />
+                        <p:calendar id="button" value="#{PaginaCliente.fecha}" showOn="button" />
                     </h:panelGrid>
                     </h:form>
                         
@@ -87,14 +89,16 @@
                     
                  
                 <div id="Botones" style="margin-left: 500px">
-                    <p:button  value="Limpiar" icon="ui-icon-star">                   
+                    <p:button  value="Limpiar" icon="ui-icon-star" >    
+                       
                     </p:button>
-
-                    <p:button value="Registrar" icon="ui-icon-star">                           
+                    <p:button value="Registrar" icon="ui-icon-star" >
+              
                     </p:button>
 
                         
                 </div>
+       
             </ui:define>
 
         </ui:composition>
