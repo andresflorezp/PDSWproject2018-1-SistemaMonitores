@@ -15,16 +15,20 @@
     </h:head>
 
     <h:body>
+        <h:form>
+            <div>
+                <div id="top">
+                    <ui:insert name="top"></ui:insert>
+                    <div id="Encabezado">
+                        <h:form>
+                            <h:outputLabel id="cabecera" value="PDSW"  style="font-size: 50px" styleClass="cabecera"/>
+                            <h:outputLabel value="         " style="font-size: 50px"/>
+                            <h:outputLabel id="cabecera2" value="Nombre Usuario: AAKAA" style="font-size: 50px" styleClass="cabecera"/>
+                        </h:form>
+                    </div>
 
-        <div id="top">
-            <ui:insert name="top"></ui:insert>
-            <div id="Encabezado">
-                <h:outputLabel id="cabecera" value="PDSW" styleClass="cabecera"/>
-                <h:outputLabel value="         "/>
-                <h:outputLabel id="cabecera2" value="Nombre Usuario: AAKAA" styleClass="cabecera"/>
+                </div>
             </div>
-         
-        </div>
         <div>
             <div id="left">
                 <ui:insert name="left">
@@ -34,25 +38,27 @@
                             </p:growl>
 
                             <p:panel style="width:200px;">
-                                <p:commandButton value="Registrar Monitoria" action="/faces/Views/RegistrarMonitoria.xhtml"/>
+                                <p:commandButton value="Registrar Monitoria " action="/faces/Views/RegistrarMonitoria.xhtml"/>
                                 <p:separator />
                                 <p:commandButton value="Registrar Estudiante" action="/faces/registrarAsistenciaEstudiante.xhtml"/>
                                 <p:separator />
                                 <p:commandButton value="Consultar Monitorias Prestadas" action="/faces/AsistenciaAsesorias.xhtml"/>       
                             </p:panel>
                         </h:form>
-                        <h:form></h:form>
-                        
-                        
+    
                     </div>
                 </ui:insert>
             </div>
+            <br/>
+            <br/>
+ 
             <div id="content"  >
                 <ui:insert name="content">                 
                 </ui:insert>
             </div>
             
         </div>
+            </h:form>
     </h:body>
 
 </html>

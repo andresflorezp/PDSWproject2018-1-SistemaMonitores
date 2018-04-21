@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="css/default.css"/>
+        <h:outputStylesheet name="css/cssLayout.css"/>
+        <h:outputStylesheet name="css/Cabecera.css"/>
+        <h:outputStylesheet name="css/StyleButton.css"/>
+        <h:outputStylesheet name="css/Progreso.css"/>
+        
+
+        <title>Registro</title>
+    </h:head>
+
+    <h:body>
+        <h:form id="registroEs">
+   
+            <div id="top">
+                <ui:insert name="top"></ui:insert>
+                    <div id="Encabezado">
+                     
+                            <h:outputLabel id="cabecera" value="PDSW"  style="font-size: 50px" styleClass="cabecera"/>
+                            <h:outputLabel value="         " style="font-size: 50px"/>
+                            <h:outputLabel id="cabecera2" value="Nombre Usuario: AAKAA" style="font-size: 50px" styleClass="cabecera"/>
+                     
+                    </div>
+
+            </div>
+            <div>
+                <div id="left">
+                    <ui:insert name="left">
+                        <div id="Menu">
+
+                                <p:panel style="width:200px;">
+                                    <p:commandButton value="Registrar Monitoria " action="/faces/Views/RegistrarMonitoria.xhtml"/>
+                                    <p:separator />
+                                    <p:commandButton value="Registrar Estudiante" action="/faces/Views/registrarAsistenciaEstudiante.xhtml"/>
+                                    <p:separator />
+                                    <p:commandButton value="Consultar Monitorias Prestadas" action="/faces/Views/AsistenciaAsesorias.xhtml"/>       
+                                </p:panel>
+
+
+                        </div>
+                    </ui:insert>
+                </div>
+
+ 
+                <div id="content"  >
+                    <ui:insert name="content">
+                        <br/>
+ 
+                        <h:outputText value="Registrar Nuevo Estudiante" style="font-size: 35px;font-weight: 100;color: #dce9f0"/>
+                        <br/>
+                        <div id="formul">
+                            <br/>
+                            <p:outputLabel for="codigo" value="Codigo: "/>
+                            <p:inputText id="codigo" label="codigo Estudiante" value=""/>
+                            <br/>
+                            <br/>
+                            <p:outputLabel value="Profesor: " for="profesor"/>
+                            <p:inputText id="profesor" label="Profesor" value=""/>
+                            <br/>
+                            <br/>
+                            <p:outputLabel  for="temas"/>
+                            <p:selectCheckboxMenu id="temas" value="#{RegistroAsistencia.temas}" style="margin-left: 365px" label="Temas" filter="true" filterMatchMode="startsWith">
+                                <f:selectItems value="#{RegistroAsistencia.opcionesTemas}"/>
+                            </p:selectCheckboxMenu>
+                            <br/>
+                            <br/>
+                            <p:inputTextarea rows="10" cols="100"  value="Observaciones...." label="Observaciones" style="margin-left: 365px"/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <div id="botones" style="margin-left: 365px" >
+                                
+                                <p:button  value="Limpiar" icon="ui-icon-star" />    
+                                <p:commandButton value="Añadir" icon="ui-icon-star">
+                                    
+                                </p:commandButton>
+                                
+                            </div>
+                            <br/>
+                            <br/>
+                            <div id="table" style="width: 1000px; margin-left: 200px" >
+                                <p:outputPanel id="books">
+                                    <p:dataTable value="#{collectorView.books}" var="book" id="booksTable">
+
+                                        <p:column headerText="Codigo">
+                                            <h:outputText value="#{book.title}" />
+                                        </p:column>
+
+                                        <p:column headerText="Profesor">
+                                            <f:facet name="header">
+                                                <h:outputText value="Profesor" />
+                                            </f:facet>
+                                            <h:outputText value="#{book.author}" />
+                                        </p:column>
+
+                                        <p:column headerText="Temas">
+                                            
+                                        </p:column>
+                                         <p:column headerText="Descripcion">
+                                            <p:commandLink value="Descripcion" update=":form:registroE" process=":form:registroE">
+                                                <p:collector value="#{book}" removeFrom="#{collectorView.books}" unique="true"/>
+                                            </p:commandLink>
+                                        </p:column>
+
+                                    </p:dataTable>
+                                </p:outputPanel>
+               
+                            </div>
+                        </div>
+                        
+                    </ui:insert>
+                </div>
+            </div>
+            
+        
+        </h:form>
+    </h:body>
+
+</html>
+
+

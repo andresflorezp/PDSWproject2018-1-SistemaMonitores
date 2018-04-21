@@ -104,13 +104,11 @@ public class ConsultaInformacionAsistentesBean {
     public void guardarRegistro(){
         registros.add(new Registro(Fecha, Materia));
         
-      
-        
+
     }
     
     public void mirarRegistros(){
          Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE,"Filtro:"+registros+ "\nArgumentos:"+selectedOptions.toString());     
-        
         
     }
     
