@@ -7,7 +7,10 @@ package edu.eci.pdsw.samples.managedbeans;
 
 import edu.eci.pdsw.samples.entities.Asesoria;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -32,7 +35,11 @@ public class ConsultaInformacionAsesoriasBean {
         optionsFiltro.add("Tema");
         optionsFiltro.add("Número de asitentes");
     }
-
+    
+    public void filtrar(){
+        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE,"Filtro:"+Arrays.toString(selectedFiltro) + "\nArgumentos:"+selectedOptions.toString());     
+    }
+    
     public String[] getSelectedFiltro() {
         return selectedFiltro;
     }

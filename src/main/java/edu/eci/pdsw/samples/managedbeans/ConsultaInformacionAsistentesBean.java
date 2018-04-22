@@ -43,6 +43,10 @@ public class ConsultaInformacionAsistentesBean {
         optionsFiltro.add("Fecha");
     }
 
+    public void filtrar(){
+        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE,"Filtro:"+Arrays.toString(selectedFiltro) + "\nArgumentos:"+selectedOptions.toString());     
+    }
+    
     public String getMateria() {
         return Materia;
     }
@@ -59,9 +63,6 @@ public class ConsultaInformacionAsistentesBean {
         this.Fecha = Fecha;
     }
     
-    public void filtrar(){
-        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE,"Filtro:"+Arrays.toString(selectedFiltro) + "\nArgumentos:"+selectedOptions.toString());     
-    }
     public String[] getSelectedFiltro(){
         return selectedFiltro;
     }
