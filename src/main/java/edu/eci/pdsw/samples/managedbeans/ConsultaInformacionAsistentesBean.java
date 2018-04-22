@@ -19,9 +19,9 @@ import javax.faces.bean.SessionScoped;
  *
  * @author sergiort
  */
-@ManagedBean(name = "SistemaMonitoria")
+@ManagedBean(name = "InformacionAsistentes")
 @SessionScoped
-public class SistemaMonitoriaBean {
+public class ConsultaInformacionAsistentesBean {
     
     private String[] selectedFiltro;
     private List<String> optionsFiltro;
@@ -31,7 +31,7 @@ public class SistemaMonitoriaBean {
     private String Materia;
     private String Fecha;
     
-    public SistemaMonitoriaBean(){
+    public ConsultaInformacionAsistentesBean(){
         registros=new ArrayList<>();
         optionsFiltro = new ArrayList<>();
         optionsFiltro.add("Monitor");
@@ -60,7 +60,7 @@ public class SistemaMonitoriaBean {
     }
     
     public void filtrar(){
-        Logger.getLogger(SistemaMonitoriaBean.class.getName()).log(Level.SEVERE,"Filtro:"+Arrays.toString(selectedFiltro) + "\nArgumentos:"+selectedOptions.toString());     
+        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE,"Filtro:"+Arrays.toString(selectedFiltro) + "\nArgumentos:"+selectedOptions.toString());     
     }
     public String[] getSelectedFiltro(){
         return selectedFiltro;
@@ -108,7 +108,7 @@ public class SistemaMonitoriaBean {
     }
     
     public void mirarRegistros(){
-         Logger.getLogger(SistemaMonitoriaBean.class.getName()).log(Level.SEVERE,"Filtro:"+registros+ "\nArgumentos:"+selectedOptions.toString());     
+         Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE,"Filtro:"+registros+ "\nArgumentos:"+selectedOptions.toString());     
         
         
     }

@@ -4,7 +4,7 @@
       xmlns:p="http://primefaces.org/ui" 
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Consulta asistencia</title>
+        <title>Consulta asistentes a asesorías</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
@@ -13,22 +13,22 @@
                 <p:panel header="Filtrar consulta" id="panelFiltro">
                     <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel value="Filtrar por:"/>
-                        <p:selectCheckboxMenu id="menufiltro" value="#{SistemaMonitoria.selectedFiltro}" label="Filtrar" multiple="true"
+                        <p:selectCheckboxMenu id="menufiltro" value="#{InformacionAsistentes.selectedFiltro}" label="Filtrar" multiple="true"
                                               filter="true" filterMatchMode="startsWith">
-                            <f:selectItems value="#{SistemaMonitoria.optionsFiltro}"/>
+                            <f:selectItems value="#{InformacionAsistentes.optionsFiltro}"/>
                             <p:ajax event="change" update="menufiltro"/>
                         </p:selectCheckboxMenu>
                         <p:outputLabel for="chips" value="Argumentos:"/>
-                        <p:chips id="chips" value="#{SistemaMonitoria.selectedOptions}"/>
+                        <p:chips id="chips" value="#{InformacionAsistentes.selectedOptions}"/>
                     </h:panelGrid>
-                    <p:commandButton value="Filtrar" update=":form:asesoria panelFiltro" action="#{SistemaMonitoria.filtrar()}">
+                    <p:commandButton value="Filtrar" update=":form:asesoria panelFiltro" action="#{InformacionAsistentes.filtrar()}">
                         <p:resetInput target="panelFiltro"/>
                     </p:commandButton>
                 </p:panel>
             </center>
         </h:form>
         <h:form id="form">
-            <p:dataTable var="asesorias" value="#{SistemaMonitoria.asesorias}" id="asesoria">
+            <p:dataTable var="asesorias" value="#{InformacionAsistentes.asesorias}" id="asesoria">
                 <f:facet name="header">
                     <h:outputText value="Consultar asistencia a las asesorías"/>
                 </f:facet>
@@ -76,9 +76,9 @@
                 </p:column>
                 <p:column headerText="Model">
                     <f:facet name="header">
-                        <h:outputText value="Descripción"/>
+                        <h:outputText value="Observaciones"/>
                     </f:facet>
-                    <h:outputText value="#{asesorias.descripcion}"/>
+                    <h:outputText value="#{asesorias.observaciones}"/>
                 </p:column>
             </p:dataTable>
         </h:form>

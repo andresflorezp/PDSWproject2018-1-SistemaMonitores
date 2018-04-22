@@ -16,14 +16,14 @@ public class Asesoria {
     private Date fecha;
     private String tema;
     private String profesor;
-    private String descripcion;
+    private String observaciones;
     private String monitor;
     private String materia;
     private int grupo;
     private int carnetAsistente;
 
     public Asesoria(Date fecha, String tema, String profesor,String monitor, String descripcion) {
-        this.descripcion = descripcion;
+        this.observaciones = descripcion;
         this.fecha = fecha;
         this.profesor = profesor;
         this.monitor = monitor;
@@ -54,12 +54,12 @@ public class Asesoria {
         this.profesor = profesor;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getObservaciones() {
+        return observaciones;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
     }
 
     public String getMonitor() {
