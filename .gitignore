@@ -19,5 +19,5 @@ nbactions.xml
 nb-configuration.xml
 .idea
 *.log
-
+.DS_Store
 >>>>>>> Adicion filtro consulta GUI

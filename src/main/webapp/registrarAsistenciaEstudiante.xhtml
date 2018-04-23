@@ -25,7 +25,7 @@
                             <h:outputLabel value="Codigo Estudiante:" for="codigo"/>
                             <h:inputText id="codigo" label="Codigo Estudiante"  value=""/> 
                             <h:outputLabel value=" Nombre Profesor: " for="profesor"/>
-                            <h:inputText id="profesor" label="Nombre Profesor"  value=""/> 
+                            <h:inputText id="profesor" label="Nombre Profesor"  value="#{RegistroAsistencia.profesor}"/> 
                             <p:separator/>
                             <h3>Temas</h3>
                             <p:selectCheckboxMenu id="temas" value="#{RegistroAsistencia.temas}" label="Temas" filter="true" filterMatchMode="startsWith">
@@ -47,4 +47,3 @@
         
     </h:body>
 </html>
-
