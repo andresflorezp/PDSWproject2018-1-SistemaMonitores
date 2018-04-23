@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="css/default.css"/>
+        <h:outputStylesheet name="css/cssLayout.css"/>
+        <h:outputStylesheet name="css/Cabecera.css"/>
+        <h:outputStylesheet name="css/StyleButton.css"/>
+        <h:outputStylesheet name="css/Progreso.css"/>
+        
+
+        <title>Registro</title>
+    </h:head>
+
+    <h:body>
+        <h:form>
+   
+            <div id="top">
+                <ui:insert name="top"></ui:insert>
+                    <div id="Encabezado">
+                     
+                            <h:outputLabel id="cabecera" value="PDSW"  style="font-size: 50px" styleClass="cabecera"/>
+                            <h:outputLabel value="         " style="font-size: 50px"/>
+                            <h:outputLabel id="cabecera2" value="Nombre Usuario: AAKAA" style="font-size: 50px" styleClass="cabecera"/>
+                     
+                    </div>
+
+            </div>
+            <div>
+                <div id="left">
+                    <ui:insert name="left">
+                        <div id="Menu">
+
+                                <p:panel style="width:200px;">
+                                    <p:commandButton value="Registrar Monitoria " action="/faces/Views/RegistrarMonitoria.xhtml"/>
+                                    <p:separator />
+                                    <p:commandButton value="Registrar Estudiante" action="/faces/Views/registrarAsistenciaEstudiante.xhtml"/>
+                                    <p:separator />
+                                    <p:commandButton value="Consulta Asistencia de Asesorias" action="/faces/Views/InformacionAsesorias.xhtml"/>       
+                                </p:panel>
+
+                        </div>
+                    </ui:insert>
+                </div>
+             
+                <div id="content"  >
+                    
+                    <ui:insert name="content">
+                
+                        
+                       
+            
+                        <div id="formula">
+                          
+                            <h:form id="formFiltro">
+                                 
+
+                                    <p:panel id="panelFiltro"  >
+                                    
+                                        <h:outputText value="Consulta de Asesorias" style="font-size: 35px;font-weight: 100;color: #dce9f0"/>
+                              
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <p:outputLabel value="Filtrar por:"/>
+                                            <p:selectCheckboxMenu id="menufiltro" value="#{InformacionAsesorias.selectedFiltro}" label="Filtrar" multiple="true"
+                                                                  filter="true" filterMatchMode="startsWith">
+                                                <f:selectItems value="#{InformacionAsesorias.optionsFiltro}"/>
+                                                <p:ajax event="change" update="menufiltro"/>
+                                            </p:selectCheckboxMenu>
+                                            <p:outputLabel for="chips" value="Argumentos:"/>
+                                            <p:chips id="chips" value="#{InformacionAsesorias.selectedOptions}"/>
+                                        </h:panelGrid>
+                                        <br/>
+
+                                        <p:commandButton value="Filtrar" update="panelFiltro" action="#{InformacionAsesorias.filtrar()}" style="margin-left:  300px">
+                                            <p:resetInput target="panelFiltro"/>
+                                        </p:commandButton>
+                                    </p:panel>
+
+
+                            </h:form>
+                        </div>
+                        <br/>
+                        
+                        <div id="tabla">
+                            
+                            <h:form id="form">
+                                <p:dataTable var="asesorias" value="#{InformacionAsesorias.asesorias}" id="asesoria" style="width: 1000px; margin-left: 200px">
+                                    <f:facet name="header">
+                                        <h:outputText value="Consultar asistencia a las asesorías"/>
+                                    </f:facet>
+                                    <p:column headerText="Model">
+                                        <f:facet name="header">
+                                            <h:outputText value="Materia"/>
+                                        </f:facet>
+                                        <h:outputText value="#{asesorias.materia}"/>
+                                    </p:column>
+                                    <p:column headerText="Model">
+                                        <f:facet name="header">
+                                            <h:outputText value="Grupo"/>
+                                        </f:facet>
+                                        <h:outputText value="#{asesorias.grupo}"/>
+                                    </p:column>
+                                    <p:column headerText="Model">
+                                        <f:facet name="header">
+                                            <h:outputText value="Franja Horaria"/>
+                                        </f:facet>
+                                        <h:outputText value="#{asesorias.carnetAsistente}"/>
+                                    </p:column>
+                                    <p:column headerText="Model">                                                                                                                                                                                                                                                                                                                       
+                                        <f:facet name="header">
+                                            <h:outputText value="Tema"/>
+                                        </f:facet>
+                                        <h:outputText value="#{asesorias.tema}"/>
+                                    </p:column>
+                                    <p:column headerText="Model">
+                                        <f:facet name="header">
+                                            <h:outputText value="Número de asistentes"/>
+                                        </f:facet>
+                                        <h:outputText value="#{asesorias.profesor}"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:form>
+                        </div>
+
+                    </ui:insert>
+                </div>
+            </div>
+            
+        
+        </h:form>
+    </h:body>
+
+</html>

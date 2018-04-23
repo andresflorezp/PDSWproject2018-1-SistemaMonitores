@@ -104,7 +104,6 @@ public class ConsultaInformacionAsistentesBean {
     public void guardarRegistro(){
         registros.add(new Registro(Fecha, Materia));
         
-
     }
     
     public void mirarRegistros(){

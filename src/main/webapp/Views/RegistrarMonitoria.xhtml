@@ -35,11 +35,11 @@
                         <div id="Menu">
 
                                 <p:panel style="width:200px;">
-                                   <p:commandButton value="Registrar Monitoria " action="/faces/Views/RegistrarMonitoria.xhtml"/>
+                                    <p:commandButton value="Registrar Monitoria " action="/faces/Views/RegistrarMonitoria.xhtml"/>
                                     <p:separator />
                                     <p:commandButton value="Registrar Estudiante" action="/faces/Views/registrarAsistenciaEstudiante.xhtml"/>
                                     <p:separator />
-                                    <p:commandButton value="Consultar Monitorias Prestadas" action="/faces/Views/AsistenciaAsesorias.xhtml"/>       
+                                    <p:commandButton value="Consulta Asistencia de Asesorias" action="/faces/Views/InformacionAsesorias.xhtml"/>       
                                 </p:panel>
 
 
@@ -62,13 +62,18 @@
                         <div id="formulario" style="margin-left: 500px;margin-top: 10px">
                             <div id="materias" >
                                 <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-                                    <p:outputLabel for="console" value="Materia" />
-                                    <p:selectOneMenu id="console"  style="width:125px" value="#{MonitorMonitoria.materia}">
+                                    <p:outputLabel for="console" value="Franja" />
+                                    <p:selectOneMenu id="console"  style="width:125px" value="#{MonitorMonitoria.franja}">
                                         <f:selectItem itemLabel="" itemValue="" />
-                                        <f:selectItem itemLabel="PDSW" itemValue="PDSW" />
-                                        <f:selectItem itemLabel="MDIS" itemValue="MDIS" />
-                                        <f:selectItem itemLabel="PIMO" itemValue="PIMO" />
-                                        <f:selectItem itemLabel="LCAL" itemValue="LCAL" />
+                                        <f:selectItem itemLabel="7:00-8:30 (am)" itemValue="7:00-8:30 (am)" />
+                                        <f:selectItem itemLabel="8:30-10:00 (am)" itemValue="8:30-10:00 (am)" />
+                                        <f:selectItem itemLabel="10:00-11:30 (am)" itemValue="10:00-11:30 (am)" />
+                                        <f:selectItem itemLabel="11:30-1:00 (m)" itemValue="11:30-1:00 (m)" />
+                                        <f:selectItem itemLabel="1:00-2:30 (pm)" itemValue="1:00-2:30 (pm)" />
+                                        <f:selectItem itemLabel="2:30-4:00 (pm)" itemValue="2:30-4:00 (pm)" />
+                                        <f:selectItem itemLabel="4:00-5:30 (pm)" itemValue="4:00-5:30 (pm)" />
+                                        <f:selectItem itemLabel="5:30-7:00 (pm)" itemValue="5:30-7:00 (pm)" />
+                                        
                                     </p:selectOneMenu>
                                 </h:panelGrid>
                             </div>
@@ -83,9 +88,11 @@
                             <br/>
                             <div id="botones">
                                 
-                                <p:button  value="Limpiar" icon="ui-icon-star" />    
+                                <p:commandButton  value="Limpiar" icon="ui-icon-star">
+                                
+                                </p:commandButton>    
                                 <p:commandButton value="Registrar" icon="ui-icon-star" action="IniciarMonitoria" actionListener="#{MonitorMonitoria.guardarRegistro()}" >
-                                    
+                                  
                                 </p:commandButton>
                                 
                             </div>

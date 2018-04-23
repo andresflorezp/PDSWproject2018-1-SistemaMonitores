@@ -39,10 +39,8 @@
                                     <p:separator />
                                     <p:commandButton value="Registrar Estudiante" action="/faces/Views/registrarAsistenciaEstudiante.xhtml"/>
                                     <p:separator />
-                                    <p:commandButton value="Consultar Monitorias Prestadas" action="/faces/Views/AsistenciaAsesorias.xhtml"/>       
+                                    <p:commandButton value="Consulta Asistencia de Asesorias" action="/faces/Views/InformacionAsesorias.xhtml"/>         
                                 </p:panel>
-
-
                         </div>
                     </ui:insert>
                 </div>
@@ -59,9 +57,15 @@
                             </p:steps>
                             
                         </div>
-                        <div id="Progreso" style="margin-left: 500px;margin-top: 10px">
-
-                            <p:clock  id="Hour" />
+                        <h:outputText value="Hora inicio &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; Hora Finalizacion" style ="font-size: 25px ;margin-left: 500px"/>
+                        <br/>
+                        <br/>
+                        <h:outputText id="horasIF" value="#{MonitorMonitoria.horaActual}  ---->  #{MonitorMonitoria.horaTerminacion}" style ="font-size: 40px ;margin-left: 500px"/>
+                        
+                        <br/>
+                        <div id="Progreso" style="margin-left: 505px;margin-top: 10px">
+                        
+                            
                             <br/>
                             <br/>
                             <p:progressBar id="progressBarIndeterminate" style="height:50px; width: 500px;" mode="indeterminate"/>
