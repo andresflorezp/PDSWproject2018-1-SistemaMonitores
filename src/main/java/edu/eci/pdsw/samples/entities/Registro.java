@@ -12,8 +12,9 @@ package edu.eci.pdsw.samples.entities;
  */
 
 public class Registro{
-    public String Fecha;
-    public String Materia;
+    private String Fecha;
+    private String Materia;
+    
     public Registro(String Fecha,String Materia){
         this.Fecha=Fecha;
         this.Materia=Materia;

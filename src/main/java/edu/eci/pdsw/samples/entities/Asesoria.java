@@ -6,6 +6,7 @@
 package edu.eci.pdsw.samples.entities;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -13,16 +14,16 @@ import java.util.Date;
  */
 public class Asesoria {
 
-    private Date fecha;
-    private String[] tema;
     private String profesor;
     private String observaciones;
     private String monitor;
     private String materia;
+    private Date fecha;
     private int grupo;
-    private int[] carnetAsistentes;
+    private List<Integer> carnetAsistentes;
+    private List<String> tema;
 
-    public Asesoria(Date fecha, String[] tema, String profesor,String monitor, String observaciones) {
+    public Asesoria(Date fecha, List<String> tema, String profesor,String monitor, String observaciones) {
         this.observaciones = observaciones;
         this.fecha = fecha;
         this.profesor = profesor;
@@ -38,11 +39,11 @@ public class Asesoria {
         this.fecha = fecha;
     }
 
-    public String[] getTema() {
+    public List<String> getTema() {
         return tema;
     }
 
-    public void setTema(String[] tema) {
+    public void setTema(List<String> tema) {
         this.tema = tema;
     }
 
@@ -70,11 +71,11 @@ public class Asesoria {
         this.monitor = monitor;
     }
 
-    public int[] getCarnetAsistentes() {
+    public List<Integer> getCarnetAsistentes() {
         return carnetAsistentes;
     }
 
-    public void setCarnetAsistentes(int[] carnetAsistentes) {
+    public void setCarnetAsistentes(List<Integer> carnetAsistentes) {
         this.carnetAsistentes = carnetAsistentes;
     }  
 

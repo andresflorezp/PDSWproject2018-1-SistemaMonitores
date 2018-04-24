@@ -12,10 +12,16 @@ import java.util.List;
  * @author Tatiana
  */
 public class Materia {
+    
     private List<String> planEstudios;
     private String materia;
-    
     public List<String> getPlanEstudios(){
         return planEstudios;
     }
+    
+    
+    private String memoico;
+    private int creditos;
+    private int horasMonitorCursadas;
+    private List<Grupo> grupos;
 }
