@@ -10,7 +10,6 @@ package edu.eci.pdsw.samples.entities;
  * @author sergiort
  */
 public class Grupo {
-//    private int grupoID;
 //    private String horarioMonitor;
     private int grupoNombre;
     private int numeroDeEstudiantes;

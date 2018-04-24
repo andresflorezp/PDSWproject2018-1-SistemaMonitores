@@ -41,7 +41,7 @@
                                     <p:separator />
                                     <p:commandButton value="Registrar Estudiante" action="/faces/Views/registrarAsistenciaEstudiante.xhtml"/>
                                     <p:separator />
-                                    <p:commandButton value="Consultar Monitorias Prestadas" action="/faces/Views/AsistenciaAsesorias.xhtml"/>       
+                                    <p:commandButton value="Consulta Asistencia de Asesorias" action="/faces/Views/InformacionAsesorias.xhtml"/>         
                                 </p:panel>
 
 
@@ -59,16 +59,18 @@
                         <div id="formul">
                             <br/>
                             <p:outputLabel for="codigo" value="Codigo: "/>
-                            <p:inputText id="codigo" label="codigo Estudiante" value=""/>
+                            <p:inputText id="codigo" label="codigo Estudiante" value="#{RegistroAsistencia.codigo}"/>
                             <br/>
                             <br/>
                             <p:outputLabel value="Profesor: " for="profesor"/>
-                            <p:inputText id="profesor" label="Profesor" value=""/>
+                            <p:selectCheckboxMenu id="profesor" value="#{RegistroAsistencia.profesor}" label="Profesor" filter="true" filterMatchMode="startsWith" multiple="true">
+                                <f:selectItems value="#{RegistroAsistencia.profesores}"/>
+                            </p:selectCheckboxMenu>
                             <br/>
                             <br/>
                             <p:outputLabel  for="temas"/>
-                            <p:selectCheckboxMenu id="temas" value="#{RegistroAsistencia.temas}" style="margin-left: 365px" label="Temas" filter="true" filterMatchMode="startsWith">
-                                <f:selectItems value="#{RegistroAsistencia.opcionesTemas}"/>
+                            <p:selectCheckboxMenu id="temas" value="#{RegistroAsistencia.temas}" style="margin-left: 365px" label="Temas" filter="true" filterMatchMode="startsWith" multiple="true">
+                                <f:selectItems value="#{RegistroAsistencia.temas}"/>
                             </p:selectCheckboxMenu>
                             <br/>
                             <br/>

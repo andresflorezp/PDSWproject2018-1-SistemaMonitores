@@ -6,6 +6,7 @@
 package edu.eci.pdsw.samples.managedbeans;
 
 import edu.eci.pdsw.samples.entities.Materia;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -21,35 +22,43 @@ public class RegistrarAsistEstudianteBean {
     private String codigo;
     private String profesor;
     private String obseraciones;
-    private Materia mtria;
-    private String opcionesTemas;
-    private String temas;
+    private Materia materia;
+    private List<String> temas;
+    private List<String> profesores;
+    
+    public RegistrarAsistEstudianteBean(){
+        temas = new ArrayList<>();
+        temas.add("Tema1");
+        temas.add("Tema2");
+        temas.add("Tema3");
+        profesores = new ArrayList<>();
+        profesores.add("Francisco");
+        profesores.add("Pedro");
+    }
 
-    public String getTemas() {
+    public List<String> getProfesores() {
+        return profesores;
+    }
+
+    public void setProfesores(List<String> profesores) {
+        this.profesores = profesores;
+    }
+    
+    public List<String> getTemas() {
         return temas;
     }
 
-    public void setTemas(String temas) {
+    public void setTemas(List<String> temas) {
         this.temas = temas;
     }
 
     public Materia getMtria() {
-        return mtria;
+        return materia;
     }
 
-    public void setMtria(Materia mtria) {
-        this.mtria = mtria;
+    public void setMtria(Materia materia) {
+        this.materia = materia;
     }
-
-    public String getOpcionesTemas() {
-        return opcionesTemas;
-    }
-
-    public void setOpcionesTemas(String opcionesTemas) {
-        this.opcionesTemas = opcionesTemas;
-    }
-
-    
 
     public String getCodigo() {
         return codigo;
@@ -76,6 +85,6 @@ public class RegistrarAsistEstudianteBean {
     }
     
     public List<String> getPlanEstudios(){
-        return mtria.getPlanEstudios();
+        return materia.getPlanEstudios();
     }
 }
