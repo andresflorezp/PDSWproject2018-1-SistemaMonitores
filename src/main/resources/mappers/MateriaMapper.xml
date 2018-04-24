@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+<mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.MateriaMapper">
+<select parameterType="map" id="consultarMateria" resultMap="materiaRs">
+    select
+    m.codigo,
+    m.materia,
+    m.memoico,
+    m.horas,
+    m.grupos,
+    
+    tm.temaID as Tema_temaID,
+    tm.topic as Tema_topic,
+    tm.descripcion as Tema_descripcion
+    
+    am.fecha as AsesoriaMonitor_fecha,
+    am.profesor as AsesoriaMonitor_profesor,
+    am.observacones as AsesoriaMonitor_observacones,
+    am.monitor as AsesoriaMonitor_monitor,
+    am.materia as AsesoriaMonitor_materia,
+    am.grupo as AsesoriaMonitor_grupo,
+    am.estudiantes as AsesoriaMonitor_estudiantes,
+    am.temaMonitoria as AsesoriaMonitor_temaMonitoria,
+    
+    gp.grupoId as Grupo_grupoId,
+    gp.grupo_nombre as Grupo_grupo_nombre,
+    gp.numeroEstudiantes as Grupo_numeroEstudiantes,
+    gp.horario as Grupo_horario,
+    gp.monitor as Grupo_monitor,
+    gp.materia as Grupo_materia
+    
+    FROM Materia as m
+    where m.codigo=#{codId}
+</select>
+
+<insert id="insertarMateria" parameterType="map" useGeneratedKey="true">
+    INSERT INTO MATERIA VALUES (#{materia.planEstudios},#{materia.codigo},#{materia.materia},#{materia.memoico},#{materia.horas})
+</insert>
+
+<resultMap type='Materia' id='materiaRs'>
+    <id property='codigo' column='codigo'></id>
+    <result property='materia' column='materia'></result>
+    <result property='memoico' column='memoico'></result>
+    <result property='horas' column='horas'></result>
+    <result property='grupos' column='grupos'></result>
+</resultMap>
+
+</mapper>
+

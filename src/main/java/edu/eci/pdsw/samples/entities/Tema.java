@@ -5,13 +5,29 @@
  */
 package edu.eci.pdsw.samples.entities;
 
-/**
+import java.util.List;
+
+/**||
  *
- * @author sergiort
+ * @author Tatiana
  */
 public class Tema {
+    private int temId;
     private String topic;
+    private List<String> topics;
     private String descripcion;
+    
+    public Tema(int temID, String tpic,String desc){
+        
+    }
+
+    public int getTemId() {
+        return temId;
+    }
+
+    public void setTemId(int temId) {
+        this.temId = temId;
+    }
 
     public String getTopic() {
         return topic;
@@ -21,6 +37,14 @@ public class Tema {
         this.topic = topic;
     }
 
+    public List<String> getTopics() {
+        return topics;
+    }
+
+    public void setTopics(List<String> topics) {
+        this.topics = topics;
+    }
+
     public String getDescripcion() {
         return descripcion;
     }
@@ -28,6 +52,8 @@ public class Tema {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
+    public void adicionarTopic(String tpc){
+        topics.add(tpc);
+    }
     
 }
