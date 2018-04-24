@@ -14,16 +14,16 @@ import java.util.Date;
 public class Asesoria {
 
     private Date fecha;
-    private String tema;
+    private String[] tema;
     private String profesor;
     private String observaciones;
     private String monitor;
     private String materia;
     private int grupo;
-    private int carnetAsistente;
+    private int[] carnetAsistentes;
 
-    public Asesoria(Date fecha, String tema, String profesor,String monitor, String descripcion) {
-        this.observaciones = descripcion;
+    public Asesoria(Date fecha, String[] tema, String profesor,String monitor, String observaciones) {
+        this.observaciones = observaciones;
         this.fecha = fecha;
         this.profesor = profesor;
         this.monitor = monitor;
@@ -38,11 +38,11 @@ public class Asesoria {
         this.fecha = fecha;
     }
 
-    public String getTema() {
+    public String[] getTema() {
         return tema;
     }
 
-    public void setTema(String tema) {
+    public void setTema(String[] tema) {
         this.tema = tema;
     }
 
@@ -70,12 +70,12 @@ public class Asesoria {
         this.monitor = monitor;
     }
 
-    public int getCarnetAsistente() {
-        return carnetAsistente;
+    public int[] getCarnetAsistentes() {
+        return carnetAsistentes;
     }
 
-    public void setCarnetAsistente(int carnetAsistente) {
-        this.carnetAsistente = carnetAsistente;
+    public void setCarnetAsistentes(int[] carnetAsistentes) {
+        this.carnetAsistentes = carnetAsistentes;
     }  
 
     public String getMateria() {
