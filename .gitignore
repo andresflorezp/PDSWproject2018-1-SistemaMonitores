@@ -21,3 +21,4 @@ nb-configuration.xml
 *.log
 .DS_Store
 >>>>>>> Adicion filtro consulta GUI
+/nbproject/
