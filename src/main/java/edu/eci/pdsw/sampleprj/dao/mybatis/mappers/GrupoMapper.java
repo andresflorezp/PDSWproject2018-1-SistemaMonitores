@@ -16,4 +16,12 @@ public interface GrupoMapper {
     public Grupo ConsultaAsesoriaMateria(@Param("MId") Integer materiaID,
                                            @Param("grdId") Integer grupoID,
                                            @Param("tmId") Integer tema);
+    
+    public void agregarGrupo(@Param("GId") Integer grupoID,
+                             @Param("gPrId") Integer profesorID,
+                             @Param("gSeId") Integer semestreID,
+                             @Param("gMaId") Integer materiaID,
+                             @Param("gMoId")Integer monitorID,
+                             @Param("gNom") Integer grupoNombre,
+                             @Param("gNum") int numeroEstudiantes);
 }
