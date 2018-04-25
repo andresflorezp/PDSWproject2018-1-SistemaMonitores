@@ -18,7 +18,16 @@ public class Materia {
     private String memoico;
     private int horas;
     private List<String> grupos;
+    private List<Tema> temas;
 
+    public List<Tema> getTemas() {
+        return temas;
+    }
+
+    public void setTemas(List<Tema> temas) {
+        this.temas = temas;
+    }
+    
     public String getMateria() {
         return materia;
     }

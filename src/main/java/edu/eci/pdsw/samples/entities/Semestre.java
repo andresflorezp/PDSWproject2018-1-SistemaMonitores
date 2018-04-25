@@ -13,11 +13,20 @@ import java.util.List;
  * @author sergiort
  */
 public class Semestre {
+    private int semestreID;
     private int año;
     private int periodoAcademico;
     private Date fechaInicio;
     private Date fechaFin;
     private List<Grupo> grupos;
+
+    public int getSemestreID() {
+        return semestreID;
+    }
+
+    public void setSemestreID(int semestreID) {
+        this.semestreID = semestreID;
+    }
 
     public int getAño() {
         return año;

@@ -11,11 +11,29 @@ package edu.eci.pdsw.samples.entities;
  */
 public class Grupo {
 //    private String horarioMonitor;
+    private int grupoID;
     private int grupoNombre;
     private int numeroDeEstudiantes;
     private Monitor monitor;
     private Materia materia;
+    private Profesor profesor;
 
+    public int getGrupoID() {
+        return grupoID;
+    }
+
+    public void setGrupoID(int grupoID) {
+        this.grupoID = grupoID;
+    }
+    
+    public Profesor getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(Profesor profesor) {
+        this.profesor = profesor;
+    }
+    
     public int getGrupoNombre() {
         return grupoNombre;
     }

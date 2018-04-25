@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+                     
+<mapper namespace="edu.eci.pdsw.samples.persistence.mybatisimpl.mappers.GrupoMapper">
+    <select parameterType="map" id="ConsultaAsesoriaMateria" resultMap="GrupoResult">
+        select 
+            materia.materia_id,
+            materia.materia_nombre as m_nombre,
+            materia.materia_nemonico as m_nemonico,
+            materia.creditos as m_creditos,
+            materia.horas_monitoria_curso as m_horas_monitoria_curso,
+
+            tema.temaid,
+            tema.topic as tm_topic,
+            tema.descripcion as tm_descripcion,
+
+            grupo.grupoid,
+            grupo.grupo_nombre as gr_grupo_nombre,
+            grupo.numeroestudiante as gr_numeroestudiante,
+            grupo.horario_monitor as gr_horario_monitor,
+
+            profesor.profesorid,
+            profesor.nombres as pr_nombres,
+            profesor.apellidos as pr_apellidos,
+            profesor.correo as pr_correo,
+            profesor.telefono as pr_telefono,
+
+            semestre.semestre_id,
+            semestre."year" as se_year,
+            semestre.periodo_academico as se_periodo_academico,
+            semestre.fechainicio as se_fechainicio,
+            semestre.fechafin as se_fechafin,
+
+            monitor.codigo_id,
+            monitor.nombres as mo_nombres,
+            monitor.apellidos as mo_apellidos,
+            monitor.correo as mo_correo,
+            monitor.telefono as mo_telefono,
+            monitor.semestreingreso as mo_semestreingreso,
+            monitor.programa_academico as mo_programa_academico
+        
+        from materia join grupo on (materia_id=grupo.materia_materia_id) 
+            join tema  on (materia_id=tema.materia_materia_id)
+            join profesor on (profesorid=profesor_profesor_id)
+            join semestre on (semestre.semestre_id=grupo.semestre_semestre_id)
+            join monitor  on (monitor.codigo_id=grupo.monitor_codigo_id)
+        
+        <where>
+            <if test="MId != null">
+                materia.materia_id = #{MId}
+            </if>
+            <if test="grdId != null">
+                AND grupo.grupoid = #{grdId}
+            </if>
+            <if test="tmId != null">
+                AND tema.temaid = #{tmId}
+            </if>
+        </where>
+	
+    </select>
+    
+    <resultMap type="Grupo" id="GrupoResult" >
+        <id property="grupoID" column="grupoid"/>
+        <result property="grupoNombre" column="gr_grupo_nombre,"/>
+        <result property="numeroDeEstudiantes" column="gr_numeroestudiante"/>
+        <association property="monitor" javaType="Monitor" resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.MonitorMapper.MonitorResult'/>
+        <association property="materia" javaType="Materia" resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.MateriaMapper.MateriaResult'/>
+        <association property="profesor" javaType="Profesor" resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ProfesorMapper.ProfesorResult'/>
+
+    </resultMap>
+</mapper>

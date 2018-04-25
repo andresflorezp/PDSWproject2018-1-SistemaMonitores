@@ -6,10 +6,9 @@
 <select parameterType="map" id="consultarTemas" resultMap="TemaResult">
     select 
     
-    tm.temId,
-    tm.topic,
-    tm.topics,
-    tm.descripcion,
+    tm.temId as temaid,
+    tm.topic as tm_topic,
+    tm.descripcion as tm_descripcion,
     
     m.codigo as materia_codigo,
     m.materia as materia_materia,
@@ -34,10 +33,9 @@
 </insert>
 
 <resultMap type='Tema' id='TemaResult'>
-    <id property='temId' column="temId"></id>
-    <result property='topic' column="topic"></result>
-    <result property='topics' column="topics"></result>
-    <result property='descripcion' column="descripcion"></result>
+    <id property='temId' column="temaid"></id>
+    <result property='topic' column="tm_topic"></result>
+    <result property='descripcion' column="tm_descripcion"></result>
 </resultMap>
 
 </mapper>

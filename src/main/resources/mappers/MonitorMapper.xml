@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.eci.pdsw.samples.persistence.mybatisimpl.mappers.MonitorMapper">
+    
+    <resultMap type="Monitor" id="MonitorResult" >
+        <id property="codigoID" column="codigo_id"/>
+        <result property="nombre" column="mo_nombres"/>
+        <result property="apellido" column="mo_apellidos"/>
+        <result property="correo" column="mo_correo"/>
+        <result property="telefono" column="mo_telefono"/>
+        <result property="semestreIngreso" column="mo_semestreingreso"/>
+        <result property="programaAcademico" column="mo_programa_academico"/>
+    </resultMap>
+    
+</mapper>
