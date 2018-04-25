@@ -63,7 +63,7 @@
                             <br/>
                             <br/>
                             <p:outputLabel value="Profesor: " for="profesor"/>
-                            <p:selectCheckboxMenu id="profesor" value="#{RegistroAsistencia.profesor}" label="Profesor" filter="true" filterMatchMode="startsWith" multiple="true">
+                            <p:selectCheckboxMenu id="profesor" value="#{RegistroAsistencia.profesoresSelected}" label="Profesor" filter="true" filterMatchMode="startsWith" multiple="true">
                                 <f:selectItems value="#{RegistroAsistencia.profesores}"/>
                             </p:selectCheckboxMenu>
                             <br/>

@@ -6,6 +6,7 @@
 package edu.eci.pdsw.samples.managedbeans;
 
 import edu.eci.pdsw.samples.entities.Materia;
+import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -23,6 +24,7 @@ public class RegistrarAsistEstudianteBean {
     private String profesor;
     private String obseraciones;
     private Materia materia;
+    private List<String> profesoresSelected;
     private List<String> temas;
     private List<String> profesores;
     
@@ -34,6 +36,16 @@ public class RegistrarAsistEstudianteBean {
         profesores = new ArrayList<>();
         profesores.add("Francisco");
         profesores.add("Pedro");
+        profesoresSelected = new ArrayList<>();
+        
+    }
+
+    public List<String> getProfesoresSelected() {
+        return profesoresSelected;
+    }
+
+    public void setProfesoresSelected(List<String> profesoresSelected) {
+        this.profesoresSelected = profesoresSelected;
     }
 
     public List<String> getProfesores() {
