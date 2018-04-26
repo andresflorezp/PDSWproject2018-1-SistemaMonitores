@@ -26,8 +26,13 @@
     </environments>
         
     <mappers>
-        
-        <mapper resource="mappers/ComentarioMapper.xml"></mapper>                
+        <mapper resource="mappers/ComentarioMapper.xml"></mapper>
+        <mapper resource="mappers/GrupoMapper.xml"></mapper>
+        <mapper resource="mappers/MateriaMapper.xml"></mapper>
+        <mapper resource="mappers/ProfesorMapper.xml"></mapper>
+        <mapper resource="mappers/SemestreMapper.xml"></mapper>
+        <mapper resource="mappers/TemaMapper.xml"></mapper>
+             
     </mappers> 
         
         

@@ -17,6 +17,15 @@ public class Grupo {
     private Monitor monitor;
     private Materia materia;
     private Profesor profesor;
+    private Semestre semestre;
+
+    public Semestre getSemestre() {
+        return semestre;
+    }
+
+    public void setSemestre(Semestre semestre) {
+        this.semestre = semestre;
+    }
 
     public int getGrupoID() {
         return grupoID;

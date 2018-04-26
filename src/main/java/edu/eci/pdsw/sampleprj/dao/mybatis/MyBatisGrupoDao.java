@@ -25,12 +25,12 @@ public class MyBatisGrupoDao implements GrupoDAO{
 
     @Override
     public void save(Grupo grupo) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        grupoMapper.agregarGrupo(grupo.getGrupoID(), grupo.getProfesor().getCodigoID(), grupo.getSemestre().getSemestreID(), grupo.getMateria().getCodigo(), grupo.getMonitor().getCodigoID(), grupo.getGrupoNombre(), grupo.getNumeroDeEstudiantes());
     }
 
     @Override
     public Grupo consultarGruposAsesoriaMonitor(Integer materiaID, Integer grupoID, Integer tema) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return grupoMapper.ConsultaAsesoriaMateria(materiaID, grupoID, tema);
     }
     
     

@@ -68,6 +68,7 @@
         <association property="monitor" javaType="Monitor" resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.MonitorMapper.MonitorResult'/>
         <association property="materia" javaType="Materia" resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.MateriaMapper.MateriaResult'/>
         <association property="profesor" javaType="Profesor" resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ProfesorMapper.ProfesorResult'/>
+        <association property="semestre" javaType="Semestre" resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.SemestreMapper.SemestreResult'/>
 
     </resultMap>
 </mapper>
