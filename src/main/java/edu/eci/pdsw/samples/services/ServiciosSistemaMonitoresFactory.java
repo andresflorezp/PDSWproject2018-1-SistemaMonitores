@@ -46,11 +46,11 @@ public class ServiciosSistemaMonitoresFactory {
         testInjector = myBatisInjector("mybatis-config-h2.xml");
     }
 
-    public ServiciosSistemaMonitores getServiciosAlquiler() {
+    public ServiciosSistemaMonitores getServiciosSistemaMonitores() {
         return injector.getInstance(ServiciosSistemaMonitores.class);
     }
 
-    public ServiciosSistemaMonitores getServiciosAlquilerTesting() {
+    public ServiciosSistemaMonitores getServiciosSistemaMonitoresTesting() {
         return testInjector.getInstance(ServiciosSistemaMonitores.class);
     }
 

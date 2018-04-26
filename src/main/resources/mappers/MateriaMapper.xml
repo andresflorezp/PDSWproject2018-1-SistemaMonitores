@@ -6,7 +6,7 @@
   
   
 <mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.MateriaMapper">
-    <select parameterType="map" id="consultarMateria" resultMap="materiaResult">
+    <select parameterType="map" id="consultarMateria" resultMap="MateriaResult">
         select
             materia.materia_id,
             materia.materia_nombre as m_nombre,
@@ -28,17 +28,17 @@
         where materia.materia_id = #{codId}
     </select>
 
-    <insert id="insertarMateria" parameterType="map" useGeneratedKey="true">
-        INSERT INTO MATERIA 
-        VALUES (#{materia.materia_id},#{materia.materia_nombre},#{materia.materia_nemonico},#{materia.creditos},#{materia.horas_monitorias_curs})
-    </insert>
+<!--    <insert id="insertarMateria" parameterType="map" useGeneratedKey="true" keyProperty="materia_id">
+        INSERT INTO MATERIA (materia_id,materia_nombre,materia_nemonico,creditos,horas_monitorias_curso)
+        VALUES (#{materia.materia_nombre},#{materia.materia_nemonico},#{materia.creditos},#{})
+    </insert>-->
 
-    <resultMap type='Materia' id='materiaResult'>
-        <id property='materia_id' column='materia_id'></id>
-        <result property='materia_nombre' column='materia_nombre'></result>
-        <result property='materia_nemonico' column='materia_nemonico'></result>
-        <result property='creditos' column='creditos'></result>
-        <result property='horas_monitorias_curso' column='horas_monitorias_curso'></result>
+    <resultMap type='Materia' id='MateriaResult'>
+        <id property='codigo' column='materia_id'></id>
+        <result property='materia' column='m_nombre'></result>
+        <result property='nemonico' column='m_nemonico'></result>
+        <result property='creditos' column='m_creditos'></result>
+        <result property='horas' column='m_horas_monitoria_curso'></result>
     </resultMap>
 
 </mapper>

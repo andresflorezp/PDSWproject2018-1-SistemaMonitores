@@ -33,9 +33,9 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores 
     private TemaDAO daoTema;
 
     @Override
-    public List<Grupo> consultaAsesoriaMateria(Integer materiaID, Integer grupoID, Integer tema) throws ExcepcionSistemaMonitores {
+    public List<Grupo> consultaAsesoriaMateria(String materiaNombre, String grupoNombre, String tema) throws ExcepcionSistemaMonitores {
         try {
-            return daoGrupo.consultarGruposAsesoriaMonitor(materiaID, grupoID, tema);
+            return daoGrupo.consultarGruposAsesoriaMonitor(materiaNombre, grupoNombre, tema);
         } catch (PersistenceException ex) {
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }

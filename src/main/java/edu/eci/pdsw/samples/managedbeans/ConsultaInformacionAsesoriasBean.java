@@ -6,6 +6,8 @@
 package edu.eci.pdsw.samples.managedbeans;
 
 import edu.eci.pdsw.samples.entities.Asesoria;
+import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
+import edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory;
 import java.util.ArrayList;
 
 import java.util.Arrays;
@@ -23,7 +25,7 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class ConsultaInformacionAsesoriasBean {
     
-    //ServiciosSistemaMonitores sp = ServiciosSistemaMonitoresFactory.getInstance().getServiciosAlquiler();
+    ServiciosSistemaMonitores sp = ServiciosSistemaMonitoresFactory.getInstance().getServiciosSistemaMonitores();
     
     private String[] selectedFiltro;
     private List<String> optionsFiltro;
@@ -31,6 +33,7 @@ public class ConsultaInformacionAsesoriasBean {
     private List<Asesoria> asesorias;
     
     public ConsultaInformacionAsesoriasBean(){
+        selectedFiltro = new String[5];
         optionsFiltro = new ArrayList<>();
         optionsFiltro.add("Materia");
         optionsFiltro.add("Grupo");
@@ -39,13 +42,13 @@ public class ConsultaInformacionAsesoriasBean {
         optionsFiltro.add("Número de asitentes");
     }
     
-//    private String nullble(String s){
-//        return null;
-//    }
+    private String nullble(String s){
+        return null;
+    }
     
     public void filtrar(){
         Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE,"Filtro:"+Arrays.toString(selectedFiltro) + "\nArgumentos:"+selectedOptions.toString());
-//           sp.consultaAsesoriaMateria(selectedFiltro[0], selectedFiltro[1])
+//           sp.consultaAsesoriaMateria(selectedFiltro[0], selectedFiltro[1], selectedFiltro[2], selectedFiltro[3], selectedFiltro[4]);
     }
     
     public String[] getSelectedFiltro() {

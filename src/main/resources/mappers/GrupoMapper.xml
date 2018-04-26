@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
                      
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatisimpl.mappers.GrupoMapper">
-    <select parameterType="map" id="ConsultaAsesoriaMateria" resultMap="GrupoResult">
+    <select parameterType="map" id="consultaAsesoriaMateria" resultMap="GrupoResult">
         select 
             materia.materia_id,
             materia.materia_nombre as m_nombre,
@@ -49,13 +49,13 @@
         
         <where>
             <if test="MId != null">
-                materia.materia_id = #{MId}
+                materia.materia_nombre = #{MIn}
             </if>
             <if test="grdId != null">
-                AND grupo.grupoid = #{grdId}
+                AND grupo.grupo_nombre = #{grn}
             </if>
             <if test="tmId != null">
-                AND tema.temaid = #{tmId}
+                AND tema.topic = #{tmTp}
             </if>
         </where>
 	
@@ -63,7 +63,7 @@
     
     <resultMap type="Grupo" id="GrupoResult" >
         <id property="grupoID" column="grupoid"/>
-        <result property="grupoNombre" column="gr_grupo_nombre,"/>
+        <result property="grupoNombre" column="gr_grupo_nombre"/>
         <result property="numeroDeEstudiantes" column="gr_numeroestudiante"/>
         <association property="monitor" javaType="Monitor" resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.MonitorMapper.MonitorResult'/>
         <association property="materia" javaType="Materia" resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.MateriaMapper.MateriaResult'/>

@@ -36,11 +36,11 @@ public class MyBatisGrupoDao implements GrupoDAO {
     }
 
     @Override
-    public List<Grupo> consultarGruposAsesoriaMonitor(Integer materiaID, Integer grupoID, Integer tema) throws PersistenceException {
+    public List<Grupo> consultarGruposAsesoriaMonitor(String materiaNombre, String grupoNombre, String tema) throws PersistenceException {
         try {
-            return grupoMapper.ConsultaAsesoriaMateria(materiaID, grupoID, tema);
+            return grupoMapper.consultaAsesoriaMateria(materiaNombre, grupoNombre, tema);
         } catch (org.apache.ibatis.exceptions.PersistenceException e) {
-            throw new PersistenceException("Error al realizar la consulta de la Asesoria para el monitor para grupoID: " + grupoID + " materiaID: " + materiaID + " temaID: " + tema, e);
+            throw new PersistenceException("Error al realizar la consulta de la Asesoria para el monitor para grupo: " + grupoNombre + " materia: " + materiaNombre + " tema: " + tema, e);
         }
 
     }
