@@ -24,9 +24,17 @@
                 <ui:insert name="top"></ui:insert>
                     <div id="Encabezado">
                      
-                            <h:outputLabel id="cabecera" value="PDSW"  style="font-size: 50px" styleClass="cabecera"/>
-                            <h:outputLabel value="         " style="font-size: 50px"/>
-                            <h:outputLabel id="cabecera2" value="Nombre Usuario: AAKAA" style="font-size: 50px" styleClass="cabecera"/>
+                        <h:outputLabel id="cabecera" value="PDSW &#160; &#160;"  style="font-size: 50px" styleClass="cabecera"/>
+                        <h:outputLabel id="cabecera2" value="Nombre Usuario: AAKAA &#160; &#160; &#160; &#160; &#160; &#160;" style="font-size: 50px" styleClass="cabecera"/>
+                        <h:outputLabel id="cabecera3" rendered="#{MonitorMonitoria.showDo}" value="#{MonitorMonitoria.horaActual}  -->  #{MonitorMonitoria.horaTerminacion}" style="font-size: 20px;color: #F5F2F1">
+                            <p:commandButton value="Terminar Monitoria" actionListener="#{MonitorMonitoria.messageLogOut}" rendered="#{MonitorMonitoria.showDo}" style="margin-left: 1020px;font-size: 20px;">
+                                 <p:confirm header="Confirmacion" message="Estas seguro de terminar la asesoria" icon="ui-icon-alert" />
+                            </p:commandButton>
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                              <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="RegistrarMonitoria"/>
+                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:confirmDialog>
+                        </h:outputLabel>
                      
                     </div>
 

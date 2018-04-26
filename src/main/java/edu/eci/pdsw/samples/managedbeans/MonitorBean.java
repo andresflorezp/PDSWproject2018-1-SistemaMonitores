@@ -9,10 +9,14 @@ import edu.eci.pdsw.samples.entities.Registro;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.TimeZone;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -27,12 +31,16 @@ public class MonitorBean implements Serializable{
     private String codigoEstudiante;
     private String profesor;
     private String Observaciones;
-    private String horaActual;
-    private String horaTerminacion;
-    private Calendar hora = Calendar.getInstance(Locale.ENGLISH);
+    private String horaActual="";
+    private String horaTerminacion="";
+    TimeZone timeZone1 = TimeZone.getTimeZone("America/Mexico_City");
+    Calendar hora = new GregorianCalendar();
+    
     private String horas,minutos,segundos;
+    private boolean showDo;
     public MonitorBean(){
         registros = new ArrayList();
+        hora.setTimeZone(timeZone1);
     }
 
    
@@ -105,7 +113,7 @@ public class MonitorBean implements Serializable{
     }
 
     public String getHoras() {
-        return String.valueOf(hora.get(Calendar.HOUR_OF_DAY)-5);
+        return String.valueOf(hora.get(Calendar.HOUR_OF_DAY));
         
                 
     }
@@ -130,6 +138,37 @@ public class MonitorBean implements Serializable{
         this.segundos = segundos;
     }
     
+ 
+
+    public void doAction(){
+      showDo=true;
+    }
+
+    public Calendar getHora() {
+        return hora;
+    }
+
+    public void setHora(Calendar hora) {
+        this.hora = hora;
+    }
+
+    public boolean getShowDo() {
+        return showDo;
+    }
+
+    public void setShowDo(boolean showDo) {
+        this.showDo = showDo;
+    }
+    
+    public void messageLogOut() {
+        addMessage("Saliendo de la Monitoria", "Gracias por usar la Plataforma");
+    }
+     
+    public void addMessage(String summary, String detail) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+
     
     
 }

@@ -22,9 +22,11 @@
                 <ui:insert name="top"></ui:insert>
                     <div id="Encabezado">
                      
-                            <h:outputLabel id="cabecera" value="PDSW"  style="font-size: 50px" styleClass="cabecera"/>
-                            <h:outputLabel value="         " style="font-size: 50px"/>
-                            <h:outputLabel id="cabecera2" value="Nombre Usuario: AAKAA" style="font-size: 50px" styleClass="cabecera"/>
+                   <h:outputLabel id="cabecera" value="PDSW &#160; &#160;"  style="font-size: 50px" styleClass="cabecera"/>
+                        <h:outputLabel id="cabecera2" value="Nombre Usuario: AAKAA &#160; &#160; &#160; &#160; &#160; &#160; &#160;" style="font-size: 50px" styleClass="cabecera"/>
+                        <h:outputLabel id="cabecera3" value="HORA" style="font-size: 30px;color: #F5F2F1">
+                            <p:commandButton value="Terminar Monitoria" rendered="#{MonitorMonitoria.showDo}" style="margin-left: 1050px;font-size: 20px"/>
+                        </h:outputLabel>
                      
                     </div>
 
