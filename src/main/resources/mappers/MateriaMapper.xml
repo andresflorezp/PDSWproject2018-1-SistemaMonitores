@@ -14,23 +14,13 @@
             materia.creditos as m_creditos,
             materia.horas_monitoria_curso as m_horas_monitoria_curso,
 
-            tema.temaid,
-            tema.topic as tm_topic,
-            tema.descripcion as tm_descripcion,
+            tema.temaID tema_temaID,
+            tema.topic as tema_topic,
+            tema.descripcion as tema_descripcion,
 
-            am.fecha as am_fecha,
-            am.profesor as am_profesor,
-            am.observacones as am_observacones,
-            am.monitor as am_monitor,
-            am.materia as am_materia,
-            am.grupo as am_grupo,
-            am.estudiantes as am_estudiantes,
-            am.temaMonitoria as am_temaMonitoria,
-
-            grupo.grupoid,
+            grupo.grupoID,
             grupo.grupo_nombre as gr_grupo_nombre,
-            grupo.numeroestudiante as gr_numeroestudiante,
-            grupo.horario_monitor as gr_horario_monitor
+            grupo.numeroEstudiante as gr_numeroestudiante,
 
         FROM materia join tema on (tema.materia_materia_id = materia.materia_id)
             join grupo on (grupo.materia_materia_id = materia.materia_id)
@@ -39,16 +29,16 @@
     </select>
 
     <insert id="insertarMateria" parameterType="map" useGeneratedKey="true">
-        INSERT INTO MATERIA VALUES (#{materia.planEstudios},#{materia.codigo},#{materia.materia},#{materia.memoico},#{materia.horas})
+        INSERT INTO MATERIA 
+        VALUES (#{materia.materia_id},#{materia.materia_nombre},#{materia.materia_nemonico},#{materia.creditos},#{materia.horas_monitorias_curs})
     </insert>
 
     <resultMap type='Materia' id='materiaResult'>
-        <id property='codigo' column='codigo'></id>
-        <result property='materia' column='materia'></result>
-        <result property='memoico' column='memoico'></result>
-        <result property='horas' column='horas'></result>
-        <result property='grupos' column='grupos'></result>
+        <id property='materia_id' column='materia_id'></id>
+        <result property='materia_nombre' column='materia_nombre'></result>
+        <result property='materia_nemonico' column='materia_nemonico'></result>
+        <result property='creditos' column='creditos'></result>
+        <result property='horas_monitorias_curso' column='horas_monitorias_curso'></result>
     </resultMap>
 
 </mapper>
-

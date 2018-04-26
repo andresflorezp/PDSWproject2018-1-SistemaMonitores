@@ -1,41 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-  PUBLIC "">
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TemaMapper">
 <select parameterType="map" id="consultarTemas" resultMap="TemaResult">
     select 
     
-    tm.temId as temaid,
-    tm.topic as tm_topic,
-    tm.descripcion as tm_descripcion,
+    tema.temaId,
+    tema.topic as tema_topic,
+    tema.Descripcion as tema_Descripcion,
     
-    m.codigo as materia_codigo,
-    m.materia as materia_materia,
-    m.memoico as materia_memoico,
-    m.horas as materia_horas,
-    m.grupos as materia_grupos,
+    materia.codigo,
+    materia.materia as materia_materia,
+    materia.nemonico as materia_nemonico,
+    materia.horas_monitoria_curso as materia_horas_monitoria_curso,
+    materia.grupos as materia_grupos,   
     
-    am.fecha as AsesoriaMonitor_fecha,
-    am.profesor as AsesoriaMonitor_profesor,
-    am.observacones as AsesoriaMonitor_observacones,
-    am.monitor as AsesoriaMonitor_monitor,
-    am.materia as AsesoriaMonitor_materia,
-    am.grupo as AsesoriaMonitor_grupo,
-    am.estudiantes as AsesoriaMonitor_estudiantes,
-    am.temaMonitoria as AsesoriaMonitor_temaMonitoria
+    FROM Tema join Materia on(tema.Tema_temaID=tema.temaId)
+    where tema.temaId=#{temaId}
     
-    FROM Tema as tm
-    where tm.temId=#{temId}
+                
 </select>
 <insert id="insertarTema" parameterType="map" useGeneratedKeys="true">
-    INSERT INTO TEMAS VALUES(#{tema.temId},#{tema.topic},#{tema.topics},#{tema.descripcion})
+    INSERT INTO TEMAS VALUES(#{tema.temaId},#{tema.topic},#{tema.Descripcion})
 </insert>
 
 <resultMap type='Tema' id='TemaResult'>
-    <id property='temId' column="temaid"></id>
+    <id property='temaId' column="temaid"></id>
     <result property='topic' column="tm_topic"></result>
-    <result property='descripcion' column="tm_descripcion"></result>
+    <result property='Descripcion' column="tm_Descripcion"></result>
 </resultMap>
 
 </mapper>

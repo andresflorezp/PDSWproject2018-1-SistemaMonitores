@@ -12,21 +12,21 @@ import java.util.List;
  * @author Tatiana
  */
 public class Tema {
-    private int temId;
+    private int temaId;
     private String topic;
     private List<String> topics;
-    private String descripcion;
+    private String Descripcion;
     
     public Tema(int temID, String tpic,String desc){
         
     }
 
     public int getTemId() {
-        return temId;
+        return temaId;
     }
 
     public void setTemId(int temId) {
-        this.temId = temId;
+        this.temaId = temId;
     }
 
     public String getTopic() {
@@ -46,11 +46,11 @@ public class Tema {
     }
 
     public String getDescripcion() {
-        return descripcion;
+        return Descripcion;
     }
 
     public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+        this.Descripcion = descripcion;
     }
     public void adicionarTopic(String tpc){
         topics.add(tpc);

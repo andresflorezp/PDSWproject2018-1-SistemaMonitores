@@ -12,11 +12,11 @@ import java.util.List;
  * @author Tatiana
  */
 public class Materia {
-    private List<String> planEstudios;
     private int codigo;
     private String materia;
-    private String memoico;
+    private String nemonico;
     private int horas;
+    private int creditos;
     private List<String> grupos;
     private List<Tema> temas;
 
@@ -37,11 +37,11 @@ public class Materia {
     }
 
     public String getMemoico() {
-        return memoico;
+        return nemonico;
     }
 
-    public void setMemoico(String memoico) {
-        this.memoico = memoico;
+    public void setMemoico(String nemonico) {
+        this.nemonico = nemonico;
     }
 
     public int getHoras() {
@@ -60,18 +60,10 @@ public class Materia {
         this.grupos = grupos;
     }
     
-    
-    public List<String> getPlanEstudios(){
-        return planEstudios;
-    }
-    
     public void adicionarGrupos(String grp){
         grupos.add(grp);
     }
     
-    public void adicionarTema(String tm){
-        planEstudios.add(tm);
-    }
     
     public int getCodigo() {
         return codigo;
@@ -79,5 +71,13 @@ public class Materia {
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
+    }
+    
+    public int getCreditos() {
+        return creditos;
+    }
+
+    public void setCreditos(int creditos) {
+        this.creditos = creditos;
     }
 }

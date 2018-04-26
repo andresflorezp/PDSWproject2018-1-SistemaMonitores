@@ -96,7 +96,6 @@ public class RegistrarAsistEstudianteBean {
         this.obseraciones = obseraciones;
     }
     
-    public List<String> getPlanEstudios(){
-        return materia.getPlanEstudios();
-    }
+   
+    
 }
