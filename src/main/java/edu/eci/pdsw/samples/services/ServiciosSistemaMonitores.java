@@ -13,8 +13,7 @@ import java.util.List;
  * @author SergioRt
  */
 public interface ServiciosSistemaMonitores {
-    
-    public abstract List<Grupo> consultaAsesoriaMateria(Integer materiaID, Integer grupoID, Integer tema);
-    
-    
+
+    public abstract List<Grupo> consultaAsesoriaMateria(Integer materiaID, Integer grupoID, Integer tema) throws ExcepcionSistemaMonitores;
+
 }

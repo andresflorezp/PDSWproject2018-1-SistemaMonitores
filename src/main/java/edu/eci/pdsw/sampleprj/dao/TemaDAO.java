@@ -4,12 +4,18 @@
  * and open the template in the editor.
  */
 package edu.eci.pdsw.sampleprj.dao;
+
 import edu.eci.pdsw.samples.entities.Tema;
+
 /**
  *
  * @author tatiana
  */
 public interface TemaDAO {
-    public void save(Tema tema);
-    public Tema load(int codigo);
+
+
+    public void save(Tema tema) throws PersistenceException;
+
+    public Tema load(int codigo) throws PersistenceException;
+
 }

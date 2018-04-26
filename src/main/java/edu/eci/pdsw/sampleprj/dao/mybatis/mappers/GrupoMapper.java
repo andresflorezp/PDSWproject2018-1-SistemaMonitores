@@ -6,6 +6,7 @@
 package edu.eci.pdsw.sampleprj.dao.mybatis.mappers;
 
 import edu.eci.pdsw.samples.entities.Grupo;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -13,7 +14,7 @@ import org.apache.ibatis.annotations.Param;
  * @author sergiort
  */
 public interface GrupoMapper {
-    public Grupo ConsultaAsesoriaMateria(@Param("MId") Integer materiaID,
+    public List<Grupo> ConsultaAsesoriaMateria(@Param("MId") Integer materiaID,
                                            @Param("grdId") Integer grupoID,
                                            @Param("tmId") Integer tema);
     

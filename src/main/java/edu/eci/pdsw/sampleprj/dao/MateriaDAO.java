@@ -4,13 +4,18 @@
  * and open the template in the editor.
  */
 package edu.eci.pdsw.sampleprj.dao;
+
 import edu.eci.pdsw.samples.entities.Materia;
+
 /**
  *
  * @author tatiana
  */
 public interface MateriaDAO {
-    public void save(Materia materia);
-    public Materia load(int codigo);
-    
+
+    public void save(Materia materia) throws PersistenceException;
+
+    public Materia load(int codigo) throws PersistenceException;
+
 }
+
