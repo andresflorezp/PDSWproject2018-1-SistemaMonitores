@@ -13,5 +13,12 @@ import java.util.List;
  * @author sergiort
  */
 public interface AsesoriaDAO {
+
     public List<Asesoria> consultaAsesoriasMonitor(String materiaNombre, String grupoNombre, String franjaHoraria, String tema) throws PersistenceException;
+
+    public Asesoria load(long id) throws PersistenceException;
+
+    public void save(Asesoria Asesoria) throws PersistenceException;
+
+    public List<Asesoria> loadAll() throws PersistenceException;
 }

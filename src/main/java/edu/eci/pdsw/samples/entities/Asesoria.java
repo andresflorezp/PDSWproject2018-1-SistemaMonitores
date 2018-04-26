@@ -13,6 +13,7 @@ import java.util.List;
  *
  * @author sergiort
  */
+
 public class Asesoria implements Serializable{
     
     private int asesoriaID;

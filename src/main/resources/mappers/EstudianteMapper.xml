@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.eci.pdsw.samples.persistence.mybatisimpl.mappers.MonitorMapper">
+    <select parameterType="map" id="consultarEstudianteGeneral" resultMap="EstudianteResult">
+        select
+    
+        c.carnet AS carnet,
+        c.nombre AS nombre,
+        c.grupo AS grupo,
+
+    
+        FROM estudiante as c 
+
+        <if test="idcli != null">
+            WHERE c.documento = #{carnet}
+        </if>
+    </select>
+    
+    <insert parameterType="map" id="agregarEstudiante">
+        INSERT INTO estudiante (documento,nombre,grupo)
+        VALUES (#{carnet},#{nombre},#{grupo})
+    </insert>
+    
+    <resultMap type="Estudiante" id="EstudianteResult" >
+        <id property="carnet" column="carnet"/>
+        <result property="nombre" column="nombre"/>
+        <result property="grupo" column="grupo"/>
+    </resultMap>
+    
+</mapper>
