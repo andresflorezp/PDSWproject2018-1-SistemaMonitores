@@ -22,7 +22,7 @@ public interface GrupoMapper {
                              @Param("gPrId") Integer profesorID,
                              @Param("gSeId") Integer semestreID,
                              @Param("gMaId") Integer materiaID,
-                             @Param("gMoId")Integer monitorID,
+                             @Param("gMoId") Integer monitorID,
                              @Param("gNom") Integer grupoNombre,
                              @Param("gNum") int numeroEstudiantes);
 }

@@ -10,11 +10,20 @@ package edu.eci.pdsw.samples.entities;
  * @author sergiort
  */
 public abstract class Persona {
+
     private int codigoID;
     private String nombre;
     private String apellido;
     private String correo;
     private long telefono;
+
+    public Persona(int codigoID,String nombre,String apellido,String correo,long telefono) {
+        this.codigoID = codigoID;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+        this.telefono = telefono;
+    }
 
     public int getCodigoID() {
         return codigoID;
@@ -55,6 +64,5 @@ public abstract class Persona {
     public void setTelefono(long telefono) {
         this.telefono = telefono;
     }
-    
-    
+
 }

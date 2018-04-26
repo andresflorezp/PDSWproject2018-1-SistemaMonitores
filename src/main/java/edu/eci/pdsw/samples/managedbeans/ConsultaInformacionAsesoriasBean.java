@@ -23,6 +23,8 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class ConsultaInformacionAsesoriasBean {
     
+    //ServiciosSistemaMonitores sp = ServiciosSistemaMonitoresFactory.getInstance().getServiciosAlquiler();
+    
     private String[] selectedFiltro;
     private List<String> optionsFiltro;
     private List<String> selectedOptions;
@@ -37,8 +39,13 @@ public class ConsultaInformacionAsesoriasBean {
         optionsFiltro.add("Número de asitentes");
     }
     
+//    private String nullble(String s){
+//        return null;
+//    }
+    
     public void filtrar(){
-        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE,"Filtro:"+Arrays.toString(selectedFiltro) + "\nArgumentos:"+selectedOptions.toString());     
+        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE,"Filtro:"+Arrays.toString(selectedFiltro) + "\nArgumentos:"+selectedOptions.toString());
+//           sp.consultaAsesoriaMateria(selectedFiltro[0], selectedFiltro[1])
     }
     
     public String[] getSelectedFiltro() {

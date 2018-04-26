@@ -25,8 +25,9 @@ public class RegistrarAsistEstudianteBean {
     private String obseraciones;
     private Materia materia;
     private List<String> profesoresSelected;
-    private List<String> temas;
     private List<String> profesores;
+    private List<String> temas;
+    private List<String> temasSelected;
     
     public RegistrarAsistEstudianteBean(){
         temas = new ArrayList<>();
@@ -38,6 +39,14 @@ public class RegistrarAsistEstudianteBean {
         profesores.add("Pedro");
         profesoresSelected = new ArrayList<>();
         
+    }
+
+    public List<String> getTemasSelected() {
+        return temasSelected;
+    }
+
+    public void setTemasSelected(List<String> temasSelected) {
+        this.temasSelected = temasSelected;
     }
 
     public List<String> getProfesoresSelected() {
