@@ -38,7 +38,7 @@ public class MyBatisEstudianteDao implements EstudianteDAO {
     }
 
     @Override
-    public List<Estudiante> loadEstudiantes() throws PersistenceException {
+    public List<Estudiante> consultarEstudiantes() throws PersistenceException {
         try{
             return estudianteMapper.consultarEstudiantes();
         }catch(org.apache.ibatis.exceptions.PersistenceException e){

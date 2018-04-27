@@ -17,6 +17,6 @@ public interface EstudianteDAO {
 
         public void save(Estudiante estudiante) throws PersistenceException;
 
-        public List<Estudiante> consultarEstudiantes(long carnet) throws PersistenceException;
+        public List<Estudiante> consultarEstudiantes() throws PersistenceException;
     
 }
