@@ -5,6 +5,7 @@
  */
 package edu.eci.pdsw.samples.entities;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @author Tatiana
  */
-public class Tema {
+public class Tema implements Serializable{
 
 
     private int temaId;

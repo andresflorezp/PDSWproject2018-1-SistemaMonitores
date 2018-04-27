@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.eci.pdsw.samples.entities;
-
-import java.io.Serializable;
+package edu.eci.pdsw.sampleprj.dao.mybatis.mappers;
 
 /**
  *
  * @author sergiort
  */
-public class Estudiante implements Serializable{
-    private long carnet;
-    private String nombre;
-    private int grupo;
+public interface ProfesorMapper {
+    
 }

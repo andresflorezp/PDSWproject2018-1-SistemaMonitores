@@ -6,6 +6,7 @@
 package edu.eci.pdsw.samples.entities;
 
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
+import java.io.Serializable;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +17,11 @@ import java.lang.Exception;
  * @author sergiort
  */
 
-public class Monitor extends Persona {
+public class Monitor extends Persona{
 
     private int semestreIngreso;
     private int programaAcademico;
-    private List<Grupo> grupos;
+    private List<Grupo> grupos;//No va
 
     public Monitor(int codigoID, String nombre, String apellido, String correo, long telefono, int semestreIngreso, int programaAcademico) {
         super(codigoID, nombre, apellido, correo, telefono);

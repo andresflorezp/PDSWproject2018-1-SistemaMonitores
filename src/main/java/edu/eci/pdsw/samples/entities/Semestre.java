@@ -5,6 +5,7 @@
  */
 package edu.eci.pdsw.samples.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -12,13 +13,12 @@ import java.util.List;
  *
  * @author sergiort
  */
-public class Semestre {
+public class Semestre implements Serializable{
     private int semestreID;
-    private int año;
+    private int anno;
     private int periodoAcademico;
     private Date fechaInicio;
     private Date fechaFin;
-    private List<Grupo> grupos;
 
     public int getSemestreID() {
         return semestreID;
@@ -28,12 +28,12 @@ public class Semestre {
         this.semestreID = semestreID;
     }
 
-    public int getAño() {
-        return año;
+    public int getAnno() {
+        return anno;
     }
 
-    public void setAño(int año) {
-        this.año = año;
+    public void setAnno(int anno) {
+        this.anno = anno;
     }
 
     public int getPeriodoAcademico() {
@@ -59,14 +59,5 @@ public class Semestre {
     public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
     }
-
-    public List<Grupo> getGrupos() {
-        return grupos;
-    }
-
-    public void setGrupos(List<Grupo> grupos) {
-        this.grupos = grupos;
-    }
-    
     
 }

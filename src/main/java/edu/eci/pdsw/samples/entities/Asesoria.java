@@ -5,6 +5,7 @@
  */
 package edu.eci.pdsw.samples.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -12,23 +13,54 @@ import java.util.List;
  *
  * @author sergiort
  */
-public class Asesoria {
-
-    private String profesor;
-    private String observaciones;
-    private String monitor;
-    private String materia;
+public class Asesoria implements Serializable{
+    
+    private int asesoriaID;
+    private Grupo grupo;
+    private List<Tema> temas;
+    private List<Estudiante> asistentes;
     private Date fecha;
-    private int grupo;
-    private List<Integer> carnetAsistentes;
-    private List<String> tema;
+    private String observaciones;
 
-    public Asesoria(Date fecha, List<String> tema, String profesor,String monitor, String observaciones) {
-        this.observaciones = observaciones;
+    public Asesoria(int asesoriaID, Grupo grupo, Date fecha, List<Tema> tema, List<Estudiante> asistentes, String observaciones) {
+        this.asesoriaID = asesoriaID;
+        this.grupo = grupo;
+        this.temas = temas;
+        this.asistentes = asistentes;
         this.fecha = fecha;
-        this.profesor = profesor;
-        this.monitor = monitor;
-        this.tema = tema;
+        this.observaciones = observaciones;
+    }
+
+    public int getAsesoriaID() {
+        return asesoriaID;
+    }
+
+    public void setAsesoriaID(int asesoriaID) {
+        this.asesoriaID = asesoriaID;
+    }
+
+    public Grupo getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
+    }
+
+    public List<Tema> getTemas() {
+        return temas;
+    }
+
+    public void setTemas(List<Tema> temas) {
+        this.temas = temas;
+    }
+
+    public List<Estudiante> getAsistentes() {
+        return asistentes;
+    }
+
+    public void setAsistentes(List<Estudiante> asistentes) {
+        this.asistentes = asistentes;
     }
 
     public Date getFecha() {
@@ -39,60 +71,12 @@ public class Asesoria {
         this.fecha = fecha;
     }
 
-    public List<String> getTema() {
-        return tema;
-    }
-
-    public void setTema(List<String> tema) {
-        this.tema = tema;
-    }
-
-    public String getProfesor() {
-        return profesor;
-    }
-
-    public void setProfesor(String profesor) {
-        this.profesor = profesor;
-    }
-
     public String getObservaciones() {
         return observaciones;
     }
 
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
-    }
-
-    public String getMonitor() {
-        return monitor;
-    }
-
-    public void setMonitor(String monitor) {
-        this.monitor = monitor;
-    }
-
-    public List<Integer> getCarnetAsistentes() {
-        return carnetAsistentes;
-    }
-
-    public void setCarnetAsistentes(List<Integer> carnetAsistentes) {
-        this.carnetAsistentes = carnetAsistentes;
-    }  
-
-    public String getMateria() {
-        return materia;
-    }
-
-    public void setMateria(String materia) {
-        this.materia = materia;
-    }
-
-    public int getGrupo() {
-        return grupo;
-    }
-
-    public void setGrupo(int grupo) {
-        this.grupo = grupo;
     }
     
 }

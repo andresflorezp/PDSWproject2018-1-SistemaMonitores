@@ -5,11 +5,13 @@
  */
 package edu.eci.pdsw.samples.entities;
 
+import java.io.Serializable;
+
 /**
  *
  * @author sergiort
  */
-public abstract class Persona {
+public abstract class Persona implements Serializable{
 
     private int codigoID;
     private String nombre;

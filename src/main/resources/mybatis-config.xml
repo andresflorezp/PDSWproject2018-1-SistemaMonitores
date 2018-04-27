@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    
     <settings>
         <setting name="logImpl" value="LOG4J"/>        
     </settings>
@@ -14,6 +15,7 @@
         <typeAlias type='edu.eci.pdsw.samples.entities.Profesor' alias='Profesor'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Semestre' alias='Semestre'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Tema' alias='Tema'/>
+        <typeAlias type='edu.eci.pdsw.samples.entities.Asesoria' alias='Asesoria'/>
     </typeAliases>        
 
         
@@ -36,7 +38,7 @@
         <mapper resource="mappers/ProfesorMapper.xml"></mapper>
         <mapper resource="mappers/SemestreMapper.xml"></mapper>
         <mapper resource="mappers/TemaMapper.xml"></mapper>
-             
+        <mapper resource="mappers/AsesoriaMapper.xml"></mapper>
     </mappers> 
         
         

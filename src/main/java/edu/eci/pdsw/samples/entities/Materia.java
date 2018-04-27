@@ -5,19 +5,19 @@
  */
 package edu.eci.pdsw.samples.entities;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author Tatiana
  */
-public class Materia {
-    private int codigo;
-    private String materia;
+public class Materia implements Serializable{
+    private int materiaID;
+    private String nombre;
     private String nemonico;
     private int horas;
     private int creditos;
-    private List<String> grupos;
     private List<Tema> temas;
 
     public List<Tema> getTemas() {
@@ -28,12 +28,12 @@ public class Materia {
         this.temas = temas;
     }
     
-    public String getMateria() {
-        return materia;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setMateria(String materia) {
-        this.materia = materia;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getMemoico() {
@@ -51,26 +51,13 @@ public class Materia {
     public void setHoras(int horas) {
         this.horas = horas;
     }
-
-    public List<String> getGrupos() {
-        return grupos;
-    }
-
-    public void setGrupos(List<String> grupos) {
-        this.grupos = grupos;
-    }
     
-    public void adicionarGrupos(String grp){
-        grupos.add(grp);
-    }
-    
-    
-    public int getCodigo() {
-        return codigo;
+    public int getMateriaID() {
+        return materiaID;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setMateriaID(int materiaID) {
+        this.materiaID = materiaID;
     }
     
     public int getCreditos() {

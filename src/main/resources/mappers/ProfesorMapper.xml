@@ -3,9 +3,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="edu.eci.pdsw.samples.persistence.mybatisimpl.mappers.ProfesorMapper">
+<mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ProfesorMapper">
     
-    <resultMap type="Semestre" id="ProfesorResult" >
+    <resultMap type="Profesor" id="ProfesorResult" >
         <id property="codigoID" column="profesorid"/>
         <result property="nombre" column="pr_nombres"/>
         <result property="apellido" column="pr_apellidos"/>

@@ -7,9 +7,11 @@ package edu.eci.pdsw.samples.services;
 
 import static com.google.inject.Guice.createInjector;
 import com.google.inject.Injector;
+import edu.eci.pdsw.sampleprj.dao.AsesoriaDAO;
 import edu.eci.pdsw.sampleprj.dao.GrupoDAO;
 import edu.eci.pdsw.sampleprj.dao.MateriaDAO;
 import edu.eci.pdsw.sampleprj.dao.TemaDAO;
+import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisAsesoriaDao;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisGrupoDao;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisMateriaDao;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisTemaDao;
@@ -36,14 +38,14 @@ public class ServiciosSistemaMonitoresFactory {
                 bind(GrupoDAO.class).to(MyBatisGrupoDao.class);
                 bind(MateriaDAO.class).to(MyBatisMateriaDao.class);
                 bind(TemaDAO.class).to(MyBatisTemaDao.class);
+                bind(AsesoriaDAO.class).to(MyBatisAsesoriaDao.class);
             }
         });
     }
 
     private ServiciosSistemaMonitoresFactory() {
-
         injector = myBatisInjector("mybatis-config.xml");
-        testInjector = myBatisInjector("mybatis-config-h2.xml");
+        testInjector = myBatisInjector("h2-mybatis-config.xml");
     }
 
     public ServiciosSistemaMonitores getServiciosSistemaMonitores() {

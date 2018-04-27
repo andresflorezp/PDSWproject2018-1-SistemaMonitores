@@ -3,7 +3,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="edu.eci.pdsw.samples.persistence.mybatisimpl.mappers.MonitorMapper">
+<mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.MonitorMapper">
     
     <resultMap type="Monitor" id="MonitorResult" >
         <id property="codigoID" column="codigo_id"/>

@@ -14,9 +14,6 @@ import org.apache.ibatis.annotations.Param;
  * @author sergiort
  */
 public interface GrupoMapper {
-    public List<Grupo> consultaAsesoriaMateria(@Param("MIn") String materiaID,
-                                           @Param("grn") String grupoID,
-                                           @Param("tmTp") String tema);
     
     public void agregarGrupo(@Param("GId") Integer grupoID,
                              @Param("gPrId") Integer profesorID,

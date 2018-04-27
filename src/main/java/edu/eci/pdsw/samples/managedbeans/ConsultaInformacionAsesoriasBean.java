@@ -6,6 +6,7 @@
 package edu.eci.pdsw.samples.managedbeans;
 
 import edu.eci.pdsw.samples.entities.Asesoria;
+import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory;
 import java.util.ArrayList;
@@ -24,38 +25,49 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean(name = "InformacionAsesorias")
 @SessionScoped
 public class ConsultaInformacionAsesoriasBean {
-    
+
     ServiciosSistemaMonitores sp = ServiciosSistemaMonitoresFactory.getInstance().getServiciosSistemaMonitores();
-    
-    private String[] selectedFiltro;
+
+    private List<String> selectedFiltro;
     private List<String> optionsFiltro;
     private List<String> selectedOptions;
     private List<Asesoria> asesorias;
-    
-    public ConsultaInformacionAsesoriasBean(){
-        selectedFiltro = new String[5];
+    private String[] selectedFiltroNoNull;
+
+    public ConsultaInformacionAsesoriasBean() {
         optionsFiltro = new ArrayList<>();
+        selectedFiltroNoNull = new String[5];
         optionsFiltro.add("Materia");
         optionsFiltro.add("Grupo");
         optionsFiltro.add("Franja horaria");
         optionsFiltro.add("Tema");
         optionsFiltro.add("Número de asitentes");
     }
-    
-    private String nullble(String s){
-        return null;
+
+    private void nullable() {
+        int act = 0;
+        for (int i = 0; i < 5; i++) {
+            selectedFiltroNoNull[i] = (optionsFiltro.get(i).equals(selectedFiltro.get(act)) ? selectedOptions.get(act++) : null);
+            if (act == selectedFiltro.size())
+                act--;
+        }
     }
-    
-    public void filtrar(){
-        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE,"Filtro:"+Arrays.toString(selectedFiltro) + "\nArgumentos:"+selectedOptions.toString());
+
+    public void filtrar() throws ExcepcionSistemaMonitores {
+        try{
+            nullable();
+        }catch(java.lang.IndexOutOfBoundsException e){
+            throw new ExcepcionSistemaMonitores("El numero de argumentos ingresados no es valido o no coincide con las opciones de filtro.");
+        }
+        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "Filtro:" + selectedFiltro.toString() + "\nArgumentos:" + selectedOptions.toString() + "\nAns: " + Arrays.toString(selectedFiltroNoNull));
 //           sp.consultaAsesoriaMateria(selectedFiltro[0], selectedFiltro[1], selectedFiltro[2], selectedFiltro[3], selectedFiltro[4]);
     }
-    
-    public String[] getSelectedFiltro() {
+
+    public List<String> getSelectedFiltro() {
         return selectedFiltro;
     }
 
-    public void setSelectedFiltro(String[] selectedFiltro) {
+    public void setSelectedFiltro(List<String> selectedFiltro) {
         this.selectedFiltro = selectedFiltro;
     }
 
@@ -82,6 +94,5 @@ public class ConsultaInformacionAsesoriasBean {
     public void setAsesorias(List<Asesoria> asesorias) {
         this.asesorias = asesorias;
     }
-    
-    
+
 }

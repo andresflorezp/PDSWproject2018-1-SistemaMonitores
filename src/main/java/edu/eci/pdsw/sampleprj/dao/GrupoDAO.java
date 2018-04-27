@@ -19,5 +19,4 @@ public interface GrupoDAO {
 
     public void save(Grupo grupo) throws PersistenceException;
 
-    public List<Grupo> consultarGruposAsesoriaMonitor(String materiaNombre, String grupoNombre, String tema) throws PersistenceException;
 }

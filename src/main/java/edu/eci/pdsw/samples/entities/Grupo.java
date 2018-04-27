@@ -5,11 +5,13 @@
  */
 package edu.eci.pdsw.samples.entities;
 
+import java.io.Serializable;
+
 /**
  *
  * @author sergiort
  */
-public class Grupo {
+public class Grupo implements Serializable{
 //    private String horarioMonitor;
     private int grupoID;
     private int grupoNombre;

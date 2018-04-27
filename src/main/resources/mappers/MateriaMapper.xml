@@ -24,7 +24,6 @@
 
         FROM materia join tema on (tema.materia_materia_id = materia.materia_id)
             join grupo on (grupo.materia_materia_id = materia.materia_id)
-            join asesoriamonitor on ()
         where materia.materia_id = #{codId}
     </select>
 
@@ -35,10 +34,11 @@
 
     <resultMap type='Materia' id='MateriaResult'>
         <id property='codigo' column='materia_id'></id>
-        <result property='materia' column='m_nombre'></result>
+        <result property='nombre' column='m_nombre'></result>
         <result property='nemonico' column='m_nemonico'></result>
         <result property='creditos' column='m_creditos'></result>
         <result property='horas' column='m_horas_monitoria_curso'></result>
+        <collection property="temas" ofType="Tema" resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TemaMapper.TemaResult"/>
     </resultMap>
 
 </mapper>

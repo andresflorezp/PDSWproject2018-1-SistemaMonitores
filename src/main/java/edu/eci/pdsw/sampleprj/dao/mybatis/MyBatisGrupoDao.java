@@ -29,20 +29,10 @@ public class MyBatisGrupoDao implements GrupoDAO {
     @Override
     public void save(Grupo grupo) throws PersistenceException {
         try {
-            grupoMapper.agregarGrupo(grupo.getGrupoID(), grupo.getProfesor().getCodigoID(), grupo.getSemestre().getSemestreID(), grupo.getMateria().getCodigo(), grupo.getMonitor().getCodigoID(), grupo.getGrupoNombre(), grupo.getNumeroDeEstudiantes());
+            grupoMapper.agregarGrupo(grupo.getGrupoID(), grupo.getProfesor().getCodigoID(), grupo.getSemestre().getSemestreID(), grupo.getMateria().getMateriaID(), grupo.getMonitor().getCodigoID(), grupo.getGrupoNombre(), grupo.getNumeroDeEstudiantes());
         } catch (org.apache.ibatis.exceptions.PersistenceException e) {
             throw new PersistenceException("Error al agregar un grupo con id: " + grupo.getGrupoID(), e);
         }
-    }
-
-    @Override
-    public List<Grupo> consultarGruposAsesoriaMonitor(String materiaNombre, String grupoNombre, String tema) throws PersistenceException {
-        try {
-            return grupoMapper.consultaAsesoriaMateria(materiaNombre, grupoNombre, tema);
-        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
-            throw new PersistenceException("Error al realizar la consulta de la Asesoria para el monitor para grupo: " + grupoNombre + " materia: " + materiaNombre + " tema: " + tema, e);
-        }
-
     }
 
 }

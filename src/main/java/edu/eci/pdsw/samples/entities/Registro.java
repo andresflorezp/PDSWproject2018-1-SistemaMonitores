@@ -5,13 +5,15 @@
  */
 package edu.eci.pdsw.samples.entities;
 
+import java.io.Serializable;
+
 
 /**
  *
  * @author Andres
  */
 
-public class Registro{
+public class Registro implements Serializable{
     private String Fecha;
     private String Materia;
     

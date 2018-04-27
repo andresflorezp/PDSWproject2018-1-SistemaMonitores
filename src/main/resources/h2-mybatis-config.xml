@@ -8,8 +8,12 @@
     </settings>
     
     <typeAliases>
-        <typeAlias type='edu.eci.pdsw.samples.entities.Comentario' alias='Comentario'/>
-        <typeAlias type='edu.eci.pdsw.samples.entities.Suscriptor' alias='Suscriptor'/>
+        <typeAlias type='edu.eci.pdsw.samples.entities.Grupo' alias='Grupo'/>
+        <typeAlias type='edu.eci.pdsw.samples.entities.Materia' alias='Materia'/>
+        <typeAlias type='edu.eci.pdsw.samples.entities.Monitor' alias='Monitor'/>
+        <typeAlias type='edu.eci.pdsw.samples.entities.Profesor' alias='Profesor'/>
+        <typeAlias type='edu.eci.pdsw.samples.entities.Semestre' alias='Semestre'/>
+        <typeAlias type='edu.eci.pdsw.samples.entities.Tema' alias='Tema'/>
     </typeAliases>        
     
     
@@ -26,7 +30,12 @@
     </environments>
         
     <mappers>
-        <mapper resource="mappers/ComentarioMapper.xml"></mapper>                
+        <mapper resource="mappers/GrupoMapper.xml"></mapper>
+        <mapper resource="mappers/MateriaMapper.xml"></mapper>
+        <mapper resource="mappers/MonitorMapper.xml"></mapper>
+        <mapper resource="mappers/ProfesorMapper.xml"></mapper>
+        <mapper resource="mappers/SemestreMapper.xml"></mapper>
+        <mapper resource="mappers/TemaMapper.xml"></mapper>            
     </mappers> 
         
 </configuration>

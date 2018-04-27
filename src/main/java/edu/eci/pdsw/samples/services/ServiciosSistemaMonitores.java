@@ -5,7 +5,7 @@
  */
 package edu.eci.pdsw.samples.services;
 
-import edu.eci.pdsw.samples.entities.Grupo;
+import edu.eci.pdsw.samples.entities.Asesoria;
 import java.util.List;
 
 /**
@@ -14,6 +14,6 @@ import java.util.List;
  */
 public interface ServiciosSistemaMonitores {
 
-    public abstract List<Grupo> consultaAsesoriaMateria(String materiaNombre, String grupoNombre, String tema) throws ExcepcionSistemaMonitores;
+    public abstract List<Asesoria> consultaAsesoriaMateria(String materiaNombre, String grupoNombre, String franjaHoraria, String tema) throws ExcepcionSistemaMonitores;
 
 }

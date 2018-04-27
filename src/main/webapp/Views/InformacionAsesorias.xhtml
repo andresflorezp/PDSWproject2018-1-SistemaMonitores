@@ -12,31 +12,31 @@
         <h:outputStylesheet name="css/Cabecera.css"/>
         <h:outputStylesheet name="css/StyleButton.css"/>
         <h:outputStylesheet name="css/Progreso.css"/>
-        
+
 
         <title>Registro</title>
     </h:head>
 
     <h:body>
         <h:form>
-   
+
             <div id="top">
                 <ui:insert name="top"></ui:insert>
-                    <div id="Encabezado">
-                     
-                        <h:outputLabel id="cabecera" value="PDSW &#160; &#160;"  style="font-size: 50px" styleClass="cabecera"/>
-                        <h:outputLabel id="cabecera2" value="Nombre Usuario: AAKAA &#160; &#160; &#160; &#160; &#160; &#160;" style="font-size: 50px" styleClass="cabecera"/>
-                        <h:outputLabel id="cabecera3" rendered="#{MonitorMonitoria.showDo}" value="#{MonitorMonitoria.horaActual}  -->  #{MonitorMonitoria.horaTerminacion}" style="font-size: 20px;color: #F5F2F1">
-                            <p:commandButton value="Terminar Monitoria" actionListener="#{MonitorMonitoria.messageLogOut}" rendered="#{MonitorMonitoria.showDo}" style="margin-left: 1020px;font-size: 20px;">
-                                 <p:confirm header="Confirmacion" message="Estas seguro de terminar la asesoria" icon="ui-icon-alert" />
-                            </p:commandButton>
-                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                              <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="RegistrarMonitoria"/>
-                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                            </p:confirmDialog>
-                        </h:outputLabel>
-                     
-                    </div>
+                <div id="Encabezado">
+
+                    <h:outputLabel id="cabecera" value="PDSW &#160; &#160;"  style="font-size: 50px" styleClass="cabecera"/>
+                    <h:outputLabel id="cabecera2" value="Nombre Usuario: AAKAA &#160; &#160; &#160; &#160; &#160; &#160;" style="font-size: 50px" styleClass="cabecera"/>
+                    <h:outputLabel id="cabecera3" rendered="#{MonitorMonitoria.showDo}" value="#{MonitorMonitoria.horaActual}  -->  #{MonitorMonitoria.horaTerminacion}" style="font-size: 20px;color: #F5F2F1">
+                        <p:commandButton value="Terminar Monitoria" actionListener="#{MonitorMonitoria.messageLogOut}" rendered="#{MonitorMonitoria.showDo}" style="margin-left: 1020px;font-size: 20px;">
+                            <p:confirm header="Confirmacion" message="Estas seguro de terminar la asesoria" icon="ui-icon-alert" />
+                        </p:commandButton>
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="RegistrarMonitoria"/>
+                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </p:confirmDialog>
+                    </h:outputLabel>
+
+                </div>
 
             </div>
             <div>
@@ -44,58 +44,58 @@
                     <ui:insert name="left">
                         <div id="Menu">
 
-                                <p:panel style="width:200px;">
-                                    <p:commandButton value="Registrar Monitoria " action="/faces/Views/RegistrarMonitoria.xhtml"/>
-                                    <p:separator />
-                                    <p:commandButton value="Registrar Estudiante" action="/faces/Views/registrarAsistenciaEstudiante.xhtml"/>
-                                    <p:separator />
-                                    <p:commandButton value="Consulta Asistencia de Asesorias" action="/faces/Views/InformacionAsesorias.xhtml"/>       
-                                </p:panel>
+                            <p:panel style="width:200px;">
+                                <p:commandButton value="Registrar Monitoria " action="/faces/Views/RegistrarMonitoria.xhtml"/>
+                                <p:separator />
+                                <p:commandButton value="Registrar Estudiante" action="/faces/Views/registrarAsistenciaEstudiante.xhtml"/>
+                                <p:separator />
+                                <p:commandButton value="Consulta Asistencia de Asesorias" action="/faces/Views/InformacionAsesorias.xhtml"/>       
+                            </p:panel>
 
                         </div>
                     </ui:insert>
                 </div>
-             
+
                 <div id="content">
-                    
+
                     <ui:insert name="content">
-                
-                        
-                       
-            
+
+
+
+
                         <div id="formula">
-                          
+
                             <h:form id="formFiltro">
-                                 
 
-                                    <p:panel id="panelFiltro"  >
-                                    
-                                        <h:outputText value="Consulta de Asesorias" style="font-size: 35px;font-weight: 100;color: #dce9f0"/>
-                              
-                                        <h:panelGrid columns="2" cellpadding="5">
-                                            <p:outputLabel value="Filtrar por:"/>
-                                            <p:selectCheckboxMenu id="menufiltro" value="#{InformacionAsesorias.selectedFiltro}" label="Filtrar" multiple="true"
-                                                                  filter="true" filterMatchMode="startsWith">
-                                                <f:selectItems value="#{InformacionAsesorias.optionsFiltro}"/>
-                                                <p:ajax event="change" update="menufiltro"/>
-                                            </p:selectCheckboxMenu>
-                                            <p:outputLabel for="chips" value="Argumentos:"/>
-                                            <p:chips id="chips" value="#{InformacionAsesorias.selectedOptions}"/>
-                                        </h:panelGrid>
-                                        <br/>
 
-                                        <p:commandButton value="Filtrar" update="panelFiltro" action="#{InformacionAsesorias.filtrar()}" style="margin-left:  300px">
-                                            <p:resetInput target="panelFiltro"/>
-                                        </p:commandButton>
-                                    </p:panel>
+                                <p:panel id="panelFiltro"  >
+
+                                    <h:outputText value="Consulta de Asesorias" style="font-size: 35px;font-weight: 100;color: #dce9f0"/>
+
+                                    <h:panelGrid columns="2" cellpadding="5">
+                                        <p:outputLabel value="Filtrar por:"/>
+                                        <p:selectCheckboxMenu id="menufiltro" value="#{InformacionAsesorias.selectedFiltro}" label="Filtrar" multiple="true"
+                                                              filter="true" filterMatchMode="startsWith">
+                                            <f:selectItems value="#{InformacionAsesorias.optionsFiltro}"/>
+                                            <p:ajax event="change" update="menufiltro"/>
+                                        </p:selectCheckboxMenu>
+                                        <p:outputLabel for="chips" value="Argumentos:"/>
+                                        <p:chips id="chips" value="#{InformacionAsesorias.selectedOptions}"/>
+                                    </h:panelGrid>
+                                    <br/>
+
+                                    <p:commandButton value="Filtrar" update="panelFiltro" action="#{InformacionAsesorias.filtrar()}" style="margin-left:  300px">
+                                        <p:resetInput target="panelFiltro"/>
+                                    </p:commandButton>
+                                </p:panel>
 
 
                             </h:form>
                         </div>
                         <br/>
-                        
+
                         <div id="tabla">
-                            
+
                             <h:form id="form">
                                 <p:dataTable var="asesorias" value="#{InformacionAsesorias.asesorias}" id="asesoria" style="width: 1000px; margin-left: 200px">
                                     <f:facet name="header">
@@ -117,13 +117,13 @@
                                         <f:facet name="header">
                                             <h:outputText value="Franja Horaria"/>
                                         </f:facet>
-                                        <h:outputText value="#{asesorias.carnetAsistentes}"/>
+                                        <h:outputText value="#{asesorias.asistentes}"/>
                                     </p:column>
                                     <p:column headerText="Model">                                                                                                                                                                                                                                                                                                                       
                                         <f:facet name="header">
                                             <h:outputText value="Tema"/>
                                         </f:facet>
-                                        <h:outputText value="#{asesorias.tema}"/>
+                                        <h:outputText value="#{asesorias.temas}"/>
                                     </p:column>
                                     <p:column headerText="Model">
                                         <f:facet name="header">
@@ -138,8 +138,8 @@
                     </ui:insert>
                 </div>
             </div>
-            
-        
+
+
         </h:form>
     </h:body>
 

@@ -4,32 +4,32 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TemaMapper">
-<select parameterType="map" id="consultarTemas" resultMap="TemaResult">
-    select 
+    <select parameterType="map" id="consultarTemas" resultMap="TemaResult">
+        select 
     
-    tema.temaId,
-    tema.topic as tema_topic,
-    tema.Descripcion as tema_Descripcion,
+            tema.temaId,
+            tema.topic as tema_topic,
+            tema.Descripcion as tema_Descripcion,
+
+            materia.codigo,
+            materia.materia as materia_materia,
+            materia.nemonico as materia_nemonico,
+            materia.horas_monitoria_curso as materia_horas_monitoria_curso,
+            materia.grupos as materia_grupos,   
     
-    materia.codigo,
-    materia.materia as materia_materia,
-    materia.nemonico as materia_nemonico,
-    materia.horas_monitoria_curso as materia_horas_monitoria_curso,
-    materia.grupos as materia_grupos,   
-    
-    FROM Tema join Materia on(tema.Tema_temaID=tema.temaId)
-    where tema.temaId=#{temaId}
+        FROM Tema join Materia on(tema.Tema_temaID=tema.temaId)
+        where tema.temaId=#{temaId}
     
                 
-</select>
-<insert id="insertarTema" parameterType="map" useGeneratedKeys="true">
-    INSERT INTO TEMAS VALUES(#{tema.temaId},#{tema.topic},#{tema.Descripcion})
-</insert>
+    </select>
+    <insert id="insertarTema" parameterType="map" useGeneratedKeys="true">
+        INSERT INTO TEMAS VALUES(#{tema.temaId},#{tema.topic},#{tema.Descripcion})
+    </insert>
 
-<resultMap type='Tema' id='TemaResult'>
-    <id property='temaId' column="temaid"></id>
-    <result property='topic' column="tm_topic"></result>
-    <result property='Descripcion' column="tm_Descripcion"></result>
-</resultMap>
+    <resultMap type='Tema' id='TemaResult'>
+        <id property='temaId' column="temaid"></id>
+        <result property='topic' column="tm_topic"></result>
+        <result property='Descripcion' column="tm_Descripcion"></result>
+    </resultMap>
 
 </mapper>
