@@ -17,6 +17,9 @@ public class Estudiante implements Serializable{
     private String nombre;
     private int grupo;
     
+    public Estudiante(){
+    }
+    
     public Estudiante(int carnet,String nombre, int grupo) {
         this.carnet = carnet;
         this.nombre = nombre;
@@ -24,6 +27,11 @@ public class Estudiante implements Serializable{
         
     }
 
+    @Override
+    public String toString() {
+        return nombre;
+    }
+    
     public long getCarnet() {
         return carnet;
     }

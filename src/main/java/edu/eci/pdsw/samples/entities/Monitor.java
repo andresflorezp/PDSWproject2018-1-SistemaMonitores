@@ -22,7 +22,10 @@ public class Monitor extends Persona{
     private int semestreIngreso;
     private int programaAcademico;
     private List<Grupo> grupos;//No va
-
+    
+    public Monitor(){
+    }
+    
     public Monitor(int codigoID, String nombre, String apellido, String correo, long telefono, int semestreIngreso, int programaAcademico) {
         super(codigoID, nombre, apellido, correo, telefono);
         this.programaAcademico = programaAcademico;

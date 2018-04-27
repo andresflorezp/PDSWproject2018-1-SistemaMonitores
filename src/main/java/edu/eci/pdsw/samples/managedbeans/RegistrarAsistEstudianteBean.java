@@ -6,6 +6,7 @@
 package edu.eci.pdsw.samples.managedbeans;
 
 import edu.eci.pdsw.samples.entities.Materia;
+import java.io.Serializable;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ import javax.faces.bean.SessionScoped;
 
 @ManagedBean(name = "RegistroAsistencia")
 @SessionScoped
-public class RegistrarAsistEstudianteBean {
+public class RegistrarAsistEstudianteBean implements Serializable{
     private String codigo;
     private String profesor;
     private String obseraciones;

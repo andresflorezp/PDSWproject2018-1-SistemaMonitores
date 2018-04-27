@@ -16,6 +16,7 @@
         <typeAlias type='edu.eci.pdsw.samples.entities.Semestre' alias='Semestre'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Tema' alias='Tema'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Asesoria' alias='Asesoria'/>
+        <typeAlias type='edu.eci.pdsw.samples.entities.Estudiante' alias='Estudiante'/>
     </typeAliases>        
 
         
@@ -25,20 +26,21 @@
             <dataSource type="POOLED">
                 <property name="driver" value="org.postgresql.Driver" />
                 <property name="url" value="jdbc:postgresql://ec2-54-235-109-37.compute-1.amazonaws.com:5432/d6utcl6me32ip1?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory"/>
-                <property name="username" value="rvoofqbcfdgqwt" />
-                <property name="password" value="2024b9fe45899e721e3a50bbc1edc1104a2d1866a11398e28465b5007dc99ca4" />
+                <property name="username" value="rntqwknbnlsskx" />
+                <property name="password" value="5c50140ecd7fba9f194fce3b0aae3f01df7472b98b9e8863831cfa165a178d6a" />
             </dataSource>
         </environment>
     </environments>
         
     <mappers>
-        <mapper resource="mappers/GrupoMapper.xml"></mapper>
-        <mapper resource="mappers/MateriaMapper.xml"></mapper>
-        <mapper resource="mappers/MonitorMapper.xml"></mapper>
-        <mapper resource="mappers/ProfesorMapper.xml"></mapper>
-        <mapper resource="mappers/SemestreMapper.xml"></mapper>
-        <mapper resource="mappers/TemaMapper.xml"></mapper>
-        <mapper resource="mappers/AsesoriaMapper.xml"></mapper>
+        <mapper resource="mappers/GrupoMapper.xml"/>
+        <mapper resource="mappers/MateriaMapper.xml"/>
+        <mapper resource="mappers/MonitorMapper.xml"/>
+        <mapper resource="mappers/ProfesorMapper.xml"/>
+        <mapper resource="mappers/SemestreMapper.xml"/>
+        <mapper resource="mappers/TemaMapper.xml"/>
+        <mapper resource="mappers/AsesoriaMapper.xml"/>
+        <mapper resource="mappers/EstudianteMapper.xml"/>
     </mappers> 
         
         

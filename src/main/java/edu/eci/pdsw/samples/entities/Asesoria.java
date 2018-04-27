@@ -22,8 +22,11 @@ public class Asesoria implements Serializable{
     private List<Estudiante> asistentes;
     private Date fecha;
     private String observaciones;
-
-    public Asesoria(int asesoriaID, Grupo grupo, Date fecha, List<Tema> tema, List<Estudiante> asistentes, String observaciones) {
+    
+    public Asesoria(){
+    }
+    
+    public Asesoria(int asesoriaID, Grupo grupo, Date fecha, List<Tema> temas, List<Estudiante> asistentes, String observaciones) {
         this.asesoriaID = asesoriaID;
         this.grupo = grupo;
         this.temas = temas;

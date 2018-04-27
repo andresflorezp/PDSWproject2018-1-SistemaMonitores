@@ -33,7 +33,7 @@
     </insert>-->
 
     <resultMap type='Materia' id='MateriaResult'>
-        <id property='codigo' column='materia_id'></id>
+        <id property='materiaID' column='materia_id'></id>
         <result property='nombre' column='m_nombre'></result>
         <result property='nemonico' column='m_nemonico'></result>
         <result property='creditos' column='m_creditos'></result>

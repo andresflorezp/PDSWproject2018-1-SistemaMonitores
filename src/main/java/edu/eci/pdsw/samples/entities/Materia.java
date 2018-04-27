@@ -12,13 +12,17 @@ import java.util.List;
  *
  * @author Tatiana
  */
-public class Materia implements Serializable{
+public class Materia implements Serializable {
+
     private int materiaID;
     private String nombre;
     private String nemonico;
     private int horas;
     private int creditos;
     private List<Tema> temas;
+
+    public Materia() {
+    }
 
     public List<Tema> getTemas() {
         return temas;
@@ -27,7 +31,7 @@ public class Materia implements Serializable{
     public void setTemas(List<Tema> temas) {
         this.temas = temas;
     }
-    
+
     public String getNombre() {
         return nombre;
     }
@@ -51,7 +55,7 @@ public class Materia implements Serializable{
     public void setHoras(int horas) {
         this.horas = horas;
     }
-    
+
     public int getMateriaID() {
         return materiaID;
     }
@@ -59,7 +63,7 @@ public class Materia implements Serializable{
     public void setMateriaID(int materiaID) {
         this.materiaID = materiaID;
     }
-    
+
     public int getCreditos() {
         return creditos;
     }

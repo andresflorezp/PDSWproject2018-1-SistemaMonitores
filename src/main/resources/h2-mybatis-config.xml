@@ -14,7 +14,9 @@
         <typeAlias type='edu.eci.pdsw.samples.entities.Profesor' alias='Profesor'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Semestre' alias='Semestre'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Tema' alias='Tema'/>
-    </typeAliases>        
+        <typeAlias type='edu.eci.pdsw.samples.entities.Asesoria' alias='Asesoria'/>
+        <typeAlias type='edu.eci.pdsw.samples.entities.Estudiante' alias='Estudiante'/>
+    </typeAliases>          
     
     
     <environments default="development">
@@ -30,12 +32,14 @@
     </environments>
         
     <mappers>
-        <mapper resource="mappers/GrupoMapper.xml"></mapper>
-        <mapper resource="mappers/MateriaMapper.xml"></mapper>
-        <mapper resource="mappers/MonitorMapper.xml"></mapper>
-        <mapper resource="mappers/ProfesorMapper.xml"></mapper>
-        <mapper resource="mappers/SemestreMapper.xml"></mapper>
-        <mapper resource="mappers/TemaMapper.xml"></mapper>            
-    </mappers> 
+        <mapper resource="mappers/GrupoMapper.xml"/>
+        <mapper resource="mappers/MateriaMapper.xml"/>
+        <mapper resource="mappers/MonitorMapper.xml"/>
+        <mapper resource="mappers/ProfesorMapper.xml"/>
+        <mapper resource="mappers/SemestreMapper.xml"/>
+        <mapper resource="mappers/TemaMapper.xml"/>
+        <mapper resource="mappers/AsesoriaMapper.xml"/>
+        <mapper resource="mappers/EstudianteMapper.xml"/>
+    </mappers>
         
 </configuration>

@@ -20,6 +20,9 @@ public class Tema implements Serializable{
     private String topic;
     private List<String> topics;
     private String descripcion;
+    
+    public Tema(){
+    }
 
     public Tema(int temaId, String topic, List<String> topics, String descripcion) {
         this.temaId = temaId;
@@ -28,6 +31,11 @@ public class Tema implements Serializable{
         this.descripcion = descripcion;
     }
 
+    @Override
+    public String toString() {
+        return topic;
+    }
+    
     public int getTemaId() {
         return temaId;
     }

@@ -19,6 +19,9 @@ public class Semestre implements Serializable{
     private int periodoAcademico;
     private Date fechaInicio;
     private Date fechaFin;
+    
+    public Semestre(){
+    }
 
     public int getSemestreID() {
         return semestreID;

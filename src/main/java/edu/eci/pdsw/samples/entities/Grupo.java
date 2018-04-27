@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author sergiort
  */
 public class Grupo implements Serializable{
-//    private String horarioMonitor;
+    private String horarioMonitor;
     private int grupoID;
     private int grupoNombre;
     private int numeroDeEstudiantes;
@@ -20,11 +20,22 @@ public class Grupo implements Serializable{
     private Materia materia;
     private Profesor profesor;
     private Semestre semestre;
-
+    
+    public Grupo(){
+    }
+    
     public Semestre getSemestre() {
         return semestre;
     }
 
+    public String getHorarioMonitor() {
+        return horarioMonitor;
+    }
+
+    public void setHorarioMonitor(String horarioMonitor) {
+        this.horarioMonitor = horarioMonitor;
+    }
+    
     public void setSemestre(Semestre semestre) {
         this.semestre = semestre;
     }

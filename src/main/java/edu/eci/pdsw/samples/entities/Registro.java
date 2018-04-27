@@ -17,6 +17,9 @@ public class Registro implements Serializable{
     private String Fecha;
     private String Materia;
     
+    public Registro(){
+    }
+    
     public Registro(String Fecha,String Materia){
         this.Fecha=Fecha;
         this.Materia=Materia;

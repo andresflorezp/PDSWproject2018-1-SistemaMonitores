@@ -18,5 +18,6 @@ public interface AsesoriaMapper {
     public List<Asesoria> consultaAsesoriasMonitor(@Param("MIn") String materiaNombre,
                                            @Param("grn") String grupoNombre,
                                            @Param("frh") String franjaHoraria,
-                                           @Param("tmTp") String tema);
+                                           @Param("tmTp") String tema,
+                                           @Param("numA") Integer numeroDeAsistentes);
 }

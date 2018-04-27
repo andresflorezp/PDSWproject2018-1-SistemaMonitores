@@ -18,7 +18,7 @@
     </h:head>
 
     <h:body>
-        <h:form>
+        <h:form id="formCSS">
 
             <div id="top">
                 <ui:insert name="top"></ui:insert>
@@ -84,8 +84,8 @@
                                     </h:panelGrid>
                                     <br/>
 
-                                    <p:commandButton value="Filtrar" update="panelFiltro" action="#{InformacionAsesorias.filtrar()}" style="margin-left:  300px">
-                                        <p:resetInput target="panelFiltro"/>
+                                    <p:commandButton value="Consultar" update="panelFiltro :formCSS:form:asesoria" action="#{InformacionAsesorias.filtrar()}" style="margin-left:  300px">
+                                        <p:resetInput target="panelFiltro :formCSS:form:asesoria"/>
                                     </p:commandButton>
                                 </p:panel>
 
@@ -105,19 +105,19 @@
                                         <f:facet name="header">
                                             <h:outputText value="Materia"/>
                                         </f:facet>
-                                        <h:outputText value="#{asesorias.materia}"/>
+                                        <h:outputText value="#{asesorias.grupo.materia.nombre}"/>
                                     </p:column>
                                     <p:column headerText="Model">
                                         <f:facet name="header">
                                             <h:outputText value="Grupo"/>
                                         </f:facet>
-                                        <h:outputText value="#{asesorias.grupo}"/>
+                                        <h:outputText value="#{asesorias.grupo.grupoNombre}"/>
                                     </p:column>
                                     <p:column headerText="Model">
                                         <f:facet name="header">
                                             <h:outputText value="Franja Horaria"/>
                                         </f:facet>
-                                        <h:outputText value="#{asesorias.asistentes}"/>
+                                        <h:outputText value="#{asesorias.grupo.horarioMonitor}"/>
                                     </p:column>
                                     <p:column headerText="Model">                                                                                                                                                                                                                                                                                                                       
                                         <f:facet name="header">
@@ -129,7 +129,7 @@
                                         <f:facet name="header">
                                             <h:outputText value="Número de asistentes"/>
                                         </f:facet>
-                                        <h:outputText value="#{asesorias.profesor}"/>
+                                        <h:outputText value="#{asesorias.asistentes}"/>
                                     </p:column>
                                 </p:dataTable>
                             </h:form>

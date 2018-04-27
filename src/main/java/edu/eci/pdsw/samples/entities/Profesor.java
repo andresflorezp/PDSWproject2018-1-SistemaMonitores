@@ -11,6 +11,9 @@ package edu.eci.pdsw.samples.entities;
  */
 public class Profesor extends Persona{
     
+    public Profesor(){
+    }
+    
     public Profesor(int codigoID, String nombre, String apellido, String correo, long telefono) {
         super(codigoID, nombre, apellido, correo, telefono);
     }

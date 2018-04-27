@@ -7,6 +7,7 @@ package edu.eci.pdsw.samples.managedbeans;
 
 import edu.eci.pdsw.samples.entities.Asesoria;
 import edu.eci.pdsw.samples.entities.Registro;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,7 +22,7 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean(name = "InformacionAsistentes")
 @SessionScoped
-public class ConsultaInformacionAsistentesBean {
+public class ConsultaInformacionAsistentesBean  implements Serializable{
     
     private String[] selectedFiltro;
     private List<String> optionsFiltro;

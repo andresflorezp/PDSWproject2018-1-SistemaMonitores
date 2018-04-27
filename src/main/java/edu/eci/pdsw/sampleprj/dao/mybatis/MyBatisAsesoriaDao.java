@@ -22,14 +22,29 @@ public class MyBatisAsesoriaDao implements AsesoriaDAO {
     private AsesoriaMapper asesoriaMapper;
 
     @Override
-    public List<Asesoria> consultaAsesoriasMonitor(String materiaNombre, String grupoNombre, String franjaHoraria, String tema) throws PersistenceException {
+    public List<Asesoria> consultaAsesoriasMonitor(String materiaNombre, String grupoNombre, String franjaHoraria, String tema, Integer numeroDeAsistentes) throws PersistenceException {
         try {
-            return asesoriaMapper.consultaAsesoriasMonitor(materiaNombre, grupoNombre, franjaHoraria, tema);
+            return asesoriaMapper.consultaAsesoriasMonitor(materiaNombre, grupoNombre, franjaHoraria, tema, numeroDeAsistentes);
         } catch (org.apache.ibatis.exceptions.PersistenceException e) {
             throw new PersistenceException("Error al realizar la consulta de la Asesoria para el monitor para grupo: " + grupoNombre + " materia: " + materiaNombre
                     + " Franja Horaria: " + franjaHoraria + " tema: " + tema, e);
         }
 
+    }
+
+    @Override
+    public Asesoria load(long id) throws PersistenceException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void save(Asesoria Asesoria) throws PersistenceException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Asesoria> loadAll() throws PersistenceException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

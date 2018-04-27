@@ -29,7 +29,7 @@
     <resultMap type='Tema' id='TemaResult'>
         <id property='temaId' column="temaid"></id>
         <result property='topic' column="tm_topic"></result>
-        <result property='Descripcion' column="tm_Descripcion"></result>
+        <result property='descripcion' column="tm_Descripcion"></result>
     </resultMap>
 
 </mapper>

@@ -18,7 +18,10 @@ public abstract class Persona implements Serializable{
     private String apellido;
     private String correo;
     private long telefono;
-
+    
+    public Persona(){
+    }
+    
     public Persona(int codigoID,String nombre,String apellido,String correo,long telefono) {
         this.codigoID = codigoID;
         this.nombre = nombre;
