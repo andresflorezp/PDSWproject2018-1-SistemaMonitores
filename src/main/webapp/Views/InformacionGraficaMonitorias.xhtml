@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="css/default.css"/>
+        <h:outputStylesheet name="css/cssLayout.css"/>
+        <h:outputStylesheet name="css/Cabecera.css"/>
+        <h:outputStylesheet name="css/StyleButton.css"/>
+        <h:outputStylesheet name="css/Progreso.css"/>
+
+
+        <title>Registro</title>
+    </h:head>
+
+    <h:body>
+        <h:form id="formCSS">
+
+            <div id="top">
+                <ui:insert name="top"></ui:insert>
+                <div id="Encabezado">
+
+                    <h:outputLabel id="cabecera" value="PDSW &#160; &#160;"  style="font-size: 50px" styleClass="cabecera"/>
+                    <h:outputLabel id="cabecera2" value="Nombre Usuario: AAKAA &#160; &#160; &#160; &#160; &#160; &#160;" style="font-size: 50px" styleClass="cabecera"/>
+                    <h:outputLabel id="cabecera3" rendered="#{MonitorMonitoria.showDo}" value="#{MonitorMonitoria.horaActual}  -->  #{MonitorMonitoria.horaTerminacion}" style="font-size: 20px;color: #F5F2F1">
+                        <p:commandButton value="Terminar Monitoria" actionListener="#{MonitorMonitoria.messageLogOut}" rendered="#{MonitorMonitoria.showDo}" style="margin-left: 1020px;font-size: 20px;">
+                            <p:confirm header="Confirmacion" message="Estas seguro de terminar la asesoria" icon="ui-icon-alert" />
+                        </p:commandButton>
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="RegistrarMonitoria"/>
+                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </p:confirmDialog>
+                    </h:outputLabel>
+
+                </div>
+
+            </div>
+            <div>
+                <div id="left">
+                    <ui:insert name="left">
+                        <div id="Menu">
+
+                            <p:panel style="width:200px;">
+                                <p:commandButton value="Registrar Monitoria " action="/faces/Views/RegistrarMonitoria.xhtml"/>
+                                <p:separator />
+                                <p:commandButton value="Registrar Estudiante" action="/faces/Views/registrarAsistenciaEstudiante.xhtml"/>
+                                <p:separator />
+                                <p:commandButton value="Consulta Asistencia de Asesorias" action="/faces/Views/InformacionAsesorias.xhtml"/>       
+                            </p:panel>
+
+                        </div>
+                    </ui:insert>
+                </div>
+
+                <div id="content">
+
+                    <ui:insert name="content">
+                        <div id="Tgraficos" style="margin-left: 300px">
+                            <p:tabView>
+                                <p:tab title="Asistencia" >
+                                    <h:panelGrid columns="1" cellpadding="10" >
+                                        <p:chart type="donut" model="#{chartView.donutModel1}" style="width:400px;height:300px"/>
+                                    </h:panelGrid>
+                                </p:tab>
+                                <p:tab title="Curso">
+                                    <h:panelGrid columns="1" cellpadding="10">
+                                        <p:chart type="donut" model="#{chartView.donutModel2}" style="width:400px;height:300px"/>
+                                    </h:panelGrid>
+                                </p:tab>
+                                <p:tab title="Grupo">
+                                    <h:panelGrid columns="1" cellpadding="10">
+                                        <p:chart type="donut" model="#{chartView.donutModel1}" style="width:400px;height:300px"/>
+                                    </h:panelGrid>
+                                </p:tab>
+                                <p:tab title="Tema">
+                                    <h:panelGrid columns="1" cellpadding="10">
+                                        <p:chart type="donut" model="#{chartView.donutModel2}" style="width:400px;height:300px"/>
+                                    </h:panelGrid>
+                                </p:tab>
+                            </p:tabView>
+                            
+                            
+                        </div>
+
+                    </ui:insert>
+                </div>
+            </div>
+
+
+        </h:form>
+    </h:body>
+
+</html>

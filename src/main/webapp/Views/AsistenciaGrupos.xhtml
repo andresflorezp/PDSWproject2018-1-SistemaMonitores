@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="css/default.css"/>
+        <h:outputStylesheet name="css/cssLayout.css"/>
+        <h:outputStylesheet name="css/Cabecera.css"/>
+        <h:outputStylesheet name="css/StyleButton.css"/>
+        <h:outputStylesheet name="css/Progreso.css"/>
+
+
+        <title>Registro</title>
+    </h:head>
+
+    <h:body>
+        <h:form id="formCSS">
+
+            <div id="top">
+                <ui:insert name="top"></ui:insert>
+                <div id="Encabezado">
+
+                    <h:outputLabel id="cabecera" value="PDSW &#160; &#160;"  style="font-size: 50px" styleClass="cabecera"/>
+                    <h:outputLabel id="cabecera2" value="Nombre Usuario: AAKAA &#160; &#160; &#160; &#160; &#160; &#160;" style="font-size: 50px" styleClass="cabecera"/>
+                    <h:outputLabel id="cabecera3" rendered="#{MonitorMonitoria.showDo}" value="#{MonitorMonitoria.horaActual}  -->  #{MonitorMonitoria.horaTerminacion}" style="font-size: 20px;color: #F5F2F1">
+                        <p:commandButton value="Terminar Monitoria" actionListener="#{MonitorMonitoria.messageLogOut}" rendered="#{MonitorMonitoria.showDo}" style="margin-left: 1020px;font-size: 20px;">
+                            <p:confirm header="Confirmacion" message="Estas seguro de terminar la asesoria" icon="ui-icon-alert" />
+                        </p:commandButton>
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="RegistrarMonitoria"/>
+                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </p:confirmDialog>
+                    </h:outputLabel>
+
+                </div>
+
+            </div>
+            <div>
+                <div id="left">
+                    <ui:insert name="left">
+                        <div id="Menu">
+
+                            <p:panel style="width:200px;">
+                                <p:commandButton value="Registrar Monitoria " action="/faces/Views/RegistrarMonitoria.xhtml"/>
+                                <p:separator />
+                                <p:commandButton value="Registrar Estudiante" action="/faces/Views/registrarAsistenciaEstudiante.xhtml"/>
+                                <p:separator />
+                                <p:commandButton value="Consulta Asistencia de Asesorias" action="/faces/Views/InformacionAsesorias.xhtml"/>       
+                            </p:panel>
+
+                        </div>
+                    </ui:insert>
+                </div>
+
+                <div id="content">
+
+                    <ui:insert name="content">
+           
+
+                        <div id="tabla" style="margin-left: 200px ">
+                            <br/>
+                            <h:outputText value="Consulta Asistencia por Grupos" style="font-size: 35px;font-weight: 100;color: #dce9f0"/>
+                            <br/>
+                            <br/>
+                            <h:form id="form">
+                                <p:dataTable var="asesorias" value="#{InformacionAsesorias.asesorias}" id="asesoria" style="width: 1000px; margin-left: 200px">
+                                    <f:facet name="header">
+                                        <h:outputText value="Consultar asistencia a las asesorías"/>
+                                    </f:facet>
+                                    <p:column headerText="Model" style="width: 150px">
+                                        <f:facet name="header">
+                                            <h:outputText value="Codigo"/>
+                                        </f:facet>
+                                        <h:outputText value="#{asesorias.grupo.materia.nombre}"/>
+                                    </p:column>
+                                    <p:column headerText="Model" style="width: 300px">
+                                        <f:facet name="header">
+                                            <h:outputText value="Temas"/>
+                                        </f:facet>
+                                        <p:commandButton value="Abrir" style="width: 630px;background:  #036fab;color: #fcfcfc;height: 25px"></p:commandButton>
+                                        <p:submenu label="PrimeFaces" icon="ui-icon-heart">
+                                            <p:menuitem value="Home" url="http://www.primefaces.org" icon="ui-icon-home" />
+                                            <p:menuitem value="Docs" url="http://www.primefaces.org/documentation" icon="ui-icon-document" />
+                                            <p:menuitem value="Download" url="http://www.primefaces.org/downloads" icon="ui-icon-arrowthick-1-s" />
+                                            <p:menuitem value="Support" url="http://www.primefaces.org/support" icon="ui-icon-wrench" />
+                                        </p:submenu>
+                                    </p:column>
+                                    
+                                </p:dataTable>
+                            </h:form>
+                        </div>
+
+
+                        
+
+                    </ui:insert>
+                </div>
+            </div>
+
+
+        </h:form>
+    </h:body>
+
+</html>
