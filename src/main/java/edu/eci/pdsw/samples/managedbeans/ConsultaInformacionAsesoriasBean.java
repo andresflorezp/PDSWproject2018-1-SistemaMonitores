@@ -6,8 +6,6 @@
 package edu.eci.pdsw.samples.managedbeans;
 
 import edu.eci.pdsw.samples.entities.Asesoria;
-import edu.eci.pdsw.samples.entities.Monitor;
-import edu.eci.pdsw.samples.entities.Semestre;
 import edu.eci.pdsw.samples.entities.Tema;
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
@@ -35,8 +33,6 @@ public class ConsultaInformacionAsesoriasBean implements Serializable {
 
     private List<Asesoria> asesorias;
     private String[] selectedFiltroNoNull;
-    private Monitor monitor; // provicional.
-    private Semestre semestre; // provicional.
     
 
     public ConsultaInformacionAsesoriasBean() throws ExcepcionSistemaMonitores {
