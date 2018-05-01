@@ -72,21 +72,7 @@
 
                                     <h:outputText value="Consulta de Asesorias" style="font-size: 35px;font-weight: 100;color: #dce9f0"/>
 
-                                    <h:panelGrid columns="2" cellpadding="5">
-                                        <p:outputLabel value="Filtrar por:"/>
-                                        <p:selectCheckboxMenu id="menufiltro" value="#{InformacionAsesorias.selectedFiltro}" label="Filtrar" multiple="true"
-                                                              filter="true" filterMatchMode="startsWith">
-                                            <f:selectItems value="#{InformacionAsesorias.optionsFiltro}"/>
-                                            <p:ajax event="change" update="menufiltro"/>
-                                        </p:selectCheckboxMenu>
-                                        <p:outputLabel for="chips" value="Argumentos:"/>
-                                        <p:chips id="chips" value="#{InformacionAsesorias.selectedOptions}"/>
-                                    </h:panelGrid>
-                                    <br/>
-
-                                    <p:commandButton value="Consultar" update="panelFiltro :formCSS:form:asesoria" action="#{InformacionAsesorias.filtrar()}" style="margin-left:  300px">
-                                        <p:resetInput target="panelFiltro :formCSS:form:asesoria"/>
-                                    </p:commandButton>
+                                  
                                 </p:panel>
 
 
@@ -97,39 +83,28 @@
                         <div id="tabla">
 
                             <h:form id="form">
-                                <p:dataTable var="asesorias" value="#{InformacionAsesorias.asesorias}" id="asesoria" style="width: 1000px; margin-left: 200px">
+                                <p:dataTable var="asesorias" value="#{InformacionAsesorias.asesorias}" id="asesoria" style="width: 1000px; margin-left: 310px"
+                                             emptyMessage="No se encontraron asesorías">
                                     <f:facet name="header">
                                         <h:outputText value="Consultar asistencia a las asesorías"/>
                                     </f:facet>
-                                    <p:column headerText="Model">
-                                        <f:facet name="header">
-                                            <h:outputText value="Materia"/>
-                                        </f:facet>
+                                    <p:column headerText="Materia" filterBy="#{asesorias.grupo.materia.nombre}" filterMatchMode="startsWith">
                                         <h:outputText value="#{asesorias.grupo.materia.nombre}"/>
                                     </p:column>
-                                    <p:column headerText="Model">
-                                        <f:facet name="header">
-                                            <h:outputText value="Grupo"/>
-                                        </f:facet>
+                                    <p:column headerText="Grupo" filterBy="#{asesorias.grupo.grupoNombre}" filterMatchMode="startsWith">
                                         <h:outputText value="#{asesorias.grupo.grupoNombre}"/>
                                     </p:column>
-                                    <p:column headerText="Model">
-                                        <f:facet name="header">
-                                            <h:outputText value="Franja Horaria"/>
-                                        </f:facet>
+                                    <p:column headerText="Franja Horaria" filterBy="#{asesorias.grupo.horarioMonitor}" filterMatchMode="startsWith">
                                         <h:outputText value="#{asesorias.grupo.horarioMonitor}"/>
                                     </p:column>
-                                    <p:column headerText="Model">                                                                                                                                                                                                                                                                                                                       
-                                        <f:facet name="header">
-                                            <h:outputText value="Tema"/>
-                                        </f:facet>
-                                        <h:outputText value="#{asesorias.temas}"/>
+                                    <p:column headerText="Tema" filterBy="#{asesorias.temas}" filterFunction="#{InformacionAsesorias.filtrar}">                                                                                                                                                                                                                                                                                 
+                                        <p:repeat var="tem" value="#{asesorias.temas}" id="tema">
+                                            <h:outputText value="■ #{tem.topic}"/>
+                                                <br/>
+                                        </p:repeat>
                                     </p:column>
-                                    <p:column headerText="Model">
-                                        <f:facet name="header">
-                                            <h:outputText value="Número de asistentes"/>
-                                        </f:facet>
-                                        <h:outputText value="#{asesorias.asistentes}"/>
+                                    <p:column headerText="Número de asistentes" filterBy="#{asesorias.asistentes.size()}" filterMatchMode="startsWith">
+                                        <h:outputText value="#{asesorias.asistentes.size()}"/>
                                     </p:column>
                                 </p:dataTable>
                             </h:form>

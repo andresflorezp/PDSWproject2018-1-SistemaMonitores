@@ -6,6 +6,7 @@
 package edu.eci.pdsw.samples.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class Asesoria implements Serializable{
     private String observaciones;
     
     public Asesoria(){
+        asistentes=new ArrayList<>();
     }
     
     public Asesoria(int asesoriaID, Grupo grupo, Date fecha, List<Tema> temas, List<Estudiante> asistentes, String observaciones) {
