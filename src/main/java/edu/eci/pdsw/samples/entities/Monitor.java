@@ -22,7 +22,7 @@ public class Monitor extends Persona{
     private int semestreIngreso;
     private int programaAcademico;
     private List<Grupo> grupos;//No va
-    
+     
     public Monitor(){
     }
     

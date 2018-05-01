@@ -23,7 +23,11 @@ public class MyBatisGrupoDao implements GrupoDAO {
 
     @Override
     public Grupo load(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        try{
+            return grupoMapper.consultarGrupo(id);
+        }catch(org.apache.ibatis.exceptions.PersistenceException e){
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
     }
 
     @Override

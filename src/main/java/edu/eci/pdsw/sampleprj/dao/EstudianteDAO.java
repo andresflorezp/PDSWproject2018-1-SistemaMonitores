@@ -15,9 +15,7 @@ import org.apache.ibatis.annotations.Param;
 public interface EstudianteDAO {
     
         public Estudiante load(long id) throws PersistenceException;
-
         public void save(Estudiante estudiante) throws PersistenceException;
-
         public List<Estudiante> consultarEstudiantes() throws PersistenceException;
     
 }

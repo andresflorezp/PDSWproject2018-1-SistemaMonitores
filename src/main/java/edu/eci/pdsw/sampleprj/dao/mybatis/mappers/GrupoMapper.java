@@ -22,4 +22,5 @@ public interface GrupoMapper {
                              @Param("gMoId") Integer monitorID,
                              @Param("gNom") Integer grupoNombre,
                              @Param("gNum") int numeroEstudiantes);
+    public Grupo consultarGrupo(@Param("GId") Integer grupoID);
 }
