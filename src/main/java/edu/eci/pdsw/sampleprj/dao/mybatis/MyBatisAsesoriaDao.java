@@ -26,7 +26,11 @@ public class MyBatisAsesoriaDao implements AsesoriaDAO {
         try {
             return asesoriaMapper.consultaAsesoriasMonitor(monitorID, semestreID);
         } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+<<<<<<< 79e0bf62bd51b31b9dec6bc6173b062105e982db
             throw new PersistenceException("Error al realizar la consulta de la Asesoria para el monitor con Carnet: "+monitorID+" en el semestre: "+ semestreID +e.getMessage() );
+=======
+            throw new PersistenceException("Error al realizar la consulta de la Asesoria para el monitor con Carnet: "+monitorID+" en el semestre: "+ semestreID );
+>>>>>>> Filtro por monitor y semestre
         }
 
     }

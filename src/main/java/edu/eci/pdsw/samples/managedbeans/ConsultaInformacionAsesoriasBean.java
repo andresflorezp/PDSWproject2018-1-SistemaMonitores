@@ -6,6 +6,8 @@
 package edu.eci.pdsw.samples.managedbeans;
 
 import edu.eci.pdsw.samples.entities.Asesoria;
+import edu.eci.pdsw.samples.entities.Monitor;
+import edu.eci.pdsw.samples.entities.Semestre;
 import edu.eci.pdsw.samples.entities.Tema;
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
