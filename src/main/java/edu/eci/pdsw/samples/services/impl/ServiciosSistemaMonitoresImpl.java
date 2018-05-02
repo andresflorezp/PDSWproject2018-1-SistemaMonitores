@@ -40,5 +40,46 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores 
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }
     }
+    /**
+    *Metodo con el cual se agrega una materia al semestre
+    */
+    //El ID de la materia se puede automatizar
+    public void addMateria(int materiaID,String nombre, String nemonico, int horas, int creditos)throws Exception{
+        throw new UnsupportedOperationException("Not supported yet.");
+    };
+    
+    /**
+    *Metodo con el cual se agrega un estudiante
+    */
+    public void addEstudiante(long carnet, String nombre)throws Exception{
+        throw new UnsupportedOperationException("Not supported yet.");
+    };
+    /**
+    *Metodo con el cual se crea un grupo
+    */
+    //El ID del Grupo se puede automatizar
+    public void addGrupo(int grupoID, int grupoNombre, int numeroEstudiantes, String Profesor)throws Exception{};
+    /**
+    *Metodo con el cual se agrega un monitor a un grupo
+    */
+    public void addMonitor(int grupoID, int monitorID)throws Exception{
+        throw new UnsupportedOperationException("Not supported yet.");
+    };
+    /**
+    *Metodo con el cual se inicializa el semestre
+    */
+    //El  ID se puede automatizar
+    public void addSemetre(int ID,int anno, int periodo)throws Exception{
+        throw new UnsupportedOperationException("Not supported yet.");
+    };
+    /**
+    *Metodo con el cual se le asigna a un  grupo la materia a la que pertenece
+    */
+    public void addGrupoMateria(int grupoID, String nemonicoMatria) throws Exception{
+    
+    };
+
+    
+    
 
 }
