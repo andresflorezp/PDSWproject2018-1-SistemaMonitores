@@ -64,20 +64,11 @@
 	    left join tema on (temamonitoria.tema_temaid=tema.temaid)
         
         <where>
-            <if test="MIn != null">
-                materia.materia_nombre = #{MIn}
+            <if test="monID != null">
+                monitor.codigo_id = #{monID}
             </if>
-            <if test="grn != null">
-                AND grupo.grupo_nombre = #{grn}
-            </if>
-            <if test="frh != null">
-                AND grupo.horario_monitor = #{frh}
-            </if>
-            <if test="tmTp != null">
-                AND tema.topic = #{tmTp}
-            </if>
-            <if test="tmTp != null">
-                AND tema.topic = #{numA}
+            <if test="semID != null">
+                AND semestre.semestre_id = #{semID}
             </if>
         </where>
 	

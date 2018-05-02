@@ -6,6 +6,8 @@
 package edu.eci.pdsw.samples.managedbeans;
 
 import edu.eci.pdsw.samples.entities.Asesoria;
+import edu.eci.pdsw.samples.entities.Monitor;
+import edu.eci.pdsw.samples.entities.Semestre;
 import edu.eci.pdsw.samples.entities.Tema;
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
@@ -33,6 +35,9 @@ public class ConsultaInformacionAsesoriasBean implements Serializable {
 
     private List<Asesoria> asesorias;
     private String[] selectedFiltroNoNull;
+    private Monitor monitor; // provicional.
+    private Semestre semestre; // provicional.
+    
 
     public ConsultaInformacionAsesoriasBean() throws ExcepcionSistemaMonitores {
         selectedFiltroNoNull = new String[5];
@@ -41,7 +46,7 @@ public class ConsultaInformacionAsesoriasBean implements Serializable {
 
     public void filtrar() throws ExcepcionSistemaMonitores {
         Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "\nNull: " + Arrays.toString(selectedFiltroNoNull));
-        asesorias = sp.consultaAsesoriaMateria(selectedFiltroNoNull[0], selectedFiltroNoNull[1], selectedFiltroNoNull[2], selectedFiltroNoNull[3], selectedFiltroNoNull[4]);
+        asesorias = sp.consultaAsesoriaMateria(null,null);
         Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "\nAns: " + asesorias);
 
     }

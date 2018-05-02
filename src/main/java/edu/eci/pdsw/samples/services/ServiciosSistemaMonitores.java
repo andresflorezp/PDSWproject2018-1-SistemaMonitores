@@ -14,6 +14,6 @@ import java.util.List;
  */
 public interface ServiciosSistemaMonitores {
 
-    public abstract List<Asesoria> consultaAsesoriaMateria(String materiaNombre, String grupoNombre, String franjaHoraria, String tema, String numeroDeAsistentes) throws ExcepcionSistemaMonitores;
+    public abstract List<Asesoria> consultaAsesoriaMateria(Integer monitorID, Integer semestreID) throws ExcepcionSistemaMonitores;
 
 }

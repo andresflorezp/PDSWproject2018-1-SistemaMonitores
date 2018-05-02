@@ -11,23 +11,33 @@ import java.io.Serializable;
  *
  * @author sergiort
  */
-public abstract class Persona implements Serializable{
+public abstract class Persona implements Serializable {
 
     private int codigoID;
     private String nombre;
     private String apellido;
     private String correo;
     private long telefono;
-    
-    public Persona(){
+
+    public Persona() {
     }
-    
-    public Persona(int codigoID,String nombre,String apellido,String correo,long telefono) {
+
+    public Persona(int codigoID, String nombre, String apellido, String correo, long telefono) {
         this.codigoID = codigoID;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.telefono = telefono;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Persona) {
+            return this.codigoID == ((Persona) obj).getCodigoID();
+        } else {
+            return false;
+        }
+
     }
 
     public int getCodigoID() {

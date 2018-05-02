@@ -22,12 +22,11 @@ public class MyBatisAsesoriaDao implements AsesoriaDAO {
     private AsesoriaMapper asesoriaMapper;
 
     @Override
-    public List<Asesoria> consultaAsesoriasMonitor(String materiaNombre, String grupoNombre, String franjaHoraria, String tema, Integer numeroDeAsistentes) throws PersistenceException {
+    public List<Asesoria> consultaAsesoriasMonitor(Integer monitorID, Integer semestreID) throws PersistenceException {
         try {
-            return asesoriaMapper.consultaAsesoriasMonitor(materiaNombre, grupoNombre, franjaHoraria, tema, numeroDeAsistentes);
+            return asesoriaMapper.consultaAsesoriasMonitor(monitorID, semestreID);
         } catch (org.apache.ibatis.exceptions.PersistenceException e) {
-            throw new PersistenceException("Error al realizar la consulta de la Asesoria para el monitor para grupo: " + grupoNombre + " materia: " + materiaNombre
-                    + " Franja Horaria: " + franjaHoraria + " tema: " + tema, e);
+            throw new PersistenceException("Error al realizar la consulta de la Asesoria para el monitor con Carnet: "+monitorID+" en el semestre: "+ semestreID );
         }
 
     }
