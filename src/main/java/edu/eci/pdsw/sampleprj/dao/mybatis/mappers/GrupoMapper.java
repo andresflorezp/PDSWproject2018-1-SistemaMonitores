@@ -23,4 +23,6 @@ public interface GrupoMapper {
                              @Param("gNom") Integer grupoNombre,
                              @Param("gNum") int numeroEstudiantes);
     public Grupo consultarGrupo(@Param("GId") Integer grupoID);
+
+    public List<Grupo> consultarGruposMateria(@Param("matID") int materiaId, @Param("SemID") int semestreID);
 }

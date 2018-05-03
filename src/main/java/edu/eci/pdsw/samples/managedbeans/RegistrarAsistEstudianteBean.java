@@ -5,7 +5,12 @@
  */
 package edu.eci.pdsw.samples.managedbeans;
 
+import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Materia;
+import edu.eci.pdsw.samples.entities.Tema;
+import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
+import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
+import edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory;
 import java.io.Serializable;
 import java.util.AbstractList;
 import java.util.ArrayList;
@@ -17,10 +22,12 @@ import javax.faces.bean.SessionScoped;
  *
  * @author Tatiana
  */
-
 @ManagedBean(name = "RegistroAsistencia")
 @SessionScoped
-public class RegistrarAsistEstudianteBean implements Serializable{
+public class RegistrarAsistEstudianteBean implements Serializable {
+
+    ServiciosSistemaMonitores sp = ServiciosSistemaMonitoresFactory.getInstance().getServiciosSistemaMonitores();
+
     private String codigo;
     private String profesor;
     private String obseraciones;
@@ -29,17 +36,23 @@ public class RegistrarAsistEstudianteBean implements Serializable{
     private List<String> profesores;
     private List<String> temas;
     private List<String> temasSelected;
-    
-    public RegistrarAsistEstudianteBean(){
-        temas = new ArrayList<>();
-        temas.add("Tema1");
-        temas.add("Tema2");
-        temas.add("Tema3");
-        profesores = new ArrayList<>();
-        profesores.add("Francisco");
-        profesores.add("Pedro");
+    private List<Grupo> gruposMateriaSemestre;
+
+    public RegistrarAsistEstudianteBean() throws ExcepcionSistemaMonitores {
         profesoresSelected = new ArrayList<>();
-        
+        //consultarGrupos();
+    }
+
+    private void consultarGrupos() throws ExcepcionSistemaMonitores {
+        temas = new ArrayList<>();
+        profesores = new ArrayList<>();
+        gruposMateriaSemestre = sp.consultaGruposMateria(0, 0);
+        for (Grupo g : gruposMateriaSemestre) {
+            profesores.add(g.getProfesor().getNombre());
+            for (Tema t : g.getMateria().getTemas()) {
+                temas.add(t.getTopic());
+            }
+        }
     }
 
     public List<String> getTemasSelected() {
@@ -65,7 +78,7 @@ public class RegistrarAsistEstudianteBean implements Serializable{
     public void setProfesores(List<String> profesores) {
         this.profesores = profesores;
     }
-    
+
     public List<String> getTemas() {
         return temas;
     }
@@ -105,7 +118,5 @@ public class RegistrarAsistEstudianteBean implements Serializable{
     public void setObseraciones(String obseraciones) {
         this.obseraciones = obseraciones;
     }
-    
-   
-    
+
 }

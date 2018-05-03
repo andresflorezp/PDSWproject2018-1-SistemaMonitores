@@ -12,31 +12,31 @@
         <h:outputStylesheet name="css/Cabecera.css"/>
         <h:outputStylesheet name="css/StyleButton.css"/>
         <h:outputStylesheet name="css/Progreso.css"/>
-        
+
 
         <title>Registro</title>
     </h:head>
 
     <h:body>
         <h:form id="registroEs">
-   
+
             <div id="top">
                 <ui:insert name="top"></ui:insert>
-                    <div id="Encabezado">
-                     
-                      <h:outputLabel id="cabecera" value="PDSW &#160; &#160;"  style="font-size: 50px" styleClass="cabecera"/>
-                        <h:outputLabel id="cabecera2" value="Nombre Usuario: AAKAA &#160; &#160; &#160; &#160; &#160; &#160;" style="font-size: 50px" styleClass="cabecera"/>
-                        <h:outputLabel id="cabecera3" rendered="#{MonitorMonitoria.showDo}" value="#{MonitorMonitoria.horaActual}  -->  #{MonitorMonitoria.horaTerminacion}" style="font-size: 20px;color: #F5F2F1">
-                            <p:commandButton value="Terminar Monitoria" actionListener="#{MonitorMonitoria.messageLogOut}" rendered="#{MonitorMonitoria.showDo}" style="margin-left: 1020px;font-size: 20px;">
-                                 <p:confirm header="Confirmacion" message="Estas seguro de terminar la asesoria" icon="ui-icon-alert" />
-                            </p:commandButton>
-                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="RegistrarMonitoria"/>
-                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                            </p:confirmDialog>
-                        </h:outputLabel>
-                     
-                    </div>
+                <div id="Encabezado">
+
+                    <h:outputLabel id="cabecera" value="PDSW &#160; &#160;"  style="font-size: 50px" styleClass="cabecera"/>
+                    <h:outputLabel id="cabecera2" value="Nombre Usuario: AAKAA &#160; &#160; &#160; &#160; &#160; &#160;" style="font-size: 50px" styleClass="cabecera"/>
+                    <h:outputLabel id="cabecera3" rendered="#{MonitorMonitoria.showDo}" value="#{MonitorMonitoria.horaActual}  -->  #{MonitorMonitoria.horaTerminacion}" style="font-size: 20px;color: #F5F2F1">
+                        <p:commandButton value="Terminar Monitoria" actionListener="#{MonitorMonitoria.messageLogOut}" rendered="#{MonitorMonitoria.showDo}" style="margin-left: 1020px;font-size: 20px;">
+                            <p:confirm header="Confirmacion" message="Estas seguro de terminar la asesoria" icon="ui-icon-alert" />
+                        </p:commandButton>
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="RegistrarMonitoria"/>
+                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </p:confirmDialog>
+                    </h:outputLabel>
+
+                </div>
 
             </div>
             <div>
@@ -44,55 +44,59 @@
                     <ui:insert name="left">
                         <div id="Menu">
 
-                                <p:panel style="width:200px;">
-                                    <p:commandButton value="Registrar Monitoria " action="/faces/Views/RegistrarMonitoria.xhtml"/>
-                                    <p:separator />
-                                    <p:commandButton value="Registrar Estudiante" action="/faces/Views/registrarAsistenciaEstudiante.xhtml"/>
-                                    <p:separator />
-                                    <p:commandButton value="Consulta Asistencia de Asesorias" action="/faces/Views/InformacionAsesorias.xhtml"/>         
-                                </p:panel>
+                            <p:panel style="width:200px;">
+                                <p:commandButton value="Registrar Monitoria " action="/faces/Views/RegistrarMonitoria.xhtml"/>
+                                <p:separator />
+                                <p:commandButton value="Registrar Estudiante" action="/faces/Views/registrarAsistenciaEstudiante.xhtml"/>
+                                <p:separator />
+                                <p:commandButton value="Consulta Asistencia de Asesorias" action="/faces/Views/InformacionAsesorias.xhtml"/>         
+                            </p:panel>
 
 
                         </div>
                     </ui:insert>
                 </div>
 
- 
+
                 <div id="content"  >
                     <ui:insert name="content">
                         <br/>
- 
+
                         <h:outputText value="Registrar Nuevo Estudiante" style="font-size: 35px;font-weight: 100;color: #dce9f0"/>
                         <br/>
                         <div id="formul">
                             <br/>
-                            <p:outputLabel for="codigo" value="Codigo: "/>
-                            <p:inputText id="codigo" label="codigo Estudiante" value="#{RegistroAsistencia.codigo}"/>
-                            <br/>
-                            <br/>
-                            <p:outputLabel value="Profesor: " for="profesor"/>
-                            <p:selectCheckboxMenu id="profesor" value="#{RegistroAsistencia.profesoresSelected}" label="Profesor" filter="true" filterMatchMode="startsWith" multiple="true">
-                                <f:selectItems value="#{RegistroAsistencia.profesores}"/>
-                            </p:selectCheckboxMenu>
-                            <br/>
-                            <br/>
-                            <p:outputLabel  for="temas"/>
-                            <p:selectCheckboxMenu id="temas" value="#{RegistroAsistencia.temasSelected}" style="margin-left: 365px" label="Temas" filter="true" filterMatchMode="startsWith" multiple="true">
-                                <f:selectItems value="#{RegistroAsistencia.temas}"/>
-                            </p:selectCheckboxMenu>
-                            <br/>
-                            <br/>
-                            <p:inputTextarea rows="10" cols="100"  value="Observaciones...." label="Observaciones" style="margin-left: 365px"/>
-                            <br/>
-                            <br/>
-                            <br/>
+                            <h:form id = "formInput">
+                                <p:outputLabel for="codigo" value="Codigo: "/>
+                                <p:inputText id="codigo" label="codigo Estudiante" value="#{RegistroAsistencia.codigo}"/>
+                                <br/>
+                                <br/>
+                                <p:outputLabel value="Profesor: " for="profesor"/>
+                                <p:selectCheckboxMenu id="profesor" value="#{RegistroAsistencia.profesoresSelected}" label="Profesor" filter="true" filterMatchMode="startsWith" multiple="true">
+                                    <f:selectItems value="#{RegistroAsistencia.profesores}"/>
+                                </p:selectCheckboxMenu>
+                                <br/>
+                                <br/>
+                                <p:outputLabel  for="temas"/>
+                                <p:selectCheckboxMenu id="temas" value="#{RegistroAsistencia.temasSelected}" style="margin-left: 365px" label="Temas" filter="true" filterMatchMode="startsWith" multiple="true">
+                                    <f:selectItems value="#{RegistroAsistencia.temas}"/>
+                                </p:selectCheckboxMenu>
+                                <br/>
+                                <br/>
+                                <p:inputTextarea rows="10" cols="100" label="Observaciones" style="margin-left: 365px" id="observaciones"/>
+                                <br/>
+                                <br/>
+                                <br/>
+                            </h:form>
                             <div id="botones" style="margin-left: 365px" >
-                                
-                                <p:button  value="Limpiar" icon="ui-icon-star" />    
+
+                                <p:commandButton value="Limpiar" icon="ui-icon-star" >
+                                    <p:resetInput target="formInput formInput:codigo formInput:profesor formInput:temas formInput:observaciones"/>
+                                </p:commandButton>  
                                 <p:commandButton value="Añadir" icon="ui-icon-star">
-                                    
+
                                 </p:commandButton>
-                                
+
                             </div>
                             <br/>
                             <br/>
@@ -112,9 +116,9 @@
                                         </p:column>
 
                                         <p:column headerText="Temas">
-                                            
+
                                         </p:column>
-                                         <p:column headerText="Descripcion">
+                                        <p:column headerText="Descripcion">
                                             <p:commandLink value="Descripcion" update=":form:registroE" process=":form:registroE">
                                                 <p:collector value="#{book}" removeFrom="#{collectorView.books}" unique="true"/>
                                             </p:commandLink>
@@ -122,15 +126,15 @@
 
                                     </p:dataTable>
                                 </p:outputPanel>
-               
+
                             </div>
                         </div>
-                        
+
                     </ui:insert>
                 </div>
             </div>
-            
-        
+
+
         </h:form>
     </h:body>
 

@@ -18,5 +18,7 @@ public interface GrupoDAO {
     public Grupo load(Integer id) throws PersistenceException;
 
     public void save(Grupo grupo) throws PersistenceException;
+    
+    public List<Grupo> loadGruposMateria(int materiaId, int semestreID) throws PersistenceException;
 
 }

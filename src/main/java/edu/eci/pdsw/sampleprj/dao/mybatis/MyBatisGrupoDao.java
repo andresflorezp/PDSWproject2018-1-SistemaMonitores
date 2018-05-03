@@ -39,4 +39,14 @@ public class MyBatisGrupoDao implements GrupoDAO {
         }
     }
 
+    @Override
+    public List<Grupo> loadGruposMateria(int materiaId, int semestreID) throws PersistenceException {
+        
+        try {
+            return grupoMapper.consultarGruposMateria(materiaId, semestreID);
+        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+            throw new PersistenceException("Error al consultar grupos para una materia con identificador: " + materiaId + " en un semestre con Id: "+semestreID, e);
+        }
+    }
+
 }
