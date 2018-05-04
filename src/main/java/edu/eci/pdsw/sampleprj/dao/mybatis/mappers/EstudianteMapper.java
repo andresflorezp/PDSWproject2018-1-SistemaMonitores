@@ -15,7 +15,7 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface EstudianteMapper {
     
-    default Estudiante consultarEstudiante(Long carnet){
+    default Estudiante consultarEstudiante(Long carnet) {
         return consultarEstudianteGeneral(carnet).get(0);
     }
     
@@ -24,7 +24,6 @@ public interface EstudianteMapper {
     }
       
     public List<Estudiante> consultarEstudianteGeneral(@Param("carnet") Long carnet);
-    
     
     public void agregarEstudiante(@Param("carnet") long carnet,
                              @Param("nombre") String nombre,

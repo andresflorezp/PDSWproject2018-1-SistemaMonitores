@@ -5,6 +5,7 @@
  */
 package edu.eci.pdsw.samples.managedbeans;
 
+import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Materia;
 import edu.eci.pdsw.samples.entities.Tema;
@@ -13,7 +14,9 @@ import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory;
 import java.io.Serializable;
 import java.util.AbstractList;
+import java.util.AbstractSet;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -28,33 +31,39 @@ public class RegistrarAsistEstudianteBean implements Serializable {
 
     ServiciosSistemaMonitores sp = ServiciosSistemaMonitoresFactory.getInstance().getServiciosSistemaMonitores();
 
-    private String codigo;
+    private int codigo;
     private String profesor;
     private String obseraciones;
     private Materia materia;
     private List<String> profesoresSelected;
-    private List<String> profesores;
-    private List<String> temas;
+    private AbstractSet<String> profesores;
+    private AbstractSet<String> temas;
     private List<String> temasSelected;
     private List<Grupo> gruposMateriaSemestre;
+    private Estudiante asistente;
 
     public RegistrarAsistEstudianteBean() throws ExcepcionSistemaMonitores {
         profesoresSelected = new ArrayList<>();
-        //consultarGrupos();
+        consultarGrupos();
+    }
+    
+    public void agregarAsesoria() throws ExcepcionSistemaMonitores{
+        asistente = sp.consultaEstudiante(codigo);
+//        sp.addAsesoria();
     }
 
-    private void consultarGrupos() throws ExcepcionSistemaMonitores {
-        temas = new ArrayList<>();
-        profesores = new ArrayList<>();
-        gruposMateriaSemestre = sp.consultaGruposMateria(0, 0);
+    public void consultarGrupos() throws ExcepcionSistemaMonitores {
+        temas = new HashSet<>();
+        profesores = new HashSet<>();
+        gruposMateriaSemestre = sp.consultaGruposMateria(0, 1);
         for (Grupo g : gruposMateriaSemestre) {
             profesores.add(g.getProfesor().getNombre());
-            for (Tema t : g.getMateria().getTemas()) {
-                temas.add(t.getTopic());
-            }
+        }
+        for (Tema t : gruposMateriaSemestre.get(0).getMateria().getTemas()) {
+            temas.add(t.getTopic());
         }
     }
-
+    
     public List<String> getTemasSelected() {
         return temasSelected;
     }
@@ -71,19 +80,19 @@ public class RegistrarAsistEstudianteBean implements Serializable {
         this.profesoresSelected = profesoresSelected;
     }
 
-    public List<String> getProfesores() {
+    public AbstractSet<String> getProfesores() {
         return profesores;
     }
 
-    public void setProfesores(List<String> profesores) {
+    public void setProfesores(AbstractSet<String> profesores) {
         this.profesores = profesores;
     }
 
-    public List<String> getTemas() {
+    public AbstractSet<String> getTemas() {
         return temas;
     }
 
-    public void setTemas(List<String> temas) {
+    public void setTemas(AbstractSet<String> temas) {
         this.temas = temas;
     }
 
@@ -95,11 +104,11 @@ public class RegistrarAsistEstudianteBean implements Serializable {
         this.materia = materia;
     }
 
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
