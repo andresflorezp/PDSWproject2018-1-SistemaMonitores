@@ -6,6 +6,7 @@
 package edu.eci.pdsw.samples.services;
 
 import edu.eci.pdsw.samples.entities.Asesoria;
+import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Profesor;
 import edu.eci.pdsw.samples.entities.Tema;
@@ -16,7 +17,13 @@ import java.util.List;
  * @author SergioRt
  */
 public interface ServiciosSistemaMonitores {
-
+    /**
+     * 
+     * @param monitorID identificador del monitor.
+     * @param semestreID identificador del semestre.
+     * @return Consulta las asesorias dadas por in monitor en un semestre.
+     * @throws ExcepcionSistemaMonitores 
+     */
     public abstract List<Asesoria> consultaAsesoriaMateria(Integer monitorID, Integer semestreID) throws ExcepcionSistemaMonitores;
 
     /**
@@ -55,10 +62,20 @@ public interface ServiciosSistemaMonitores {
      */
     public void addGrupoMateria(int grupoID, String nemonicoMatria) throws ExcepcionSistemaMonitores;
     
+    public void addAsesoria(Asesoria asesoria) throws ExcepcionSistemaMonitores;
+    
    /**
     * @param materiaId identificador de la materia.
     * @param semestreID identificador del semestre.
     * @return consulta de todos los grupos de una materia en un semestre especifico.
     */
     public List<Grupo> consultaGruposMateria(int materiaId, int semestreID) throws ExcepcionSistemaMonitores;
+    
+    /**
+     * 
+     * @param carnet carnet del estudiante.
+     * @return estudiante con el carnet dado.
+     * @throws ExcepcionSistemaMonitores si no existe el estudiante.
+     */
+    public Estudiante consultaEstudiante(long carnet) throws ExcepcionSistemaMonitores;
 }

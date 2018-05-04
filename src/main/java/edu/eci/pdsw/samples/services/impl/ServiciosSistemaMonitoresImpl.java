@@ -7,15 +7,19 @@ package edu.eci.pdsw.samples.services.impl;
 
 import com.google.inject.Inject;
 import edu.eci.pdsw.sampleprj.dao.AsesoriaDAO;
+import edu.eci.pdsw.sampleprj.dao.EstudianteDAO;
 import edu.eci.pdsw.sampleprj.dao.GrupoDAO;
 import edu.eci.pdsw.sampleprj.dao.PersistenceException;
 import edu.eci.pdsw.samples.entities.Asesoria;
+import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Profesor;
 import edu.eci.pdsw.samples.entities.Tema;
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,6 +38,10 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores 
 //
 //    @Inject
 //    private TemaDAO daoTema;
+
+    @Inject
+    private EstudianteDAO daoEstudiante;
+
     @Override
     public List<Asesoria> consultaAsesoriaMateria(Integer monitorID, Integer semestreID) throws ExcepcionSistemaMonitores {
         try {
@@ -75,11 +83,29 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores 
 
     @Override
     public List<Grupo> consultaGruposMateria(int materiaId, int semestreID) throws ExcepcionSistemaMonitores {
-        try{
-            return daoGrupo.loadGruposMateria(materiaId, semestreID);
-        }catch (PersistenceException ex) {
+        try {
+            List<Grupo> grupos = daoGrupo.loadGruposMateria(materiaId, semestreID);
+            if (grupos.isEmpty()) {
+                throw new ExcepcionSistemaMonitores("Error materia con ID: " + materiaId + " sin grupos en el semestre con ID: " + semestreID + ".");
+            }
+            return grupos;
+        } catch (PersistenceException ex) {
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }
     }
-    
+
+    @Override
+    public Estudiante consultaEstudiante(long carnet) throws ExcepcionSistemaMonitores {
+        try {
+            return daoEstudiante.load(carnet);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public void addAsesoria(Asesoria asesoria) throws ExcepcionSistemaMonitores {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

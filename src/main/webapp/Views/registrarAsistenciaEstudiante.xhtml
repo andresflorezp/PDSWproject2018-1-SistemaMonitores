@@ -83,6 +83,8 @@
                                 </p:selectCheckboxMenu>
                                 <br/>
                                 <br/>
+                                <h:outputText value="Observaciones" style="margin-left: 365px;font-size: 18px;color: #dce9f0"/>
+                                <br/>
                                 <p:inputTextarea rows="10" cols="100" label="Observaciones" style="margin-left: 365px" id="observaciones"/>
                                 <br/>
                                 <br/>
@@ -90,13 +92,18 @@
                             </h:form>
                             <div id="botones" style="margin-left: 365px" >
 
-                                <p:commandButton value="Limpiar" icon="ui-icon-star" >
-                                    <p:resetInput target="formInput formInput:codigo formInput:profesor formInput:temas formInput:observaciones"/>
+                                <p:commandButton value="Limpiar" icon="ui-icon-star" update="formInput">
+                                    <p:resetInput target="formInput"/>
                                 </p:commandButton>  
-                                <p:commandButton value="Añadir" icon="ui-icon-star">
-
+                                <p:commandButton value="Añadir" icon="ui-icon-star" actionListener="#{RegistroAsistencia.agregarAsesoria()}" update="formInput">
+                                    <p:resetInput target="formInput"/>
                                 </p:commandButton>
 
+                                <p:ajaxExceptionHandler type="edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores" update="exceptionDialog" onexception="PF('exceptionDialog').show()" />
+                                <p:dialog id="exceptionDialog" header="Error" widgetVar="exceptionDialog">         
+                                    <h3> #{pfExceptionHandler.message}</h3>
+                                    Cierre la ventana para continuar
+                                </p:dialog>
                             </div>
                             <br/>
                             <br/>

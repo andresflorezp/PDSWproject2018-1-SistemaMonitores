@@ -27,13 +27,13 @@ public class MyBatisEstudianteDao implements EstudianteDAO {
     }
 
     @Override
-    public Estudiante load(long carnet) throws PersistenceException {
+    public Estudiante load(Long carnet) throws PersistenceException {
         try{
             return estudianteMapper.consultarEstudiante(carnet);
         }catch(org.apache.ibatis.exceptions.PersistenceException e){
-            throw new PersistenceException("Error al consultar el estudiante "+carnet,e);
+            throw new PersistenceException(carnet == null?"Error al consultar los estudiantes.":"Error al consultar el estudiante con carnet: "+carnet,e);
         }catch(java.lang.IndexOutOfBoundsException ex){
-            throw new PersistenceException("Un estudiante con carnet "+carnet+" no ha sido encontrado",ex);
+            throw new PersistenceException("Un estudiante con carnet "+carnet+" no ha sido encontrado.",ex);
         }
     }
 

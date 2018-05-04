@@ -38,7 +38,7 @@ public class ServiciosSistemaMonitoresFactory {
                 setClassPathResource(pathResource);
                 bind(ServiciosSistemaMonitores.class).to(ServiciosSistemaMonitoresImpl.class);
                 bind(MateriaDAO.class).to(MyBatisMateriaDao.class);
-//                bind(EstudianteDAO.class).to(MyBatisEstudianteDao.class);
+                bind(EstudianteDAO.class).to(MyBatisEstudianteDao.class);
                 bind(AsesoriaDAO.class).to(MyBatisAsesoriaDao.class);
                 bind(TemaDAO.class).to(MyBatisTemaDao.class);
                 bind(GrupoDAO.class).to(MyBatisGrupoDao.class);
