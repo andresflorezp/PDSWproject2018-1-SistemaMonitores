@@ -26,9 +26,13 @@ public class publicManagedBean implements Serializable{
     private List<String> jueves;
     private List<String> viernes;
     private List<String> sabado;
+    private List<String> materias;
     
     
     public publicManagedBean() {
+        materias = new ArrayList<>();
+        materias.add("Proceso de Desarrollo de Software");
+        materias.add("Arquitectura Empresarial");
         horarios = new ArrayList<>();
         ArrayList<String> aux = new ArrayList<>();
         aux.add("700-830");
@@ -53,6 +57,14 @@ public class publicManagedBean implements Serializable{
         }
     }
     
+    public List<String> getMaterias(){
+        return materias;
+    }
+
+    public void setMaterias(List<String> materias){
+        this.materias = materias;
+
+    }
     public List<String> getLunes() {
         return lunes;
     }

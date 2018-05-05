@@ -21,7 +21,9 @@ public class Materia implements Serializable {
     private int creditos;
     private List<Tema> temas;
 
-    public Materia(String nombre) {
+    public Materia() {
+    }
+    public Materia(String nombre){
         this.nombre = nombre;
     }
 

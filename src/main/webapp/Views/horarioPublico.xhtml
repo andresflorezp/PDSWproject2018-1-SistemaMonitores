@@ -49,35 +49,39 @@
             <div id="content"  >
                 <ui:insert name="content"> 
                     <h:form>
-            <p:layoutUnit position="north">
-                <h1 style="text-align: center;">Horario de Atencion</h1>
-            </p:layoutUnit>
-            <p:layoutUnit  position="center">
-                <p:dataTable var="horario" value="#{publicBean.horarios}">
-                    <p:column headerText="horas" >
-                        <h:outputText  value="#{horario.hora}"  />
-                    </p:column>
-                    <p:column headerText="Lunes">
-                        <h:outputText value="#{horario.lunes}" />
-                    </p:column>
-                    <p:column headerText="Martes">
-                        <h:outputText value="#{horario.martes}" />
-                    </p:column>
-                    <p:column headerText="Miercoles">
-                        <h:outputText value="#{horario.miercoles}" />
-                    </p:column>
-                    <p:column headerText="Jueves">
-                        <h:outputText value="#{horario.jueves}" />
-                    </p:column>
-                    <p:column headerText="Viernes">
-                        <h:outputText value="#{horario.viernes}" />
-                    </p:column>
-                    <p:column headerText="Sabado">
-                        <h:outputText value="#{horario.sabado}" />
-                    </p:column>
-                </p:dataTable>
-            </p:layoutUnit>
-        </h:form>
+                        <p:selectOneMenu id="materias" value="#{publicBean.materias}"
+                         effect="fade" var="t" style="width:160px" filter="true" filterMatchMode="startsWith">
+                            <f:selectItems value = "#{publicBean.materias}"  />
+                        </p:selectOneMenu>
+                        <p:layoutUnit position="north">
+                            <h1 style="text-align: center;">Horario de Atencion</h1>
+                        </p:layoutUnit>
+                        <p:layoutUnit  position="center">
+                            <p:dataTable var="horario" value="#{publicBean.horarios}">
+                                <p:column headerText="horas" >
+                                    <h:outputText  value="#{horario.hora}"  />
+                                </p:column>
+                                <p:column headerText="Lunes">
+                                    <h:outputText value="#{horario.lunes}" />
+                                </p:column>
+                                <p:column headerText="Martes">
+                                    <h:outputText value="#{horario.martes}" />
+                                </p:column>
+                                <p:column headerText="Miercoles">
+                                    <h:outputText value="#{horario.miercoles}" />
+                                </p:column>
+                                <p:column headerText="Jueves">
+                                    <h:outputText value="#{horario.jueves}" />
+                                </p:column>
+                                <p:column headerText="Viernes">
+                                    <h:outputText value="#{horario.viernes}" />
+                                </p:column>
+                                <p:column headerText="Sabado">
+                                    <h:outputText value="#{horario.sabado}" />
+                                </p:column>
+                            </p:dataTable>
+                        </p:layoutUnit>
+                    </h:form>
                 </ui:insert>
             </div>
             
