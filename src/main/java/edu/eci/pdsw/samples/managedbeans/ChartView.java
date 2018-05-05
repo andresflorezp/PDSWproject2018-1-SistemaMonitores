@@ -95,6 +95,7 @@ public class ChartView implements Serializable {
         lineModel1 = initLinearModel();
         lineModel1.setTitle("Linear Chart");
         lineModel1.setLegendPosition("e");
+        lineModel1.setAnimate(true);
         Axis yAxis = lineModel1.getAxis(AxisType.Y);
         yAxis.setMin(0);
         yAxis.setMax(10);
@@ -102,6 +103,7 @@ public class ChartView implements Serializable {
         lineModel2 = initCategoryModel();
         lineModel2.setTitle("Category Chart");
         lineModel2.setLegendPosition("e");
+        lineModel2.setAnimate(true);
         lineModel2.setShowPointLabels(true);
         lineModel2.getAxes().put(AxisType.X, new CategoryAxis("Years"));
         yAxis = lineModel2.getAxis(AxisType.Y);
