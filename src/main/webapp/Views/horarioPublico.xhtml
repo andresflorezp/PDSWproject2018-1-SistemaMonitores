@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="css/default.css"/>
+        <h:outputStylesheet name="css/cssLayout.css"/>
+        <h:outputStylesheet name="css/Cabecera.css"/>
+        <h:outputStylesheet name="css/StyleButton.css"/>
+        <title>HorarioAtencion</title>
+    </h:head>
+
+    <h:body>
+        <h:form>
+            <div>
+                <div id="top">
+                    <ui:insert name="top"></ui:insert>
+                    <div id="Encabezado">
+                        <h:form>
+                            <h:outputLabel id="cabecera" value="PDSW"  style="font-size: 50px" styleClass="cabecera"/>
+                            <h:outputLabel value="         " style="font-size: 50px"/>
+                            <h:outputLabel id="cabecera2" value="Nombre Usuario: AAKAA" style="font-size: 50px" styleClass="cabecera"/>
+                        </h:form>
+                    </div>
+
+                </div>
+            </div>
+        <div>
+            <div id="left">
+                <ui:insert name="left">
+                    <div id="Menu">
+                        <h:form style="margin-top: 100">
+                            <p:growl>
+                            </p:growl>
+
+                            
+                        </h:form>
+    
+                    </div>
+                </ui:insert>
+            </div>
+            <br/>
+            <br/>
+ 
+            <div id="content"  >
+                <ui:insert name="content"> 
+                    <h:form>
+            <p:layoutUnit position="north">
+                <h1 style="text-align: center;">Horario de Atencion</h1>
+            </p:layoutUnit>
+            <p:layoutUnit  position="center">
+                <p:dataTable var="horario" value="#{publicBean.horarios}">
+                    <p:column headerText="horas" >
+                        <h:outputText  value="#{horario.hora}"  />
+                    </p:column>
+                    <p:column headerText="Lunes">
+                        <h:outputText value="#{horario.lunes}" />
+                    </p:column>
+                    <p:column headerText="Martes">
+                        <h:outputText value="#{horario.martes}" />
+                    </p:column>
+                    <p:column headerText="Miercoles">
+                        <h:outputText value="#{horario.miercoles}" />
+                    </p:column>
+                    <p:column headerText="Jueves">
+                        <h:outputText value="#{horario.jueves}" />
+                    </p:column>
+                    <p:column headerText="Viernes">
+                        <h:outputText value="#{horario.viernes}" />
+                    </p:column>
+                    <p:column headerText="Sabado">
+                        <h:outputText value="#{horario.sabado}" />
+                    </p:column>
+                </p:dataTable>
+            </p:layoutUnit>
+        </h:form>
+                </ui:insert>
+            </div>
+            
+        </div>
+            </h:form>
+    </h:body>
+
+</html>
