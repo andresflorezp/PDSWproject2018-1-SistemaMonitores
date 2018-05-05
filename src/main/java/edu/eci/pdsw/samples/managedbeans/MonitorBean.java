@@ -33,14 +33,21 @@ public class MonitorBean implements Serializable{
     private String Observaciones;
     private String horaActual="";
     private String horaTerminacion="";
-    TimeZone timeZone1 = TimeZone.getTimeZone("America/Mexico_City");
-    Calendar hora = new GregorianCalendar();
+    private TimeZone timeZone1 = TimeZone.getTimeZone("America/Mexico_City");
+    private Calendar hora = new GregorianCalendar();
+    private int numberHour;
+    private int numberMinute;
+    private int numberSecond;
     
     private String horas,minutos,segundos;
     private boolean showDo;
+    private boolean showDoT;
     public MonitorBean(){
         registros = new ArrayList();
         hora.setTimeZone(timeZone1);
+        numberHour = 1;
+        numberMinute = 29;
+        numberSecond= 59;
     }
 
    
@@ -169,6 +176,69 @@ public class MonitorBean implements Serializable{
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
 
+    public TimeZone getTimeZone1() {
+        return timeZone1;
+    }
+
+    public void setTimeZone1(TimeZone timeZone1) {
+        this.timeZone1 = timeZone1;
+    }
+
+    public int getNumberHour() {
+        return numberHour;
+    }
+
+    public void setNumberHour(int numberHour) {
+        this.numberHour = numberHour;
+    }
+
+    public int getNumberMinute() {
+        return numberMinute;
+    }
+
+    public void setNumberMinute(int numberMinute) {
+        this.numberMinute = numberMinute;
+    }
+
+    public int getNumberSecond() {
+        return numberSecond;
+    }
+
+    public void setNumberSecond(int numberSecond) {
+        this.numberSecond = numberSecond;
+    }
+    
+    public void decrement(){
+        if(numberSecond==0 && numberMinute==0 && numberHour==0 && !showDoT){
+            doActionT();
+ 
+        }
+        else if(numberSecond==0 && numberMinute==0 && !showDoT){
+            numberHour-=1;
+            numberSecond=5;
+            numberMinute=1;
+        }
+        else if(numberSecond==0 && !showDoT){
+            numberSecond=5;
+            numberMinute-=1;
+        }
+        else if(!showDoT){
+            numberSecond-=1;
+        }
+            
+        
+    }
+
+    public boolean getShowDoT() {
+        return showDoT;
+    }
+
+    public void setShowDoT(boolean showDoT) {
+        this.showDoT = showDoT;
+    }
+    public void doActionT(){
+      showDoT=true;
+    }
     
     
 }

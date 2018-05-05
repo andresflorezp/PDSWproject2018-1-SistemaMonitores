@@ -3,7 +3,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:po="http://primefaces.org/omega">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -15,6 +16,7 @@
         
     
     <h:body>
+        
         <p:chart type="line" model="#{chartView.lineModel2}" style="height:300px;" widgetVar="lineWV"/>
         <p:commandLink onclick="exportChartInPDF()">
             Export Chart To PDF

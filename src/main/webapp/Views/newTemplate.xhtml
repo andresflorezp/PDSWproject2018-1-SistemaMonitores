@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:po="http://primefaces.org/omega" 
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="css/default.css"/>
+        <h:outputStylesheet name="css/cssLayout.css"/>
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+        
+
+        <div id="top" class="top">
+            <ui:insert name="top">Top</ui:insert>
+        </div>
+        <div>
+            <div id="left" >
+                <ui:insert name="left">
+                    <b:column span="3">
+                        <b:panel look="primary" title="Static sidebar" style="width: 200px">
+                          <b:listLinks>
+                            <b:navLink header="BootsFaces" />
+                            <b:navLink href="http://www.bootsfaces.net" value="BootsFaces"
+                                       icon="globe" iconAlign="right"/>
+                            <b:navLink></b:navLink>
+                            <b:navLink header="Bootstrap"/>
+                            <b:navLink href="http://getbootstrap.com/components/#navbar" value="Bootstrap" icon="link"></b:navLink>
+                            <b:navLink></b:navLink>
+                            <b:navLink header="Preview"/>
+                            <b:navLink value="Labels and Badges" outcome="/bootstrap/labelsbadge"
+                                       icon="tag" iconAlign="right"/>
+                            <b:navLink value="Slider" outcome="/jquery-ui/slider" iconAwesome="sliders"/>
+                            
+
+                            <b:messages />
+
+                          </b:listLinks>
+                        </b:panel>
+                      </b:column>
+                    
+                </ui:insert>
+            </div>
+            
+        </div>
+    </h:body>
+
+</html>
