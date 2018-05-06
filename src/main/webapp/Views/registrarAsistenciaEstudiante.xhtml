@@ -70,27 +70,22 @@
                         <div id="formul">
                             <br/>
                             <h:form id = "formInput">
-                                <p:outputLabel for="codigo" value="Codigo: "/>
-                                <p:inputText id="codigo" label="codigo Estudiante" value="#{RegistroAsistencia.codigo}"/>
-                                <br/>
-                                <br/>
-                                <p:outputLabel value="Profesor: " for="profesor"/>
-                                <p:selectCheckboxMenu id="profesor" value="#{RegistroAsistencia.profesoresSelected}" label="Profesor" filter="true" filterMatchMode="startsWith" multiple="true">
-                                    <f:selectItems value="#{RegistroAsistencia.profesores}"/>
-                                </p:selectCheckboxMenu>
-                                <br/>
-                                <br/>
-                                <p:outputLabel  for="temas"/>
-                                <p:selectCheckboxMenu id="temas" value="#{RegistroAsistencia.temasSelected}" style="margin-left: 365px" label="Temas" filter="true" filterMatchMode="startsWith" multiple="true">
-                                    <f:selectItems value="#{RegistroAsistencia.temas}"/>
-                                </p:selectCheckboxMenu>
-                                <br/>
+                                <h:panelGrid columns="2" cellpadding="5">
+                                    <p:outputLabel for="codigo" value="Codigo "/>
+                                    <p:chips id="codigo" label="codigo Estudiante" value="#{RegistroAsistencia.codigos}"/>
+                                    <p:outputLabel value="Profesor " for="profesor"/>
+                                    <p:selectCheckboxMenu id="profesor" value="#{RegistroAsistencia.profesoresSelected}" label="Profesor" filter="true" filterMatchMode="startsWith" multiple="true">
+                                        <f:selectItems value="#{RegistroAsistencia.profesores}"/>
+                                    </p:selectCheckboxMenu>
+                                    <p:outputLabel value="Temas " for="temas"/>
+                                    <p:selectCheckboxMenu id="temas" value="#{RegistroAsistencia.temasSelected}" label="Temas" filter="true" filterMatchMode="startsWith" multiple="true">
+                                        <f:selectItems value="#{RegistroAsistencia.temas}"/>
+                                    </p:selectCheckboxMenu>
+                                </h:panelGrid>
                                 <br/>
                                 <h:outputText value="Observaciones" style="margin-left: 365px;font-size: 18px;color: #dce9f0"/>
                                 <br/>
                                 <p:inputTextarea rows="10" cols="100" label="Observaciones" style="margin-left: 365px" id="observaciones"/>
-                                <br/>
-                                <br/>
                                 <br/>
                             </h:form>
                             <div id="botones" style="margin-left: 365px" >
@@ -98,7 +93,7 @@
                                 <p:commandButton value="Limpiar" icon="ui-icon-star" update="formInput">
                                     <p:resetInput target="formInput"/>
                                 </p:commandButton>  
-                                <p:commandButton value="Añadir" icon="ui-icon-star" actionListener="#{RegistroAsistencia.agregarAsesoria()}" update="formInput">
+                                <p:commandButton value="Añadir" icon="ui-icon-star" actionListener="#{RegistroAsistencia.agregarAsesoriaEstudiante()}" update="formInput">
                                     <p:resetInput target="formInput"/>
                                 </p:commandButton>
 

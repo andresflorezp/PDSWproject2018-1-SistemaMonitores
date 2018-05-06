@@ -10,6 +10,7 @@ import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Profesor;
 import edu.eci.pdsw.samples.entities.Tema;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -62,7 +63,23 @@ public interface ServiciosSistemaMonitores {
      */
     public void addGrupoMateria(int grupoID, String nemonicoMatria) throws ExcepcionSistemaMonitores;
     
-    public void addAsesoria(Asesoria asesoria) throws ExcepcionSistemaMonitores;
+    /**
+     * Agrega una nueva asesoria a un monitor.
+     * @param fechaInicio
+     * @param fechaFin
+     * @param observaciones
+     * @param monitorID
+     * @throws ExcepcionSistemaMonitores 
+     */
+    public void addAsesoria(Date fechaInicio, Date fechaFin, String observaciones, int monitorID) throws ExcepcionSistemaMonitores;
+    
+    /**
+     * Agrega un registro de que un estudiante asistio a una monitoria.
+     * @param asesoriaID
+     * @param estudianteCarnet
+     * @throws ExcepcionSistemaMonitores 
+     */
+    public void addAsesoriaEstudiante(int asesoriaID, int estudianteCarnet) throws ExcepcionSistemaMonitores;
     
    /**
     * @param materiaId identificador de la materia.

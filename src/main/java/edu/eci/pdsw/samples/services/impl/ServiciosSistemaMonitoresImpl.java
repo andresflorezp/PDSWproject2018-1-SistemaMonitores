@@ -17,6 +17,7 @@ import edu.eci.pdsw.samples.entities.Profesor;
 import edu.eci.pdsw.samples.entities.Tema;
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -104,7 +105,12 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores 
     }
 
     @Override
-    public void addAsesoria(Asesoria asesoria) throws ExcepcionSistemaMonitores {
+    public void addAsesoria(Date fechaInicio, Date fechaFin, String observaciones, int monitorID) throws ExcepcionSistemaMonitores {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addAsesoriaEstudiante(int asesoriaID, int estudianteCarnet) throws ExcepcionSistemaMonitores {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

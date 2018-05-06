@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.eci.pdsw.samples.managedbeans;
 
+import edu.eci.pdsw.samples.entities.Asesoria;
 import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Materia;
@@ -13,11 +10,12 @@ import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory;
 import java.io.Serializable;
-import java.util.AbstractList;
 import java.util.AbstractSet;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -30,8 +28,10 @@ import javax.faces.bean.SessionScoped;
 public class RegistrarAsistEstudianteBean implements Serializable {
 
     ServiciosSistemaMonitores sp = ServiciosSistemaMonitoresFactory.getInstance().getServiciosSistemaMonitores();
+    
+    private final int monitorID = 2; //temporal se supone se sabe de el login.
 
-    private int codigo;
+    private List<String> codigos;
     private String profesor;
     private String obseraciones;
     private Materia materia;
@@ -41,15 +41,27 @@ public class RegistrarAsistEstudianteBean implements Serializable {
     private List<String> temasSelected;
     private List<Grupo> gruposMateriaSemestre;
     private Estudiante asistente;
+    private Asesoria asesoriaActual;
 
     public RegistrarAsistEstudianteBean() throws ExcepcionSistemaMonitores {
         profesoresSelected = new ArrayList<>();
         consultarGrupos();
+        agregarAsesoria();
+        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "\n\n\n\n\n------------Creo un nuevoRegistoBean------------\n\n\n\n");
+
     }
-    
-    public void agregarAsesoria() throws ExcepcionSistemaMonitores{
-        asistente = sp.consultaEstudiante(codigo);
-//        sp.addAsesoria();
+
+    public void agregarAsesoria() throws ExcepcionSistemaMonitores {
+//        sp.addAsesoria(obseraciones, monitorID);
+//        asesoriaActual =;
+    }
+
+    public void agregarAsesoriaEstudiante() throws ExcepcionSistemaMonitores {
+        for (String codigo : codigos) {
+            int codigoInt = Integer.parseInt(codigo);
+            sp.consultaEstudiante(codigoInt);
+//            sp.addAsesoriaEstudiante(asesoriaActual.getAsesoriaID(), codigoInt);
+        }
     }
 
     public void consultarGrupos() throws ExcepcionSistemaMonitores {
@@ -63,7 +75,7 @@ public class RegistrarAsistEstudianteBean implements Serializable {
             temas.add(t.getTopic());
         }
     }
-    
+
     public List<String> getTemasSelected() {
         return temasSelected;
     }
@@ -96,20 +108,12 @@ public class RegistrarAsistEstudianteBean implements Serializable {
         this.temas = temas;
     }
 
-    public Materia getMtria() {
-        return materia;
+    public List<String> getCodigos() {
+        return codigos;
     }
 
-    public void setMtria(Materia materia) {
-        this.materia = materia;
-    }
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setCodigos(List<String> codigo) {
+        this.codigos = codigo;
     }
 
     public String getProfesor() {
