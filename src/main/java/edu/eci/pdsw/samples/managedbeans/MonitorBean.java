@@ -31,8 +31,6 @@ public class MonitorBean implements Serializable{
     private String codigoEstudiante;
     private String profesor;
     private String Observaciones;
-    private String horaActual="";
-    private String horaTerminacion="";
     private TimeZone timeZone1 = TimeZone.getTimeZone("America/Mexico_City");
     private Calendar hora = new GregorianCalendar();
     private int numberHour;
@@ -46,8 +44,8 @@ public class MonitorBean implements Serializable{
         registros = new ArrayList();
         hora.setTimeZone(timeZone1);
         numberHour = 1;
-        numberMinute = 29;
-        numberSecond= 59;
+        numberMinute = 5;
+        numberSecond= 5;
     }
 
    
@@ -107,17 +105,6 @@ public class MonitorBean implements Serializable{
         return getHoras()+":"+getMinutos()+":"+getSegundos();
     }
 
-    public void setHoraActual(String horaActual) {
-        this.horaActual = horaActual;
-    }
-
-    public String getHoraTerminacion() {
-        return String.valueOf((Integer.parseInt(getHoras())+1)%24)+":"+String.valueOf((Integer.parseInt(getMinutos())+30)%60)+":"+getSegundos();
-    }
-
-    public void setHoraTerminacion(String horaTerminacion) {
-        this.horaTerminacion = horaTerminacion;
-    }
 
     public String getHoras() {
         return String.valueOf(hora.get(Calendar.HOUR_OF_DAY));
