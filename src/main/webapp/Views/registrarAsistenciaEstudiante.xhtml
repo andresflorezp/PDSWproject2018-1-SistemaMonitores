@@ -40,11 +40,11 @@
                 </h:form>
                 <div id="botones" style="margin-left: 60px" >
                     <h:form>
-                        <p:commandButton value="Limpiar" icon="ui-icon-star" action="/faces/Views/registrarAsistenciaEstudiante.xhtml" update=":formInput">
-                            <p:resetInput target=":formInput"/>
+                        <p:commandButton value="Limpiar" icon="ui-icon-star" update=":formInput">
+                            <p:resetInput target="formInput"/>
                         </p:commandButton>  
-                        <p:commandButton value="Añadir" icon="ui-icon-star" update=":formInput" >
-                            <p:resetInput target=":formInput"/>
+                        <p:commandButton value="Añadir" icon="ui-icon-star" update=":formInput">
+                            <p:resetInput target=":formInput :formInput:codigo"/>
                         </p:commandButton>
 
                         <p:ajaxExceptionHandler type="edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores" update="exceptionDialog" onexception="PF('exceptionDialog').show()" />

@@ -113,7 +113,7 @@ public class RegistrarAsistEstudianteBean implements Serializable {
     }
 
     public void setCodigos(List<String> codigos) {
-        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "--->\n\n\n\n\n Pido codigos: "+codigos+"\n\n\n\n\n");
+        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "--->\n\n\n\n\n set codigos: "+codigos+"\n\n\n\n\n");
         this.codigos = codigos;
     }
 
