@@ -108,12 +108,12 @@ public class RegistrarAsistEstudianteBean implements Serializable {
     }
 
     public List<String> getCodigos() {
-        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "--->\n\n\n\n\n get codigos: "+codigos+"\n\n\n\n\n");
+        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "--->\n\n\n\n\n get codigos: "+codigos+"\n"+profesoresSelected+"\n"+temasSelected+"\n\n\n\n\n");
         return codigos;
     }
 
     public void setCodigos(List<String> codigos) {
-        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "--->\n\n\n\n\n set codigos: "+codigos+"\n\n\n\n\n");
+        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "--->\n\n\n\n\n set codigos: "+codigos+"\n"+profesoresSelected+"\n"+temasSelected+"\n\n\n\n\n");
         this.codigos = codigos;
     }
 

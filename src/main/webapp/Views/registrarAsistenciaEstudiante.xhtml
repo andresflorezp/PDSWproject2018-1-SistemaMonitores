@@ -1,89 +1,18 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
-    <ui:composition template="./../Templeates/plantilla.xhtml">
-        <ui:define name="content">
-            <div id="progreso" >
-                <h:form>
-                    <p:steps activeIndex="1" styleClass="custom" readonly="false">
-                        <p:menuitem value="Iniciar Monitoria" url="http://localhost:8080/faces/Views/RegistrarMonitoria.xhtml"/>
-                        <p:menuitem value="Registro de Estudiantes" url="http://localhost:8080/faces/Views/registrarAsistenciaEstudiante.xhtml"/>
-                        <p:menuitem value="Fin de Monitoria" url="http://localhost:8080/faces/Views/ProgresoMonitoria.xhtml"/>
-                    </p:steps>
-                </h:form>
-            </div>
-            <h:form>
-                <h:outputText value="Registrar Nuevo Estudiante" style="font-size: 35px;font-weight: 100;color: #dce9f0"/>
+<ui:composition template="./../Templeates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="content">
+        <h:outputText value="Registrar Nuevo Estudiante" style="font-size: 35px;font-weight: 100;color: #dce9f0"/>
+            <h:form id = "formInput">
+                    <p:outputLabel for="codigo" value="Codigo "/>
+                    <p:chips id="codigo" label="codigo Estudiante" value="#{RegistroAsistencia.codigos}"/>
             </h:form>
-            <div id="formul">
-                <br/>
-                <h:form id = "formInput">
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <p:outputLabel for="codigo" value="Codigo "/>
-                        <p:chips id="codigo" label="codigo Estudiante" value="#{RegistroAsistencia.codigos}" />
-                        <p:outputLabel value="Profesor " for="profesor"/>
-                        <p:selectCheckboxMenu id="profesor" value="#{RegistroAsistencia.profesoresSelected}" label="Profesor" filter="true" filterMatchMode="startsWith" multiple="true">
-                            <f:selectItems value="#{RegistroAsistencia.profesores}"/>
-                        </p:selectCheckboxMenu>
-                        <p:outputLabel value="Temas " for="temas"/>
-                        <p:selectCheckboxMenu id="temas" value="#{RegistroAsistencia.temasSelected}" label="Temas" filter="true" filterMatchMode="startsWith" multiple="true">
-                            <f:selectItems value="#{RegistroAsistencia.temas}"/>
-                        </p:selectCheckboxMenu>
-                    </h:panelGrid>
-                    <br/>
-                    <h:outputText value="Observaciones" style="margin-left: 60px;font-size: 18px;color: #dce9f0"/>
-                    <br/>
-                    <p:inputTextarea rows="10" cols="100" label="Observaciones" style="margin-left: 60px" id="observaciones"/>
-                </h:form>
-                <div id="botones" style="margin-left: 60px" >
-                    <h:form>
-                        <p:commandButton value="Limpiar" icon="ui-icon-star" update=":formInput">
-                            <p:resetInput target="formInput"/>
-                        </p:commandButton>  
-                        <p:commandButton value="Añadir" icon="ui-icon-star" update=":formInput">
-                            <p:resetInput target=":formInput :formInput:codigo"/>
-                        </p:commandButton>
+                <p:commandButton value="Añadir" icon="ui-icon-star" actionListener="#{RegistroAsistencia.agregarAsesoriaEstudiante()}" update="formInput">
+                    <p:resetInput target="formInput"/>
+                </p:commandButton>
+    </ui:define>
+</ui:composition>
 
-                        <p:ajaxExceptionHandler type="edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores" update="exceptionDialog" onexception="PF('exceptionDialog').show()" />
-                        <p:dialog id="exceptionDialog" header="Error" widgetVar="exceptionDialog">         
-                            <h3> #{pfExceptionHandler.message}</h3>
-                            Cierre la ventana para continuar
-                        </p:dialog>
-                    </h:form>
-                </div>
-                <br/><br/>
-                <div id="table" style="width: 1000px; margin-left: -100px" >
-                    <h:form id="formTabla">
-                        <p:outputPanel id="books">
-                            <p:dataTable value="#{collectorView.books}" var="book" id="booksTable">
-
-                                <p:column headerText="Codigo">
-                                    <h:outputText value="#{book.title}" />
-                                </p:column>
-
-                                <p:column headerText="Profesor">
-                                    <f:facet name="header">
-                                        <h:outputText value="Profesor" />
-                                    </f:facet>
-                                    <h:outputText value="#{book.author}" />
-                                </p:column>
-
-                                <p:column headerText="Temas">
-
-                                </p:column>
-                                <p:column headerText="Descripcion">
-                                    <p:commandLink value="Descripcion" update=":form:registroE" process=":form:registroE">
-                                        <p:collector value="#{book}" removeFrom="#{collectorView.books}" unique="true"/>
-                                    </p:commandLink>
-                                </p:column>
-                            </p:dataTable>
-                        </p:outputPanel>
-                    </h:form>
-                </div>
-            </div>
-        </ui:define>
-    </ui:composition>
-</html>
