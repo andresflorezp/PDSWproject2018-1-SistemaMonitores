@@ -1,18 +1,24 @@
-#cabecera {
+.cabecera {
     font-family: sans-serif;
-    font-size:  40px;
-
+    font-size:  50px;
     margin: 0px;
-    margin-right: 80px;
+    margin-right: 60px;
     padding: 0px;
     color: #F5F2F1;
+    float: next;
+
+
+    
 }
-#cabecera2 {
-    font-family: sans-serif;
-    font-size:  40px;
 
-    margin: 0px;
-    margin-right: 80px;
-    padding: 0px;
+#cabecera1 {
     color: #F5F2F1;
+    float: left;
+
+}
+
+#cabecera2 {
+    color: #F5F2F1;
+
+
 }

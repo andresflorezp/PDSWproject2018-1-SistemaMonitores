@@ -34,13 +34,11 @@ public class RegistrarAsistEstudianteBean implements Serializable {
     private List<String> codigos;
     private String profesor;
     private String obseraciones;
-    private Materia materia;
     private List<String> profesoresSelected;
     private AbstractSet<String> profesores;
     private AbstractSet<String> temas;
     private List<String> temasSelected;
     private List<Grupo> gruposMateriaSemestre;
-    private Estudiante asistente;
     private Asesoria asesoriaActual;
 
     public RegistrarAsistEstudianteBean() throws ExcepcionSistemaMonitores {
@@ -57,6 +55,7 @@ public class RegistrarAsistEstudianteBean implements Serializable {
     }
 
     public void agregarAsesoriaEstudiante() throws ExcepcionSistemaMonitores {
+        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, (codigos==null)+"");
         for (String codigo : codigos) {
             int codigoInt = Integer.parseInt(codigo);
             sp.consultaEstudiante(codigoInt);
@@ -109,11 +108,13 @@ public class RegistrarAsistEstudianteBean implements Serializable {
     }
 
     public List<String> getCodigos() {
+        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "--->\n\n\n\n\n get codigos: "+codigos+"\n\n\n\n\n");
         return codigos;
     }
 
-    public void setCodigos(List<String> codigo) {
-        this.codigos = codigo;
+    public void setCodigos(List<String> codigos) {
+        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "--->\n\n\n\n\n Pido codigos: "+codigos+"\n\n\n\n\n");
+        this.codigos = codigos;
     }
 
     public String getProfesor() {

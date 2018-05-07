@@ -27,7 +27,7 @@
                      
                        <h:outputLabel id="cabecera" value="PDSW &#160; &#160;"  style="font-size: 50px" styleClass="cabecera"/>
                         <h:outputLabel id="cabecera2" value="Nombre Usuario: AAKAA &#160; &#160; &#160;" style="font-size: 50px" styleClass="cabecera"/>
-                         <p:poll interval="1" rendered="#{MonitorMonitoria.showDo}" listener="#{MonitorMonitoria.decrement}" update="txt_count" />
+                         <p:poll id="pollConError" interval="1" rendered="#{MonitorMonitoria.showDo}" listener="#{MonitorMonitoria.decrement}" update="txt_count" />
                         <h:outputText id="txt_count" rendered="#{MonitorMonitoria.showDo}" value="Te falta #{MonitorMonitoria.numberHour} hora : #{MonitorMonitoria.numberMinute} minutos : #{MonitorMonitoria.numberSecond} segundos de Monitoria" />
                         <p:commandButton id="terminar_Monitoria" value = "Terminar la Monitoria " rendered="#{MonitorMonitoria.showDoT}" style="margin-left: 950px">
                              <p:confirm header="Confirmacion" message="Estas seguro de terminar la asesoria" icon="ui-icon-alert" />
@@ -68,7 +68,7 @@
                         <div id="progreso" >
                              <p:steps activeIndex="1" styleClass="custom" readonly="false">
                                 <p:menuitem value="Registrar Monitoria" url="http://localhost:8080/faces/Views/RegistrarMonitoria.xhtml"/>
-                                <p:menuitem value="Iniciar Monitoria" url="http://localhost:8080/faces/Views/IniciarMonitoria.xhtml"/>
+                                <p:menuitem value="Iniciar Monitoria" url="http://localhost:8080/faces/Views/registrarAsistenciaEstudiante.xhtml"/>
                                 <p:menuitem value="Progreso Monitoria" url="http://localhost:8080/faces/Views/ProgresoMonitoria.xhtml"/>
     
                             </p:steps>

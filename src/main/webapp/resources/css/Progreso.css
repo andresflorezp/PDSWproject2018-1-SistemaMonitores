@@ -6,7 +6,7 @@
     text-shadow: none !important;
 }
 .ui-steps.custom {
-    margin-bottom: 30px;
+    margin-bottom: -30px;
 }
 .ui-steps.custom .ui-steps-item .ui-menuitem-link {
     height: 10px;

@@ -3,16 +3,16 @@
     position: relative;
     background-color: #036fab;
     color: white;
-    padding: 30px;
+    padding: 50px;
     margin: 0px 0px 10px 0px;
 }
 
-
-
 #left {
     float: left;
+    position: relative;
+    align-content: center;
     padding: 5px;
-    width: 300px;
+    width: 200px;
 }
 
 #right {
@@ -22,16 +22,28 @@
     width: 150px;
 }
 
+#bottom {
+    padding: 5px;
+    width: 150px;
+    position: relative;
+}
+
+#bottom {
+    padding: 5px;
+    width: 150px;
+    position: relative;
+    font-size: 10px;
+}
+
 .center_content {
     position: relative;
-
     padding: 5px;
 }
 
 .left_content {
-    
+    position: relative;
     padding: 5px;
-    margin-left: 170px;
+    margin-left: 250px;
 }
 
 .right_content {
