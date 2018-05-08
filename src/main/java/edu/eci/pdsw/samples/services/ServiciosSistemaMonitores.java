@@ -65,13 +65,10 @@ public interface ServiciosSistemaMonitores {
     
     /**
      * Agrega una nueva asesoria a un monitor.
-     * @param fechaInicio
-     * @param fechaFin
-     * @param observaciones
      * @param monitorID
      * @throws ExcepcionSistemaMonitores 
      */
-    public void addAsesoria(Date fechaInicio, Date fechaFin, String observaciones, int monitorID) throws ExcepcionSistemaMonitores;
+    public void addAsesoria(int monitorID) throws ExcepcionSistemaMonitores;
     
     /**
      * Agrega un registro de que un estudiante asistio a una monitoria.

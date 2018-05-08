@@ -28,11 +28,11 @@
                         <p:poll id="pollConError" interval="1" rendered="#{MonitorMonitoria.showDo}" listener="#{MonitorMonitoria.decrement}" update="txt_count" />
                         <h:panelGrid columns="1">
                             <h:outputText id="txt_count" rendered="#{MonitorMonitoria.showDo}" value="Te falta #{MonitorMonitoria.numberHour} hora : #{MonitorMonitoria.numberMinute} minutos : #{MonitorMonitoria.numberSecond} segundos de Monitoria" />
-                            <p:commandButton id="terminar_Monitoria" value = "Terminar la Monitoria " rendered="#{MonitorMonitoria.showDoT}">
+                            <p:commandButton id="terminar_Monitoria" value = "Terminar la Monitoria " rendered="#{MonitorMonitoria.showDo}">
                                 <p:confirm header="Confirmacion" message="Estas seguro de terminar la asesoria" icon="ui-icon-alert" />
                             </p:commandButton>
                         </h:panelGrid>
-                        <meta http-equiv="Refresh" content="54;/faces/Views/registrarAsistenciaEstudiante.xhtml" />
+                        
                         <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
                             <p:commandButton value="Si"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="/faces/Views/RegistrarMonitoria.xhtml"/>
                             <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />

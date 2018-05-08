@@ -50,7 +50,7 @@ public class RegistrarAsistEstudianteBean implements Serializable {
     }
 
     public void agregarAsesoria() throws ExcepcionSistemaMonitores {
-//        sp.addAsesoria(obseraciones, monitorID);
+        sp.addAsesoria(monitorID);
 //        asesoriaActual =;
     }
 

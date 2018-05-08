@@ -45,5 +45,14 @@ public class MyBatisAsesoriaDao implements AsesoriaDAO {
     public List<Asesoria> loadAll() throws PersistenceException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void registroAsesoriaMonitor(Integer monitorID) throws PersistenceException {
+        try {
+            asesoriaMapper.registroAsesoriaMonitor(monitorID);
+        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+            throw new PersistenceException("Error al realizar el registro de la Asesoria para el monitor con Carnet: "+monitorID +"\n"+e.getMessage());
+        }
+    }
     
 }

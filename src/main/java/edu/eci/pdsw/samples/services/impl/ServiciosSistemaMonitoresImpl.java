@@ -105,8 +105,12 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores 
     }
 
     @Override
-    public void addAsesoria(Date fechaInicio, Date fechaFin, String observaciones, int monitorID) throws ExcepcionSistemaMonitores {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addAsesoria(int monitorID) throws ExcepcionSistemaMonitores {
+        try {
+            daoAsesoria.registroAsesoriaMonitor(monitorID);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
     }
 
     @Override

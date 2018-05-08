@@ -17,4 +17,6 @@ public interface AsesoriaMapper {
     
     public List<Asesoria> consultaAsesoriasMonitor(@Param("monID") Integer monitorID,
                                            @Param("semID") Integer semestreID);
+    
+    public void registroAsesoriaMonitor(@Param("monID") Integer monitorID);
 }

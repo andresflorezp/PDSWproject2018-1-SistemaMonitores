@@ -21,4 +21,6 @@ public interface AsesoriaDAO {
     public void save(Asesoria Asesoria) throws PersistenceException;
 
     public List<Asesoria> loadAll() throws PersistenceException;
+    
+    public void registroAsesoriaMonitor(Integer monitorID) throws PersistenceException;
 }
