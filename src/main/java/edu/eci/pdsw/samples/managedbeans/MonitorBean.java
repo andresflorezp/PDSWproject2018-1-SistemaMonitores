@@ -44,8 +44,8 @@ public class MonitorBean implements Serializable{
         registros = new ArrayList();
         hora.setTimeZone(timeZone1);
         numberHour = 1;
-        numberMinute = 5;
-        numberSecond= 5;
+        numberMinute = 30;
+        numberSecond= 59;
     }
 
    
@@ -202,11 +202,11 @@ public class MonitorBean implements Serializable{
         }
         else if(numberSecond==0 && numberMinute==0 && !showDoT){
             numberHour-=1;
-            numberSecond=5;
-            numberMinute=1;
+            numberSecond=59;
+            
         }
         else if(numberSecond==0 && !showDoT){
-            numberSecond=5;
+            numberSecond=59;
             numberMinute-=1;
         }
         else if(!showDoT){
