@@ -26,6 +26,14 @@ public interface ServiciosSistemaMonitores {
      * @throws ExcepcionSistemaMonitores 
      */
     public abstract List<Asesoria> consultaAsesoriaMateria(Integer monitorID, Integer semestreID) throws ExcepcionSistemaMonitores;
+    
+    /**
+     * 
+     * @param profesorID
+     * @param semestreID
+     * @return 
+     */
+    public List<Asesoria> consultaAsesoriaProfesor(Integer profesorID, Integer semestreID) throws ExcepcionSistemaMonitores;
 
     /**
      * Metodo con el cual se agrega una materia al semestre

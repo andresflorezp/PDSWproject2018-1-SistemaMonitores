@@ -24,4 +24,6 @@ public interface AsesoriaMapper {
                                             @Param("carnet") Integer codigoInt, 
                                             @Param("obs") String observaciones, 
                                             @Param("proID") Integer profesorID);
+
+    public List<Asesoria> consultaAsesoriasProfesor(@Param("proID") Integer profesorID,@Param("semID") Integer semestreID);
 }

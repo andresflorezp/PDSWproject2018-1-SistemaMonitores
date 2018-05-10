@@ -6,16 +6,12 @@
 package edu.eci.pdsw.samples.managedbeans;
 
 import edu.eci.pdsw.samples.entities.Asesoria;
-import edu.eci.pdsw.samples.entities.Monitor;
-import edu.eci.pdsw.samples.entities.Semestre;
+import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Tema;
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory;
 import java.io.Serializable;
-import java.util.ArrayList;
-
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
@@ -25,27 +21,28 @@ import javax.faces.bean.SessionScoped;
 
 /**
  *
- * @author sergiort
+ * @author Sergio
  */
-@ManagedBean(name = "InformacionAsesorias")
+@ManagedBean(name = "InformacionAsistenciaProfesor")
 @SessionScoped
-public class ConsultaInformacionAsesoriasBean implements Serializable {
+public class ConsultaInformacionAsesoriaProfesor implements Serializable {
 
     ServiciosSistemaMonitores sp = ServiciosSistemaMonitoresFactory.getInstance().getServiciosSistemaMonitores();
 
+    private final int profesorID = 5; //temporal se supone se sabe de el login.
+    private final int semestreID = 1; //temporal se supone se sabe de el login.
     private List<Asesoria> asesorias;
-    
 
-    public ConsultaInformacionAsesoriasBean() throws ExcepcionSistemaMonitores {
+    public ConsultaInformacionAsesoriaProfesor() throws ExcepcionSistemaMonitores {
         filtrar();
     }
 
     public void filtrar() throws ExcepcionSistemaMonitores {
-        asesorias = sp.consultaAsesoriaMateria(2,1);
+        asesorias = sp.consultaAsesoriaProfesor(profesorID, semestreID);
         Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "\nAns: " + asesorias);
     }
 
-    public boolean filtrar(Object value, Object filter, Locale locale) {
+    public boolean filtrarTema(Object value, Object filter, Locale locale) {
         String filterText = (filter == null) ? null : filter.toString().trim();
         if (filterText == null || filterText.equals("")) {
             return true;
@@ -64,6 +61,25 @@ public class ConsultaInformacionAsesoriasBean implements Serializable {
         Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "\nFiltra: ->" + filterText + "<- " + temas.toString() + " = " + acepted);
         return acepted;
     }
+    public boolean filtrarCarnet(Object value, Object filter, Locale locale) {
+        String filterText = (filter == null) ? null : filter.toString().trim();
+        if (filterText == null || filterText.equals("")) {
+            return true;
+        }
+        if (value == null) {
+            return false;
+        }
+        List<Estudiante> estudiantes = (List<Estudiante>) value;
+        boolean acepted = false;
+        for (Estudiante estudiante : estudiantes) {
+            acepted |= String.valueOf(estudiante.getCarnet()).startsWith(filterText);
+            if (acepted) {
+                break;
+            }
+        }
+        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "\nFiltra: ->" + filterText + "<- " + estudiantes.toString() + " = " + acepted);
+        return acepted;
+    }
 
     public List<Asesoria> getAsesorias() {
         return asesorias;
@@ -72,5 +88,7 @@ public class ConsultaInformacionAsesoriasBean implements Serializable {
     public void setAsesorias(List<Asesoria> asesorias) {
         this.asesorias = asesorias;
     }
+    
+    
 
 }

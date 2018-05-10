@@ -23,7 +23,7 @@ import javax.faces.bean.SessionScoped;
 
 /**
  *
- * @author Tatiana
+ * @author Sergio
  */
 @ManagedBean(name = "RegistroAsistencia")
 @SessionScoped

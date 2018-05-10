@@ -18,6 +18,7 @@ import edu.eci.pdsw.samples.entities.Profesor;
 import edu.eci.pdsw.samples.entities.Tema;
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -27,7 +28,7 @@ import java.util.logging.Logger;
  *
  * @author sergiort
  */
-public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores {
+public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,Serializable {
 
     @Inject
     private AsesoriaDAO daoAsesoria;
@@ -127,6 +128,15 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores 
     public void addTemaMonitoria(int monitorID, int codigoInt, Integer temaID) throws ExcepcionSistemaMonitores {
         try {
             daoTema.registroTemaMonitoria(monitorID, codigoInt, temaID);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public List<Asesoria> consultaAsesoriaProfesor(Integer profesorID, Integer semestreID) throws ExcepcionSistemaMonitores {
+        try {
+            return daoAsesoria.consultaAsesoriasProfesor(profesorID, semestreID);
         } catch (PersistenceException ex) {
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }

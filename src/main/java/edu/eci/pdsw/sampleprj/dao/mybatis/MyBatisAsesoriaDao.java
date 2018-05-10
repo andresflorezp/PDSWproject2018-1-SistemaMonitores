@@ -63,5 +63,14 @@ public class MyBatisAsesoriaDao implements AsesoriaDAO {
             throw new PersistenceException("Error al realizar el registro de la Asesoria para el estudiante con Carnet: "+codigoInt +"\n"+e.getMessage());
         }
     }
+
+    @Override
+    public List<Asesoria> consultaAsesoriasProfesor(Integer profesorID, Integer semestreID) throws PersistenceException {
+        try {
+            return asesoriaMapper.consultaAsesoriasProfesor(profesorID, semestreID);
+        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+            throw new PersistenceException("Error al realizar la consulta de la Asesoria para el prpfesor con ID: "+profesorID+" en el semestre: "+ semestreID +"\n"+e.getMessage() );
+        }
+    }
     
 }

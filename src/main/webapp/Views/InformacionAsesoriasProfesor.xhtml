@@ -1,0 +1,41 @@
+<ui:composition template="./../Templeates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="content">
+        <h:form id="form">
+            <div id="formula">
+                <h:outputText value="Consulta de Asesorias profesor" style="font-size: 35px;font-weight: 100;color: #dce9f0"/>
+            </div>
+            <br/>
+            <div id="tabla">
+                <p:dataTable var="asesorias" value="#{InformacionAsistenciaProfesor.asesorias}" id="asesoria" style="width: 1000px; margin-left: 10px"
+                             emptyMessage="No se encontraron asesorías">
+                    <f:facet name="header">
+                        <h:outputText value="Consultar asistencia a las asesorías"/>
+                    </f:facet>
+                    <p:column headerText="Materia" filterBy="#{asesorias.grupo.materia.nombre}" filterMatchMode="startsWith">
+                        <h:outputText value="#{asesorias.grupo.materia.nombre}"/>
+                    </p:column>
+                    <p:column headerText="Grupo" filterBy="#{asesorias.grupo.grupoNombre}" filterMatchMode="startsWith">
+                        <h:outputText value="#{asesorias.grupo.grupoNombre}"/>
+                    </p:column>
+                    <p:column headerText="Carnet" filterBy="#{asesorias.asistentes}" filterFunction="#{InformacionAsistenciaProfesor.filtrarCarnet}">
+                        <p:repeat var="asi" value="#{asesorias.asistentes}" id="car" >
+                            <h:outputText value="■ #{asi.carnet}"/>
+                            <br/>
+                        </p:repeat>
+                    </p:column>
+                    <p:column headerText="Tema" filterBy="#{asesorias.temas}" filterFunction="#{InformacionAsistenciaProfesor.filtrarTema}">                                                                                                                                                                                                                                                                                 
+                        <p:repeat var="tem" value="#{asesorias.temas}" id="tema">
+                            <h:outputText value="■ #{tem.topic}"/>
+                            <br/>
+                        </p:repeat>
+                    </p:column>
+                </p:dataTable>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>
