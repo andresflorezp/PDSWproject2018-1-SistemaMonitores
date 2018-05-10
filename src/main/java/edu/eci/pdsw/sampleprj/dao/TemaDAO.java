@@ -18,4 +18,6 @@ public interface TemaDAO {
 
     public Tema load(int codigo) throws PersistenceException;
 
+    public void registroTemaMonitoria(int monitorID, int codigoInt, Integer temaID) throws PersistenceException;
+
 }

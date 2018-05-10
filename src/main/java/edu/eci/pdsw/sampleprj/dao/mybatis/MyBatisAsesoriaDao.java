@@ -47,11 +47,20 @@ public class MyBatisAsesoriaDao implements AsesoriaDAO {
     }
 
     @Override
-    public void registroAsesoriaMonitor(Integer monitorID) throws PersistenceException {
+    public void registroAsesoriaMonitor(Integer monitorID, String ip) throws PersistenceException {
         try {
-            asesoriaMapper.registroAsesoriaMonitor(monitorID);
+            asesoriaMapper.registroAsesoriaMonitor(monitorID, ip);
         } catch (org.apache.ibatis.exceptions.PersistenceException e) {
             throw new PersistenceException("Error al realizar el registro de la Asesoria para el monitor con Carnet: "+monitorID +"\n"+e.getMessage());
+        }
+    }
+
+    @Override
+    public void registroAsesoriaEstudiante(int asesoriaID, int codigoInt, String observaciones, Integer profesorID) throws PersistenceException {
+        try {
+            asesoriaMapper.registroAsesoriaEstudiante(asesoriaID, codigoInt, observaciones, profesorID);
+        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+            throw new PersistenceException("Error al realizar el registro de la Asesoria para el estudiante con Carnet: "+codigoInt +"\n"+e.getMessage());
         }
     }
     

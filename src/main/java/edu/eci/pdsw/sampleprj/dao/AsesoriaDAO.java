@@ -22,5 +22,7 @@ public interface AsesoriaDAO {
 
     public List<Asesoria> loadAll() throws PersistenceException;
     
-    public void registroAsesoriaMonitor(Integer monitorID) throws PersistenceException;
+    public void registroAsesoriaMonitor(Integer monitorID, String ip) throws PersistenceException;
+
+    public void registroAsesoriaEstudiante(int asesoriaID, int codigoInt, String observaciones, Integer profesorID) throws PersistenceException;
 }

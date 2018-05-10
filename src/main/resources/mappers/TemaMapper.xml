@@ -19,11 +19,16 @@
     
         FROM Tema join Materia on(tema.Tema_temaID=tema.temaId)
         where tema.temaId=#{temaId}
-    
-                
+        
     </select>
+    
     <insert id="insertarTema" parameterType="map" useGeneratedKeys="true">
         INSERT INTO TEMAS VALUES(#{tema.temaId},#{tema.topic},#{tema.Descripcion})
+    </insert>
+    
+    <insert parameterType="map" id="registroTemaMonitoria">
+        INSERT INTO temamonitoria (asesoriaestudiante_asesoria_monitor_asesoriaid,asesoriaestudiante_estudiante_carnet,tema_temaid)
+        VALUES (#{monID},#{carnet},#{temaID})
     </insert>
 
     <resultMap type='Tema' id='TemaResult'>

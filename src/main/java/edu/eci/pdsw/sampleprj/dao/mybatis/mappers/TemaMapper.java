@@ -8,12 +8,20 @@ package edu.eci.pdsw.sampleprj.dao.mybatis.mappers;
 import edu.eci.pdsw.samples.entities.Tema;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
 /**
  *
  * @author Tatiana
  */
 public interface TemaMapper {
+
     public Tema consultarTema(@Param("id") int temId);
-    public void insertarCliente(@Param("tema")Tema tema);
+
+    public void insertarCliente(@Param("tema") Tema tema);
+
     public List<Tema> consultarTemas();
+
+    public void registroTemaMonitoria(@Param("monID") int monitorID,
+            @Param("carnet") int codigoInt,
+            @Param("temaID") Integer temaID);
 }

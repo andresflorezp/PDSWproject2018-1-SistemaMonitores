@@ -1,19 +1,21 @@
-
 package edu.eci.pdsw.samples.managedbeans;
 
 import edu.eci.pdsw.samples.entities.Asesoria;
-import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Grupo;
-import edu.eci.pdsw.samples.entities.Materia;
 import edu.eci.pdsw.samples.entities.Tema;
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory;
 import java.io.Serializable;
-import java.util.AbstractSet;
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
@@ -28,50 +30,73 @@ import javax.faces.bean.SessionScoped;
 public class RegistrarAsistEstudianteBean implements Serializable {
 
     ServiciosSistemaMonitores sp = ServiciosSistemaMonitoresFactory.getInstance().getServiciosSistemaMonitores();
-    
+
     private final int monitorID = 2; //temporal se supone se sabe de el login.
+    private int asesoriaID = 2; //temporal se supone se sabe de el login.
 
     private List<String> codigos;
     private String profesor;
-    private String obseraciones;
-    private List<String> profesoresSelected;
-    private AbstractSet<String> profesores;
-    private AbstractSet<String> temas;
+    private String observaciones;
+    private String profesorSelected;
+    private Map<String, Integer> profesores;
+    private Map<String, Integer> temas;
     private List<String> temasSelected;
     private List<Grupo> gruposMateriaSemestre;
-    private Asesoria asesoriaActual;
 
     public RegistrarAsistEstudianteBean() throws ExcepcionSistemaMonitores {
-        profesoresSelected = new ArrayList<>();
         consultarGrupos();
         agregarAsesoria();
         Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "\n\n\n\n\n------------Creo un nuevoRegistoBean------------\n\n\n\n");
 
     }
 
+    public String getIp() throws ExcepcionSistemaMonitores {
+        try {
+            Enumeration e = NetworkInterface.getNetworkInterfaces();
+            while (e.hasMoreElements()) {
+                NetworkInterface n = (NetworkInterface) e.nextElement();
+                Enumeration ee = n.getInetAddresses();
+                while (ee.hasMoreElements()) {
+                    InetAddress i = (InetAddress) ee.nextElement();
+                    if (i.getHostAddress().startsWith("10.") || i.getHostAddress().startsWith("192.") || i.getHostAddress().startsWith("172.")) {
+                        return i.getHostAddress();
+                    }
+                }
+            }
+        } catch (SocketException ex) {
+            throw new ExcepcionSistemaMonitores("Error encontrando la direccion ip.");
+        }
+        throw new ExcepcionSistemaMonitores("Ip no encontrada.");
+    }
+
     public void agregarAsesoria() throws ExcepcionSistemaMonitores {
-        sp.addAsesoria(monitorID);
+
+        System.out.println();
+//        sp.addAsesoria(monitorID,getIp());
 //        asesoriaActual =;
     }
 
     public void agregarAsesoriaEstudiante() throws ExcepcionSistemaMonitores {
-        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, (codigos==null)+"");
+        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, (codigos == null) + "");
         for (String codigo : codigos) {
             int codigoInt = Integer.parseInt(codigo);
             sp.consultaEstudiante(codigoInt);
-//            sp.addAsesoriaEstudiante(asesoriaActual.getAsesoriaID(), codigoInt);
+            sp.addAsesoriaEstudiante(asesoriaID, codigoInt, observaciones, profesores.get(profesorSelected));
+            for (String tem : temasSelected) {
+                sp.addTemaMonitoria(monitorID, codigoInt, temas.get(tem));
+            }
         }
     }
 
     public void consultarGrupos() throws ExcepcionSistemaMonitores {
-        temas = new HashSet<>();
-        profesores = new HashSet<>();
+        temas = new HashMap<>();
+        profesores = new HashMap<>();
         gruposMateriaSemestre = sp.consultaGruposMateria(0, 1);
         for (Grupo g : gruposMateriaSemestre) {
-            profesores.add(g.getProfesor().getNombre());
+            profesores.put(g.getProfesor().getNombre(), g.getProfesor().getCodigoID());
         }
         for (Tema t : gruposMateriaSemestre.get(0).getMateria().getTemas()) {
-            temas.add(t.getTopic());
+            temas.put(t.getTopic(), t.getTemaId());
         }
     }
 
@@ -83,27 +108,27 @@ public class RegistrarAsistEstudianteBean implements Serializable {
         this.temasSelected = temasSelected;
     }
 
-    public List<String> getProfesoresSelected() {
-        return profesoresSelected;
+    public String getProfesorSelected() {
+        return profesorSelected;
     }
 
-    public void setProfesoresSelected(List<String> profesoresSelected) {
-        this.profesoresSelected = profesoresSelected;
+    public void setProfesorSelected(String profesorSelected) {
+        this.profesorSelected = profesorSelected;
     }
 
-    public AbstractSet<String> getProfesores() {
-        return profesores;
+    public Set<String> getProfesores() {
+        return profesores.keySet();
     }
 
-    public void setProfesores(AbstractSet<String> profesores) {
+    public void setProfesores(Map<String, Integer> profesores) {
         this.profesores = profesores;
     }
 
-    public AbstractSet<String> getTemas() {
-        return temas;
+    public Set<String> getTemas() {
+        return temas.keySet();
     }
 
-    public void setTemas(AbstractSet<String> temas) {
+    public void setTemas(Map<String, Integer> temas) {
         this.temas = temas;
     }
 
@@ -123,12 +148,12 @@ public class RegistrarAsistEstudianteBean implements Serializable {
         this.profesor = profesor;
     }
 
-    public String getObseraciones() {
-        return obseraciones;
+    public String getObservaciones() {
+        return observaciones;
     }
 
-    public void setObseraciones(String obseraciones) {
-        this.obseraciones = obseraciones;
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
     }
 
 }

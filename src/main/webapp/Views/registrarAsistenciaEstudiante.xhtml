@@ -17,61 +17,60 @@
             <div id="formul">
                 <br/>
                 <h:panelGrid columns="2" cellpadding="5" id="formInput">
-                        <p:outputLabel for="codigo" value="Codigo "/>
-                        <p:chips id="codigo" label="codigo Estudiante" value="#{RegistroAsistencia.codigos}" />
-                        <p:outputLabel value="Profesor " for="profesor"/>
-                        <p:selectCheckboxMenu id="profesor" value="#{RegistroAsistencia.profesoresSelected}" label="Profesor" filter="true" filterMatchMode="startsWith" multiple="true">
-                            <f:selectItems value="#{RegistroAsistencia.profesores}"/>
-                        </p:selectCheckboxMenu>
-                        <p:outputLabel value="Temas " for="temas"/>
-                        <p:selectCheckboxMenu id="temas" value="#{RegistroAsistencia.temasSelected}" label="Temas" filter="true" filterMatchMode="startsWith" multiple="true">
-                            <f:selectItems value="#{RegistroAsistencia.temas}"/>
-                        </p:selectCheckboxMenu>
-                    </h:panelGrid>
-                    <br/>
-                    <h:outputText value="Observaciones" style="margin-left: 60px;font-size: 18px;color: #dce9f0"/>
-                    <br/>
-                    <p:inputTextarea rows="10" cols="100" label="Observaciones" style="margin-left: 60px" id="observaciones"/>
+                    <p:outputLabel for="codigo" value="Codigo "/>
+                    <p:chips id="codigo" label="codigo Estudiante" value="#{RegistroAsistencia.codigos}" />
+                    <p:outputLabel value="Profesor " for="profesor"/>
+                    <p:selectOneMenu id="profesor" value="#{RegistroAsistencia.profesorSelected}" label="Profesor" filter="true" filterMatchMode="startsWith" >
+                        <f:selectItems value="#{RegistroAsistencia.profesores}"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel value="Temas " for="temas"/>
+                    <p:selectCheckboxMenu id="temas" value="#{RegistroAsistencia.temasSelected}" label="Temas" filter="true" filterMatchMode="startsWith" multiple="true">
+                        <f:selectItems value="#{RegistroAsistencia.temas}"/>
+                    </p:selectCheckboxMenu>
+                </h:panelGrid>
+                <br/>
+                <h:outputText value="Observaciones" style="margin-left: 60px;font-size: 18px;color: #dce9f0"/>
+                <br/>
+                <p:inputTextarea rows="10" cols="100" label="Observaciones" style="margin-left: 60px" id="observaciones"/>
                 <div id="botones" style="margin-left: 60px" >
-                        <p:commandButton value="Limpiar" icon="ui-icon-star" action="/faces/Views/registrarAsistenciaEstudiante.xhtml" update=":registro:formInput">
-                            <p:resetInput target=":registro:formInput"/>
-                        </p:commandButton>  
+                    <p:commandButton value="Limpiar" icon="ui-icon-star" action="/faces/Views/registrarAsistenciaEstudiante.xhtml" update=":registro:formInput">
+                        <p:resetInput target=":registro:formInput"/>
+                    </p:commandButton>  
                     <p:commandButton value="Añadir" icon="ui-icon-star" update=":registro:formInput" actionListener="#{RegistroAsistencia.agregarAsesoriaEstudiante()}">
-                            <p:resetInput target=":registro:formInput"/>
-                        </p:commandButton>
+                        <p:resetInput target=":registro:formInput"/>
+                    </p:commandButton>
 
-                        <p:ajaxExceptionHandler type="edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores" update="exceptionDialog" onexception="PF('exceptionDialog').show()" />
-                        <p:dialog id="exceptionDialog" header="Error" widgetVar="exceptionDialog">         
-                            <h3> #{pfExceptionHandler.message}</h3>
-                            Cierre la ventana para continuar
-                        </p:dialog>
+                    <p:ajaxExceptionHandler type="edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores" update="exceptionDialog" onexception="PF('exceptionDialog').show()" />
+                    <p:dialog id="exceptionDialog" header="Error" widgetVar="exceptionDialog">         
+                        <h3> #{pfExceptionHandler.message}</h3>
+                        Cierre la ventana para continuar
+                    </p:dialog>
                 </div>
                 <br/><br/>
                 <div id="table" style="width: 1000px; margin-left: -100px" >
-                    <p:outputPanel id="books">
-                        <p:dataTable value="#{collectorView.books}" var="book" id="booksTable">
+                    <p:growl id="msgs" showDetail="true"/>
+                    <p:dataTable value="#{collectorView.books}" var="book" id="regis" editable="true" editMode="cell">
+                        <p:ajax event="cellEdit" listener="#{dtEditView.onCellEdit}" update=":registro:msgs" />
+                        <p:column headerText="Codigo">
+                            <h:outputText value="#{book.title}"/>
+                        </p:column>
 
-                            <p:column headerText="Codigo">
-                                <h:outputText value="#{book.title}" />
-                            </p:column>
+                        <p:column headerText="Profesor">
+                            <f:facet name="header">
+                                <h:outputText value="Profesor" />
+                            </f:facet>
+                            <h:outputText value="#{book.author}" />
+                        </p:column>
 
-                            <p:column headerText="Profesor">
-                                <f:facet name="header">
-                                    <h:outputText value="Profesor" />
-                                </f:facet>
-                                <h:outputText value="#{book.author}" />
-                            </p:column>
+                        <p:column headerText="Temas">
 
-                            <p:column headerText="Temas">
-
-                            </p:column>
-                            <p:column headerText="Descripcion">
-                                <p:commandLink value="Descripcion" update=":form:registroE" process=":form:registroE">
-                                    <p:collector value="#{book}" removeFrom="#{collectorView.books}" unique="true"/>
-                                </p:commandLink>
-                            </p:column>
-                        </p:dataTable>
-                    </p:outputPanel>
+                        </p:column>
+                        <p:column headerText="Descripcion">
+                            <p:commandLink value="Descripcion" update=":form:registroE" process=":form:registroE">
+                                <p:collector value="#{book}" removeFrom="#{collectorView.books}" unique="true"/>
+                            </p:commandLink>
+                        </p:column>
+                    </p:dataTable>
                 </div>
             </div>
         </h:form>

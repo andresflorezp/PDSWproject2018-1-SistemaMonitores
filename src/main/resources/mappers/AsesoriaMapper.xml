@@ -46,7 +46,6 @@
             asesoriamonitor.inicio_asesoria as asm_inicio_asesoria,
             asesoriamonitor.fin_asesoria as asm_fin_asesoria,
             asesoriamonitor.ip_asesoria as asm_ip_asesoria,
-            asesoriamonitor.observaciones as asm_observaciones,
 
             estudiante.carnet,
             estudiante.nombre as es_nombre,
@@ -73,6 +72,16 @@
         </where>
 	
     </select>
+    
+    <insert parameterType="map" id="registroAsesoriaMonitor" useGeneratedKeys="true" keyProperty="asesoriaID">
+        INSERT INTO asesoriamonitor(inicio_asesoria,fin_asesoria,ip_asesoria,monitor_asesoria_id)
+        VALUES (now(),now(),#{Ip},#{monID})
+    </insert>
+    
+    <insert parameterType="map" id="registroAsesoriaEstudiante">
+        INSERT INTO asesoriaestudiante(asesoria_monitor_asesoriaid,estudiante_carnet,profesorestudianteid,observaciones)
+        VALUES (#{aseID},#{carnet},#{proID},#{obs})
+    </insert>
     
     <resultMap type="Asesoria" id="AsesoriaResult" >
         <id property="asesoriaID" column="asesoriaid"/>

@@ -68,7 +68,7 @@ public interface ServiciosSistemaMonitores {
      * @param monitorID
      * @throws ExcepcionSistemaMonitores 
      */
-    public void addAsesoria(int monitorID) throws ExcepcionSistemaMonitores;
+    public void addAsesoria(int monitorID, String ip) throws ExcepcionSistemaMonitores;
     
     /**
      * Agrega un registro de que un estudiante asistio a una monitoria.
@@ -76,7 +76,7 @@ public interface ServiciosSistemaMonitores {
      * @param estudianteCarnet
      * @throws ExcepcionSistemaMonitores 
      */
-    public void addAsesoriaEstudiante(int asesoriaID, int estudianteCarnet) throws ExcepcionSistemaMonitores;
+    public void addAsesoriaEstudiante(int asesoriaID, int codigoInt, String observaciones, Integer profesorID) throws ExcepcionSistemaMonitores;
     
    /**
     * @param materiaId identificador de la materia.
@@ -92,4 +92,13 @@ public interface ServiciosSistemaMonitores {
      * @throws ExcepcionSistemaMonitores si no existe el estudiante.
      */
     public Estudiante consultaEstudiante(long carnet) throws ExcepcionSistemaMonitores;
+    
+    /**
+     * Agrega un tema a una asesoria.
+     * @param monitorID identificador del monitor.
+     * @param codigoInt carnet del estudiante.
+     * @param temaID identificador del tema.
+     */
+    public void addTemaMonitoria(int monitorID, int codigoInt, Integer temaID) throws ExcepcionSistemaMonitores;
+
 }

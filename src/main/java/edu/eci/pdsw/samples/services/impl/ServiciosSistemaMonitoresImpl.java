@@ -10,6 +10,7 @@ import edu.eci.pdsw.sampleprj.dao.AsesoriaDAO;
 import edu.eci.pdsw.sampleprj.dao.EstudianteDAO;
 import edu.eci.pdsw.sampleprj.dao.GrupoDAO;
 import edu.eci.pdsw.sampleprj.dao.PersistenceException;
+import edu.eci.pdsw.sampleprj.dao.TemaDAO;
 import edu.eci.pdsw.samples.entities.Asesoria;
 import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Grupo;
@@ -37,8 +38,8 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores 
 //    @Inject
 //    private MateriaDAO daoMateria;
 //
-//    @Inject
-//    private TemaDAO daoTema;
+    @Inject
+    private TemaDAO daoTema;
 
     @Inject
     private EstudianteDAO daoEstudiante;
@@ -105,17 +106,30 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores 
     }
 
     @Override
-    public void addAsesoria(int monitorID) throws ExcepcionSistemaMonitores {
+    public void addAsesoria(int monitorID, String ip) throws ExcepcionSistemaMonitores {
         try {
-            daoAsesoria.registroAsesoriaMonitor(monitorID);
+            daoAsesoria.registroAsesoriaMonitor(monitorID, ip);
         } catch (PersistenceException ex) {
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }
     }
 
     @Override
-    public void addAsesoriaEstudiante(int asesoriaID, int estudianteCarnet) throws ExcepcionSistemaMonitores {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addAsesoriaEstudiante(int asesoriaID, int codigoInt, String observaciones, Integer profesorID) throws ExcepcionSistemaMonitores {
+        try {
+            daoAsesoria.registroAsesoriaEstudiante(asesoriaID, codigoInt, observaciones, profesorID);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public void addTemaMonitoria(int monitorID, int codigoInt, Integer temaID) throws ExcepcionSistemaMonitores {
+        try {
+            daoTema.registroTemaMonitoria(monitorID, codigoInt, temaID);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
     }
 
 }
