@@ -6,6 +6,7 @@
 package edu.eci.pdsw.sampleprj.dao;
 
 import edu.eci.pdsw.samples.entities.Materia;
+import java.util.List;
 
 /**
  *
@@ -16,6 +17,8 @@ public interface MateriaDAO {
     public void save(Materia materia) throws PersistenceException;
 
     public Materia load(int codigo) throws PersistenceException;
+
+    public List<Materia> loadAll() throws PersistenceException;
 
 }
 

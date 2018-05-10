@@ -49,9 +49,9 @@
             <div id="content"  >
                 <ui:insert name="content"> 
                     <h:form>
-                        <p:selectOneMenu id="materias" value="#{publicBean.materias}"
-                         effect="fade" var="t" style="width:160px" filter="true" filterMatchMode="startsWith">
-                            <f:selectItems value = "#{publicBean.materias}"  />
+                        <p:selectOneMenu id="materias" value="#{publicBean.nombresMaterias}" 
+                         effect="fade" var="mat" style="width:160px" filter="true" filterMatchMode="startsWith">
+                            <f:selectItems value = "#{publicBean.nombresMaterias}"  />
                         </p:selectOneMenu>
                         <p:layoutUnit position="north">
                             <h1 style="text-align: center;">Horario de Atencion</h1>

@@ -6,25 +6,23 @@
   
   
 <mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.MateriaMapper">
-    <select parameterType="map" id="consultarMateria" resultMap="MateriaResult">
+    <select parameterType="map" id="consultaMateriaGeneral" resultMap="MateriaResult">
         select
             materia.materia_id,
             materia.materia_nombre as m_nombre,
             materia.materia_nemonico as m_nemonico,
             materia.creditos as m_creditos,
             materia.horas_monitoria_curso as m_horas_monitoria_curso,
-
-            tema.temaID tema_temaID,
+            
+            tema.temaId,
             tema.topic as tema_topic,
-            tema.descripcion as tema_descripcion,
-
-            grupo.grupoID,
-            grupo.grupo_nombre as gr_grupo_nombre,
-            grupo.numeroEstudiante as gr_numeroestudiante,
-
+            tema.Descripcion as tema_Descripcion
+        
         FROM materia join tema on (tema.materia_materia_id = materia.materia_id)
-            join grupo on (grupo.materia_materia_id = materia.materia_id)
-        where materia.materia_id = #{codId}
+        <if test="codId != null" >
+            where materia.materia_id = #{codId}
+        </if>
+        
     </select>
 
 <!--    <insert id="insertarMateria" parameterType="map" useGeneratedKey="true" keyProperty="materia_id">

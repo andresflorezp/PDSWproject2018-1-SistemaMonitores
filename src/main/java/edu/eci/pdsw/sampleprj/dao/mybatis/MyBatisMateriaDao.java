@@ -6,8 +6,10 @@
 package edu.eci.pdsw.sampleprj.dao.mybatis;
 
 import edu.eci.pdsw.sampleprj.dao.MateriaDAO;
+import edu.eci.pdsw.sampleprj.dao.PersistenceException;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.MateriaMapper;
 import edu.eci.pdsw.samples.entities.Materia;
+import java.util.List;
 import javax.inject.Inject;
 /**
  *
@@ -33,5 +35,15 @@ public class MyBatisMateriaDao implements MateriaDAO{
         }catch(org.apache.ibatis.exceptions.PersistenceException e){
         }
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public List<Materia> loadAll() throws PersistenceException {
+        try{
+            return materiaMapper.consultarMaterias();
+        }catch(org.apache.ibatis.exceptions.PersistenceException e){
+            throw new PersistenceException("Error al consultar las materias"+e.getMessage());
+        }
+        
     }
 }

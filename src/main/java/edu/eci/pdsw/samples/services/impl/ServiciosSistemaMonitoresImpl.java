@@ -9,11 +9,13 @@ import com.google.inject.Inject;
 import edu.eci.pdsw.sampleprj.dao.AsesoriaDAO;
 import edu.eci.pdsw.sampleprj.dao.EstudianteDAO;
 import edu.eci.pdsw.sampleprj.dao.GrupoDAO;
+import edu.eci.pdsw.sampleprj.dao.MateriaDAO;
 import edu.eci.pdsw.sampleprj.dao.PersistenceException;
 import edu.eci.pdsw.sampleprj.dao.TemaDAO;
 import edu.eci.pdsw.samples.entities.Asesoria;
 import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Grupo;
+import edu.eci.pdsw.samples.entities.Materia;
 import edu.eci.pdsw.samples.entities.Profesor;
 import edu.eci.pdsw.samples.entities.Tema;
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
@@ -35,8 +37,8 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores 
     @Inject
     private GrupoDAO daoGrupo;
 //    
-//    @Inject
-//    private MateriaDAO daoMateria;
+    @Inject
+    private MateriaDAO daoMateria;
 //
     @Inject
     private TemaDAO daoTema;
@@ -127,6 +129,15 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores 
     public void addTemaMonitoria(int monitorID, int codigoInt, Integer temaID) throws ExcepcionSistemaMonitores {
         try {
             daoTema.registroTemaMonitoria(monitorID, codigoInt, temaID);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public List<Materia> loadMaterias() throws ExcepcionSistemaMonitores {
+        try {
+            return daoMateria.loadAll();
         } catch (PersistenceException ex) {
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }
