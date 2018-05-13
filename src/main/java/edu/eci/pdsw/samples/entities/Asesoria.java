@@ -18,28 +18,22 @@ public class Asesoria implements Serializable {
 
     private int asesoriaID;
     private Grupo grupo;
-    private List<Tema> temas;
-    private List<Estudiante> asistentes;
+    private List<AsesoriaEstudiante> asesoriasEstudiante;
     private Date fecha;
-    private String observaciones;
 
     public Asesoria() {
-        asistentes = new ArrayList<>();
     }
 
-    public Asesoria(int asesoriaID, Grupo grupo, Date fecha, List<Tema> temas, List<Estudiante> asistentes, String observaciones) {
+    public Asesoria(int asesoriaID, Grupo grupo, Date fecha, List<AsesoriaEstudiante> asesoriasEstudiante) {
         this.asesoriaID = asesoriaID;
         this.grupo = grupo;
-        this.temas = temas;
-        this.asistentes = asistentes;
+        this.asesoriasEstudiante = asesoriasEstudiante;
         this.fecha = fecha;
-        this.observaciones = observaciones;
     }
 
     @Override
     public String toString() {
-        return "Materia: " + grupo.getMateria().getNombre() + " Grupo: " + grupo.getGrupoNombre() + " Estudiantes " + asistentes.toString()+
-                " Temas: "+temas.toString();
+        return "Materia: " + grupo.getMateria().getNombre() + " Grupo: " + grupo.getGrupoNombre() + " Asesoria por Estudiante " + asesoriasEstudiante.toString();
     }
 
     public int getAsesoriaID() {
@@ -58,20 +52,12 @@ public class Asesoria implements Serializable {
         this.grupo = grupo;
     }
 
-    public List<Tema> getTemas() {
-        return temas;
+    public List<AsesoriaEstudiante> getAsesoriasEstudiante() {
+        return asesoriasEstudiante;
     }
 
-    public void setTemas(List<Tema> temas) {
-        this.temas = temas;
-    }
-
-    public List<Estudiante> getAsistentes() {
-        return asistentes;
-    }
-
-    public void setAsistentes(List<Estudiante> asistentes) {
-        this.asistentes = asistentes;
+    public void setAsesoriasEstudiante(List<AsesoriaEstudiante> asesoriasEstudiante) {
+        this.asesoriasEstudiante = asesoriasEstudiante;
     }
 
     public Date getFecha() {
@@ -82,12 +68,6 @@ public class Asesoria implements Serializable {
         this.fecha = fecha;
     }
 
-    public String getObservaciones() {
-        return observaciones;
-    }
-
-    public void setObservaciones(String observaciones) {
-        this.observaciones = observaciones;
-    }
+    
 
 }

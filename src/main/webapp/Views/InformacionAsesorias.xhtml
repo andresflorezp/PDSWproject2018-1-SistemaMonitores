@@ -25,14 +25,16 @@
                     <p:column headerText="Franja Horaria" filterBy="#{asesorias.grupo.horarioMonitor}" filterMatchMode="startsWith">
                         <h:outputText value="#{asesorias.grupo.horarioMonitor}"/>
                     </p:column>
-                    <p:column headerText="Tema" filterBy="#{asesorias.temas}" filterFunction="#{InformacionAsesorias.filtrar}">                                                                                                                                                                                                                                                                                 
-                        <p:repeat var="tem" value="#{asesorias.temas}" id="tema">
-                            <h:outputText value="■ #{tem.topic}"/>
-                            <br/>
+                    <p:column headerText="Tema" filterBy="#{asesorias.asesoriasEstudiante}" filterFunction="#{InformacionAsesorias.filtrar}">                                                                                                                                                                                                                                                                                 
+                        <p:repeat var="asesoria" value="#{asesorias.asesoriasEstudiante}" id="asesoriaEstTema">
+                            <p:repeat var="tem" value="#{asesoria.temas}" id="tema">
+                                <h:outputText value="■ #{tem.topic}"/>
+                                <br/>
+                            </p:repeat>
                         </p:repeat>
                     </p:column>
-                    <p:column headerText="Número de asistentes" filterBy="#{asesorias.asistentes.size()}" filterMatchMode="startsWith">
-                        <h:outputText value="#{asesorias.asistentes.size()}"/>
+                    <p:column headerText="Número de asistentes" filterBy="#{asesorias.asesoriasEstudiante.size()}" filterMatchMode="startsWith">
+                        <h:outputText value="#{asesorias.asesoriasEstudiante.size()}"/>
                     </p:column>
                 </p:dataTable>
             </div>

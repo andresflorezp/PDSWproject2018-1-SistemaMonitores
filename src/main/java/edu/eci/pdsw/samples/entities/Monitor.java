@@ -16,7 +16,7 @@ import java.lang.Exception;
  *
  * @author sergiort
  */
-public class Monitor extends Persona {
+public class Monitor extends Persona implements Comparable<Monitor>{
 
     private int semestreIngreso;
     private int programaAcademico;
@@ -45,5 +45,10 @@ public class Monitor extends Persona {
     @Override
     public String toString() {
         return getApellido()+" "+getNombre();
+    }
+
+    @Override
+    public int compareTo(Monitor o) {
+        return this.toString().compareTo(o.toString());
     }
 }

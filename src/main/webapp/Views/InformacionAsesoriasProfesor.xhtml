@@ -19,34 +19,50 @@
                     <f:facet name="header">
                         <h:outputText value="Consultar asistencia a las asesorías"/>
                     </f:facet>
-                    <p:column headerText="Materia" sortBy="#{asesorias.grupo.materia.nombre}" filterBy="#{asesorias.grupo.materia.nombre}" filterMatchMode="startsWith">
+                    <p:column headerText="Materia" sortBy="#{asesorias.grupo.materia.nombre}" filterBy="#{asesorias.grupo.materia.nombre}">
                         <h:outputText value="#{asesorias.grupo.materia.nombre}"/>
                     </p:column>
-                    <p:column headerText="Grupo" sortBy="#{asesorias.grupo.grupoNombre}" filterBy="#{asesorias.grupo.grupoNombre}" filterMatchMode="startsWith">
+                    <p:column headerText="Grupo" sortBy="#{asesorias.grupo.grupoNombre}" filterBy="#{asesorias.grupo.grupoNombre}">
                         <h:outputText value="#{asesorias.grupo.grupoNombre}"/>
                     </p:column>
-                    <p:column headerText="Monitor" sortBy="#{asesorias.grupo.monitor}" filterBy="#{asesorias.grupo.monitor}" filterMatchMode="startsWith">
+                    <p:column headerText="Monitor" sortBy="#{asesorias.grupo.monitor}" filterBy="#{asesorias.grupo.monitor}">
                         <h:outputText value="#{asesorias.grupo.monitor}"/>
                     </p:column>
-                    <p:column headerText="Estudiantes" filterBy="#{asesorias.asistentes}" filterFunction="#{InformacionAsistenciaProfesor.filtrarCarnet}">
-                        <p:repeat var="estudiante" value="#{asesorias.asistentes}" id="carnet" >
+                    <p:column headerText="Estudiantes" filterBy="#{asesorias.asesoriasEstudiante}">
+                        <p:repeat var="estudiante" value="#{asesorias.asesoriasEstudiante}" id="carnet" >
                             <p:panelGrid columns="2" style="width: 100%; border-style: hidden" columnClasses="leftcol top-alignment, rightcol top-alignment" >
-                                <h:outputText value="#{estudiante.carnet}"/>
-                                <h:outputText value="#{estudiante.nombre}"/>
+                                <h:outputText value="#{estudiante.asistente.carnet}"/>
+                                <h:outputText value="#{estudiante.asistente.nombre}"/>
                             </p:panelGrid>
-                        </p:repeat>
-                    </p:column>
-                    <p:column headerText="Temas" filterBy="#{asesorias.temas}" filterFunction="#{InformacionAsistenciaProfesor.filtrarTema}">                                                                                                                                                                                                                                                                                 
-                        <p:repeat var="tem" value="#{asesorias.temas}" id="tema">
-                            <h:outputText value="■ #{tem}"/>
-                            <br/>
                         </p:repeat>
                     </p:column>
                 </p:dataTable>
 
-                <p:dialog header="Descripcion asesoria" widgetVar="asesoriaDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" style="margin-right: 250px">
-                    <p:outputPanel id="asesoriaDetalle" style="text-align:center;">
-                        
+                <p:dialog header="Detalles de la asesoria" widgetVar="asesoriaDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" style="margin-right: 250px">
+                    <p:outputPanel id="asesoriaDetalle">
+                        <p:dataTable var="detalle" value="#{InformacionAsistenciaProfesor.selectedAsistencia.asesoriasEstudiante}" id="detalleasesoria" emptyMessage="No se encontraron asesorías">
+                            <f:facet name="header">
+                                <h:outputText value="Detalles de la asesoria"/>
+                            </f:facet>
+                            <p:column headerText="Profesor" sortBy="#{detalle.profesor.apellido}" filterBy="#{detalle.profesor.apellido}">
+                                <h:outputText value="#{detalle.profesor.apellido} #{detalle.profesor.nombre}"/>
+                            </p:column>
+                            <p:column headerText="Carnet" sortBy="#{detalle.asistente.carnet}" filterBy="#{detalle.asistente.carnet}">
+                                <h:outputText value="#{detalle.asistente.carnet}"/>
+                            </p:column>
+                            <p:column headerText="Nombre" sortBy="#{detalle.asistente.nombre}" filterBy="#{detalle.asistente.nombre}">
+                                <h:outputText value="#{detalle.asistente.nombre}"/>
+                            </p:column>
+                            <p:column headerText="Nombre" filterBy="#{detalle.temas}">
+                                <p:repeat var="tem" value="#{detalle.temas}" id="tema">
+                                    <h:outputText value="■ #{tem.topic}"/>
+                                    <br/>
+                                </p:repeat>
+                            </p:column>
+                            <p:column headerText="Observaciones" sortBy="#{detalle.observaciones}" filterBy="#{detalle.observaciones}">
+                                <h:outputText value="#{detalle.observaciones}"/>
+                            </p:column>
+                        </p:dataTable>
                     </p:outputPanel>
                 </p:dialog>
             </div>

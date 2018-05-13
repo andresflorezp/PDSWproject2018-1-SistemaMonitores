@@ -57,15 +57,6 @@ public class MyBatisAsesoriaDao implements AsesoriaDAO, Serializable {
     }
 
     @Override
-    public void registroAsesoriaEstudiante(int asesoriaID, int codigoInt, String observaciones, Integer profesorID) throws PersistenceException {
-        try {
-            asesoriaMapper.registroAsesoriaEstudiante(asesoriaID, codigoInt, observaciones, profesorID);
-        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
-            throw new PersistenceException("Error al realizar el registro de la Asesoria para el estudiante con Carnet: "+codigoInt +"\n"+e.getMessage());
-        }
-    }
-
-    @Override
     public List<Asesoria> consultaAsesoriasProfesor(Integer profesorID, Integer semestreID) throws PersistenceException {
         try {
             return asesoriaMapper.consultaAsesoriasProfesor(profesorID, semestreID);

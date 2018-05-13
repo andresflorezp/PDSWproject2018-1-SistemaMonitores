@@ -7,6 +7,7 @@ package edu.eci.pdsw.samples.services.impl;
 
 import com.google.inject.Inject;
 import edu.eci.pdsw.sampleprj.dao.AsesoriaDAO;
+import edu.eci.pdsw.sampleprj.dao.AsesoriaEstudianteDAO;
 import edu.eci.pdsw.sampleprj.dao.EstudianteDAO;
 import edu.eci.pdsw.sampleprj.dao.GrupoDAO;
 import edu.eci.pdsw.sampleprj.dao.PersistenceException;
@@ -45,6 +46,9 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
     @Inject
     private EstudianteDAO daoEstudiante;
 
+    @Inject
+    private AsesoriaEstudianteDAO daoAsesoriaEstudiante;
+    
     @Override
     public List<Asesoria> consultaAsesoriaMateria(Integer monitorID, Integer semestreID) throws ExcepcionSistemaMonitores {
         try {
@@ -89,7 +93,7 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
         try {
             List<Grupo> grupos = daoGrupo.loadGruposMateria(materiaId, semestreID);
             if (grupos.isEmpty()) {
-                throw new ExcepcionSistemaMonitores("Error materia con ID: " + materiaId + " sin grupos en el semestre con ID: " + semestreID + ".");
+                throw new ExcepcionSistemaMonitores("Error: materia con ID " + materiaId + " sin grupos en el semestre con ID " + semestreID + ".");
             }
             return grupos;
         } catch (PersistenceException ex) {
@@ -118,7 +122,7 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
     @Override
     public void addAsesoriaEstudiante(int asesoriaID, int codigoInt, String observaciones, Integer profesorID) throws ExcepcionSistemaMonitores {
         try {
-            daoAsesoria.registroAsesoriaEstudiante(asesoriaID, codigoInt, observaciones, profesorID);
+            daoAsesoriaEstudiante.registroAsesoriaEstudiante(asesoriaID, codigoInt, observaciones, profesorID);
         } catch (PersistenceException ex) {
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }

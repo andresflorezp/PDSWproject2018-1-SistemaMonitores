@@ -16,6 +16,7 @@
         <typeAlias type='edu.eci.pdsw.samples.entities.Tema' alias='Tema'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Asesoria' alias='Asesoria'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Estudiante' alias='Estudiante'/>
+        <typeAlias type='edu.eci.pdsw.samples.entities.AsesoriaEstudiante' alias='AsesoriaEstudiante'/>
     </typeAliases>          
     
     
@@ -40,6 +41,7 @@
         <mapper resource="mappers/TemaMapper.xml"/>
         <mapper resource="mappers/AsesoriaMapper.xml"/>
         <mapper resource="mappers/EstudianteMapper.xml"/>
+        <mapper resource="mappers/AsesoriaEstudianteMapper.xml"/>
     </mappers>
         
 </configuration>

@@ -8,11 +8,13 @@ package edu.eci.pdsw.samples.services;
 import static com.google.inject.Guice.createInjector;
 import com.google.inject.Injector;
 import edu.eci.pdsw.sampleprj.dao.AsesoriaDAO;
+import edu.eci.pdsw.sampleprj.dao.AsesoriaEstudianteDAO;
 import edu.eci.pdsw.sampleprj.dao.EstudianteDAO;
 import edu.eci.pdsw.sampleprj.dao.GrupoDAO;
 import edu.eci.pdsw.sampleprj.dao.MateriaDAO;
 import edu.eci.pdsw.sampleprj.dao.TemaDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisAsesoriaDao;
+import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisAsesoriaEstudianteDao;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisEstudianteDao;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisGrupoDao;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisMateriaDao;
@@ -42,6 +44,7 @@ public class ServiciosSistemaMonitoresFactory {
                 bind(AsesoriaDAO.class).to(MyBatisAsesoriaDao.class);
                 bind(TemaDAO.class).to(MyBatisTemaDao.class);
                 bind(GrupoDAO.class).to(MyBatisGrupoDao.class);
+                bind(AsesoriaEstudianteDAO.class).to(MyBatisAsesoriaEstudianteDao.class);
             }
         });
     }

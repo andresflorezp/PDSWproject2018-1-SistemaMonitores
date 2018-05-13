@@ -15,15 +15,18 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface AsesoriaMapper {
     
-    public List<Asesoria> consultaAsesoriasMonitor(@Param("monID") Integer monitorID,
-                                                   @Param("semID") Integer semestreID);
-    
     public void registroAsesoriaMonitor(@Param("monID") Integer monitorID,@Param("Ip") String ip);
+    
+    default List<Asesoria> consultaAsesoriasMonitor(Integer monitorID, Integer semestreID){
+        return consultaAsesoriasGeneral(monitorID, semestreID, true);
+    }
 
-    public void registroAsesoriaEstudiante(@Param("aseID") Integer asesoriaID,
-                                            @Param("carnet") Integer codigoInt, 
-                                            @Param("obs") String observaciones, 
-                                            @Param("proID") Integer profesorID);
-
-    public List<Asesoria> consultaAsesoriasProfesor(@Param("proID") Integer profesorID,@Param("semID") Integer semestreID);
+    default List<Asesoria> consultaAsesoriasProfesor(Integer profesorID, Integer semestreID){
+        return consultaAsesoriasGeneral(profesorID, semestreID, false);
+    }
+    
+    public List<Asesoria> consultaAsesoriasGeneral(@Param("perID") Integer personaID,
+                                                    @Param("semID") Integer semestreID,
+                                                    @Param("isMon") boolean isMonitor);
+    
 }

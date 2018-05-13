@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+                     
+<mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.AsesoriaEstudianteMapper">
+    
+    <insert parameterType="map" id="registroAsesoriaEstudiante">
+        INSERT INTO asesoriaestudiante(asesoria_monitor_asesoriaid,estudiante_carnet,profesorestudianteid,observaciones)
+        VALUES (#{aseID},#{carnet},#{proID},#{obs})
+    </insert>
+    
+    <resultMap type="AsesoriaEstudiante" id="AsesoriaEstudianteResult" >
+        <id property="asesoriaID" column="asesoriaid"/>
+        <id property="estudianteID" column="carnet"/>
+        <result property="observaciones" column="ase_observaciones"/>
+        <association property="asistente" javaType="Estudiante" resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.EstudianteMapper.EstudianteResult'/>
+        <association property="profesor" javaType="Profesor" resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ProfesorMapper.ProfesorResult'/>
+        <collection property="temas" ofType="Tema" resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TemaMapper.TemaResult'/>
+    </resultMap>
+</mapper>

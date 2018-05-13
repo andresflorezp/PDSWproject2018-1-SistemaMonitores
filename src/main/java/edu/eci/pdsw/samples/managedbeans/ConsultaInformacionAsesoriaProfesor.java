@@ -46,46 +46,7 @@ public class ConsultaInformacionAsesoriaProfesor implements Serializable {
     public void filtrar() throws ExcepcionSistemaMonitores {
         asesorias = new LazyAsesoriaDataModel(sp.consultaAsesoriaProfesor(profesorID, semestreID));
 //        asesorias = sp.consultaAsesoriaProfesor(profesorID, semestreID);
-        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "\nAns: " + asesorias);
-    }
-
-    public boolean filtrarTema(Object value, Object filter, Locale locale) {
-        String filterText = (filter == null) ? null : filter.toString().trim();
-        if (filterText == null || filterText.equals("")) {
-            return true;
-        }
-        if (value == null) {
-            return false;
-        }
-        List<Tema> temas = (List<Tema>) value;
-        boolean acepted = false;
-        for (Tema tema : temas) {
-            acepted |= tema.getTopic().startsWith(filterText);
-            if (acepted) {
-                break;
-            }
-        }
-        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "\nFiltra: ->" + filterText + "<- " + temas.toString() + " = " + acepted);
-        return acepted;
-    }
-    public boolean filtrarCarnet(Object value, Object filter, Locale locale) {
-        String filterText = (filter == null) ? null : filter.toString().trim();
-        if (filterText == null || filterText.equals("")) {
-            return true;
-        }
-        if (value == null) {
-            return false;
-        }
-        List<Estudiante> estudiantes = (List<Estudiante>) value;
-        boolean acepted = false;
-        for (Estudiante estudiante : estudiantes) {
-            acepted |= String.valueOf(estudiante.getCarnet()).startsWith(filterText);
-            if (acepted) {
-                break;
-            }
-        }
-        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "\nFiltra: ->" + filterText + "<- " + estudiantes.toString() + " = " + acepted);
-        return acepted;
+        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "\nAns: {0}", asesorias);
     }
     
     public void onRowSelect(SelectEvent event) {
@@ -100,7 +61,7 @@ public class ConsultaInformacionAsesoriaProfesor implements Serializable {
     public void setAsesorias(LazyDataModel<Asesoria> asesorias) {
         this.asesorias = asesorias;
     }
-
+    
     public Asesoria getSelectedAsistencia() {
         return selectedAsistencia;
     }

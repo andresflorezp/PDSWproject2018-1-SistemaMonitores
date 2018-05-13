@@ -15,6 +15,8 @@ import java.util.List;
 public interface AsesoriaDAO {
 
     public List<Asesoria> consultaAsesoriasMonitor(Integer monitorID, Integer semestreID) throws PersistenceException;
+    
+    public List<Asesoria> consultaAsesoriasProfesor(Integer profesorID, Integer semestreID)throws PersistenceException;
 
     public Asesoria load(long id) throws PersistenceException;
 
@@ -24,7 +26,4 @@ public interface AsesoriaDAO {
     
     public void registroAsesoriaMonitor(Integer monitorID, String ip) throws PersistenceException;
 
-    public void registroAsesoriaEstudiante(int asesoriaID, int codigoInt, String observaciones, Integer profesorID) throws PersistenceException;
-
-    public List<Asesoria> consultaAsesoriasProfesor(Integer profesorID, Integer semestreID)throws PersistenceException;
 }
