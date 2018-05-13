@@ -73,7 +73,7 @@ public class RegistrarAsistEstudianteBean implements Serializable {
 //        sp.addAsesoria(monitorID,getIp());
 //        asesoriaActual =;
     }
-
+    
     public void agregarAsesoriaEstudiante() throws ExcepcionSistemaMonitores {
         Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, (codigos == null) + "");
         for (String codigo : codigos) {
