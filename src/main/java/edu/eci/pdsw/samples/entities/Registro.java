@@ -14,31 +14,31 @@ import java.io.Serializable;
  */
 
 public class Registro implements Serializable{
-    private String Fecha;
-    private String Materia;
+    private String fecha;
+    private String materia;
     
     public Registro(){
     }
     
-    public Registro(String Fecha,String Materia){
-        this.Fecha=Fecha;
-        this.Materia=Materia;
+    public Registro(String fecha,String materia){
+        this.fecha=fecha;
+        this.materia=materia;
         
     }
     public String getFecha() {
-        return Fecha;
+        return fecha;
     }
 
     public void setFecha(String Fecha) {
-        this.Fecha = Fecha;
+        this.fecha = Fecha;
     }
 
     public String getMateria() {
-        return Materia;
+        return materia;
     }
 
     public void setMateria(String Materia) {
-        this.Materia = Materia;
+        this.materia = Materia;
     }
 
 }
