@@ -8,7 +8,9 @@ package edu.eci.pdsw.samples.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -20,7 +22,7 @@ public class Asesoria implements Serializable {
     private Grupo grupo;
     private List<AsesoriaEstudiante> asesoriasEstudiante;
     private Date fecha;
-
+    private Set<Tema> temas;
     public Asesoria() {
     }
 
@@ -34,6 +36,16 @@ public class Asesoria implements Serializable {
     @Override
     public String toString() {
         return "Materia: " + grupo.getMateria().getNombre() + " Grupo: " + grupo.getGrupoNombre() + " Asesoria por Estudiante " + asesoriasEstudiante.toString();
+    }
+
+    public Set<Tema> getTemas() {
+        temas = new HashSet();
+        for (AsesoriaEstudiante aEstudiante : asesoriasEstudiante) {
+            for (Tema tema : aEstudiante.getTemas()) {
+                temas.add(tema);
+            }
+        }
+        return temas;
     }
 
     public int getAsesoriaID() {
@@ -67,7 +79,5 @@ public class Asesoria implements Serializable {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-
-    
 
 }

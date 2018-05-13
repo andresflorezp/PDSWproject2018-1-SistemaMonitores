@@ -49,6 +49,26 @@ public class ConsultaInformacionAsesoriaProfesor implements Serializable {
         Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "\nAns: {0}", asesorias);
     }
     
+    public boolean filtrar(Object value, Object filter, Locale locale) {
+        String filterText = (filter == null) ? null : filter.toString().trim();
+        if (filterText == null || filterText.equals("")) {
+            return true;
+        }
+        if (value == null) {
+            return false;
+        }
+        List<Tema> temas = (List<Tema>) value;
+        boolean acepted = false;
+        for (Tema tema : temas) {
+            acepted |= tema.getTopic().startsWith(filterText);
+            if (acepted) {
+                break;
+            }
+        }
+        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "\nFiltra: ->" + filterText + "<- " + temas.toString() + " = " + acepted);
+        return acepted;
+    }
+    
     public void onRowSelect(SelectEvent event) {
         FacesMessage msg = new FacesMessage("Asesoria Selected", String.valueOf(( (Asesoria) event.getObject()).getAsesoriaID() ));
         FacesContext.getCurrentInstance().addMessage(null, msg);

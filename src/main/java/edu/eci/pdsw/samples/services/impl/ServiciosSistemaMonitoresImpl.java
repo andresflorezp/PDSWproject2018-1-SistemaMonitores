@@ -50,7 +50,7 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
     private AsesoriaEstudianteDAO daoAsesoriaEstudiante;
     
     @Override
-    public List<Asesoria> consultaAsesoriaMateria(Integer monitorID, Integer semestreID) throws ExcepcionSistemaMonitores {
+    public List<Asesoria> consultaAsesoriaMonitor(Integer monitorID, Integer semestreID) throws ExcepcionSistemaMonitores {
         try {
             return daoAsesoria.consultaAsesoriasMonitor(monitorID, semestreID);
         } catch (PersistenceException ex) {

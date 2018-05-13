@@ -25,7 +25,7 @@ public interface ServiciosSistemaMonitores {
      * @return Consulta las asesorias dadas por in monitor en un semestre.
      * @throws ExcepcionSistemaMonitores 
      */
-    public abstract List<Asesoria> consultaAsesoriaMateria(Integer monitorID, Integer semestreID) throws ExcepcionSistemaMonitores;
+    public abstract List<Asesoria> consultaAsesoriaMonitor(Integer monitorID, Integer semestreID) throws ExcepcionSistemaMonitores;
     
     /**
      * 

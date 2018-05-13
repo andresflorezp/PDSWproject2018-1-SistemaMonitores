@@ -7,21 +7,21 @@ package edu.eci.pdsw.samples.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * ||
  *
  * @author Tatiana
  */
-public class Tema implements Serializable{
-
+public class Tema implements Serializable {
 
     private int temaId;
     private String topic;
     private List<String> topics;
     private String descripcion;
-    
-    public Tema(){
+
+    public Tema() {
     }
 
     public Tema(int temaId, String topic, List<String> topics, String descripcion) {
@@ -35,7 +35,23 @@ public class Tema implements Serializable{
     public String toString() {
         return topic;
     }
-    
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Tema) {
+            return this.getTemaId() == ((Tema) obj).getTemaId();
+        } else {
+            return super.equals(obj);
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + this.temaId;
+        return hash;
+    }
+
     public int getTemaId() {
         return temaId;
     }
