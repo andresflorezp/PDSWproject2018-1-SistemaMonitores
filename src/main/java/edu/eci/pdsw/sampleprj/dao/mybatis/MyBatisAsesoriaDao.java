@@ -10,13 +10,14 @@ import edu.eci.pdsw.sampleprj.dao.AsesoriaDAO;
 import edu.eci.pdsw.sampleprj.dao.PersistenceException;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.AsesoriaMapper;
 import edu.eci.pdsw.samples.entities.Asesoria;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author sergiort
  */
-public class MyBatisAsesoriaDao implements AsesoriaDAO {
+public class MyBatisAsesoriaDao implements AsesoriaDAO, Serializable {
 
     @Inject
     private AsesoriaMapper asesoriaMapper;

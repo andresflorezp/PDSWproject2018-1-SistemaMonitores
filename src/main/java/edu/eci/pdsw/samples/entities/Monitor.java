@@ -16,16 +16,15 @@ import java.lang.Exception;
  *
  * @author sergiort
  */
-
-public class Monitor extends Persona{
+public class Monitor extends Persona {
 
     private int semestreIngreso;
     private int programaAcademico;
     private List<Grupo> grupos;//No va
-     
-    public Monitor(){
+
+    public Monitor() {
     }
-    
+
     public Monitor(int codigoID, String nombre, String apellido, String correo, long telefono, int semestreIngreso, int programaAcademico) {
         super(codigoID, nombre, apellido, correo, telefono);
         this.programaAcademico = programaAcademico;
@@ -41,5 +40,10 @@ public class Monitor extends Persona{
             throw new ExcepcionSistemaMonitores("no se puede adicionar mas de dos grupos a un monitor");
         }
 
+    }
+
+    @Override
+    public String toString() {
+        return getApellido()+" "+getNombre();
     }
 }

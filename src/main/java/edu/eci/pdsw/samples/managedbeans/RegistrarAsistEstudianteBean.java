@@ -1,6 +1,5 @@
 package edu.eci.pdsw.samples.managedbeans;
 
-import edu.eci.pdsw.samples.entities.Asesoria;
 import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Tema;
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
@@ -14,7 +13,6 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,7 +29,7 @@ public class RegistrarAsistEstudianteBean implements Serializable {
 
     ServiciosSistemaMonitores sp = ServiciosSistemaMonitoresFactory.getInstance().getServiciosSistemaMonitores();
 
-    private final int monitorID = 2; //temporal se supone se sabe de el login.
+    private final int monitorID = 1; //temporal se supone se sabe de el login.
     private int asesoriaID = 2; //temporal se supone se sabe de el login.
 
     private List<String> codigos;
@@ -99,7 +97,7 @@ public class RegistrarAsistEstudianteBean implements Serializable {
             temas.put(t.getTopic(), t.getTemaId());
         }
     }
-
+    
     public List<String> getTemasSelected() {
         return temasSelected;
     }

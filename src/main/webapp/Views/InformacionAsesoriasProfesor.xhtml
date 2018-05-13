@@ -12,29 +12,43 @@
             <br/>
             <div id="tabla">
                 <p:dataTable var="asesorias" value="#{InformacionAsistenciaProfesor.asesorias}" id="asesoria" style="width: 1000px; margin-left: 10px"
-                             emptyMessage="No se encontraron asesorías">
+                             emptyMessage="No se encontraron asesorías" paginator="true"  rows="10" rowsPerPageTemplate="10,25,50" selectionMode="single"
+                             paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                             selection="#{InformacionAsistenciaProfesor.selectedAsistencia}" lazy="true">
+                    <p:ajax event="rowSelect" listener="#{InformacionAsistenciaProfesor.onRowSelect}" update=":form:asesoriaDetalle" oncomplete="PF('asesoriaDialog').show()" />
                     <f:facet name="header">
                         <h:outputText value="Consultar asistencia a las asesorías"/>
                     </f:facet>
-                    <p:column headerText="Materia" filterBy="#{asesorias.grupo.materia.nombre}" filterMatchMode="startsWith">
+                    <p:column headerText="Materia" sortBy="#{asesorias.grupo.materia.nombre}" filterBy="#{asesorias.grupo.materia.nombre}" filterMatchMode="startsWith">
                         <h:outputText value="#{asesorias.grupo.materia.nombre}"/>
                     </p:column>
-                    <p:column headerText="Grupo" filterBy="#{asesorias.grupo.grupoNombre}" filterMatchMode="startsWith">
+                    <p:column headerText="Grupo" sortBy="#{asesorias.grupo.grupoNombre}" filterBy="#{asesorias.grupo.grupoNombre}" filterMatchMode="startsWith">
                         <h:outputText value="#{asesorias.grupo.grupoNombre}"/>
                     </p:column>
-                    <p:column headerText="Carnet" filterBy="#{asesorias.asistentes}" filterFunction="#{InformacionAsistenciaProfesor.filtrarCarnet}">
-                        <p:repeat var="asi" value="#{asesorias.asistentes}" id="car" >
-                            <h:outputText value="■ #{asi.carnet}"/>
-                            <br/>
+                    <p:column headerText="Monitor" sortBy="#{asesorias.grupo.monitor}" filterBy="#{asesorias.grupo.monitor}" filterMatchMode="startsWith">
+                        <h:outputText value="#{asesorias.grupo.monitor}"/>
+                    </p:column>
+                    <p:column headerText="Estudiantes" filterBy="#{asesorias.asistentes}" filterFunction="#{InformacionAsistenciaProfesor.filtrarCarnet}">
+                        <p:repeat var="estudiante" value="#{asesorias.asistentes}" id="carnet" >
+                            <p:panelGrid columns="2" style="width: 100%; border-style: hidden" columnClasses="leftcol top-alignment, rightcol top-alignment" >
+                                <h:outputText value="#{estudiante.carnet}"/>
+                                <h:outputText value="#{estudiante.nombre}"/>
+                            </p:panelGrid>
                         </p:repeat>
                     </p:column>
-                    <p:column headerText="Tema" filterBy="#{asesorias.temas}" filterFunction="#{InformacionAsistenciaProfesor.filtrarTema}">                                                                                                                                                                                                                                                                                 
+                    <p:column headerText="Temas" filterBy="#{asesorias.temas}" filterFunction="#{InformacionAsistenciaProfesor.filtrarTema}">                                                                                                                                                                                                                                                                                 
                         <p:repeat var="tem" value="#{asesorias.temas}" id="tema">
-                            <h:outputText value="■ #{tem.topic}"/>
+                            <h:outputText value="■ #{tem}"/>
                             <br/>
                         </p:repeat>
                     </p:column>
                 </p:dataTable>
+
+                <p:dialog header="Descripcion asesoria" widgetVar="asesoriaDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" style="margin-right: 250px">
+                    <p:outputPanel id="asesoriaDetalle" style="text-align:center;">
+                        
+                    </p:outputPanel>
+                </p:dialog>
             </div>
         </h:form>
     </ui:define>

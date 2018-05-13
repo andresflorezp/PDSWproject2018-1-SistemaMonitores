@@ -8,12 +8,13 @@ package edu.eci.pdsw.sampleprj.dao.mybatis;
 import edu.eci.pdsw.sampleprj.dao.MateriaDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.MateriaMapper;
 import edu.eci.pdsw.samples.entities.Materia;
+import java.io.Serializable;
 import javax.inject.Inject;
 /**
  *
  * @author tatiana
  */
-public class MyBatisMateriaDao implements MateriaDAO{
+public class MyBatisMateriaDao implements MateriaDAO, Serializable {
     @Inject
     private MateriaMapper materiaMapper;
     

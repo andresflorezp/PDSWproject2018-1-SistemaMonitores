@@ -10,13 +10,14 @@ import edu.eci.pdsw.sampleprj.dao.MonitorDAO;
 import edu.eci.pdsw.sampleprj.dao.PersistenceException;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.MonitorMapper;
 import edu.eci.pdsw.samples.entities.Monitor;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author tatiana
  */
-public class MyBatisMonitorDAO implements MonitorDAO{
+public class MyBatisMonitorDAO implements MonitorDAO, Serializable {
     
     @Inject
     private MonitorMapper monitorMapper;

@@ -14,20 +14,19 @@ import java.util.List;
  *
  * @author sergiort
  */
+public class Asesoria implements Serializable {
 
-public class Asesoria implements Serializable{
-    
     private int asesoriaID;
     private Grupo grupo;
     private List<Tema> temas;
     private List<Estudiante> asistentes;
     private Date fecha;
     private String observaciones;
-    
-    public Asesoria(){
-        asistentes=new ArrayList<>();
+
+    public Asesoria() {
+        asistentes = new ArrayList<>();
     }
-    
+
     public Asesoria(int asesoriaID, Grupo grupo, Date fecha, List<Tema> temas, List<Estudiante> asistentes, String observaciones) {
         this.asesoriaID = asesoriaID;
         this.grupo = grupo;
@@ -35,6 +34,12 @@ public class Asesoria implements Serializable{
         this.asistentes = asistentes;
         this.fecha = fecha;
         this.observaciones = observaciones;
+    }
+
+    @Override
+    public String toString() {
+        return "Materia: " + grupo.getMateria().getNombre() + " Grupo: " + grupo.getGrupoNombre() + " Estudiantes " + asistentes.toString()+
+                " Temas: "+temas.toString();
     }
 
     public int getAsesoriaID() {
@@ -84,5 +89,5 @@ public class Asesoria implements Serializable{
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
-    
+
 }

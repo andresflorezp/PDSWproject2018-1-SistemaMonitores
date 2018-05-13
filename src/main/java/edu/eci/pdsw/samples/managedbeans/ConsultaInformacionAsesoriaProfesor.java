@@ -5,6 +5,7 @@
  */
 package edu.eci.pdsw.samples.managedbeans;
 
+import edu.eci.pdsw.samples.dataModel.LazyAsesoriaDataModel;
 import edu.eci.pdsw.samples.entities.Asesoria;
 import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Tema;
@@ -16,8 +17,12 @@ import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.model.LazyDataModel;
 
 /**
  *
@@ -31,14 +36,16 @@ public class ConsultaInformacionAsesoriaProfesor implements Serializable {
 
     private final int profesorID = 5; //temporal se supone se sabe de el login.
     private final int semestreID = 1; //temporal se supone se sabe de el login.
-    private List<Asesoria> asesorias;
+    private LazyDataModel<Asesoria> asesorias;
+    private Asesoria selectedAsistencia;
 
     public ConsultaInformacionAsesoriaProfesor() throws ExcepcionSistemaMonitores {
         filtrar();
     }
-
+    
     public void filtrar() throws ExcepcionSistemaMonitores {
-        asesorias = sp.consultaAsesoriaProfesor(profesorID, semestreID);
+        asesorias = new LazyAsesoriaDataModel(sp.consultaAsesoriaProfesor(profesorID, semestreID));
+//        asesorias = sp.consultaAsesoriaProfesor(profesorID, semestreID);
         Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "\nAns: " + asesorias);
     }
 
@@ -80,13 +87,26 @@ public class ConsultaInformacionAsesoriaProfesor implements Serializable {
         Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "\nFiltra: ->" + filterText + "<- " + estudiantes.toString() + " = " + acepted);
         return acepted;
     }
-
-    public List<Asesoria> getAsesorias() {
+    
+    public void onRowSelect(SelectEvent event) {
+        FacesMessage msg = new FacesMessage("Asesoria Selected", String.valueOf(( (Asesoria) event.getObject()).getAsesoriaID() ));
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    
+    public LazyDataModel<Asesoria> getAsesorias() {
         return asesorias;
     }
 
-    public void setAsesorias(List<Asesoria> asesorias) {
+    public void setAsesorias(LazyDataModel<Asesoria> asesorias) {
         this.asesorias = asesorias;
+    }
+
+    public Asesoria getSelectedAsistencia() {
+        return selectedAsistencia;
+    }
+
+    public void setSelectedAsistencia(Asesoria selectedAsistencia) {
+        this.selectedAsistencia = selectedAsistencia;
     }
     
     

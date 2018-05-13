@@ -45,6 +45,22 @@
     margin: 0px 170px 0px 170px;
 }
 
+.leftcol {
+     width: 35%;
+}
+
+.rightcol {
+     width: 65%;
+}
+
+.top-alignment {
+     vertical-align: top;
+}
+
+.chips-short > .ui-chips-container{
+    width: 100%;
+}
+
 #top a:link, #top a:visited {
   color: white;
   font-weight : bold;

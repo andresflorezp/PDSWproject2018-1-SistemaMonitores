@@ -29,7 +29,7 @@ public class Estudiante implements Serializable{
 
     @Override
     public String toString() {
-        return nombre;
+        return String.format("%s %d", nombre,carnet);
     }
     
     public long getCarnet() {

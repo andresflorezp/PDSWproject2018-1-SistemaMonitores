@@ -9,13 +9,14 @@ import edu.eci.pdsw.sampleprj.dao.PersistenceException;
 import edu.eci.pdsw.sampleprj.dao.TemaDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TemaMapper;
 import edu.eci.pdsw.samples.entities.Tema;
+import java.io.Serializable;
 import javax.inject.Inject;
 
 /**
  *
  * @author tatiana
  */
-public class MyBatisTemaDao implements TemaDAO{
+public class MyBatisTemaDao implements TemaDAO, Serializable{
     
     @Inject
     private TemaMapper temaMapper;

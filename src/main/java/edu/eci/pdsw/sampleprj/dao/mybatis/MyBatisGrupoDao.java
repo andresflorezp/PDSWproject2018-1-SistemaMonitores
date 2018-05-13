@@ -10,13 +10,14 @@ import edu.eci.pdsw.sampleprj.dao.GrupoDAO;
 import edu.eci.pdsw.sampleprj.dao.PersistenceException;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.GrupoMapper;
 import edu.eci.pdsw.samples.entities.Grupo;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author SergioRt
  */
-public class MyBatisGrupoDao implements GrupoDAO {
+public class MyBatisGrupoDao implements GrupoDAO, Serializable {
 
     @Inject
     private GrupoMapper grupoMapper;
