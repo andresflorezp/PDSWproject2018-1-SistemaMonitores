@@ -6,6 +6,10 @@
 package edu.eci.pdsw.samples.managedbeans;
 
 import edu.eci.pdsw.samples.entities.Horario;
+import edu.eci.pdsw.samples.entities.Materia;
+import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
+import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
+import edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +23,10 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean(name = "publicBean")
 @SessionScoped
 public class publicManagedBean implements Serializable{
+    ServiciosSistemaMonitores sp = ServiciosSistemaMonitoresFactory.getInstance().getServiciosSistemaMonitores();
+    private String materia;
+
+    
     private List<Horario> horarios;
     private List<String> lunes;
     private List<String> martes;
@@ -26,13 +34,15 @@ public class publicManagedBean implements Serializable{
     private List<String> jueves;
     private List<String> viernes;
     private List<String> sabado;
-    private List<String> materias;
+    private List<Materia> materias;
+    private List<String> nombresMaterias;
+
     
+
     
-    public publicManagedBean() {
-        materias = new ArrayList<>();
-        materias.add("Proceso de Desarrollo de Software");
-        materias.add("Arquitectura Empresarial");
+    public publicManagedBean() throws ExcepcionSistemaMonitores {
+        nombresMaterias = new ArrayList<>();
+        loadMateria();
         horarios = new ArrayList<>();
         ArrayList<String> aux = new ArrayList<>();
         aux.add("700-830");
@@ -56,15 +66,37 @@ public class publicManagedBean implements Serializable{
             
         }
     }
+    public List<String> getNombresMaterias() {
+        for(Materia val: materias){
+            nombresMaterias.add(val.getNombre());            
+        }
+        return nombresMaterias;
+    }
+
+    public void setNombresMaterias(List<String> nombresMaterias) {
+        this.nombresMaterias = nombresMaterias;
+    }
+    public String getMateria() {
+        return materia;
+    }
+
+    public void setMateria(String materia) {
+        this.materia = materia;
+    }
     
-    public List<String> getMaterias(){
+    private void loadMateria() throws ExcepcionSistemaMonitores{
+        materias = sp.loadMaterias();
+    }
+
+    public List<Materia> getMaterias() {
         return materias;
     }
 
-    public void setMaterias(List<String> materias){
+    public void setMaterias(List<Materia> materias) {
         this.materias = materias;
-
     }
+    
+    
     public List<String> getLunes() {
         return lunes;
     }
@@ -121,6 +153,7 @@ public class publicManagedBean implements Serializable{
         this.horarios = horarios;
     }
 
+    
  
 
     

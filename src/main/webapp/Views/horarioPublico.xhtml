@@ -4,7 +4,6 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet name="css/default.css"/>
@@ -13,7 +12,6 @@
         <h:outputStylesheet name="css/StyleButton.css"/>
         <title>HorarioAtencion</title>
     </h:head>
-
     <h:body>
         <h:form>
             <div>
@@ -45,13 +43,12 @@
             </div>
             <br/>
             <br/>
- 
             <div id="content"  >
                 <ui:insert name="content"> 
                     <h:form>
-                        <p:selectOneMenu id="materias" value="#{publicBean.materias}"
-                         effect="fade" var="t" style="width:160px" filter="true" filterMatchMode="startsWith">
-                            <f:selectItems value = "#{publicBean.materias}"  />
+                        <p:selectOneMenu id="materias" value="#{publicBean.nombresMaterias}" 
+                         effect="fade" var="mat" style="width:160px" filter="true" filterMatchMode="startsWith">
+                            <f:selectItems value = "#{publicBean.nombresMaterias}"  />
                         </p:selectOneMenu>
                         <p:layoutUnit position="north">
                             <h1 style="text-align: center;">Horario de Atencion</h1>
@@ -88,5 +85,4 @@
         </div>
             </h:form>
     </h:body>
-
 </html>

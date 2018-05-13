@@ -8,6 +8,7 @@ package edu.eci.pdsw.samples.services;
 import edu.eci.pdsw.samples.entities.Asesoria;
 import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Grupo;
+import edu.eci.pdsw.samples.entities.Materia;
 import edu.eci.pdsw.samples.entities.Profesor;
 import edu.eci.pdsw.samples.entities.Tema;
 import java.util.Date;
@@ -108,5 +109,10 @@ public interface ServiciosSistemaMonitores {
      * @param temaID identificador del tema.
      */
     public void addTemaMonitoria(int monitorID, int codigoInt, Integer temaID) throws ExcepcionSistemaMonitores;
+    
+    /**
+     * Metodo con el cual se cargan todas las materias       
+     */
+    public List<Materia> loadMaterias() throws ExcepcionSistemaMonitores;
 
 }
