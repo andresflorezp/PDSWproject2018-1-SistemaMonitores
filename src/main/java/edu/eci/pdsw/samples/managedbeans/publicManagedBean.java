@@ -13,7 +13,9 @@ import edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
@@ -27,21 +29,15 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class publicManagedBean implements Serializable {
 
-    ServiciosSistemaMonitores sp = ServiciosSistemaMonitoresFactory.getInstance().getServiciosSistemaMonitores();
-    private String materia;
-
+    ServiciosSistemaMonitores sp = ServiciosSistemaMonitoresFactory.getInstance().getServiciosSistemaMonitores();  
+    private Map<String, Materia> mapMaterias;
     private List<Horario> horarios;
-    private List<String> lunes;
-    private List<String> martes;
-    private List<String> miercoles;
-    private List<String> jueves;
-    private List<String> viernes;
-    private List<String> sabado;
     private List<Materia> materias;
     private List<String> nombresMaterias;
-    private String NombreMateriaSelected;
+    private String nombreMateriaSelected;
 
     public publicManagedBean() throws ExcepcionSistemaMonitores {
+        mapMaterias = new HashMap<>();
         nombresMaterias = new ArrayList<>();
         loadMateria();
         horarios = new ArrayList<>();
@@ -55,28 +51,39 @@ public class publicManagedBean implements Serializable {
         aux.add("1600-1730");
         aux.add("1730-1900");
         for (int i = 0; i < 8; i++) {
-            if (i == 1) {
-                horarios.add(new Horario(aux.get(i), "C1-205", "", "", "", "", "", "PDSW"));
-            } else if (i == 4) {
-                horarios.add(new Horario(aux.get(i), "", "", "C1-205", "", "", "", "PDSW"));
-            } else {
-                horarios.add(new Horario(aux.get(i), "", "", "", "", "", "", ""));
-
-            }
-
+            horarios.add(new Horario(aux.get(i), "", "", "", "", "", "", ""));
         }
     }
-
     public void consultar() {
-        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "Entro");
-    }
+        horarios.clear();
+        ArrayList<String> aux = new ArrayList<>();
+        aux.add("700-830");
+        aux.add("830-1000");
+        aux.add("1000-1130");
+        aux.add("1130-1300");
+        aux.add("1300-1430");
+        aux.add("1430-1600");
+        aux.add("1600-1730");
+        aux.add("1730-1900");
+        String a = "1lunes,martes,miercoles,jueves,viernes,sabado]2lunes,martes,miercoles,jueves,viernes,sabado]3lunes,martes,miercoles,jueves,viernes,sabado]4lunes,martes,miercoles,jueves,viernes,sabado]5lunes,martes,miercoles,jueves,viernes,sabado]6lunes,martes,miercoles,jueves,viernes,sabado]7lunes,martes,miercoles,jueves,viernes,sabado]8lunes,martes,miercoles,jueves,viernes,sabado]";
+        String[] b = a.split("]");
+        for (int i = 0; i < 8; i++) {
+            String[] horario = b[i].split(",");
+            if(i<4){
+                horarios.add(new Horario(aux.get(i), horario[0], horario[1],horario[2],horario[3],horario[4],horario[5],mapMaterias.get(nombreMateriaSelected).getMemoico()));
+            }else{
+                horarios.add(new Horario(aux.get(i), horario[0], horario[1],horario[2],horario[3],horario[4],"",mapMaterias.get(nombreMateriaSelected).getMemoico()));  
+            }
+            
+            }
+        }
 
     public String getNombreMateriaSelected() {
-        return NombreMateriaSelected;
+        return nombreMateriaSelected;
     }
 
     public void setNombreMateriaSelected(String NombreMateriaSelected) {
-        this.NombreMateriaSelected = NombreMateriaSelected;
+        this.nombreMateriaSelected = NombreMateriaSelected;
     }
 
     public List<String> getNombresMaterias() {
@@ -89,17 +96,11 @@ public class publicManagedBean implements Serializable {
     public void setNombresMaterias(List<String> nombresMaterias) {
         this.nombresMaterias = nombresMaterias;
     }
-
-    public String getMateria() {
-        return materia;
-    }
-
-    public void setMateria(String materia) {
-        this.materia = materia;
-    }
-
     private void loadMateria() throws ExcepcionSistemaMonitores {
         materias = sp.loadMaterias();
+        for (int i =0; i<materias.size();i++){
+            mapMaterias.put(materias.get(i).getNombre(), materias.get(i));
+        }
     }
 
     public List<Materia> getMaterias() {
@@ -109,55 +110,6 @@ public class publicManagedBean implements Serializable {
     public void setMaterias(List<Materia> materias) {
         this.materias = materias;
     }
-
-    public List<String> getLunes() {
-        return lunes;
-    }
-
-    public void setLunes(List<String> lunes) {
-        this.lunes = lunes;
-    }
-
-    public List<String> getMartes() {
-        return martes;
-    }
-
-    public void setMartes(List<String> martes) {
-        this.martes = martes;
-    }
-
-    public List<String> getMiercoles() {
-        return miercoles;
-    }
-
-    public void setMiercoles(List<String> miercoles) {
-        this.miercoles = miercoles;
-    }
-
-    public List<String> getJueves() {
-        return jueves;
-    }
-
-    public void setJueves(List<String> jueves) {
-        this.jueves = jueves;
-    }
-
-    public List<String> getViernes() {
-        return viernes;
-    }
-
-    public void setViernes(List<String> viernes) {
-        this.viernes = viernes;
-    }
-
-    public List<String> getSabado() {
-        return sabado;
-    }
-
-    public void setSabado(List<String> sabado) {
-        this.sabado = sabado;
-    }
-
     public List<Horario> getHorarios() {
         return horarios;
     }
