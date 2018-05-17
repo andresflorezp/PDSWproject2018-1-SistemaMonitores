@@ -191,4 +191,14 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
         }
     }
 
+    @Override
+    public List<HashMap> consultaTema() throws ExcepcionSistemaMonitores {
+        try{
+            return daoMonitor.consultaTema();
+        }
+        catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
 }

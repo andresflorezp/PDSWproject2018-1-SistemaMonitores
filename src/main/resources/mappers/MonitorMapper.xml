@@ -29,6 +29,15 @@
         GROUP BY grupo.grupoid
     </select>
     
+    <select parameterType="map" id="consultaTema" resultType="hashmap" >
+        SELECT COUNT(*) as numero_monitorias, tema.topic as tema
+        FROM monitor,asesoriamonitor,asesoriaestudiante,estudiante,grupo,semestre,materia,profesor,tema
+        WHERE monitor.codigo_id=asesoriamonitor.monitor_asesoria_id and asesoriaestudiante.asesoria_monitor_asesoriaid=asesoriamonitor.asesoriaid and 
+        asesoriaestudiante.estudiante_carnet=estudiante.carnet and grupo.semestre_semestre_id=semestre.semestre_id and grupo.materia_materia_id=materia.materia_id
+        and grupo.profesor_profesor_id=profesor.profesorid and tema.materia_materia_id=materia.materia_id
+        GROUP BY tema
+    </select>
+    
     <resultMap type="Monitor" id="MonitorResult" >
         <id property="codigoID" column="codigo_id"/>
         <result property="nombre" column="mo_nombres"/>

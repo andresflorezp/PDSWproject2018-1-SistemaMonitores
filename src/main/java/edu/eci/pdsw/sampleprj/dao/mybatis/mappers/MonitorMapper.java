@@ -28,5 +28,6 @@ public interface MonitorMapper {
     public List<HashMap> consultaMonitorias();
     public List<HashMap> consultaCurso();
     public List<HashMap> consultaGrupo();
+    public List<HashMap> consultaTema();
     
 }

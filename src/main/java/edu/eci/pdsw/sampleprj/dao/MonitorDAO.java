@@ -25,4 +25,6 @@ public interface MonitorDAO {
     public List<HashMap> consultaCurso() throws PersistenceException;
     
     public List<HashMap> consultaGrupo() throws PersistenceException;
+    
+    public List<HashMap> consultaTema() throws PersistenceException;
 }

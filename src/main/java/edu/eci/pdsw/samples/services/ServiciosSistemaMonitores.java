@@ -120,6 +120,7 @@ public interface ServiciosSistemaMonitores {
     
     public List<HashMap> consultaMonitorias() throws ExcepcionSistemaMonitores;
     public List<HashMap> consultaCurso() throws ExcepcionSistemaMonitores;
-    public List<HashMap> consultaGrupo() throws ExcepcionSistemaMonitores; 
+    public List<HashMap> consultaGrupo() throws ExcepcionSistemaMonitores;
+    public List<HashMap> consultaTema() throws ExcepcionSistemaMonitores; 
 
 }
