@@ -6,7 +6,9 @@
 package edu.eci.pdsw.sampleprj.dao.mybatis.mappers;
 
 import edu.eci.pdsw.samples.entities.Monitor;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -23,5 +25,8 @@ public interface MonitorMapper {
     public void agregarMonitor(@Param("carnet") long carnet,@Param("nombre") String nombre);
     
     public List<Monitor> consultarMonitorr(@Param("carnet") Long carnet);
+    public List<HashMap> consultaMonitorias();
+    public List<HashMap> consultaCurso();
+    public List<HashMap> consultaGrupo();
     
 }
