@@ -48,16 +48,19 @@ public class ConsultaInformacionAsesoriaProfesor implements Serializable {
     private BarChartModel asistencia_Monitorias_Monitor;
     
     private BarChartModel asistencia_Monitorias_curso;
+    private BarChartModel asistencia_Monitorias_grupo;
     
     private  Axis yAxis;
     private List<HashMap> queryAsistenciaMonitoria;
     private List<HashMap> queryCursoMonitoria;
+    private List<HashMap> queryGrupoMonitoria;
     private ServiciosSistemaMonitores servicios;
 
     public ConsultaInformacionAsesoriaProfesor() throws ExcepcionSistemaMonitores {
         servicios = getInstance().getServiciosSistemaMonitores();
         queryAsistenciaMonitoria = servicios.consultaMonitorias();
         queryCursoMonitoria = servicios.consultaCurso();
+        queryGrupoMonitoria = servicios.consultaGrupo();
         filtrar();
         init();
     }
@@ -111,6 +114,14 @@ public class ConsultaInformacionAsesoriaProfesor implements Serializable {
         yAxis.setMin(0);
         yAxis.setMax(200);
         
+        asistencia_Monitorias_grupo = initBarModelGrupo();
+        asistencia_Monitorias_grupo.setTitle("Asistencia por Grupo Monitorias");
+        asistencia_Monitorias_grupo.setAnimate(true);
+        asistencia_Monitorias_grupo.setLegendPosition("ECI");
+        yAxis = asistencia_Monitorias_grupo.getAxis(AxisType.Y);
+        yAxis.setMin(0);
+        yAxis.setMax(200);
+        
     }
     private BarChartModel initBarModelAsistencia() {
         BarChartModel model = new BarChartModel();
@@ -138,6 +149,23 @@ public class ConsultaInformacionAsesoriaProfesor implements Serializable {
            long numeroMonitorias = (long) queryCursoMonitoria.get(i).get("numero_monitorias");
            charts.get(i).setLabel((String) queryCursoMonitoria.get(i).get("curso"));
            charts.get(i).set("Cursos",numeroMonitorias);
+           model.addSeries(charts.get(i));
+        }
+        return model;
+    }
+    
+    private BarChartModel initBarModelGrupo() {
+        BarChartModel model = new BarChartModel();
+
+        ArrayList<ChartSeries> charts = new ArrayList();
+        for(int i=0;i<queryCursoMonitoria.size();i++){
+            charts.add(new ChartSeries());
+        }
+        for(int i=0;i<queryCursoMonitoria.size();i++){
+           long numeroMonitorias = (long) queryCursoMonitoria.get(i).get("numero_monitorias");
+           //long numeroGrupo = (long) queryCursoMonitoria.get(i).get("grupo");
+           charts.get(i).setLabel("grupo"+(i+1));
+           charts.get(i).set("grupos",numeroMonitorias);
            model.addSeries(charts.get(i));
         }
         return model;
@@ -178,6 +206,14 @@ public class ConsultaInformacionAsesoriaProfesor implements Serializable {
 
     public void setAsistencia_Monitorias_curso(BarChartModel asistencia_Monitorias_curso) {
         this.asistencia_Monitorias_curso = asistencia_Monitorias_curso;
+    }
+
+    public BarChartModel getAsistencia_Monitorias_grupo() {
+        return asistencia_Monitorias_grupo;
+    }
+
+    public void setAsistencia_Monitorias_grupo(BarChartModel asistencia_Monitorias_grupo) {
+        this.asistencia_Monitorias_grupo = asistencia_Monitorias_grupo;
     }
     
     
