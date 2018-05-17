@@ -37,6 +37,9 @@ public class MonitorBean implements Serializable{
     private int numberMinute;
     private int numberSecond;
     
+    private boolean iniciarMonitoria=false;
+    private boolean terminarMonitoria=false;
+    
     private String horas,minutos,segundos;
     private boolean showDo;
     private boolean showDoT;
@@ -227,5 +230,22 @@ public class MonitorBean implements Serializable{
       showDoT=true;
     }
     
+    
+    public void start(){
+        while (numberMinute<100){
+            iniciarMonitoria=true;
+        }
+    }
+      
+    public void salir(){
+        if(numberMinute==100 && terminarMonitoria==true){
+            messageLogOut();
+        }
+        else if(numberMinute<100 && terminarMonitoria==false){
+            messageLogOut();
+        }else if(numberMinute>110){
+            messageLogOut();
+        }
+     }
     
 }

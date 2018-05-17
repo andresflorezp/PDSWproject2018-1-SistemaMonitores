@@ -1,0 +1,72 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 17, 2018, 12:45:47 PM
+    Author     : Tatiana
+*/
+
+* {
+    margin:0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    background:#F0F0F0;
+    background-size:cover;
+    color:#fff;
+    font-size: 16px;
+}
+
+.wrap {
+    width: 90%;
+    max-width: 1000px;
+}
+
+.widget {
+    width: 40%;
+    margin: 2em;
+    /*margin:32px; */
+}
+
+.widget p {
+    display: inline-block; /* para qie sesten consecutivos*/
+    line-height: 1em;
+}
+
+.fecha {
+    /*font-family: Oswald, Arial;*/
+    text-align: center;
+    font-size:1.5em;
+    margin-bottom: 0.3125rem;
+    /*margin-bottom: 5px;*/
+    background: rgba(0,0,0,.5);
+    padding: 20px;
+    width: 100%;
+}
+
+.reloj {
+    /*font-family: Oswald, Arial;*/
+    width: 100%;
+    padding: 20px;
+    font-size: 4em;
+    text-align: center;
+    background: rgba(0,0,0,.5);/*negro con transparecia*/
+}
+
+.reloj .caja-segundos {
+    display: inline-block;/*colocar de forma horizontal*/
+}
+
+.reloj .segundos,
+.reloj .ampm {
+    font-size: 2rem;/*colocar de forma horizontal*/
+    display: block;
+}
+
+/*https://www.youtube.com/watch?v=IowfM4bkyb8*/
