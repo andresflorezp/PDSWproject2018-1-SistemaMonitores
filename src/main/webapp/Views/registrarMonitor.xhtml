@@ -14,29 +14,29 @@
                 </p:layoutUnit>
                 <p:layoutUnit  position="center">
                     <h:panelGrid columns="2" cellpadding="5">
-                        <h:outputLabel for="id" value="Codigo:" />
-                        <p:inputText id="id" required="true" />
+                        <h:outputLabel for="codigo" value="Codigo:" />
+                        <p:inputText id="codigo" required="true" value = "#{monitorBean.codigo}"/>
              
                         <h:outputLabel for="nombre" value="Nombres:" />
-                        <p:inputText id="nombre" required="true" />
+                        <p:inputText id="nombre" required="true"  value="#{monitorBean.nombres}"/>
 
                         <h:outputLabel for="apellidos" value="Apellidos:" />
-                        <p:inputText id="apellidos" required="true" />
+                        <p:inputText id="apellidos" required="true" value="#{monitorBean.apellidos}"/>
                          
                         <h:outputLabel for="mail" value="Mail:" />
-                        <p:inputText id="mail" required="true" /> 
+                        <p:inputText id="mail" required="true" value="#{monitorBean.mail}" /> 
 
-                        <h:outputLabel for="semestrei" value="Semestre Ingreso:" />
-                        <p:inputText id="semestrei" required="true" />
+                        <h:outputLabel for="semestreIngreso" value="Semestre Ingreso:" />
+                        <p:inputText id="semestreIngreso" required="true"  value="#{monitorBean.semestreIngreso}"/>
 
-                        <h:outputLabel for="programa" value="Facultad:" />
-                        <p:inputText id="programa" required="true" />
+                        <h:outputLabel for="facultad" value="Facultad:" />
+                        <p:inputText id="facultad" required="true"  value="#{monitorBean.facultad}"/>
 
                         <h:outputLabel for="telefono" value="Telefono:" />
-                        <p:inputText id="telefono"  />   
+                        <p:inputText id="telefono" value="#{monitorBean.telefono}" />   
                     </h:panelGrid>
                     <div>
-                        <p:commandButton value="Registrar" />
+                        <p:commandButton value="Registrar" actionListener="#{monitorBean.registrarMonitor()}"/>
                     </div> 
                 </p:layoutUnit>
             </h:form>
