@@ -12,25 +12,25 @@
                 <p:layoutUnit position="north">
                     <h1 style="text-align: center;">Registrar Docente</h1>
                 </p:layoutUnit>
-                <p:layoutUnit  position="center">
+                <p:layoutUnit  position="center" >
                     <h:panelGrid columns="2" cellpadding="5">
                         <h:outputLabel for="id" value="Identificacion:" />
-                        <p:inputText id="id" required="true" />
+                        <p:inputText id="id" required="true" value="#{profesorBean.identificacion}"/>
              
                         <h:outputLabel for="nombre" value="Nombres:" />
-                        <p:inputText id="nombre" required="true" />
+                        <p:inputText id="nombre" required="true" value="#{profesorBean.nombres}" />
 
                         <h:outputLabel for="apellidos" value="Apellidos:" />
-                        <p:inputText id="apellidos" required="true" />
+                        <p:inputText id="apellidos" required="true" value="#{profesorBean.apellidos}"/>
                          
                         <h:outputLabel for="mail" value="Mail:" />
-                        <p:inputText id="mail" required="true" /> 
+                        <p:inputText id="mail" required="true" value="#{profesorBean.mail}" /> 
 
                         <h:outputLabel for="telefono" value="Telefono:" />
-                        <p:inputText id="telefono"  />   
+                        <p:inputText id="telefono" value="#{profesorBean.telefono}" />   
                     </h:panelGrid>
                     <div>
-                        <p:commandButton value="Registrar" />
+                        <p:commandButton value="Registrar" actionListener="#{profesorBean.registrarProfesor()}" />
                     </div> 
                 </p:layoutUnit>
             </h:form>
