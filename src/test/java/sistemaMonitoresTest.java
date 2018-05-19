@@ -22,7 +22,6 @@
 //import static org.quicktheories.QuickTheory.qt;
 //import static org.quicktheories.generators.Generate.*;
 //import static org.quicktheories.generators.SourceDSL.*;
-//
 ///**
 // *
 // * @author rafaeljimenez
