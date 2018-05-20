@@ -5,13 +5,14 @@
  */
 package edu.eci.pdsw.samples.entities;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author sergiort
  */
-public class AsesoriaEstudiante {
+public class AsesoriaEstudiante implements Serializable{
     
     private int asesoriaID;
     private int estudianteID;

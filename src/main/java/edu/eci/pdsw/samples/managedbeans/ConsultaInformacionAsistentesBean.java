@@ -5,111 +5,89 @@
  */
 package edu.eci.pdsw.samples.managedbeans;
 
+import edu.eci.pdsw.samples.dataModel.LazyAsesoriaDataModel;
 import edu.eci.pdsw.samples.entities.Asesoria;
-import edu.eci.pdsw.samples.entities.Registro;
+import edu.eci.pdsw.samples.entities.Tema;
+import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
+import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
+import static edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory.getInstance;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
+import static java.lang.String.valueOf;
 import java.util.List;
+import java.util.Locale;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import static javax.faces.context.FacesContext.getCurrentInstance;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.model.LazyDataModel;
 
 /**
  *
  * @author sergiort
  */
-@ManagedBean(name = "InformacionAsistentes")
+@ManagedBean(name = "InformacionAsistentesProfesor")
 @SessionScoped
 public class ConsultaInformacionAsistentesBean  implements Serializable{
     
-    private String[] selectedFiltro;
-    private List<String> optionsFiltro;
-    private List<String> selectedOptions;
-    private List<Asesoria> asesorias;
-    private List<Registro> registros;
-    private String Materia;
-    private String Fecha;
+    ServiciosSistemaMonitores sp = getInstance().getServiciosSistemaMonitores();
+
+    private final int profesorID = 5; //temporal se supone se sabe de el login.
+    private final int semestreID = 1; //temporal se supone se sabe de el login.
+    private LazyDataModel<Asesoria> asesorias;
+    private Asesoria selectedAsistencia;
     
-    public ConsultaInformacionAsistentesBean(){
-        registros=new ArrayList<>();
-        optionsFiltro = new ArrayList<>();
-        optionsFiltro.add("Monitor");
-        optionsFiltro.add("Carnet");
-        optionsFiltro.add("Tema");
-        optionsFiltro.add("Profesor");
-        optionsFiltro.add("Materia");
-        optionsFiltro.add("Grupo");
-        optionsFiltro.add("Fecha");
-    }
-
-    public String getMateria() {
-        return Materia;
-    }
-
-    public void setMateria(String Materia) {
-        this.Materia = Materia;
-    }
-
-    public String getFecha() {
-        return Fecha;
-    }
-
-    public void setFecha(String Fecha) {
-        this.Fecha = Fecha;
+    public ConsultaInformacionAsistentesBean() throws ExcepcionSistemaMonitores {
+        filtrar();
     }
     
-    public void filtrar(){
-        getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(SEVERE,"Filtro:"+Arrays.toString(selectedFiltro) + "\nArgumentos:"+selectedOptions.toString());     
+    public void filtrar() throws ExcepcionSistemaMonitores {
+        asesorias = new LazyAsesoriaDataModel(sp.consultaAsistentesProfesor(profesorID, semestreID));
+//        asesorias = sp.consultaAsesoriaProfesor(profesorID, semestreID);
+        getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(SEVERE, "\nAns: {0}", asesorias);
     }
-    public String[] getSelectedFiltro(){
-        return selectedFiltro;
+    
+    public boolean filtrar(Object value, Object filter, Locale locale) {
+        String filterText = (filter == null) ? null : filter.toString().trim();
+        if (filterText == null || filterText.equals("")) {
+            return true;
+        }
+        if (value == null) {
+            return false;
+        }
+        List<Tema> temas = (List<Tema>) value;
+        boolean acepted = false;
+        for (Tema tema : temas) {
+            acepted |= tema.getTopic().startsWith(filterText);
+            if (acepted) {
+                break;
+            }
+        }
+        getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(SEVERE, "\nFiltra: ->" + filterText + "<- " + temas.toString() + " = " + acepted);
+        return acepted;
     }
-
-    public void setSelectedFiltro(String[] selectedFiltro) {
-        this.selectedFiltro = selectedFiltro;
+    
+    public void onRowSelect(SelectEvent event) {
+        FacesMessage msg = new FacesMessage("Asesoria Selected", valueOf(( (Asesoria) event.getObject()).getAsesoriaID() ));
+        getCurrentInstance().addMessage(null, msg);
     }
-
-    public List<String> getOptionsFiltro() {
-        return optionsFiltro;
-    }
-
-    public void setOptionsFiltro(List<String> optionsFiltro) {
-        this.optionsFiltro = optionsFiltro;
-    }
-
-    public List<String> getSelectedOptions() {
-        return selectedOptions;
-    }
-
-    public void setSelectedOptions(List<String> selectedOptions) {
-        this.selectedOptions = selectedOptions;
-    }
-
-    public List<Asesoria> getAsesorias() {
+    
+    public LazyDataModel<Asesoria> getAsesorias() {
         return asesorias;
     }
 
-    public void setAsesorias(List<Asesoria> asesorias) {
+    public void setAsesorias(LazyDataModel<Asesoria> asesorias) {
         this.asesorias = asesorias;
     }
-    public List<Registro> getRegistros() {
-        return registros;
+    
+    public Asesoria getSelectedAsistencia() {
+        return selectedAsistencia;
     }
 
-    public void setRegistros(List<Registro> registros) {
-        this.registros = registros;
+    public void setSelectedAsistencia(Asesoria selectedAsistencia) {
+        this.selectedAsistencia = selectedAsistencia;
     }
-    public void guardarRegistro(){
-        registros.add(new Registro(Fecha, Materia));
-        
-    }
-    
-    public void mirarRegistros(){
-         getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(SEVERE,"Filtro:"+registros+ "\nArgumentos:"+selectedOptions.toString());     
-        
-    }
-    
     
 }

@@ -55,9 +55,9 @@
             estudiante.grupo as es_grupo
     
 	from materia join grupo on (materia_id=grupo.materia_materia_id) 
-	    left join semestre on (semestre.semestre_id=grupo.semestre_semestre_id)
-	    left join monitor on (monitor.codigo_id=grupo.monitor_codigo_id)
-	    left join profesor on (profesorid=profesor_profesor_id)
+	    join semestre on (semestre.semestre_id=grupo.semestre_semestre_id)
+	    join monitor on (monitor.codigo_id=grupo.monitor_codigo_id)
+	    join profesor on (profesorid=profesor_profesor_id)
 	    join asesoriamonitor on (monitor.codigo_id=asesoriamonitor.monitor_asesoria_id)
 	    join asesoriaestudiante on (asesoriamonitor.asesoriaid=asesoriaestudiante.asesoria_monitor_asesoriaid)
 	    left join estudiante on (estudiante.carnet=asesoriaestudiante.estudiante_carnet)
@@ -82,6 +82,76 @@
 	
     </select>   
    
+   <select parameterType="map" id="consultaAsistentesProfesor" resultMap="AsesoriaResult">
+        select 
+            profesor.profesorid,
+            profesor.nombres as pr_nombres,
+            profesor.apellidos as pr_apellidos,
+            profesor.correo as pr_correo,
+            profesor.telefono as pr_telefono,
+
+            materia.materia_id,
+            materia.materia_nombre as m_nombre,
+            materia.materia_nemonico as m_nemonico,
+            materia.creditos as m_creditos,
+            materia.horas_monitoria_curso as m_horas_monitoria_curso,
+
+            semestre.semestre_id,
+            date_part('year',semestre."year") as se_year,
+            semestre.periodo_academico as se_periodo_academico,
+            semestre.fechainicio as se_fechainicio,
+            semestre.fechafin as se_fechafin,
+
+            grupo.grupoid,
+            grupo.grupo_nombre as gr_grupo_nombre,
+            grupo.numeroestudiante as gr_numeroestudiante,
+            grupo.horario_monitor as gr_horario_monitor,
+
+            monitor.codigo_id,
+            monitor.nombres as mo_nombres,
+            monitor.apellidos as mo_apellidos,
+            monitor.correo as mo_correo,
+            monitor.telefono as mo_telefono,
+            monitor.semestreingreso as mo_semestreingreso,
+            monitor.programa_academico as mo_programa_academico,
+
+            asesoriamonitor.asesoriaid,
+            asesoriamonitor.inicio_asesoria as asm_inicio_asesoria,
+            asesoriamonitor.fin_asesoria as asm_fin_asesoria,
+            asesoriamonitor.ip_asesoria as asm_ip_asesoria,
+
+            asesoriaestudiante.observaciones as ase_observaciones,
+
+            estudiante.carnet,
+            estudiante.nombre as es_nombre,
+            estudiante.grupo as es_grupo,
+
+            tema.temaid,
+            tema.topic as tm_topic,
+            tema.descripcion as tm_descripcion
+
+    from profesor join asesoriaestudiante on (profesorid=asesoriaestudiante.profesorestudianteid) 
+        left join estudiante on (estudiante.carnet=asesoriaestudiante.estudiante_carnet)
+        join asesoriamonitor on (asesoriaestudiante.asesoria_monitor_asesoriaid=asesoriamonitor.asesoriaid)
+        join monitor on (asesoriamonitor.monitor_asesoria_id=monitor.codigo_id)
+        left join grupo on (grupo.profesor_profesor_id=profesorid)
+        join semestre on (semestre.semestre_id=grupo.semestre_semestre_id)
+        join materia on (materia.materia_id=grupo.materia_materia_id)
+        left join temamonitoria on (temamonitoria.asesoriaestudiante_asesoria_monitor_asesoriaid = asesoriaestudiante.asesoria_monitor_asesoriaid
+                                            and temamonitoria.asesoriaestudiante_estudiante_carnet = asesoriaestudiante.estudiante_carnet)
+        left join tema on (temamonitoria.tema_temaid=tema.temaid)
+
+        <where>
+            <if test="proID != null">
+                profesor.profesorid = #{proID}
+            </if>
+                
+            <if test="semID != null">
+                AND semestre.semestre_id = #{semID}
+            </if>
+        </where>
+	
+    </select> 
    
     <insert parameterType="map" id="registroAsesoriaMonitor" useGeneratedKeys="true" keyProperty="asesoriaID">
         INSERT INTO asesoriamonitor(inicio_asesoria,fin_asesoria,ip_asesoria,monitor_asesoria_id)

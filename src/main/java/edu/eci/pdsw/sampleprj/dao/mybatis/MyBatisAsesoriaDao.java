@@ -64,5 +64,14 @@ public class MyBatisAsesoriaDao implements AsesoriaDAO, Serializable {
             throw new PersistenceException("Error al realizar la consulta de la Asesoria para el prpfesor con ID: "+profesorID+" en el semestre: "+ semestreID +"\n"+e.getMessage() );
         }
     }
+
+    @Override
+    public List<Asesoria> consultarAsistentesProfesor(Integer profesorID, Integer semestreID) throws PersistenceException {
+        try {
+            return asesoriaMapper.consultaAsistentesProfesor(profesorID, semestreID);
+        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+            throw new PersistenceException("Error al realizar la consulta de la Asesoria para el prpfesor con ID: "+profesorID+" en el semestre: "+ semestreID +"\n"+e.getMessage() );
+        }
+    }
     
 }

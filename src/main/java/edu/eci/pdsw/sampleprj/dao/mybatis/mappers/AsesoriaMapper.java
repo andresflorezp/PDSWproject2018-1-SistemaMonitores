@@ -29,4 +29,6 @@ public interface AsesoriaMapper {
                                                     @Param("semID") Integer semestreID,
                                                     @Param("isMon") boolean isMonitor);
     
+    public List<Asesoria> consultaAsistentesProfesor(@Param("proID") Integer profesorID,@Param("semID") Integer semestreID);
+    
 }

@@ -1,4 +1,4 @@
-<ui:composition template="./../Templeates/plantilla.xhtml"
+<ui:composition template="./../Templeates/plantillaProfesor.xhtml"
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
@@ -15,7 +15,7 @@
 
                         <p:panel id="asistencia" header="Asistencia">
                             <h:panelGrid columns="1" cellpadding="10" >
-                                <p:chart type="bar" model="#{InformacionAsistenciaProfesor.asistencia_Monitorias_Monitor}" style="width:400px;height:300px" widgetVar="char1"/>
+                                <p:chart type="bar" model="#{chartView.asistencia_Monitorias_Monitor}" style="width:400px;height:300px" widgetVar="char1"/>
                                 <p:commandLink onclick="exportChartInPDF1()">
                                     <p:graphicImage name="/Imagenes/pdf.png" width="40"/>
                                 </p:commandLink>
@@ -26,7 +26,7 @@
                         <p:panel id="curso" header="Curso">
 
                             <h:panelGrid columns="1" cellpadding="10">
-                                <p:chart type="bar" model="#{InformacionAsistenciaProfesor.asistencia_Monitorias_curso}" style="width:400px;height:300px" widgetVar="char2"/>
+                                <p:chart type="bar" model="#{chartView.asistencia_Monitorias_curso}" style="width:400px;height:300px" widgetVar="char2"/>
                                 <p:commandLink onclick="exportChartInPDF2()">
                                     <p:graphicImage name="/Imagenes/pdf.png" width="40"/>
                                 </p:commandLink>
@@ -37,7 +37,7 @@
                         <p:panel id="grupo" header="Grupo">
 
                             <h:panelGrid columns="1" cellpadding="10">
-                                <p:chart type="bar" model="#{InformacionAsistenciaProfesor.asistencia_Monitorias_grupo}" style="width:400px;height:300px" widgetVar="char3"/>
+                                <p:chart type="bar" model="#{chartView.asistencia_Monitorias_grupo}" style="width:400px;height:300px" widgetVar="char3"/>
                                 <p:commandLink onclick="exportChartInPDF3()">
                                     <p:graphicImage name="/Imagenes/pdf.png" width="40"/>
                                 </p:commandLink>
@@ -47,7 +47,7 @@
                         <p:panel id="tema" header="Tema">
 
                             <h:panelGrid columns="1" cellpadding="10">
-                                <p:chart type="bar" model="#{InformacionAsistenciaProfesor.asistencia_Monitorias_Tema}" style="width:400px;height:300px" widgetVar="char4"/>
+                                <p:chart type="bar" model="#{chartView.asistencia_Monitorias_Tema}" style="width:400px;height:300px" widgetVar="char4"/>
                                 <p:commandLink onclick="exportChartInPDF4()">
                                     <p:graphicImage name="/Imagenes/pdf.png" width="40"/>
                                 </p:commandLink>

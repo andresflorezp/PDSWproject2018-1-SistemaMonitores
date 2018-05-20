@@ -110,6 +110,8 @@ public interface ServiciosSistemaMonitores {
     
     /**
      * Metodo con el cual se cargan todas las materias       
+     * @throws ExcepcionSistemaMonitores
+     * @return 
      */
     public List<Materia> loadMaterias() throws ExcepcionSistemaMonitores;
     
@@ -117,5 +119,7 @@ public interface ServiciosSistemaMonitores {
     public List<HashMap> consultaCurso() throws ExcepcionSistemaMonitores;
     public List<HashMap> consultaGrupo() throws ExcepcionSistemaMonitores;
     public List<HashMap> consultaTema() throws ExcepcionSistemaMonitores; 
+
+    public List<Asesoria> consultaAsistentesProfesor(int profesorID, int semestreID) throws ExcepcionSistemaMonitores;
 
 }

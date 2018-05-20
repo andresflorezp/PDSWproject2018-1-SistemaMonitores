@@ -26,4 +26,6 @@ public interface AsesoriaDAO {
 
     public void registroAsesoriaMonitor(Integer monitorID, String ip) throws PersistenceException;
 
+    public List<Asesoria> consultarAsistentesProfesor(Integer profesorID, Integer semestreID) throws PersistenceException;
+
 }

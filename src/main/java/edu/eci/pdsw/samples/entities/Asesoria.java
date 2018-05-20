@@ -22,6 +22,7 @@ public class Asesoria implements Serializable {
     private List<AsesoriaEstudiante> asesoriasEstudiante;
     private Date fecha;
     private Set<Tema> temas;
+
     public Asesoria() {
     }
 
