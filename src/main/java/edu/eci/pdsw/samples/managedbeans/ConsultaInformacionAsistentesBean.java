@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
+import static java.util.logging.Level.SEVERE;
 import java.util.logging.Logger;
+import static java.util.logging.Logger.getLogger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -61,7 +63,7 @@ public class ConsultaInformacionAsistentesBean  implements Serializable{
     }
     
     public void filtrar(){
-        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE,"Filtro:"+Arrays.toString(selectedFiltro) + "\nArgumentos:"+selectedOptions.toString());     
+        getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(SEVERE,"Filtro:"+Arrays.toString(selectedFiltro) + "\nArgumentos:"+selectedOptions.toString());     
     }
     public String[] getSelectedFiltro(){
         return selectedFiltro;
@@ -107,7 +109,7 @@ public class ConsultaInformacionAsistentesBean  implements Serializable{
     }
     
     public void mirarRegistros(){
-         Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE,"Filtro:"+registros+ "\nArgumentos:"+selectedOptions.toString());     
+         getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(SEVERE,"Filtro:"+registros+ "\nArgumentos:"+selectedOptions.toString());     
         
     }
     

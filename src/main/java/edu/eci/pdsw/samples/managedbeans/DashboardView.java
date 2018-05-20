@@ -1,9 +1,11 @@
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
+import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import static javax.faces.context.FacesContext.getCurrentInstance;
  
 import org.primefaces.event.CloseEvent;
 import org.primefaces.event.DashboardReorderEvent;
@@ -49,7 +51,7 @@ public class DashboardView implements Serializable {
      
     public void handleReorder(DashboardReorderEvent event) {
         FacesMessage message = new FacesMessage();
-        message.setSeverity(FacesMessage.SEVERITY_INFO);
+        message.setSeverity(SEVERITY_INFO);
         message.setSummary("Reordered: " + event.getWidgetId());
         message.setDetail("Item index: " + event.getItemIndex() + ", Column index: " + event.getColumnIndex() + ", Sender index: " + event.getSenderColumnIndex());
          
@@ -57,19 +59,19 @@ public class DashboardView implements Serializable {
     }
      
     public void handleClose(CloseEvent event) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Panel Closed", "Closed panel id:'" + event.getComponent().getId() + "'");
+        FacesMessage message = new FacesMessage(SEVERITY_INFO, "Panel Closed", "Closed panel id:'" + event.getComponent().getId() + "'");
          
         addMessage(message);
     }
      
     public void handleToggle(ToggleEvent event) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, event.getComponent().getId() + " toggled", "Status:" + event.getVisibility().name());
+        FacesMessage message = new FacesMessage(SEVERITY_INFO, event.getComponent().getId() + " toggled", "Status:" + event.getVisibility().name());
          
         addMessage(message);
     }
      
     private void addMessage(FacesMessage message) {
-        FacesContext.getCurrentInstance().addMessage(null, message);
+        getCurrentInstance().addMessage(null, message);
     }
      
     public DashboardModel getModel() {

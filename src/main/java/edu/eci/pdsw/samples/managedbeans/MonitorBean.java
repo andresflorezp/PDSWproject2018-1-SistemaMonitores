@@ -7,16 +7,25 @@ package edu.eci.pdsw.samples.managedbeans;
 
 import edu.eci.pdsw.samples.entities.Registro;
 import java.io.Serializable;
+import static java.lang.String.valueOf;
+import static java.lang.String.valueOf;
+import static java.lang.String.valueOf;
 import java.util.ArrayList;
 import java.util.Calendar;
+import static java.util.Calendar.HOUR_OF_DAY;
+import static java.util.Calendar.MINUTE;
+import static java.util.Calendar.SECOND;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
+import static java.util.TimeZone.getTimeZone;
 import javax.faces.application.FacesMessage;
+import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import static javax.faces.context.FacesContext.getCurrentInstance;
 
 /**
  *
@@ -31,7 +40,7 @@ public class MonitorBean implements Serializable{
     private String codigoEstudiante;
     private String profesor;
     private String Observaciones;
-    private TimeZone timeZone1 = TimeZone.getTimeZone("America/Mexico_City");
+    private TimeZone timeZone1 = getTimeZone("America/Mexico_City");
     private Calendar hora = new GregorianCalendar();
     private int numberHour;
     private int numberMinute;
@@ -107,7 +116,7 @@ public class MonitorBean implements Serializable{
 
 
     public String getHoras() {
-        return String.valueOf(hora.get(Calendar.HOUR_OF_DAY));
+        return valueOf(hora.get(HOUR_OF_DAY));
         
                 
     }
@@ -117,7 +126,7 @@ public class MonitorBean implements Serializable{
     }
 
     public String getMinutos() {
-        return String.valueOf(hora.get(Calendar.MINUTE));
+        return valueOf(hora.get(MINUTE));
     }
 
     public void setMinutos(String minutos) {
@@ -125,7 +134,7 @@ public class MonitorBean implements Serializable{
     }
 
     public String getSegundos() {
-        return String.valueOf(hora.get(Calendar.SECOND));
+        return valueOf(hora.get(SECOND));
     }
 
     public void setSegundos(String segundos) {
@@ -159,8 +168,8 @@ public class MonitorBean implements Serializable{
     }
      
     public void addMessage(String summary, String detail) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
-        FacesContext.getCurrentInstance().addMessage(null, message);
+        FacesMessage message = new FacesMessage(SEVERITY_INFO, summary, detail);
+        getCurrentInstance().addMessage(null, message);
     }
 
     public TimeZone getTimeZone1() {

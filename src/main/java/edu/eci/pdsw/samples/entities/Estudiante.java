@@ -6,6 +6,7 @@
 package edu.eci.pdsw.samples.entities;
 
 import java.io.Serializable;
+import static java.lang.String.format;
 
 
 /**
@@ -29,7 +30,7 @@ public class Estudiante implements Serializable{
 
     @Override
     public String toString() {
-        return String.format("%s %d", nombre,carnet);
+        return format("%s %d", nombre,carnet);
     }
     
     public long getCarnet() {

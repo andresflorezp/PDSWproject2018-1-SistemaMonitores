@@ -15,6 +15,8 @@ import java.util.Map;
 import javax.faces.bean.ManagedBean;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
+import static org.primefaces.model.chart.AxisType.X;
+import static org.primefaces.model.chart.AxisType.Y;
 import org.primefaces.model.chart.CategoryAxis;
 import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.ChartSeries;
@@ -60,21 +62,21 @@ public class ChartView implements Serializable {
     private DonutChartModel initDonutModel() {
         DonutChartModel model = new DonutChartModel();
          
-        Map<String, Number> circle1 = new LinkedHashMap<String, Number>();
+        Map<String, Number> circle1 = new LinkedHashMap<>();
         circle1.put("Inacistencia", 150);
         circle1.put("Monitor 1", 400);
         circle1.put("Monitor 2", 200);
         circle1.put("Monitor 3", 10);
         model.addCircle(circle1);
          
-        Map<String, Number> circle2 = new LinkedHashMap<String, Number>();
+        Map<String, Number> circle2 = new LinkedHashMap<>();
         circle2.put("Inacistencia", 150);
         circle2.put("Monitor 1", 400);
         circle2.put("Monitor 2", 200);
         circle2.put("Monitor 3", 10);
         model.addCircle(circle2);
          
-        Map<String, Number> circle3 = new LinkedHashMap<String, Number>();
+        Map<String, Number> circle3 = new LinkedHashMap<>();
         circle3.put("Inacistencia", 150);
         circle3.put("Monitor 1", 400);
         circle3.put("Monitor 2", 200);
@@ -96,7 +98,7 @@ public class ChartView implements Serializable {
         lineModel1.setTitle("Linear Chart");
         lineModel1.setLegendPosition("e");
         lineModel1.setAnimate(true);
-        Axis yAxis = lineModel1.getAxis(AxisType.Y);
+        Axis yAxis = lineModel1.getAxis(Y);
         yAxis.setMin(0);
         yAxis.setMax(10);
          
@@ -105,8 +107,8 @@ public class ChartView implements Serializable {
         lineModel2.setLegendPosition("e");
         lineModel2.setAnimate(true);
         lineModel2.setShowPointLabels(true);
-        lineModel2.getAxes().put(AxisType.X, new CategoryAxis("Years"));
-        yAxis = lineModel2.getAxis(AxisType.Y);
+        lineModel2.getAxes().put(X, new CategoryAxis("Years"));
+        yAxis = lineModel2.getAxis(Y);
         yAxis.setLabel("Births");
         yAxis.setMin(0);
         yAxis.setMax(200);

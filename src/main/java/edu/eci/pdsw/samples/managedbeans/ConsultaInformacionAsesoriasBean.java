@@ -11,15 +11,20 @@ import edu.eci.pdsw.samples.entities.Tema;
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory;
+import static edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory.getInstance;
 import java.io.Serializable;
+import static java.lang.String.valueOf;
 import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
+import static java.util.logging.Level.SEVERE;
 import java.util.logging.Logger;
+import static java.util.logging.Logger.getLogger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import static javax.faces.context.FacesContext.getCurrentInstance;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.LazyDataModel;
 
@@ -31,7 +36,7 @@ import org.primefaces.model.LazyDataModel;
 @SessionScoped
 public class ConsultaInformacionAsesoriasBean implements Serializable {
 
-    ServiciosSistemaMonitores sp = ServiciosSistemaMonitoresFactory.getInstance().getServiciosSistemaMonitores();
+    ServiciosSistemaMonitores sp = getInstance().getServiciosSistemaMonitores();
     
     private final int monitorID = 2; //temporal se supone se sabe de el login.
     private final int semestreID = 1; //temporal se supone se sabe de el login.
@@ -45,7 +50,7 @@ public class ConsultaInformacionAsesoriasBean implements Serializable {
 
     public void filtrar() throws ExcepcionSistemaMonitores {
         asesorias = new LazyAsesoriaDataModel(sp.consultaAsesoriaMonitor(monitorID, semestreID));
-        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "\nAns: " + asesorias);
+        getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(SEVERE, "\nAns: " + asesorias);
     }
 
     public boolean filtrar(Object value, Object filter, Locale locale) {
@@ -64,13 +69,13 @@ public class ConsultaInformacionAsesoriasBean implements Serializable {
                 break;
             }
         }
-        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "\nFiltra: ->" + filterText + "<- " + temas.toString() + " = " + acepted);
+        getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(SEVERE, "\nFiltra: ->" + filterText + "<- " + temas.toString() + " = " + acepted);
         return acepted;
     }
 
     public void onRowSelect(SelectEvent event) {
-        FacesMessage msg = new FacesMessage("Asesoria Selected", String.valueOf(((Asesoria) event.getObject()).getAsesoriaID()));
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+        FacesMessage msg = new FacesMessage("Asesoria Selected", valueOf(((Asesoria) event.getObject()).getAsesoriaID()));
+        getCurrentInstance().addMessage(null, msg);
     }
 
     public LazyDataModel<Asesoria> getAsesorias() {

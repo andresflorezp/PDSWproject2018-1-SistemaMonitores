@@ -11,7 +11,9 @@ import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory;
 import java.io.Serializable;
 import java.util.logging.Level;
+import static java.util.logging.Level.SEVERE;
 import java.util.logging.Logger;
+import static java.util.logging.Logger.getLogger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -38,7 +40,7 @@ public class registrarProfesorBean implements Serializable {
 	}
 	public void registrarProfesor(){
 
-		Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "Entro");
+		getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(SEVERE, "Entro");
 	}
 
 	public void setIdentificacion(int identificacion){

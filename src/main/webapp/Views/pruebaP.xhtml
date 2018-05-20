@@ -17,67 +17,67 @@
     </h:head>
 
     <h:body>
-        
+
         <h:form id="registro">
-            
+
             <div id="top" class="card">
                 <ui:insert name="top"></ui:insert>
-                    <div id="Encabezado">
-                     
-                       <h:outputLabel id="cabecera" value="PDSW &#160; &#160;"  style="font-size: 50px" styleClass="cabecera"/>
-                        <h:outputLabel id="cabecera2" value="Nombre Usuario: AAKAA &#160; &#160; &#160; &#160; &#160; &#160;" style="font-size: 50px" styleClass="cabecera"/>
-                        <h:outputLabel id="cabecera3" rendered="#{MonitorMonitoria.showDo}" value="#{MonitorMonitoria.horaActual}  -->  #{MonitorMonitoria.horaTerminacion}" style="font-size: 20px;color: #F5F2F1">
-                            <p:commandButton value="Terminar Monitoria" actionListener="#{MonitorMonitoria.messageLogOut}" rendered="#{MonitorMonitoria.showDo}" style="margin-left: 1020px;font-size: 20px;">
-                                 <p:confirm header="Confirmacion" message="Estas seguro de terminar la asesoria" icon="ui-icon-alert" />
-                            </p:commandButton>
-                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="RegistrarMonitoria"/>
-                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                            </p:confirmDialog>
-                     
-                        </h:outputLabel>
-                    </div>
+                <div id="Encabezado">
+
+                    <h:outputLabel id="cabecera" value="PDSW &#160; &#160;"  style="font-size: 50px" styleClass="cabecera"/>
+                    <h:outputLabel id="cabecera2" value="Nombre Usuario: AAKAA &#160; &#160; &#160; &#160; &#160; &#160;" style="font-size: 50px" styleClass="cabecera"/>
+                    <h:outputLabel id="cabecera3" rendered="#{MonitorMonitoria.showDo}" value="#{MonitorMonitoria.horaActual}  -->  #{MonitorMonitoria.horaTerminacion}" style="font-size: 20px;color: #F5F2F1">
+                        <p:commandButton value="Terminar Monitoria" actionListener="#{MonitorMonitoria.messageLogOut}" rendered="#{MonitorMonitoria.showDo}" style="margin-left: 1020px;font-size: 20px;">
+                            <p:confirm header="Confirmacion" message="Estas seguro de terminar la asesoria" icon="ui-icon-alert" />
+                        </p:commandButton>
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="RegistrarMonitoria"/>
+                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </p:confirmDialog>
+
+                    </h:outputLabel>
+                </div>
 
             </div>
             <div>
                 <div id="left" class="card">
                     <ui:insert name="left">
                         <b:column span="3">
-                        <b:panel look="primary" title="Static sidebar" style="width: 200px">
-                          <b:listLinks>
-                            <b:navLink header="BootsFaces" />
-                            <b:navLink href="http://www.bootsfaces.net" value="BootsFaces"
-                                       icon="globe" iconAlign="right"/>
-                            <b:navLink></b:navLink>
-                            <b:navLink header="Bootstrap"/>
-                            <b:navLink href="http://getbootstrap.com/components/#navbar" value="Bootstrap" icon="link"></b:navLink>
-                            <b:navLink></b:navLink>
-                            <b:navLink header="Preview"/>
-                            <b:navLink value="Labels and Badges" outcome="/bootstrap/labelsbadge"
-                                       icon="tag" iconAlign="right"/>
-                            <b:navLink value="Slider" outcome="/jquery-ui/slider" iconAwesome="sliders"/>
-                            
+                            <b:panel look="primary" title="Static sidebar" style="width: 200px">
+                                <b:listLinks>
+                                    <b:navLink header="BootsFaces" />
+                                    <b:navLink href="http://www.bootsfaces.net" value="BootsFaces"
+                                               icon="globe" iconAlign="right"/>
+                                    <b:navLink></b:navLink>
+                                    <b:navLink header="Bootstrap"/>
+                                    <b:navLink href="http://getbootstrap.com/components/#navbar" value="Bootstrap" icon="link"></b:navLink>
+                                    <b:navLink></b:navLink>
+                                    <b:navLink header="Preview"/>
+                                    <b:navLink value="Labels and Badges" outcome="/bootstrap/labelsbadge"
+                                               icon="tag" iconAlign="right"/>
+                                    <b:navLink value="Slider" outcome="/jquery-ui/slider" iconAwesome="sliders"/>
 
-                            <b:messages />
 
-                          </b:listLinks>
-                        </b:panel>
-                      </b:column>
-                    
+                                    <b:messages />
+
+                                </b:listLinks>
+                            </b:panel>
+                        </b:column>
+
                     </ui:insert>
                 </div>
 
- 
+
                 <div id="content" class="card" >
                     <ui:insert name="content">
                         <div id="progreso" >
-                             <p:steps activeIndex="0" styleClass="custom" readonly="false">
+                            <p:steps activeIndex="0" styleClass="custom" readonly="false">
                                 <p:menuitem value="Registrar Monitoria" url="http://localhost:8080/faces/Views/RegistrarMonitoria.xhtml"/>
                                 <p:menuitem value="Iniciar Monitoria" url="http://localhost:8080/faces/Views/IniciarMonitoria.xhtml"/>
                                 <p:menuitem value="Progreso Monitoria" url="http://localhost:8080/faces/Views/ProgresoMonitoria.xhtml"/>
-    
+
                             </p:steps>
-                            
+
                         </div>
                         <div id="formulario" style="margin-left: 500px;margin-top: 10px">
                             <div id="materias" >
@@ -93,7 +93,7 @@
                                         <f:selectItem itemLabel="2:30-4:00 (pm)" itemValue="2:30-4:00 (pm)" />
                                         <f:selectItem itemLabel="4:00-5:30 (pm)" itemValue="4:00-5:30 (pm)" />
                                         <f:selectItem itemLabel="5:30-7:00 (pm)" itemValue="5:30-7:00 (pm)" />
-                                        
+
                                     </p:selectOneMenu>
                                 </h:panelGrid>
                             </div>
@@ -107,23 +107,23 @@
                             </div>
                             <br/>
                             <div id="botones">
-                                
+
                                 <p:commandButton  value="Limpiar" icon="ui-icon-star">
-                                
+
                                 </p:commandButton>    
                                 <p:commandButton value="Registrar" icon="ui-icon-star" action="IniciarMonitoria" actionListener="#{MonitorMonitoria.guardarRegistro()}" >
-                                  
+
                                 </p:commandButton>
-                                
+
                             </div>
                         </div>
-                        
+
 
                     </ui:insert>
                 </div>
             </div>
-            
-        
+
+
         </h:form>
     </h:body>
 

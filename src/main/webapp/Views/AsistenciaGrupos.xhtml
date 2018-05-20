@@ -24,24 +24,24 @@
             <div id="top">
                 <ui:insert name="top">
                     <div id="Encabezado">
-                     
-                       <h:outputLabel id="cabecera" value="PDSW &#160; &#160;"  style="font-size: 50px" styleClass="cabecera"/>
+
+                        <h:outputLabel id="cabecera" value="PDSW &#160; &#160;"  style="font-size: 50px" styleClass="cabecera"/>
                         <h:outputLabel id="cabecera2" value="Nombre Usuario: AAKAA &#160; &#160; &#160;" style="font-size: 50px" styleClass="cabecera"/>
-                        
+
                         <h:outputText id="txt_count" rendered="#{MonitorMonitoria.showDo}" value="Te falta #{MonitorMonitoria.numberHour} hora : #{MonitorMonitoria.numberMinute} minutos : #{MonitorMonitoria.numberSecond} segundos de Monitoria" />
                         <p:poll interval="1" listener="#{MonitorMonitoria.decrement}" update="txt_count" />
-                        
-                      
+
+
                         <p:commandButton value="Terminar Monitoria" actionListener="#{MonitorMonitoria.messageLogOut}" rendered="#{MonitorMonitoria.showDo}" style="margin-left: 1020px;font-size: 20px;">
-                             <p:confirm header="Confirmacion" message="Estas seguro de terminar la asesoria" icon="ui-icon-alert" />
+                            <p:confirm header="Confirmacion" message="Estas seguro de terminar la asesoria" icon="ui-icon-alert" />
                         </p:commandButton>
                         <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
                             <p:commandButton value="Si"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="/faces/Views/RegistrarMonitoria.xhtml"/>
                             <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
                         </p:confirmDialog>
-                        
+
                     </div>
-                   </ui:insert>
+                </ui:insert>
 
 
             </div>
@@ -65,7 +65,7 @@
                 <div id="content">
 
                     <ui:insert name="content">
-           
+
 
                         <div id="tabla" style="margin-left: 200px ">
                             <br/>
@@ -95,13 +95,13 @@
                                             <p:menuitem value="Support" url="http://www.primefaces.org/support" icon="ui-icon-wrench" />
                                         </p:submenu>
                                     </p:column>
-                                    
+
                                 </p:dataTable>
                             </h:form>
                         </div>
 
 
-                        
+
 
                     </ui:insert>
                 </div>

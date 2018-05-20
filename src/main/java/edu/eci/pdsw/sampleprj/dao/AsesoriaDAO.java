@@ -15,15 +15,15 @@ import java.util.List;
 public interface AsesoriaDAO {
 
     public List<Asesoria> consultaAsesoriasMonitor(Integer monitorID, Integer semestreID) throws PersistenceException;
-    
-    public List<Asesoria> consultaAsesoriasProfesor(Integer profesorID, Integer semestreID)throws PersistenceException;
+
+    public List<Asesoria> consultaAsesoriasProfesor(Integer profesorID, Integer semestreID) throws PersistenceException;
 
     public Asesoria load(long id) throws PersistenceException;
 
     public void save(Asesoria Asesoria) throws PersistenceException;
 
     public List<Asesoria> loadAll() throws PersistenceException;
-    
+
     public void registroAsesoriaMonitor(Integer monitorID, String ip) throws PersistenceException;
 
 }

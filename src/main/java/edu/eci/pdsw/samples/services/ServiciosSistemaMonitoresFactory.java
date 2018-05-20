@@ -22,6 +22,7 @@ import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisMateriaDao;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisMonitorDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisTemaDao;
 import edu.eci.pdsw.samples.services.impl.ServiciosSistemaMonitoresImpl;
+import static java.lang.System.out;
 import org.apache.log4j.chainsaw.Main;
 import org.mybatis.guice.XMLMyBatisModule;
 
@@ -73,9 +74,9 @@ public class ServiciosSistemaMonitoresFactory {
     public static void main(String[] args) throws ExcepcionSistemaMonitores{
         ServiciosSistemaMonitores servicios = getInstance().getServiciosSistemaMonitores();
         //System.out.println("Entra a valor");
-        System.out.println(servicios.consultaMonitorias().get(0).get("numero_monitorias"));
-        System.out.println(servicios.consultaCurso());
-        System.out.println(servicios.consultaGrupo());
+        out.println(servicios.consultaMonitorias().get(0).get("numero_monitorias"));
+        out.println(servicios.consultaCurso());
+        out.println(servicios.consultaGrupo());
         
     }
 }

@@ -5,9 +5,12 @@ import edu.eci.pdsw.samples.entities.Tema;
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory;
+import static edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory.getInstance;
 import java.io.Serializable;
+import static java.lang.Integer.parseInt;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
+import static java.net.NetworkInterface.getNetworkInterfaces;
 import java.net.SocketException;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -15,7 +18,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
+import static java.util.logging.Level.SEVERE;
 import java.util.logging.Logger;
+import static java.util.logging.Logger.getLogger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -27,7 +32,7 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class RegistrarAsistEstudianteBean implements Serializable {
 
-    ServiciosSistemaMonitores sp = ServiciosSistemaMonitoresFactory.getInstance().getServiciosSistemaMonitores();
+    ServiciosSistemaMonitores sp = getInstance().getServiciosSistemaMonitores();
 
     private final int monitorID = 1; //temporal se supone se sabe de el login.
     private int asesoriaID = 2; //temporal se supone se sabe de el login.
@@ -44,13 +49,13 @@ public class RegistrarAsistEstudianteBean implements Serializable {
     public RegistrarAsistEstudianteBean() throws ExcepcionSistemaMonitores {
         consultarGrupos();
         agregarAsesoria();
-        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "\n\n\n\n\n------------Creo un nuevoRegistoBean------------\n\n\n\n");
+        getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(SEVERE, "\n\n\n\n\n------------Creo un nuevoRegistoBean------------\n\n\n\n");
 
     }
 
     public String getIp() throws ExcepcionSistemaMonitores {
         try {
-            Enumeration e = NetworkInterface.getNetworkInterfaces();
+            Enumeration e = getNetworkInterfaces();
             while (e.hasMoreElements()) {
                 NetworkInterface n = (NetworkInterface) e.nextElement();
                 Enumeration ee = n.getInetAddresses();
@@ -68,15 +73,15 @@ public class RegistrarAsistEstudianteBean implements Serializable {
     }
 
     public void agregarAsesoria() throws ExcepcionSistemaMonitores {
-        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE,"Ip: "+getIp());
+        getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(SEVERE,"Ip: "+getIp());
 //        sp.addAsesoria(monitorID,getIp());
 //        asesoriaActual =;
     }
     
     public void agregarAsesoriaEstudiante() throws ExcepcionSistemaMonitores {
-        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, (codigos == null) + "");
+        getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(SEVERE, (codigos == null) + "");
         for (String codigo : codigos) {
-            int codigoInt = Integer.parseInt(codigo);
+            int codigoInt = parseInt(codigo);
             sp.consultaEstudiante(codigoInt);
             sp.addAsesoriaEstudiante(asesoriaID, codigoInt, observaciones, profesores.get(profesorSelected));
             for (String tem : temasSelected) {

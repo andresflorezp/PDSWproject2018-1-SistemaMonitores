@@ -10,6 +10,6 @@ package edu.eci.pdsw.sampleprj.dao;
  * @author sergiort
  */
 public interface AsesoriaEstudianteDAO {
-    
+
     public void registroAsesoriaEstudiante(int asesoriaID, int codigoInt, String observaciones, Integer profesorID) throws PersistenceException;
 }

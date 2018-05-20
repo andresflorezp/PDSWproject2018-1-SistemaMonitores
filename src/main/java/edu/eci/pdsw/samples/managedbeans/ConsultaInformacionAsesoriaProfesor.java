@@ -14,20 +14,25 @@ import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory;
 import static edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory.getInstance;
 import java.io.Serializable;
+import static java.lang.String.valueOf;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
+import static java.util.logging.Level.SEVERE;
 import java.util.logging.Logger;
+import static java.util.logging.Logger.getLogger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import static javax.faces.context.FacesContext.getCurrentInstance;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
+import static org.primefaces.model.chart.AxisType.Y;
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
 
@@ -39,7 +44,7 @@ import org.primefaces.model.chart.ChartSeries;
 @SessionScoped
 public class ConsultaInformacionAsesoriaProfesor implements Serializable {
 
-    ServiciosSistemaMonitores sp = ServiciosSistemaMonitoresFactory.getInstance().getServiciosSistemaMonitores();
+    ServiciosSistemaMonitores sp = getInstance().getServiciosSistemaMonitores();
 
     private final int profesorID = 5; //temporal se supone se sabe de el login.
     private final int semestreID = 1; //temporal se supone se sabe de el login.
@@ -71,7 +76,7 @@ public class ConsultaInformacionAsesoriaProfesor implements Serializable {
     public void filtrar() throws ExcepcionSistemaMonitores {
         asesorias = new LazyAsesoriaDataModel(sp.consultaAsesoriaProfesor(profesorID, semestreID));
 //        asesorias = sp.consultaAsesoriaProfesor(profesorID, semestreID);
-        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "\nAns: {0}", asesorias);
+        getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(SEVERE, "\nAns: {0}", asesorias);
     }
     
     public boolean filtrar(Object value, Object filter, Locale locale) {
@@ -90,7 +95,7 @@ public class ConsultaInformacionAsesoriaProfesor implements Serializable {
                 break;
             }
         }
-        Logger.getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(Level.SEVERE, "\nFiltra: ->" + filterText + "<- " + temas.toString() + " = " + acepted);
+        getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(SEVERE, "\nFiltra: ->" + filterText + "<- " + temas.toString() + " = " + acepted);
         return acepted;
     }
     public void init() {
@@ -104,7 +109,7 @@ public class ConsultaInformacionAsesoriaProfesor implements Serializable {
         asistencia_Monitorias_Monitor.setTitle("Asistencia Monitorias");
         asistencia_Monitorias_Monitor.setAnimate(true);
         asistencia_Monitorias_Monitor.setLegendPosition("ECI");
-        yAxis = asistencia_Monitorias_Monitor.getAxis(AxisType.Y);
+        yAxis = asistencia_Monitorias_Monitor.getAxis(Y);
         yAxis.setMin(0);
         yAxis.setMax(200);
         
@@ -113,7 +118,7 @@ public class ConsultaInformacionAsesoriaProfesor implements Serializable {
         asistencia_Monitorias_curso.setTitle("Asistencia por Curso Monitorias");
         asistencia_Monitorias_curso.setAnimate(true);
         asistencia_Monitorias_curso.setLegendPosition("ECI");
-        yAxis = asistencia_Monitorias_curso.getAxis(AxisType.Y);
+        yAxis = asistencia_Monitorias_curso.getAxis(Y);
         yAxis.setMin(0);
         yAxis.setMax(200);
         
@@ -121,7 +126,7 @@ public class ConsultaInformacionAsesoriaProfesor implements Serializable {
         asistencia_Monitorias_grupo.setTitle("Asistencia por Grupo Monitorias");
         asistencia_Monitorias_grupo.setAnimate(true);
         asistencia_Monitorias_grupo.setLegendPosition("ECI");
-        yAxis = asistencia_Monitorias_grupo.getAxis(AxisType.Y);
+        yAxis = asistencia_Monitorias_grupo.getAxis(Y);
         yAxis.setMin(0);
         yAxis.setMax(200);
         
@@ -130,7 +135,7 @@ public class ConsultaInformacionAsesoriaProfesor implements Serializable {
         asistencia_Monitorias_Tema.setTitle("Asistencia por Tema Monitorias");
         asistencia_Monitorias_Tema.setAnimate(true);
         asistencia_Monitorias_Tema.setLegendPosition("ECI");
-        yAxis = asistencia_Monitorias_Tema.getAxis(AxisType.Y);
+        yAxis = asistencia_Monitorias_Tema.getAxis(Y);
         yAxis.setMin(0);
         yAxis.setMax(200);
         
@@ -139,7 +144,7 @@ public class ConsultaInformacionAsesoriaProfesor implements Serializable {
         BarChartModel model = new BarChartModel();
 
         ArrayList<ChartSeries> charts = new ArrayList();
-        for(int i=0;i<queryAsistenciaMonitoria.size();i++){
+        for (HashMap queryAsistenciaMonitoria1 : queryAsistenciaMonitoria) {
             charts.add(new ChartSeries());
         }
         for(int i=0;i<queryAsistenciaMonitoria.size();i++){
@@ -154,7 +159,7 @@ public class ConsultaInformacionAsesoriaProfesor implements Serializable {
         BarChartModel model = new BarChartModel();
 
         ArrayList<ChartSeries> charts = new ArrayList();
-        for(int i=0;i<queryCursoMonitoria.size();i++){
+        for (HashMap queryCursoMonitoria1 : queryCursoMonitoria) {
             charts.add(new ChartSeries());
         }
         for(int i=0;i<queryCursoMonitoria.size();i++){
@@ -170,7 +175,7 @@ public class ConsultaInformacionAsesoriaProfesor implements Serializable {
         BarChartModel model = new BarChartModel();
 
         ArrayList<ChartSeries> charts = new ArrayList();
-        for(int i=0;i<queryCursoMonitoria.size();i++){
+        for (HashMap queryCursoMonitoria1 : queryCursoMonitoria) {
             charts.add(new ChartSeries());
         }
         for(int i=0;i<queryCursoMonitoria.size();i++){
@@ -186,7 +191,7 @@ public class ConsultaInformacionAsesoriaProfesor implements Serializable {
        BarChartModel model = new BarChartModel();
 
         ArrayList<ChartSeries> charts = new ArrayList();
-        for(int i=0;i<queryTemaMonitoria.size();i++){
+        for (HashMap queryTemaMonitoria1 : queryTemaMonitoria) {
             charts.add(new ChartSeries());
         }
         for(int i=0;i<queryTemaMonitoria.size();i++){
@@ -199,8 +204,8 @@ public class ConsultaInformacionAsesoriaProfesor implements Serializable {
     }
     
     public void onRowSelect(SelectEvent event) {
-        FacesMessage msg = new FacesMessage("Asesoria Selected", String.valueOf(( (Asesoria) event.getObject()).getAsesoriaID() ));
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+        FacesMessage msg = new FacesMessage("Asesoria Selected", valueOf(( (Asesoria) event.getObject()).getAsesoriaID() ));
+        getCurrentInstance().addMessage(null, msg);
     }
     
     public LazyDataModel<Asesoria> getAsesorias() {

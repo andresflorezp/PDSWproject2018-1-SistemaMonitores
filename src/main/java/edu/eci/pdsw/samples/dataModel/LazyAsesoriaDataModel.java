@@ -7,6 +7,7 @@ package edu.eci.pdsw.samples.dataModel;
 
 import edu.eci.pdsw.samples.entities.Asesoria;
 import edu.eci.pdsw.samples.managedbeans.ConsultaInformacionAsistentesBean;
+import static java.lang.String.valueOf;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -21,6 +22,9 @@ import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
 import java.lang.reflect.Method;
 import java.util.AbstractCollection;
+import static java.util.Collections.sort;
+import static java.util.logging.Level.SEVERE;
+import static java.util.logging.Logger.getLogger;
 
 /**
  *
@@ -42,14 +46,8 @@ public class LazyAsesoriaDataModel extends LazyDataModel<Asesoria> {
                 Field campo = o.getClass().getDeclaredField(fullField);
                 campo.setAccessible(true);
                 return campo.get(o);
-            } catch (IllegalArgumentException ex) {
-                Logger.getLogger(LazyAsesoriaDataModel.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
-                Logger.getLogger(LazyAsesoriaDataModel.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (NoSuchFieldException ex) {
-                Logger.getLogger(LazyAsesoriaDataModel.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SecurityException ex) {
-                Logger.getLogger(LazyAsesoriaDataModel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException ex) {
+                getLogger(LazyAsesoriaDataModel.class.getName()).log(SEVERE, null, ex);
             }
         } else {
             field = classpath[0];
@@ -60,12 +58,8 @@ public class LazyAsesoriaDataModel extends LazyDataModel<Asesoria> {
                 if (method.getName().toLowerCase().endsWith(field.toLowerCase())) {
                     try {
                         return runGetter(fullField, method.invoke(o));
-                    } catch (IllegalAccessException ex) {
-                        Logger.getLogger(LazyAsesoriaDataModel.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (IllegalArgumentException ex) {
-                        Logger.getLogger(LazyAsesoriaDataModel.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (InvocationTargetException ex) {
-                        Logger.getLogger(LazyAsesoriaDataModel.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+                        getLogger(LazyAsesoriaDataModel.class.getName()).log(SEVERE, null, ex);
                     }
 
                 }
@@ -78,7 +72,7 @@ public class LazyAsesoriaDataModel extends LazyDataModel<Asesoria> {
     @Override
     public Asesoria getRowData(String rowKey) {
         for (Asesoria asesoria : datasource) {
-            if (String.valueOf(asesoria.getAsesoriaID()).equals(rowKey)) {
+            if (valueOf(asesoria.getAsesoriaID()).equals(rowKey)) {
                 return asesoria;
             }
         }
@@ -120,7 +114,7 @@ public class LazyAsesoriaDataModel extends LazyDataModel<Asesoria> {
                                 }
                             }
                         } else {
-                            fieldValue = String.valueOf(value);
+                            fieldValue = valueOf(value);
                             if (filterValue == null || fieldValue.startsWith(filterValue.toString())) {
                                 match = true;
                             } else {
@@ -140,7 +134,7 @@ public class LazyAsesoriaDataModel extends LazyDataModel<Asesoria> {
         }
         //sort
         if (sortField != null) {
-            Collections.sort(data, new LazySorter(sortField, sortOrder));
+            sort(data, new LazySorter(sortField, sortOrder));
         }
 
         //rowCount

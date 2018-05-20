@@ -10,6 +10,7 @@ import edu.eci.pdsw.samples.entities.Materia;
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory;
+import static edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory.getInstance;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,7 +30,7 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class publicManagedBean implements Serializable {
 
-    ServiciosSistemaMonitores sp = ServiciosSistemaMonitoresFactory.getInstance().getServiciosSistemaMonitores();  
+    ServiciosSistemaMonitores sp = getInstance().getServiciosSistemaMonitores();  
     private Map<String, Materia> mapMaterias;
     private List<Horario> horarios;
     private List<Materia> materias;
