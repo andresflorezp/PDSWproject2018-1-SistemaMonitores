@@ -6,6 +6,7 @@
 package edu.eci.pdsw.sampleprj.dao;
 
 import edu.eci.pdsw.samples.entities.Monitor;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -18,4 +19,12 @@ public interface MonitorDAO {
     public void save(Monitor monitor) throws PersistenceException;
     
     public List<Monitor> consultarMonitores() throws PersistenceException;
+    
+    public List<HashMap> consultaMonitorias() throws PersistenceException;
+    
+    public List<HashMap> consultaCurso() throws PersistenceException;
+    
+    public List<HashMap> consultaGrupo() throws PersistenceException;
+    
+    public List<HashMap> consultaTema() throws PersistenceException;
 }

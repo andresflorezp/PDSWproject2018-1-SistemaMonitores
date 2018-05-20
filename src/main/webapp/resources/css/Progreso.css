@@ -2,9 +2,7 @@
 .ui-steps .ui-steps-item {
     width: 24%;
 }
-.ui-state-highlight {
-    text-shadow: none !important;
-}
+
 .ui-steps.custom {
     margin-bottom: -30px;
 }

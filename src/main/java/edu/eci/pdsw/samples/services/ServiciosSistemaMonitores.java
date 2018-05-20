@@ -5,13 +5,16 @@
  */
 package edu.eci.pdsw.samples.services;
 
+import edu.eci.pdsw.sampleprj.dao.PersistenceException;
 import edu.eci.pdsw.samples.entities.Asesoria;
 import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Materia;
+import edu.eci.pdsw.samples.entities.Monitor;
 import edu.eci.pdsw.samples.entities.Profesor;
 import edu.eci.pdsw.samples.entities.Tema;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -114,5 +117,10 @@ public interface ServiciosSistemaMonitores {
      * Metodo con el cual se cargan todas las materias       
      */
     public List<Materia> loadMaterias() throws ExcepcionSistemaMonitores;
+    
+    public List<HashMap> consultaMonitorias() throws ExcepcionSistemaMonitores;
+    public List<HashMap> consultaCurso() throws ExcepcionSistemaMonitores;
+    public List<HashMap> consultaGrupo() throws ExcepcionSistemaMonitores;
+    public List<HashMap> consultaTema() throws ExcepcionSistemaMonitores; 
 
 }

@@ -4,6 +4,39 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.MonitorMapper">
+     <select parameterType="map" id="consultaMonitorias" resultType="hashmap" >
+        SELECT COUNT(*) as numero_monitorias, monitor.nombres as monitor
+        FROM monitor,asesoriamonitor,asesoriaestudiante,estudiante,grupo,semestre,materia,profesor
+        WHERE monitor.codigo_id=asesoriamonitor.monitor_asesoria_id and asesoriaestudiante.asesoria_monitor_asesoriaid=asesoriamonitor.asesoriaid and 
+        asesoriaestudiante.estudiante_carnet=estudiante.carnet and grupo.semestre_semestre_id=semestre.semestre_id and grupo.materia_materia_id=materia.materia_id
+        and grupo.profesor_profesor_id=profesor.profesorid
+        GROUP BY monitor.nombres
+    </select>
+    <select parameterType="map" id="consultaCurso" resultType="hashmap" >
+        SELECT COUNT(*) as numero_monitorias, materia.materia_nemonico as curso
+        FROM monitor,asesoriamonitor,asesoriaestudiante,estudiante,grupo,semestre,materia,profesor
+        WHERE monitor.codigo_id=asesoriamonitor.monitor_asesoria_id and asesoriaestudiante.asesoria_monitor_asesoriaid=asesoriamonitor.asesoriaid and 
+        asesoriaestudiante.estudiante_carnet=estudiante.carnet and grupo.semestre_semestre_id=semestre.semestre_id and grupo.materia_materia_id=materia.materia_id
+        and grupo.profesor_profesor_id=profesor.profesorid
+        GROUP BY materia.materia_nemonico
+    </select>
+    <select parameterType="map" id="consultaGrupo" resultType="hashmap" >
+        SELECT COUNT(*) AS numero_monitorias, grupo.grupoid as grupo
+        FROM monitor,asesoriamonitor,asesoriaestudiante,estudiante,grupo,semestre,materia,profesor
+        WHERE monitor.codigo_id=asesoriamonitor.monitor_asesoria_id and asesoriaestudiante.asesoria_monitor_asesoriaid=asesoriamonitor.asesoriaid and 
+        asesoriaestudiante.estudiante_carnet=estudiante.carnet and grupo.semestre_semestre_id=semestre.semestre_id and grupo.materia_materia_id=materia.materia_id
+        and grupo.profesor_profesor_id=profesor.profesorid
+        GROUP BY grupo.grupoid
+    </select>
+    
+    <select parameterType="map" id="consultaTema" resultType="hashmap" >
+        SELECT COUNT(*) as numero_monitorias, tema.topic as tema
+        FROM monitor,asesoriamonitor,asesoriaestudiante,estudiante,grupo,semestre,materia,profesor,tema
+        WHERE monitor.codigo_id=asesoriamonitor.monitor_asesoria_id and asesoriaestudiante.asesoria_monitor_asesoriaid=asesoriamonitor.asesoriaid and 
+        asesoriaestudiante.estudiante_carnet=estudiante.carnet and grupo.semestre_semestre_id=semestre.semestre_id and grupo.materia_materia_id=materia.materia_id
+        and grupo.profesor_profesor_id=profesor.profesorid and tema.materia_materia_id=materia.materia_id
+        GROUP BY tema
+    </select>
     
     <resultMap type="Monitor" id="MonitorResult" >
         <id property="codigoID" column="codigo_id"/>

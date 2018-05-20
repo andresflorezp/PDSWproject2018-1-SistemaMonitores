@@ -11,6 +11,7 @@ import edu.eci.pdsw.sampleprj.dao.PersistenceException;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.MonitorMapper;
 import edu.eci.pdsw.samples.entities.Monitor;
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -44,6 +45,41 @@ public class MyBatisMonitorDAO implements MonitorDAO, Serializable {
     public List<Monitor> consultarMonitores() throws PersistenceException {
         try{
             return monitorMapper.consultarMonitores();
+        }catch(org.apache.ibatis.exceptions.PersistenceException e){
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+    }
+    @Override
+    public List<HashMap> consultaMonitorias() throws PersistenceException{
+         try{
+            return monitorMapper.consultaMonitorias();
+        }catch(org.apache.ibatis.exceptions.PersistenceException e){
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+    }
+
+    @Override
+    public List<HashMap> consultaCurso() throws PersistenceException {
+        try{
+            return monitorMapper.consultaCurso();
+        }catch(org.apache.ibatis.exceptions.PersistenceException e){
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+    }
+
+    @Override
+    public List<HashMap> consultaGrupo() throws PersistenceException {
+        try{
+            return monitorMapper.consultaGrupo();
+        }catch(org.apache.ibatis.exceptions.PersistenceException e){
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+    }
+
+    @Override
+    public List<HashMap> consultaTema() throws PersistenceException {
+        try{
+            return monitorMapper.consultaTema();
         }catch(org.apache.ibatis.exceptions.PersistenceException e){
             throw new UnsupportedOperationException("Not supported yet.");
         }

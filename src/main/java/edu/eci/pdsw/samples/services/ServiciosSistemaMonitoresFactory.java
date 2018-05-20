@@ -12,14 +12,17 @@ import edu.eci.pdsw.sampleprj.dao.AsesoriaEstudianteDAO;
 import edu.eci.pdsw.sampleprj.dao.EstudianteDAO;
 import edu.eci.pdsw.sampleprj.dao.GrupoDAO;
 import edu.eci.pdsw.sampleprj.dao.MateriaDAO;
+import edu.eci.pdsw.sampleprj.dao.MonitorDAO;
 import edu.eci.pdsw.sampleprj.dao.TemaDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisAsesoriaDao;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisAsesoriaEstudianteDao;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisEstudianteDao;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisGrupoDao;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisMateriaDao;
+import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisMonitorDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisTemaDao;
 import edu.eci.pdsw.samples.services.impl.ServiciosSistemaMonitoresImpl;
+import org.apache.log4j.chainsaw.Main;
 import org.mybatis.guice.XMLMyBatisModule;
 
 /**
@@ -45,6 +48,7 @@ public class ServiciosSistemaMonitoresFactory {
                 bind(TemaDAO.class).to(MyBatisTemaDao.class);
                 bind(GrupoDAO.class).to(MyBatisGrupoDao.class);
                 bind(AsesoriaEstudianteDAO.class).to(MyBatisAsesoriaEstudianteDao.class);
+                bind(MonitorDAO.class).to(MyBatisMonitorDAO.class);
             }
         });
     }
@@ -64,5 +68,14 @@ public class ServiciosSistemaMonitoresFactory {
 
     public static ServiciosSistemaMonitoresFactory getInstance() {
         return instance;
+    }
+    
+    public static void main(String[] args) throws ExcepcionSistemaMonitores{
+        ServiciosSistemaMonitores servicios = getInstance().getServiciosSistemaMonitores();
+        //System.out.println("Entra a valor");
+        System.out.println(servicios.consultaMonitorias().get(0).get("numero_monitorias"));
+        System.out.println(servicios.consultaCurso());
+        System.out.println(servicios.consultaGrupo());
+        
     }
 }

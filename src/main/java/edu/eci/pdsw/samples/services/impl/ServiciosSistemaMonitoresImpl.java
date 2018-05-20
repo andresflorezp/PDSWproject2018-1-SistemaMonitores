@@ -11,18 +11,21 @@ import edu.eci.pdsw.sampleprj.dao.AsesoriaEstudianteDAO;
 import edu.eci.pdsw.sampleprj.dao.EstudianteDAO;
 import edu.eci.pdsw.sampleprj.dao.GrupoDAO;
 import edu.eci.pdsw.sampleprj.dao.MateriaDAO;
+import edu.eci.pdsw.sampleprj.dao.MonitorDAO;
 import edu.eci.pdsw.sampleprj.dao.PersistenceException;
 import edu.eci.pdsw.sampleprj.dao.TemaDAO;
 import edu.eci.pdsw.samples.entities.Asesoria;
 import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Materia;
+import edu.eci.pdsw.samples.entities.Monitor;
 import edu.eci.pdsw.samples.entities.Profesor;
 import edu.eci.pdsw.samples.entities.Tema;
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,6 +54,8 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
     @Inject
     private AsesoriaEstudianteDAO daoAsesoriaEstudiante;
     
+    @Inject
+    private MonitorDAO daoMonitor;
     @Override
     public List<Asesoria> consultaAsesoriaMonitor(Integer monitorID, Integer semestreID) throws ExcepcionSistemaMonitores {
         try {
@@ -152,6 +157,46 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
         try {
             return daoMateria.loadAll();
         } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public List<HashMap> consultaMonitorias() throws ExcepcionSistemaMonitores {
+        try{
+            return daoMonitor.consultaMonitorias();
+        }
+        catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public List<HashMap> consultaCurso() throws ExcepcionSistemaMonitores {
+         try{
+            return daoMonitor.consultaCurso();
+        }
+        catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public List<HashMap> consultaGrupo() throws ExcepcionSistemaMonitores {
+         try{
+            return daoMonitor.consultaGrupo();
+        }
+        catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public List<HashMap> consultaTema() throws ExcepcionSistemaMonitores {
+        try{
+            return daoMonitor.consultaTema();
+        }
+        catch (PersistenceException ex) {
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }
     }
