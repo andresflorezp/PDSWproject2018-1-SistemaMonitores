@@ -21,7 +21,7 @@ function exportChartInPDF1() {
    //pdfMake.createPdf(docDefinition).download('primefaces-charts.pdf');
 }
 
-function ExportChartInPDF2() {
+function exportChartInPDF2() {
    var docDefinition = {
       content: [
         "Line Chart","\n",
@@ -43,7 +43,7 @@ function ExportChartInPDF2() {
    
 }
 
-function ExportChartInPDF3() {
+function exportChartInPDF3() {
    var docDefinition = {
       content: [
         "Line Chart","\n",
@@ -66,7 +66,7 @@ function ExportChartInPDF3() {
    
 }
 
-function ExportChartInPDF4() {
+function exportChartInPDF4() {
    var docDefinition = {
       content: [
         "Line Chart","\n",
