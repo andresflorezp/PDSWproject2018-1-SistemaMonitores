@@ -6,9 +6,8 @@
 package edu.eci.pdsw.sampleprj.dao.mybatis.mappers;
 
 import edu.eci.pdsw.samples.entities.Monitor;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
+
+import java.util.*;
 import org.apache.ibatis.annotations.Param;
 
 /**
