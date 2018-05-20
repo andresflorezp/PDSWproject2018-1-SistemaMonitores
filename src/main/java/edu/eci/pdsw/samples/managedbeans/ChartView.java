@@ -14,7 +14,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.faces.bean.ManagedBean;
 import org.primefaces.model.chart.Axis;
-import org.primefaces.model.chart.AxisType;
 import static org.primefaces.model.chart.AxisType.X;
 import static org.primefaces.model.chart.AxisType.Y;
 import org.primefaces.model.chart.CategoryAxis;

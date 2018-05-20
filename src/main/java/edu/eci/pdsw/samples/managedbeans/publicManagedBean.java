@@ -9,16 +9,12 @@ import edu.eci.pdsw.samples.entities.Horario;
 import edu.eci.pdsw.samples.entities.Materia;
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
-import edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory;
 import static edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory.getInstance;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 

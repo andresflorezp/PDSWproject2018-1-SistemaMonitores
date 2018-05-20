@@ -4,7 +4,6 @@ import javax.faces.application.FacesMessage;
 import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 import static javax.faces.context.FacesContext.getCurrentInstance;
  
 import org.primefaces.event.CloseEvent;

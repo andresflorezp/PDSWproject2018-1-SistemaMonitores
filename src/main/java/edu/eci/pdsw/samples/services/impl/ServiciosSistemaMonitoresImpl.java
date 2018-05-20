@@ -18,17 +18,11 @@ import edu.eci.pdsw.samples.entities.Asesoria;
 import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Materia;
-import edu.eci.pdsw.samples.entities.Monitor;
-import edu.eci.pdsw.samples.entities.Profesor;
-import edu.eci.pdsw.samples.entities.Tema;
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

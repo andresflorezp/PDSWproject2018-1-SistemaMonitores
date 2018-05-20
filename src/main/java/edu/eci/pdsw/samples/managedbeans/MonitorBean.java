@@ -8,8 +8,6 @@ package edu.eci.pdsw.samples.managedbeans;
 import edu.eci.pdsw.samples.entities.Registro;
 import java.io.Serializable;
 import static java.lang.String.valueOf;
-import static java.lang.String.valueOf;
-import static java.lang.String.valueOf;
 import java.util.ArrayList;
 import java.util.Calendar;
 import static java.util.Calendar.HOUR_OF_DAY;
@@ -17,14 +15,12 @@ import static java.util.Calendar.MINUTE;
 import static java.util.Calendar.SECOND;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Locale;
 import java.util.TimeZone;
 import static java.util.TimeZone.getTimeZone;
 import javax.faces.application.FacesMessage;
 import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import static javax.faces.context.FacesContext.getCurrentInstance;
 
 /**

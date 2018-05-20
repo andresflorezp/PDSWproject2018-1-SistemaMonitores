@@ -7,13 +7,8 @@ package edu.eci.pdsw.samples.dataModel;
 
 import static edu.eci.pdsw.samples.dataModel.LazyAsesoriaDataModel.runGetter;
 import edu.eci.pdsw.samples.entities.Asesoria;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
-import java.util.List;
-import java.util.logging.Level;
 import static java.util.logging.Level.SEVERE;
-import java.util.logging.Logger;
 import static java.util.logging.Logger.getLogger;
 import org.primefaces.model.SortOrder;
 import static org.primefaces.model.SortOrder.ASCENDING;

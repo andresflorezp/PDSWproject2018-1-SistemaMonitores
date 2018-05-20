@@ -9,14 +9,14 @@ function exportChartInPDF1() {
         "En este caso se tienen las siguientes Graficas",
 
         {
-           image: $(PF("char1").exportAsImage()).attr('src'),
+           image: $(PF("char1").exportAsImage()).attr("src"),
            width: 200,
            height: 200
 
         }
 
       ]
-   }
+   };
    pdfMake.createPdf(docDefinition).open();
    //pdfMake.createPdf(docDefinition).download('primefaces-charts.pdf');
 }
@@ -30,7 +30,7 @@ function ExportChartInPDF2() {
         "En este caso se tienen las siguientes Graficas",
 
         {
-           image: $(PF("char2").exportAsImage()).attr('src'),
+           image: $(PF("char2").exportAsImage()).attr("src"),
            width: 200,
            height: 200  
 
@@ -38,7 +38,7 @@ function ExportChartInPDF2() {
 
 
       ]
-   }
+   };
    pdfMake.createPdf(docDefinition).open();
    
 }
@@ -53,7 +53,7 @@ function ExportChartInPDF3() {
 
 
         {
-           image: $(PF("char3").exportAsImage()).attr('src'),
+           image: $(PF("char3").exportAsImage()).attr("src"),
            width: 200,
            height: 200
 
@@ -61,7 +61,7 @@ function ExportChartInPDF3() {
 
 
       ]
-   }
+   };
    pdfMake.createPdf(docDefinition).open();
    
 }
@@ -76,13 +76,13 @@ function ExportChartInPDF4() {
 
 
         {
-           image: $(PF("char4").exportAsImage()).attr('src'),
+           image: $(PF("char4").exportAsImage()).attr("src"),
            width: 200,
            height: 200
 
         }
 
       ]
-   }
+   };
    pdfMake.createPdf(docDefinition).open();
 }

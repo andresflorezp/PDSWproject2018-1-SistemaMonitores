@@ -7,7 +7,6 @@ package edu.eci.pdsw.sampleprj.dao;
 
 import edu.eci.pdsw.samples.entities.Grupo;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 /**
  *

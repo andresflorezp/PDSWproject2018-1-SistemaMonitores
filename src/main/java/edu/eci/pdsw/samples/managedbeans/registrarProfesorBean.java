@@ -6,13 +6,8 @@
 package edu.eci.pdsw.samples.managedbeans;
 
 
-import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
-import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
-import edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory;
 import java.io.Serializable;
-import java.util.logging.Level;
 import static java.util.logging.Level.SEVERE;
-import java.util.logging.Logger;
 import static java.util.logging.Logger.getLogger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;

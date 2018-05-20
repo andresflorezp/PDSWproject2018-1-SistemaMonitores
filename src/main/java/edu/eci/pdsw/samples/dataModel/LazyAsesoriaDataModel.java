@@ -6,18 +6,13 @@
 package edu.eci.pdsw.samples.dataModel;
 
 import edu.eci.pdsw.samples.entities.Asesoria;
-import edu.eci.pdsw.samples.managedbeans.ConsultaInformacionAsistentesBean;
 import static java.lang.String.valueOf;
-import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
 import java.lang.reflect.Method;

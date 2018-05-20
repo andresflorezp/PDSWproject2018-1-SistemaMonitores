@@ -23,7 +23,6 @@ import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisMonitorDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisTemaDao;
 import edu.eci.pdsw.samples.services.impl.ServiciosSistemaMonitoresImpl;
 import static java.lang.System.out;
-import org.apache.log4j.chainsaw.Main;
 import org.mybatis.guice.XMLMyBatisModule;
 
 /**

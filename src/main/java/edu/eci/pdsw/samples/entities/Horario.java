@@ -5,9 +5,6 @@
  */
 package edu.eci.pdsw.samples.entities;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author rafaeljimenez

@@ -6,8 +6,6 @@
 package edu.eci.pdsw.samples.entities;
 
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
-import java.io.Serializable;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 import java.lang.Exception;
