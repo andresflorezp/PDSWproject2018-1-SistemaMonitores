@@ -7,30 +7,30 @@
     <ui:define name="content">
         <div id="contentPublic" style="margin-left: 0px;">
             <h:form id="form">
-                <p:layoutUnit position="north">
-                    <h1 style="text-align: center;">Registrar Docente</h1>
-                </p:layoutUnit>
-                <p:layoutUnit  position="center" >
-                    <h:panelGrid columns="2" cellpadding="5">
+                <p:panel style="width: 270px">
+                    <h:outputText style="margin-left: 60px;font-size: 18px;color: #4c9ad2;" value="Registrar Docente"/>
+                    <p:messages id="messages"/>
+                    <h:panelGrid columns="3" cellpadding="5" id="grid" >
                         <h:outputLabel for="id" value="Identificacion:" />
                         <p:inputText id="id" required="true" value="#{profesorBean.identificacion}"/>
-
+                        <p:message for="id"/>
                         <h:outputLabel for="nombre" value="Nombres:" />
                         <p:inputText id="nombre" required="true" value="#{profesorBean.nombres}" />
-
+                        <p:message for="nombre"/>
                         <h:outputLabel for="apellidos" value="Apellidos:" />
                         <p:inputText id="apellidos" required="true" value="#{profesorBean.apellidos}"/>
-
+                        <p:message for="apellidos"/>
                         <h:outputLabel for="mail" value="Mail:" />
                         <p:inputText id="mail" required="true" value="#{profesorBean.mail}" /> 
-
+                        <p:message for="mail"/>
                         <h:outputLabel for="telefono" value="Telefono:" />
-                        <p:inputText id="telefono" value="#{profesorBean.telefono}" />   
+                        <p:inputText id="telefono" value="#{profesorBean.telefono}" /> 
+                        <p:message for="telefono"/>
                     </h:panelGrid>
-                    <div>
-                        <p:commandButton value="Registrar" actionListener="#{profesorBean.registrarProfesor()}" />
-                    </div> 
-                </p:layoutUnit>
+                    <p:commandButton value="Registrar" update="grid :form:messages" actionListener="#{profesorBean.registrarProfesor()}" >
+                        <p:resetInput target="grid"/>
+                    </p:commandButton>
+                </p:panel>
             </h:form>
         </div>
     </ui:define>

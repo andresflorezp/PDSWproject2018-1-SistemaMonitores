@@ -35,7 +35,7 @@
                 <h:outputText id="display" style="margin-left: 60px;margin-bottom: 10px;margin-top: 10px;color: #b3d1e2"/>
                 <br/>
                 <div id="botones" style="margin-left: 60px" >
-                    <p:commandButton value="Limpiar" icon="ui-icon-star" update=":registro:formInput :registro:observaciones :registro:messages :registro:regist" process="@this">
+                    <p:commandButton value="Limpiar" icon="ui-icon-star" update=":registro:formInput :registro:observaciones :registro:messages :registro:regist" process="@this" actionListener="#{RegistroAsistencia.limpiar()}">
                         <p:resetInput target=":registro:formInput :registro:observaciones"/>
                     </p:commandButton>  
                     <p:commandButton value="Añadir" icon="ui-icon-star" update=":registro:formInput :registro:observaciones :registro:messages :registro:regist" actionListener="#{RegistroAsistencia.agregarAsesoriaEstudiante()}">

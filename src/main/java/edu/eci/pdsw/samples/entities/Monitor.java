@@ -39,4 +39,22 @@ public class Monitor extends Persona implements Comparable<Monitor>, Serializabl
     public int compareTo(Monitor o) {
         return this.toString().compareTo(o.toString());
     }
+
+    public String getSemestreIngreso() {
+        return semestreIngreso;
+    }
+
+    public void setSemestreIngreso(String semestreIngreso) {
+        this.semestreIngreso = semestreIngreso;
+    }
+
+    public int getProgramaAcademico() {
+        return programaAcademico;
+    }
+
+    public void setProgramaAcademico(int programaAcademico) {
+        this.programaAcademico = programaAcademico;
+    }
+    
+    
 }

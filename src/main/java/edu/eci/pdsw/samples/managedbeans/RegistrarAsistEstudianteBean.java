@@ -25,7 +25,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.event.CellEditEvent;
-import org.primefaces.event.RowEditEvent;
 
 /**
  *
@@ -134,13 +133,19 @@ public class RegistrarAsistEstudianteBean implements Serializable {
             int row = event.getRowIndex();
             int carnet = asesoriaActual.getAsesoriasEstudiante().get(row).getEstudianteID();
             sp.addAsesoriaEstudiante(asesoriaActual.getAsesoriaID(), carnet,(String) newValue);
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Celda Actualizada", "antigua: " + oldValue + ", Nueva:" + newValue);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Celda Actualizada", "Antigua: " + oldValue + ", Nueva:" + newValue);
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
 
     public void save(String text) {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(text));
+    }
+    
+    public void limpiar(){
+        codigos = null;
+        observaciones = null;
+        temasSelected = null;
     }
 
     public List<String> getTemasSelected() {
