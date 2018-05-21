@@ -21,6 +21,7 @@ import edu.eci.pdsw.samples.entities.Materia;
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 
@@ -113,15 +114,6 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
     }
 
     @Override
-    public void addAsesoria(int monitorID, String ip) throws ExcepcionSistemaMonitores {
-        try {
-            daoAsesoria.registroAsesoriaMonitor(monitorID, ip);
-        } catch (PersistenceException ex) {
-            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
-        }
-    }
-
-    @Override
     public void addAsesoriaEstudiante(int asesoriaID, int codigoInt, String observaciones, Integer profesorID) throws ExcepcionSistemaMonitores {
         try {
             daoAsesoriaEstudiante.registroAsesoriaEstudiante(asesoriaID, codigoInt, observaciones, profesorID);
@@ -131,9 +123,9 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
     }
 
     @Override
-    public void addTemaMonitoria(int monitorID, int codigoInt, Integer temaID) throws ExcepcionSistemaMonitores {
+    public void addTemaMonitoria(int asesoriaID, int codigoInt, Integer temaID) throws ExcepcionSistemaMonitores {
         try {
-            daoTema.registroTemaMonitoria(monitorID, codigoInt, temaID);
+            daoTema.registroTemaMonitoria(asesoriaID, codigoInt, temaID);
         } catch (PersistenceException ex) {
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }
@@ -197,6 +189,42 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
     public List<Asesoria> consultaAsistentesProfesor(int profesorID, int semestreID) throws ExcepcionSistemaMonitores {
         try {
             return daoAsesoria.consultarAsistentesProfesor(profesorID, semestreID);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public void addAsesoria(int monitorID, String ip, Timestamp fechaInicio) throws ExcepcionSistemaMonitores {
+        try {
+            daoAsesoria.registroAsesoriaMonitor(monitorID, ip, fechaInicio);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public Asesoria consultaAsesoriaActualMonitor(int monitorID, Timestamp fechaInicio, int semestreID) throws ExcepcionSistemaMonitores{
+        try {
+            return daoAsesoria.consultaAsesoriaMonitor(monitorID, fechaInicio, semestreID);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public void finalizarMonitoria(int asesoriaID, Timestamp fechaFin) throws ExcepcionSistemaMonitores{
+        try {
+            daoAsesoria.finalizarMonitoria(asesoriaID, fechaFin);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public void actualizarObservacionesAsesoria(int asesoriaID, int codigoInt, String observaciones) throws ExcepcionSistemaMonitores {
+        try {
+            daoAsesoriaEstudiante.actualizarObservacionesAsesoria(asesoriaID, codigoInt, observaciones);
         } catch (PersistenceException ex) {
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }

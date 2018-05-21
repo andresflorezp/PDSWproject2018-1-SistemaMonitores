@@ -17,13 +17,12 @@ public class AsesoriaEstudiante implements Serializable{
     private int asesoriaID;
     private int estudianteID;
     private Estudiante asistente;
-    private Profesor profesor;
     private List<Tema> temas;
     private String observaciones;
 
     @Override
     public String toString() {
-        return asistente+" Profesor "+profesor+ " Temas: "+temas.toString()+" obsevaciones "+observaciones;
+        return asistente+ " Temas: "+temas.toString()+" obsevaciones "+observaciones;
     }
     
     public AsesoriaEstudiante() {
@@ -53,14 +52,6 @@ public class AsesoriaEstudiante implements Serializable{
 
     public void setAsistente(Estudiante asistente) {
         this.asistente = asistente;
-    }
-
-    public Profesor getProfesor() {
-        return profesor;
-    }
-
-    public void setProfesor(Profesor profesor) {
-        this.profesor = profesor;
     }
 
     public List<Tema> getTemas() {

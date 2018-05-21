@@ -9,6 +9,7 @@ import edu.eci.pdsw.samples.entities.Asesoria;
 import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Materia;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 
@@ -73,9 +74,11 @@ public interface ServiciosSistemaMonitores {
     /**
      * Agrega una nueva asesoria a un monitor.
      * @param monitorID
+     * @param ip
+     * @param fechaInicio
      * @throws ExcepcionSistemaMonitores 
      */
-    public void addAsesoria(int monitorID, String ip) throws ExcepcionSistemaMonitores;
+    public void addAsesoria(int monitorID, String ip, Timestamp fechaInicio) throws ExcepcionSistemaMonitores;
     
     /**
      * Agrega un registro de que un estudiante asistio a una monitoria.
@@ -102,11 +105,11 @@ public interface ServiciosSistemaMonitores {
     
     /**
      * Agrega un tema a una asesoria.
-     * @param monitorID identificador del monitor.
+     * @param asesoriaID identificador del monitor.
      * @param codigoInt carnet del estudiante.
      * @param temaID identificador del tema.
      */
-    public void addTemaMonitoria(int monitorID, int codigoInt, Integer temaID) throws ExcepcionSistemaMonitores;
+    public void addTemaMonitoria(int asesoriaID, int codigoInt, Integer temaID) throws ExcepcionSistemaMonitores;
     
     /**
      * Metodo con el cual se cargan todas las materias       
@@ -115,11 +118,67 @@ public interface ServiciosSistemaMonitores {
      */
     public List<Materia> loadMaterias() throws ExcepcionSistemaMonitores;
     
+    /**
+     * 
+     * @return
+     * @throws ExcepcionSistemaMonitores 
+     */
     public List<HashMap> consultaMonitorias() throws ExcepcionSistemaMonitores;
+    
+    /**
+     * 
+     * @return
+     * @throws ExcepcionSistemaMonitores 
+     */
     public List<HashMap> consultaCurso() throws ExcepcionSistemaMonitores;
+    
+    /**
+     * 
+     * @return
+     * @throws ExcepcionSistemaMonitores 
+     */
     public List<HashMap> consultaGrupo() throws ExcepcionSistemaMonitores;
+    
+    /**
+     * 
+     * @return
+     * @throws ExcepcionSistemaMonitores 
+     */
     public List<HashMap> consultaTema() throws ExcepcionSistemaMonitores; 
-
+    
+    /**
+     * 
+     * @param profesorID
+     * @param semestreID
+     * @return
+     * @throws ExcepcionSistemaMonitores 
+     */
     public List<Asesoria> consultaAsistentesProfesor(int profesorID, int semestreID) throws ExcepcionSistemaMonitores;
+    
+    /**
+     * 
+     * @param monitorID
+     * @param fechaInicio
+     * @return 
+     */
+    public Asesoria consultaAsesoriaActualMonitor(int monitorID, Timestamp fechaInicio, int semestreID) throws ExcepcionSistemaMonitores;
+    
+    /**
+     * 
+     * @param asesoriaID
+     * @param fechaFin
+     * @throws ExcepcionSistemaMonitores 
+     */
+    public void finalizarMonitoria(int asesoriaID, Timestamp fechaFin) throws ExcepcionSistemaMonitores;
+    
+    /**
+     * 
+     * @param asesoriaID
+     * @param codigoInt
+     * @param string
+     * @param observaciones
+     * @throws ExcepcionSistemaMonitores 
+     */
+    public void actualizarObservacionesAsesoria(int asesoriaID, int codigoInt, String observaciones) throws ExcepcionSistemaMonitores;
 
 }

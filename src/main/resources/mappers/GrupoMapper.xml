@@ -23,7 +23,7 @@
             grupo.numeroestudiante as gr_numeroestudiante,
             grupo.horario_monitor as gr_horario_monitor,
 
-            profesor.profesorid,
+            profesor.profesorid as pr_profesorid,
             profesor.nombres as pr_nombres,
             profesor.apellidos as pr_apellidos,
             profesor.correo as pr_correo,

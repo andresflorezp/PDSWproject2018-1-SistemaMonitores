@@ -29,7 +29,8 @@ import static javax.faces.context.FacesContext.getCurrentInstance;
  */
 @ManagedBean(name = "MonitorMonitoria")
 @SessionScoped
-public class MonitorBean implements Serializable{
+public class MonitorBean implements Serializable {
+
     private String Franja;
     private String Fecha;
     private List<Registro> registros;
@@ -41,19 +42,19 @@ public class MonitorBean implements Serializable{
     private int numberHour;
     private int numberMinute;
     private int numberSecond;
-    
-    private String horas,minutos,segundos;
-    private boolean showDo;
+
+    private String horas, minutos, segundos;
+    private static boolean showDo;
     private boolean showDoT;
-    public MonitorBean(){
+
+    public MonitorBean() {
         registros = new ArrayList();
         hora.setTimeZone(timeZone1);
         numberHour = 1;
         numberMinute = 30;
-        numberSecond= 59;
+        numberSecond = 59;
     }
 
-   
     public String getFecha() {
         return Fecha;
     }
@@ -61,8 +62,9 @@ public class MonitorBean implements Serializable{
     public void setFecha(String fecha) {
         this.Fecha = fecha;
     }
-     public void guardarRegistro(){
-        registros.add(new Registro(Fecha,Franja));
+
+    public void guardarRegistro() {
+        registros.add(new Registro(Fecha, Franja));
 
     }
 
@@ -107,14 +109,12 @@ public class MonitorBean implements Serializable{
     }
 
     public String getHoraActual() {
-        return getHoras()+":"+getMinutos()+":"+getSegundos();
+        return getHoras() + ":" + getMinutos() + ":" + getSegundos();
     }
-
 
     public String getHoras() {
         return valueOf(hora.get(HOUR_OF_DAY));
-        
-                
+
     }
 
     public void setHoras(String horas) {
@@ -136,11 +136,13 @@ public class MonitorBean implements Serializable{
     public void setSegundos(String segundos) {
         this.segundos = segundos;
     }
-    
- 
 
-    public void doAction(){
-      showDo=true;
+    public void doAction() {
+        MonitorBean.setShowDoS(true);
+    }
+
+    public void endAction() {
+        MonitorBean.setShowDoS(false);
     }
 
     public Calendar getHora() {
@@ -152,17 +154,25 @@ public class MonitorBean implements Serializable{
     }
 
     public boolean getShowDo() {
-        return showDo;
+        return MonitorBean.getShowDoS();
+    }
+    
+    public static boolean getShowDoS() {
+        return MonitorBean.showDo;
     }
 
     public void setShowDo(boolean showDo) {
-        this.showDo = showDo;
+        MonitorBean.setShowDoS(showDo);
     }
     
+    public static void setShowDoS(boolean showDo) {
+        MonitorBean.showDo = showDo;
+    }
+
     public void messageLogOut() {
         addMessage("Saliendo de la Monitoria", "Gracias por usar la Plataforma");
     }
-     
+
     public void addMessage(String summary, String detail) {
         FacesMessage message = new FacesMessage(SEVERITY_INFO, summary, detail);
         getCurrentInstance().addMessage(null, message);
@@ -199,26 +209,22 @@ public class MonitorBean implements Serializable{
     public void setNumberSecond(int numberSecond) {
         this.numberSecond = numberSecond;
     }
-    
-    public void decrement(){
-        if(numberSecond==0 && numberMinute==0 && numberHour==0 && !showDoT){
+
+    public void decrement() {
+        if (numberSecond == 0 && numberMinute == 0 && numberHour == 0 && !showDoT) {
             doActionT();
- 
+
+        } else if (numberSecond == 0 && numberMinute == 0 && !showDoT) {
+            numberHour -= 1;
+            numberSecond = 59;
+
+        } else if (numberSecond == 0 && !showDoT) {
+            numberSecond = 59;
+            numberMinute -= 1;
+        } else if (!showDoT) {
+            numberSecond -= 1;
         }
-        else if(numberSecond==0 && numberMinute==0 && !showDoT){
-            numberHour-=1;
-            numberSecond=59;
-            
-        }
-        else if(numberSecond==0 && !showDoT){
-            numberSecond=59;
-            numberMinute-=1;
-        }
-        else if(!showDoT){
-            numberSecond-=1;
-        }
-            
-        
+
     }
 
     public boolean getShowDoT() {
@@ -228,9 +234,9 @@ public class MonitorBean implements Serializable{
     public void setShowDoT(boolean showDoT) {
         this.showDoT = showDoT;
     }
-    public void doActionT(){
-      showDoT=true;
+
+    public void doActionT() {
+        showDoT = true;
     }
-    
-    
+
 }

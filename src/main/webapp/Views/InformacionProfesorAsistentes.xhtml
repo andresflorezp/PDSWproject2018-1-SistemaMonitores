@@ -59,7 +59,7 @@
                             <p:column headerText="Nombre" sortBy="#{detalle.asistente.nombre}" filterBy="#{detalle.asistente.nombre}">
                                 <h:outputText value="#{detalle.asistente.nombre}"/>
                             </p:column>
-                            <p:column headerText="Nombre" filterBy="#{detalle.temas}" filterFunction="#{InformacionAsistenciaProfesor.filtrar}">
+                            <p:column headerText="Temas" filterBy="#{detalle.temas}" filterFunction="#{InformacionAsistenciaProfesor.filtrar}">
                                 <p:repeat var="tem" value="#{detalle.temas}" id="tema">
                                     <h:outputText value="■ #{tem.topic}"/>
                                     <br/>

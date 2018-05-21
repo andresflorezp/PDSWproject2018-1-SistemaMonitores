@@ -34,7 +34,10 @@
                         </h:panelGrid>
 
                         <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                            <p:commandButton value="Si"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="/faces/Views/RegistrarMonitoria.xhtml"/>
+                            <p:commandButton value="Si"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="/faces/Views/RegistrarMonitoria.xhtml">
+                                <f:actionListener binding="#{MonitorMonitoria.endAction()}"/>
+                                <f:actionListener binding="#{RegistroAsistencia.finMonitoria()}"/>
+                            </p:commandButton>
                             <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
                         </p:confirmDialog>
                     </div>

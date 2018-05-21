@@ -40,6 +40,13 @@ public abstract class Persona implements Serializable {
 
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + this.codigoID;
+        return hash;
+    }
+
     public int getCodigoID() {
         return codigoID;
     }

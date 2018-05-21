@@ -11,6 +11,7 @@
             </div>
             <br/>
             <div id="tabla">
+                <p:messages id="messages" />
                 <p:dataTable var="asesorias" value="#{InformacionAsesorias.asesorias}" id="asesoria" style="width: 1000px; margin-left: 10px"
                              emptyMessage="No se encontraron asesorías" paginator="true"  rows="10" rowsPerPageTemplate="10,25,50" selectionMode="single"
                              paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
@@ -34,8 +35,11 @@
                             <br/>
                         </p:repeat>
                     </p:column>
-                    <p:column headerText="Número de asistentes" filterBy="#{asesorias.asesoriasEstudiante.size()}" filterMatchMode="startsWith">
+                    <p:column headerText="Número de asistentes" filterBy="#{asesorias.asesoriasEstudiante.size}" filterMatchMode="startsWith">
                         <h:outputText value="#{asesorias.asesoriasEstudiante.size()}"/>
+                    </p:column>
+                    <p:column headerText="Fecha" filterBy="#{asesorias.fecha}" sortBy="#{asesorias.fecha}">
+                        <h:outputText value="#{asesorias.fecha}"/>
                     </p:column>
                 </p:dataTable>
 
@@ -54,7 +58,7 @@
                             <p:column headerText="Nombre" sortBy="#{detalle.asistente.nombre}" filterBy="#{detalle.asistente.nombre}">
                                 <h:outputText value="#{detalle.asistente.nombre}"/>
                             </p:column>
-                            <p:column headerText="Nombre" filterBy="#{detalle.temas}" filterFunction="#{InformacionAsesorias.filtrar}">
+                            <p:column headerText="temas" filterBy="#{detalle.temas}" filterFunction="#{InformacionAsesorias.filtrar}">
                                 <p:repeat var="tem" value="#{detalle.temas}" id="tema">
                                     <h:outputText value="■ #{tem.topic}"/>
                                     <br/>

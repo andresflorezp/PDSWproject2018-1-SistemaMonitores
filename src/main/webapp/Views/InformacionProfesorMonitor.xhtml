@@ -11,6 +11,7 @@
             </div>
             <br/>
             <div id="tabla">
+                <p:messages id="messages" />
                 <p:dataTable var="asesorias" value="#{InformacionAsistenciaProfesor.asesorias}" id="asesoria" style="width: 1000px; margin-left: 10px"
                              emptyMessage="No se encontraron asesorías" paginator="true"  rows="10" rowsPerPageTemplate="10,25,50" selectionMode="single"
                              paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"

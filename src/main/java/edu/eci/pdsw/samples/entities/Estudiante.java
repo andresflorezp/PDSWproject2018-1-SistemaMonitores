@@ -16,15 +16,15 @@ import static java.lang.String.format;
 public class Estudiante implements Serializable{
     private long carnet;
     private String nombre;
-    private int grupo;
+    private Profesor profesor;
     
     public Estudiante(){
     }
     
-    public Estudiante(int carnet,String nombre, int grupo) {
+    public Estudiante(int carnet,String nombre, Profesor profesor) {
         this.carnet = carnet;
         this.nombre = nombre;
-        this.grupo = grupo;
+        this.profesor = profesor;
         
     }
 
@@ -49,12 +49,12 @@ public class Estudiante implements Serializable{
         this.nombre = nombre;
     }
 
-    public int getGrupo() {
-        return grupo;
+    public Profesor getProfesor() {
+        return profesor;
     }
 
-    public void setGrupo(int grupo) {
-        this.grupo = grupo;
+    public void setProfesor(Profesor profesor) {
+        this.profesor = profesor;
     }
     
 }

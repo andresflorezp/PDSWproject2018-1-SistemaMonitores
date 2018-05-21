@@ -17,4 +17,6 @@ public interface AsesoriaEstudianteMapper {
                                         @Param("carnet") Integer codigoInt, 
                                         @Param("obs") String observaciones, 
                                         @Param("proID") Integer profesorID);
+
+    public void actualizarObservacionesAsesoria(@Param("aseID") int asesoriaID, @Param("codID") int codigoInt, @Param("obs") String observaciones);
 }

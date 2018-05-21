@@ -24,7 +24,7 @@ public class MyBatisEstudianteDao implements EstudianteDAO, Serializable {
 
     @Override
     public void save(Estudiante estudiante) throws PersistenceException {
-        estudianteMapper.agregarEstudiante(estudiante.getCarnet(),estudiante.getNombre(),estudiante.getGrupo());
+        estudianteMapper.agregarEstudiante(estudiante.getCarnet(),estudiante.getNombre(),estudiante.getProfesor().getCodigoID());
     }
 
     @Override

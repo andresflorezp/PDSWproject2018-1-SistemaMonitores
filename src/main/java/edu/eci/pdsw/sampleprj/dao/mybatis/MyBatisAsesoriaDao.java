@@ -11,6 +11,7 @@ import edu.eci.pdsw.sampleprj.dao.PersistenceException;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.AsesoriaMapper;
 import edu.eci.pdsw.samples.entities.Asesoria;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -48,9 +49,9 @@ public class MyBatisAsesoriaDao implements AsesoriaDAO, Serializable {
     }
 
     @Override
-    public void registroAsesoriaMonitor(Integer monitorID, String ip) throws PersistenceException {
+    public void registroAsesoriaMonitor(int monitorID, String ip, Timestamp fechaInicio) throws PersistenceException {
         try {
-            asesoriaMapper.registroAsesoriaMonitor(monitorID, ip);
+            asesoriaMapper.registroAsesoriaMonitor(monitorID, ip,fechaInicio);
         } catch (org.apache.ibatis.exceptions.PersistenceException e) {
             throw new PersistenceException("Error al realizar el registro de la Asesoria para el monitor con Carnet: "+monitorID +"\n"+e.getMessage());
         }
@@ -61,7 +62,7 @@ public class MyBatisAsesoriaDao implements AsesoriaDAO, Serializable {
         try {
             return asesoriaMapper.consultaAsesoriasProfesor(profesorID, semestreID);
         } catch (org.apache.ibatis.exceptions.PersistenceException e) {
-            throw new PersistenceException("Error al realizar la consulta de la Asesoria para el prpfesor con ID: "+profesorID+" en el semestre: "+ semestreID +"\n"+e.getMessage() );
+            throw new PersistenceException("Error al realizar la consulta de la Asesoria para el profesor con ID: "+profesorID+" en el semestre: "+ semestreID +"\n"+e.getMessage() );
         }
     }
 
@@ -70,7 +71,27 @@ public class MyBatisAsesoriaDao implements AsesoriaDAO, Serializable {
         try {
             return asesoriaMapper.consultaAsistentesProfesor(profesorID, semestreID);
         } catch (org.apache.ibatis.exceptions.PersistenceException e) {
-            throw new PersistenceException("Error al realizar la consulta de la Asesoria para el prpfesor con ID: "+profesorID+" en el semestre: "+ semestreID +"\n"+e.getMessage() );
+            throw new PersistenceException("Error al realizar la consulta de la Asesoria para el profesor con ID: "+profesorID+" en el semestre: "+ semestreID +"\n"+e.getMessage() );
+        }
+    }
+
+    @Override
+    public Asesoria consultaAsesoriaMonitor(int monitorID, Timestamp fechaInicio, int semestreID) throws PersistenceException {
+        try {
+            return asesoriaMapper.consultaAsesoriaMonitor(monitorID, fechaInicio, semestreID);
+        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+            throw new PersistenceException("Error al realizar la consulta de la Asesoria para el monitor con ID: "+monitorID+" en la fecha : "+ fechaInicio +"\n"+e.getMessage() );
+        } catch (java.lang.IndexOutOfBoundsException ex) {
+            throw new PersistenceException("Error al no se encontro una Asesoria para el monitor con ID: "+monitorID+" en la fecha : "+ fechaInicio +"\n"+ex.getMessage() );
+        }
+    }
+
+    @Override
+    public void finalizarMonitoria(int asesoriaID, Timestamp fechaFin) throws PersistenceException {
+        try {
+            asesoriaMapper.finalizarMonitoria(asesoriaID, fechaFin);
+        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+            throw new PersistenceException("Error al finalizar la Asesoria actual con ID: "+asesoriaID+" en la fecha : "+ fechaFin +"\n"+e.getMessage() );
         }
     }
     

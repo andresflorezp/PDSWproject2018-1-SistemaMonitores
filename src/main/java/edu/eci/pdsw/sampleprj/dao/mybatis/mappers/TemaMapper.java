@@ -21,7 +21,7 @@ public interface TemaMapper {
 
     public List<Tema> consultarTemas();
 
-    public void registroTemaMonitoria(@Param("monID") int monitorID,
+    public void registroTemaMonitoria(@Param("asID") int asesoriaID,
             @Param("carnet") int codigoInt,
             @Param("temaID") Integer temaID);
 }

@@ -6,6 +6,7 @@
 package edu.eci.pdsw.sampleprj.dao;
 
 import edu.eci.pdsw.samples.entities.Asesoria;
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -24,8 +25,12 @@ public interface AsesoriaDAO {
 
     public List<Asesoria> loadAll() throws PersistenceException;
 
-    public void registroAsesoriaMonitor(Integer monitorID, String ip) throws PersistenceException;
+    public void registroAsesoriaMonitor(int monitorID, String ip, Timestamp fechaInicio) throws PersistenceException;
 
     public List<Asesoria> consultarAsistentesProfesor(Integer profesorID, Integer semestreID) throws PersistenceException;
+
+    public Asesoria consultaAsesoriaMonitor(int monitorID, Timestamp fechaInicio, int semestreID) throws PersistenceException;
+
+    public void finalizarMonitoria(int asesoriaID, Timestamp fechaFin) throws PersistenceException;
 
 }

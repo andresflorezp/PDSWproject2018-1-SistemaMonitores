@@ -28,7 +28,8 @@
     
     <insert parameterType="map" id="registroTemaMonitoria">
         INSERT INTO temamonitoria (asesoriaestudiante_asesoria_monitor_asesoriaid,asesoriaestudiante_estudiante_carnet,tema_temaid)
-        VALUES (#{monID},#{carnet},#{temaID})
+        VALUES (#{asID},#{carnet},#{temaID})
+        ON CONFLICT DO NOTHING
     </insert>
 
     <resultMap type='Tema' id='TemaResult'>

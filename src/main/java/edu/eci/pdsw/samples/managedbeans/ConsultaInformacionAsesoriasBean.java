@@ -43,7 +43,7 @@ public class ConsultaInformacionAsesoriasBean implements Serializable {
     public ConsultaInformacionAsesoriasBean() throws ExcepcionSistemaMonitores {
         filtrar();
     }
-
+    
     public void filtrar() throws ExcepcionSistemaMonitores {
         asesorias = new LazyAsesoriaDataModel(sp.consultaAsesoriaMonitor(monitorID, semestreID));
         getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(SEVERE, "\nAns: " + asesorias);
@@ -70,7 +70,7 @@ public class ConsultaInformacionAsesoriasBean implements Serializable {
     }
 
     public void onRowSelect(SelectEvent event) {
-        FacesMessage msg = new FacesMessage("Asesoria Selected", valueOf(((Asesoria) event.getObject()).getAsesoriaID()));
+        FacesMessage msg = new FacesMessage("Asesoria seleccionada", valueOf(((Asesoria) event.getObject()).getAsesoriaID()));
         getCurrentInstance().addMessage(null, msg);
     }
 
