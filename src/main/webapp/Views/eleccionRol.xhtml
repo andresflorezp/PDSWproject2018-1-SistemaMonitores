@@ -1,70 +1,26 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
-
-    <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet name="css/default.css"/>
-        <h:outputStylesheet name="css/cssLayout.css"/>
-        <h:outputStylesheet name="css/Cabecera.css"/>
-        <h:outputStylesheet name="css/StyleButton.css"/>
-        <h:outputStylesheet name="css/Progreso.css"/>
-        <h:outputScript name="JavaScript/pdfmake.min.js" />
-        <h:outputScript name="JavaScript/vfs_fonts.js" />
-        <h:outputScript name="JavaScript/chartsScript.js" />
-
-
-        <title>Registro</title>
-    </h:head>
-
-    <h:body>
-        
-        <h:form id="formCSS">
-
-            <div id="top">
-                <ui:insert name="top"></ui:insert>
-                <div id="Encabezado">
-
-                    <h:outputLabel id="cabecera" value="Escuela colombiana de Ingenieria"  style="font-size: 50px" styleClass="cabecera"/>
-                  
-                  
-
-                </div>
-
-            </div>
-            <div>
-                <div id="left">
-                    <ui:insert name="left">
-                        <div id="Menu">
-
-                            
-
-                        </div>
-                    </ui:insert>
-                </div>
-
-                <div id="content">
-
-                    <ui:insert name="content">
-                        <p:outputLabel value="Elige el Rol" style="font-size: 40px;color:#eeeaea "/>
-                        <br/>
-                        <div id="Roles" align="center   ">
-                            <p:commandButton value ="Rol Monitor" action="RegistrarMonitoria.xhtml" style="width: 400px;height: 80px"/>
-                            <br/>
-                            <br/>
-                            <p:commandButton value ="Rol Profesor" action="InformacionGraficaMonitorias.xhtml" style="width: 400px;height: 80px"/>
-                    
-                        </div>
-                       
-                    </ui:insert>
+<ui:composition template="./../Templeates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="left">
+    </ui:define>
+    <ui:define name="content">
+        <h:form>
+            <div style="margin-left: -250px;">
+                <p:outputLabel value="Elige el Rol" style="font-size: 40px;color:#eeeaea "/>
+                <br/>
+                <div id="Roles" align="center">
+                    <p:commandButton value ="Rol Monitor" action="RegistrarMonitoria.xhtml" style="width: 400px;height: 80px"/>
+                    <br/>
+                    <br/>
+                    <p:commandButton value ="Rol Profesor" action="InformacionGraficaMonitorias.xhtml" style="width: 400px;height: 80px"/>
+                    <br/>
+                    <br/>
+                    <p:commandButton value ="Rol Administrador" action="/faces/Views/registrarMonitor.xhtml" style="width: 400px;height: 80px"/>
                 </div>
             </div>
-
-
         </h:form>
-    </h:body>
-
-</html>
+    </ui:define>
+</ui:composition>

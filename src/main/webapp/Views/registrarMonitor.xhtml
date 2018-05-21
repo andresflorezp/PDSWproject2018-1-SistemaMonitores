@@ -1,44 +1,41 @@
-<ui:composition template="./../Templeates/plantilla.xhtml"
+<ui:composition template="./../Templeates/plantillaAdministrador.xhtml"
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
-    <ui:define name="left">
-    </ui:define>
     <ui:define name="content">
-        <div id="contentPublic" style="margin-left: -250px;">
+        <div id="contentPublic" style="margin-left: 0px;">
             <h:form id="form">
-                <p:layoutUnit position="north">
-                    <h1 style="text-align: center;">Registrar Monitor</h1>
-                </p:layoutUnit>
-                <p:layoutUnit  position="center">
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <h:outputLabel for="codigo" value="Codigo:" />
-                        <p:inputText id="codigo" required="true" value = "#{monitorBean.codigo}"/>
+                <h:outputText style="margin-left: 60px;font-size: 18px;color: #4c9ad2;" value="Registrar Monitor"/>
+                <p:messages id="messages" />
+                <h:panelGrid columns="3" cellpadding="5" id="grid">
+                    <h:outputLabel for="codigo" value="Codigo: " />
+                    <p:inputText id="codigo" label="codigo Estudiante" required="true" value="#{monitorBean.codigo}"/>
+                    <p:message for="codigo"/>
+                    <h:outputLabel for="nombre" value="Nombres: " />
+                    <p:inputText id="nombre" required="true" value="#{monitorBean.nombres}"/>
+                    <p:message for="nombre"/>
+                    <h:outputLabel for="apellidos" value="Apellidos: " />
+                    <p:inputText id="apellidos" required="true" value="#{monitorBean.apellidos}"/>
+                    <p:message for="apellidos" />
+                    <h:outputLabel for="mail" value="Mail: "/>
+                    <p:inputText id="mail" required="true" value="#{monitorBean.mail}"/> 
+                    <p:message for="mail"/>
+                    <h:outputLabel for="semestreIngreso" value="Semestre Ingreso: "/>
+                    <p:inputText id="semestreIngreso" required="true"  value="#{monitorBean.semestreIngreso}"/>
+                    <p:message for="semestreIngreso"/>
+                    <h:outputLabel for="facultad" value="Facultad: "/>
+                    <p:inputText id="facultad" required="true"  value="#{monitorBean.facultad}"/>
+                    <p:message for="facultad"/>
+                    <h:outputLabel for="telefono" value="Telefono: "/>
+                    <p:inputText  id="telefono" value="#{monitorBean.telefono}"/>  
+                    <p:message for="telefono"/>
+                </h:panelGrid>
+                <p:commandButton value="Registrar" update="grid" actionListener="#{monitorBean.registrarMonitor()}">
+                    <p:resetInput target="grid"/>
+                </p:commandButton>
 
-                        <h:outputLabel for="nombre" value="Nombres:" />
-                        <p:inputText id="nombre" required="true"  value="#{monitorBean.nombres}"/>
-
-                        <h:outputLabel for="apellidos" value="Apellidos:" />
-                        <p:inputText id="apellidos" required="true" value="#{monitorBean.apellidos}"/>
-
-                        <h:outputLabel for="mail" value="Mail:" />
-                        <p:inputText id="mail" required="true" value="#{monitorBean.mail}" /> 
-
-                        <h:outputLabel for="semestreIngreso" value="Semestre Ingreso:" />
-                        <p:inputText id="semestreIngreso" required="true"  value="#{monitorBean.semestreIngreso}"/>
-
-                        <h:outputLabel for="facultad" value="Facultad:" />
-                        <p:inputText id="facultad" required="true"  value="#{monitorBean.facultad}"/>
-
-                        <h:outputLabel for="telefono" value="Telefono:" />
-                        <p:inputText id="telefono" value="#{monitorBean.telefono}" />   
-                    </h:panelGrid>
-                    <div>
-                        <p:commandButton value="Registrar" actionListener="#{monitorBean.registrarMonitor()}"/>
-                    </div> 
-                </p:layoutUnit>
             </h:form>
         </div>
     </ui:define>
