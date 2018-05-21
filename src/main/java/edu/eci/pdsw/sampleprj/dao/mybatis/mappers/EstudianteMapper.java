@@ -27,5 +27,5 @@ public interface EstudianteMapper {
     
     public void agregarEstudiante(@Param("carnet") long carnet,
                              @Param("nombre") String nombre,
-                             @Param("grupo") int grupo);
+                             @Param("proID") Integer profesorID);
 }

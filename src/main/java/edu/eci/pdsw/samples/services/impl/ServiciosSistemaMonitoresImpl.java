@@ -67,8 +67,12 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
     }
 
     @Override
-    public void addEstudiante(long carnet, String nombre) throws ExcepcionSistemaMonitores {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addEstudiante(long carnet, String nombre, int profesorID) throws ExcepcionSistemaMonitores {
+        try {
+            daoEstudiante.save(carnet, nombre, profesorID);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
     }
 
     @Override
@@ -114,9 +118,9 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
     }
 
     @Override
-    public void addAsesoriaEstudiante(int asesoriaID, int codigoInt, String observaciones, Integer profesorID) throws ExcepcionSistemaMonitores {
+    public void addAsesoriaEstudiante(int asesoriaID, int codigoInt, String observaciones) throws ExcepcionSistemaMonitores {
         try {
-            daoAsesoriaEstudiante.registroAsesoriaEstudiante(asesoriaID, codigoInt, observaciones, profesorID);
+            daoAsesoriaEstudiante.registroAsesoriaEstudiante(asesoriaID, codigoInt, observaciones);
         } catch (PersistenceException ex) {
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }
@@ -216,15 +220,6 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
     public void finalizarMonitoria(int asesoriaID, Timestamp fechaFin) throws ExcepcionSistemaMonitores{
         try {
             daoAsesoria.finalizarMonitoria(asesoriaID, fechaFin);
-        } catch (PersistenceException ex) {
-            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
-        }
-    }
-
-    @Override
-    public void actualizarObservacionesAsesoria(int asesoriaID, int codigoInt, String observaciones) throws ExcepcionSistemaMonitores {
-        try {
-            daoAsesoriaEstudiante.actualizarObservacionesAsesoria(asesoriaID, codigoInt, observaciones);
         } catch (PersistenceException ex) {
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }

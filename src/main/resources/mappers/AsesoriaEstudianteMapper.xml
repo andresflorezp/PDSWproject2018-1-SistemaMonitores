@@ -6,22 +6,17 @@
 <mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.AsesoriaEstudianteMapper">
     
     <insert parameterType="map" id="registroAsesoriaEstudiante">
-        INSERT INTO asesoriaestudiante(asesoria_monitor_asesoriaid,estudiante_carnet,profesorestudianteid,observaciones)
-        VALUES (#{aseID},#{carnet},#{proID},#{obs})
+        INSERT INTO asesoriaestudiante(asesoria_monitor_asesoriaid,estudiante_carnet,observaciones)
+        VALUES (#{aseID},#{carnet},#{obs})
+        ON CONFLICT on constraint asesoriaestudiante_pk DO UPDATE SET
+        observaciones = #{obs}
     </insert>
-    
-    <update id="actualizarObservacionesAsesoria">
-        UPDATE asesoriaestudiante SET
-	observaciones = #{obs}
-	WHERE asesoria_monitor_asesoriaid = #{aseID} AND estudiante_carnet = #{codID}
-    </update>
     
     <resultMap type="AsesoriaEstudiante" id="AsesoriaEstudianteResult" >
         <id property="asesoriaID" column="asesoriaid"/>
         <id property="estudianteID" column="carnet"/>
         <result property="observaciones" column="ase_observaciones"/>
         <association property="asistente" javaType="Estudiante" resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.EstudianteMapper.EstudianteResult'/>
-        <association property="profesor" javaType="Profesor" resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ProfesorMapper.ProfesorEstudianteResult'/>
         <collection property="temas" ofType="Tema" resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TemaMapper.TemaResult' notNullColumn="temaid"/>
     </resultMap>
 </mapper>

@@ -6,9 +6,8 @@
 <mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.EstudianteMapper">
     <select parameterType="map" id="consultarEstudianteGeneral" resultMap="EstudianteResult">
         select    
-            es.carnet,
-            es.nombre AS es_nombre,
-            es.grupo AS es_grupo
+        es.carnet,
+        es.nombre AS es_nombre
         FROM estudiante as es 
 
         <if test="carnet != null">
@@ -17,14 +16,14 @@
     </select>
     
     <insert parameterType="map" id="agregarEstudiante">
-        INSERT INTO estudiante (carnet,nombre,grupo)
-        VALUES (#{carnet},#{nombre},#{grupo})
+        INSERT INTO estudiante (carnet,nombre,profesorestudianteid)
+        VALUES (#{carnet},#{nombre},#{proID})
     </insert>
     
     <resultMap type="Estudiante" id="EstudianteResult" >
         <id property="carnet" column="carnet"/>
         <result property="nombre" column="es_nombre"/>
-        <result property="grupo" column="es_grupo"/>
+        <association property="profesor" javaType="Profesor" resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ProfesorMapper.ProfesorEstudianteResult'/>
     </resultMap>
     
 </mapper>

@@ -7,14 +7,17 @@ package edu.eci.pdsw.sampleprj.dao;
 
 import edu.eci.pdsw.samples.entities.Estudiante;
 import java.util.List;
+
 /**
  *
  * @author andres_vaz
  */
 public interface EstudianteDAO {
-    
-        public Estudiante load(Long id) throws PersistenceException;
-        public void save(Estudiante estudiante) throws PersistenceException;
-        public List<Estudiante> consultarEstudiantes() throws PersistenceException;
-    
+
+    public Estudiante load(Long id) throws PersistenceException;
+
+    public void save(long carnet, String nombre, int profesorID) throws PersistenceException;
+
+    public List<Estudiante> consultarEstudiantes() throws PersistenceException;
+
 }

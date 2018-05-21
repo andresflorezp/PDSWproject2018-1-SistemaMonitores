@@ -23,30 +23,31 @@ public class MyBatisEstudianteDao implements EstudianteDAO, Serializable {
     private EstudianteMapper estudianteMapper;
 
     @Override
-    public void save(Estudiante estudiante) throws PersistenceException {
-        estudianteMapper.agregarEstudiante(estudiante.getCarnet(),estudiante.getNombre(),estudiante.getProfesor().getCodigoID());
+    public void save(long carnet, String nombre, int profesorID) throws PersistenceException {
+        try {
+            estudianteMapper.agregarEstudiante(carnet, nombre, profesorID);
+        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+            throw new PersistenceException("Error al guardar al estudiante con carnet: " + carnet+" y nombre: "+nombre, e);
+        }
     }
 
     @Override
     public Estudiante load(Long carnet) throws PersistenceException {
-        try{
+        try {
             return estudianteMapper.consultarEstudiante(carnet);
-        }catch(org.apache.ibatis.exceptions.PersistenceException e){
-            throw new PersistenceException(carnet == null?"Error al consultar los estudiantes.":"Error al consultar el estudiante con carnet: "+carnet,e);
-        }catch(java.lang.IndexOutOfBoundsException ex){
-            throw new PersistenceException("Un estudiante con carnet "+carnet+" no ha sido encontrado.",ex);
+        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+            throw new PersistenceException(carnet == null ? "Error al consultar los estudiantes." : "Error al consultar el estudiante con carnet: " + carnet, e);
+        } catch (java.lang.IndexOutOfBoundsException ex) {
+            throw new PersistenceException("Un estudiante con carnet " + carnet + " no ha sido encontrado.", ex);
         }
     }
 
     @Override
     public List<Estudiante> consultarEstudiantes() throws PersistenceException {
-        try{
+        try {
             return estudianteMapper.consultarEstudiantes();
-        }catch(org.apache.ibatis.exceptions.PersistenceException e){
-            throw new PersistenceException("Error al consultar los estudiantes.",e);
+        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+            throw new PersistenceException("Error al consultar los estudiantes.", e);
         }
     }
 }
-
-
-

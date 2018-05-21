@@ -11,7 +11,7 @@
             </div>
             <br/>
             <div id="tabla">
-                <p:dataTable var="asesorias" value="#{InformacionAsistentesProfesor.asesorias}" id="asesoria" style="width: 1000px; margin-left: 10px"
+                <p:dataTable var="asesorias" value="#{InformacionAsistentesProfesor.asesorias}" id="asesoria" style="width: 1200px;"
                              emptyMessage="No se encontraron asesorías" paginator="true"  rows="10" rowsPerPageTemplate="10,25,50" selectionMode="single"
                              paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                              selection="#{InformacionAsistentesProfesor.selectedAsistencia}" lazy="true">
@@ -42,6 +42,9 @@
                             </p:panelGrid>
                         </p:repeat>
                     </p:column>
+                    <p:column headerText="Fecha" filterBy="#{asesorias.fecha}" sortBy="#{asesorias.fecha}">
+                        <h:outputText value="#{asesorias.fecha}"/>
+                    </p:column>
                 </p:dataTable>
 
                 <p:dialog header="Detalles de la asesoria" widgetVar="asesoriaDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" style="margin-right: 250px;padding-bottom: 20px;padding-left: 10px;padding-right: 10px;">
@@ -50,8 +53,8 @@
                             <f:facet name="header">
                                 <h:outputText value="Detalles de la asesoria"/>
                             </f:facet>
-                            <p:column headerText="Profesor" sortBy="#{detalle.profesor.apellido}" filterBy="#{detalle.profesor.apellido}">
-                                <h:outputText value="#{detalle.profesor.apellido} #{detalle.profesor.nombre}"/>
+                            <p:column headerText="Profesor" sortBy="#{detalle.asistente.profesor.apellido}" filterBy="#{detalle.asistente.profesor.apellido}">
+                                <h:outputText value="#{detalle.asistente.profesor.apellido} #{detalle.asistente.profesor.nombre}"/>
                             </p:column>
                             <p:column headerText="Carnet" sortBy="#{detalle.asistente.carnet}" filterBy="#{detalle.asistente.carnet}">
                                 <h:outputText value="#{detalle.asistente.carnet}"/>

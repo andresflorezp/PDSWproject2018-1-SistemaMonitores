@@ -43,8 +43,12 @@ public interface ServiciosSistemaMonitores {
 
     /**
      * Metodo con el cual se agrega un estudiante
+     * @param carnet
+     * @param nombre
+     * @param profesorID
+     * @throws ExcepcionSistemaMonitores
      */
-    public void addEstudiante(long carnet, String nombre) throws ExcepcionSistemaMonitores;
+    public void addEstudiante(long carnet, String nombre, int profesorID) throws ExcepcionSistemaMonitores;
 
     /**
      * Metodo con el cual se crea un grupo
@@ -83,10 +87,11 @@ public interface ServiciosSistemaMonitores {
     /**
      * Agrega un registro de que un estudiante asistio a una monitoria.
      * @param asesoriaID
-     * @param estudianteCarnet
+     * @param codigoInt
+     * @param observaciones
      * @throws ExcepcionSistemaMonitores 
      */
-    public void addAsesoriaEstudiante(int asesoriaID, int codigoInt, String observaciones, Integer profesorID) throws ExcepcionSistemaMonitores;
+    public void addAsesoriaEstudiante(int asesoriaID, int codigoInt, String observaciones) throws ExcepcionSistemaMonitores;
     
    /**
     * @param materiaId identificador de la materia.
@@ -171,14 +176,5 @@ public interface ServiciosSistemaMonitores {
      */
     public void finalizarMonitoria(int asesoriaID, Timestamp fechaFin) throws ExcepcionSistemaMonitores;
     
-    /**
-     * 
-     * @param asesoriaID
-     * @param codigoInt
-     * @param string
-     * @param observaciones
-     * @throws ExcepcionSistemaMonitores 
-     */
-    public void actualizarObservacionesAsesoria(int asesoriaID, int codigoInt, String observaciones) throws ExcepcionSistemaMonitores;
 
 }

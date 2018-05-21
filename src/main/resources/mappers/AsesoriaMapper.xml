@@ -57,8 +57,7 @@
             profesorEstudiante.telefono as prE_telefono,   
 
             estudiante.carnet,
-            estudiante.nombre as es_nombre,
-            estudiante.grupo as es_grupo
+            estudiante.nombre as es_nombre
     
 	from materia join grupo on (materia_id=grupo.materia_materia_id) 
 	    join semestre on (semestre.semestre_id=grupo.semestre_semestre_id)
@@ -66,8 +65,8 @@
 	    join profesor as profesorGrupo on (profesorGrupo.profesorid=grupo.profesor_profesor_id)
 	    join asesoriamonitor on (monitor.codigo_id=asesoriamonitor.monitor_asesoria_id)
 	    left join asesoriaestudiante on (asesoriamonitor.asesoriaid=asesoriaestudiante.asesoria_monitor_asesoriaid)
-	    left join profesor as profesorEstudiante on (asesoriaestudiante.profesorestudianteid=profesorEstudiante.profesorid)
 	    left join estudiante on (estudiante.carnet=asesoriaestudiante.estudiante_carnet)
+	    left join profesor as profesorEstudiante on (estudiante.profesorestudianteid=profesorEstudiante.profesorid)
 	    left join temamonitoria on (temamonitoria.asesoriaestudiante_asesoria_monitor_asesoriaid = asesoriaestudiante.asesoria_monitor_asesoriaid
 	    					and temamonitoria.asesoriaestudiante_estudiante_carnet = asesoriaestudiante.estudiante_carnet)
 	    left join tema on (temamonitoria.tema_temaid=tema.temaid)

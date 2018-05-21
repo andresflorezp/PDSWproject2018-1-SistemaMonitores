@@ -20,20 +20,12 @@ public class MyBatisAsesoriaEstudianteDao implements AsesoriaEstudianteDAO{
     private AsesoriaEstudianteMapper asesoriaEstudianteMapper;
     
     @Override
-    public void registroAsesoriaEstudiante(int asesoriaID, int codigoInt, String observaciones, Integer profesorID) throws PersistenceException {
+    public void registroAsesoriaEstudiante(int asesoriaID, int codigoInt, String observaciones) throws PersistenceException {
         try {
-            asesoriaEstudianteMapper.registroAsesoriaEstudiante(asesoriaID, codigoInt, observaciones, profesorID);
+            asesoriaEstudianteMapper.registroAsesoriaEstudiante(asesoriaID, codigoInt, observaciones);
         } catch (org.apache.ibatis.exceptions.PersistenceException e) {
             throw new PersistenceException("Error al realizar el registro de la Asesoria para el estudiante con Carnet: "+codigoInt +"\n"+e.getMessage());
         }
     }
 
-    @Override
-    public void actualizarObservacionesAsesoria(int asesoriaID, int codigoInt, String observaciones) throws PersistenceException {
-        try {
-            asesoriaEstudianteMapper.actualizarObservacionesAsesoria(asesoriaID, codigoInt, observaciones);
-        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
-            throw new PersistenceException("Error al realizar el registro de la Asesoria para el estudiante con Carnet: "+codigoInt +"\n"+e.getMessage());
-        }
-    }
 }
