@@ -9,6 +9,7 @@ import edu.eci.pdsw.samples.entities.Asesoria;
 import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Materia;
+import edu.eci.pdsw.samples.entities.Horario;;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
@@ -176,5 +177,6 @@ public interface ServiciosSistemaMonitores {
      */
     public void finalizarMonitoria(int asesoriaID, Timestamp fechaFin) throws ExcepcionSistemaMonitores;
     
+    public Horario loadHorarios(int codigoMateria) throws ExcepcionSistemaMonitores;
 
 }

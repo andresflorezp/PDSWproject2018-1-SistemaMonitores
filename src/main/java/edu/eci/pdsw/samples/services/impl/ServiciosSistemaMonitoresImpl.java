@@ -12,11 +12,13 @@ import edu.eci.pdsw.sampleprj.dao.EstudianteDAO;
 import edu.eci.pdsw.sampleprj.dao.GrupoDAO;
 import edu.eci.pdsw.sampleprj.dao.MateriaDAO;
 import edu.eci.pdsw.sampleprj.dao.MonitorDAO;
+import edu.eci.pdsw.sampleprj.dao.HorarioDAO;
 import edu.eci.pdsw.sampleprj.dao.PersistenceException;
 import edu.eci.pdsw.sampleprj.dao.TemaDAO;
 import edu.eci.pdsw.samples.entities.Asesoria;
 import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Grupo;
+import edu.eci.pdsw.samples.entities.Horario;
 import edu.eci.pdsw.samples.entities.Materia;
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
@@ -51,6 +53,9 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
 
     @Inject
     private MonitorDAO daoMonitor;
+
+    @Inject
+    private HorarioDAO daoHorario;
 
     @Override
     public List<Asesoria> consultaAsesoriaMonitor(Integer monitorID, Integer semestreID) throws ExcepcionSistemaMonitores {
@@ -152,6 +157,15 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }
     }
+    @Override
+    public Horario loadHorarios(int codigoMateria) throws ExcepcionSistemaMonitores {
+       try {
+            return daoHorario.load(codigoMateria);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+        
 
     @Override
     public List<HashMap> consultaMonitorias() throws ExcepcionSistemaMonitores {

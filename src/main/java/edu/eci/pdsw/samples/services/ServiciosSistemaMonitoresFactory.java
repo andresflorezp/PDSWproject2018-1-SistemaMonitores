@@ -11,12 +11,14 @@ import edu.eci.pdsw.sampleprj.dao.AsesoriaDAO;
 import edu.eci.pdsw.sampleprj.dao.AsesoriaEstudianteDAO;
 import edu.eci.pdsw.sampleprj.dao.EstudianteDAO;
 import edu.eci.pdsw.sampleprj.dao.GrupoDAO;
+import edu.eci.pdsw.sampleprj.dao.HorarioDAO;
 import edu.eci.pdsw.sampleprj.dao.MateriaDAO;
 import edu.eci.pdsw.sampleprj.dao.MonitorDAO;
 import edu.eci.pdsw.sampleprj.dao.TemaDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisAsesoriaDao;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisAsesoriaEstudianteDao;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisEstudianteDao;
+import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisHorario;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisGrupoDao;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisMateriaDao;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisMonitorDAO;
@@ -48,6 +50,7 @@ public class ServiciosSistemaMonitoresFactory {
                 bind(TemaDAO.class).to(MyBatisTemaDao.class);
                 bind(GrupoDAO.class).to(MyBatisGrupoDao.class);
                 bind(AsesoriaEstudianteDAO.class).to(MyBatisAsesoriaEstudianteDao.class);
+                bind(HorarioDAO.class).to(MyBatisHorario.class);
                 bind(MonitorDAO.class).to(MyBatisMonitorDAO.class);
             }
         });

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+<mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.HorariosMapper">
+    <select parameterType="map" id="consultaMateriaGeneral" resultMap="HorarioResult">
+        select
+            horario.horarioid, 
+            horario.descripcion,
+            materia.materia_id,
+            materia.materia_nombre as m_nombre,
+            materia.materia_nemonico as m_nemonico,
+            materia.creditos as m_creditos,
+            materia.horas_monitoria_curso as m_horas_monitoria_curso,
+        
+        
+            FROM materia join horario on (horario.horarioid = materia.materia_id)
+            join tema on (tema.materia_materia_id = materia.materia_id)
+        <if test="codId != null" >
+            where  materia.materia_id = #{codId}
+        </if>
+        
+    </select>
+
+    <resultMap type='Horario' id='HorarioResult'>
+        <id property='horarioID' column='horarioid'></id>
+        <result property='descripcion' column='horario.descripcion'></result>
+        <association property="materia" javaType="Materia" resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.MateriaMapper.MateriaResult'/>
+        
+    </resultMap>
+
+</mapper>
