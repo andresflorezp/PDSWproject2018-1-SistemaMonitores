@@ -7,57 +7,55 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="content">
-        <section>
-            <div id="progreso" >
-                <h:form>
-                    <p:steps activeIndex="0" styleClass="custom" readonly="false">
-                        <p:menuitem value="Iniciar Monitoria" url="http://localhost:8080/faces/Views/RegistrarMonitoria.xhtml"/>
-                        <p:menuitem value="Registro de Estudiantes" url="http://localhost:8080/faces/Views/registrarAsistenciaEstudiante.xhtml"/>
-                        <p:menuitem value="Fin de Monitoria" url="http://localhost:8080/faces/Views/ProgresoMonitoria.xhtml"/>
-                    </p:steps>
-                </h:form>
-            </div>
-
+        <div id="progreso" >
             <h:form>
-                <p:messages id="messages"/>
-                <div id="formulario" style="margin-left: 300px;margin-top: 10px">
-                    <div id="materias" >
-                        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-                            <p:outputLabel for="console" value="Franja" />
-                            <p:selectOneMenu id="console"  style="width:125px" value="#{MonitorMonitoria.franja}">
-                                <f:selectItem itemLabel="" itemValue="" />
-                                <f:selectItem itemLabel="7:00-8:30 (am)" itemValue="7:00-8:30 (am)" />
-                                <f:selectItem itemLabel="8:30-10:00 (am)" itemValue="8:30-10:00 (am)" />
-                                <f:selectItem itemLabel="10:00-11:30 (am)" itemValue="10:00-11:30 (am)" />
-                                <f:selectItem itemLabel="11:30-1:00 (m)" itemValue="11:30-1:00 (m)" />
-                                <f:selectItem itemLabel="1:00-2:30 (pm)" itemValue="1:00-2:30 (pm)" />
-                                <f:selectItem itemLabel="2:30-4:00 (pm)" itemValue="2:30-4:00 (pm)" />
-                                <f:selectItem itemLabel="4:00-5:30 (pm)" itemValue="4:00-5:30 (pm)" />
-                                <f:selectItem itemLabel="5:30-7:00 (pm)" itemValue="5:30-7:00 (pm)" />
-                            </p:selectOneMenu>
-                        </h:panelGrid>
-                    </div>
-                    <div id="fecha" >
-                        <p:growl id="msgs" showDetail="true" />
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <p:outputLabel for="button" value="Fecha: " />
-                            <p:calendar id="button" value="#{MonitorMonitoria.fecha}" showOn="button" />
-                        </h:panelGrid>
-
-                    </div>
-                    <br/>
-                    <div id="botones">
-
-                        <p:commandButton  value="Limpiar" icon="ui-icon-star" action="horarioPublico.xhtml">
-
-                        </p:commandButton>    
-                        <p:commandButton value="Registrar" icon="ui-icon-star" action="registrarAsistenciaEstudiante.xhtml" actionListener="#{MonitorMonitoria.doAction()}">
-
-                        </p:commandButton>
-
-                    </div>
-                </div>
+                <p:steps activeIndex="0" styleClass="custom" readonly="false">
+                    <p:menuitem value="Iniciar Monitoria" url="http://localhost:8080/faces/Views/RegistrarMonitoria.xhtml"/>
+                    <p:menuitem value="Registro de Estudiantes" url="http://localhost:8080/faces/Views/registrarAsistenciaEstudiante.xhtml"/>
+                    <p:menuitem value="Fin de Monitoria" url="http://localhost:8080/faces/Views/ProgresoMonitoria.xhtml"/>
+                </p:steps>
             </h:form>
-        </section>
+        </div>
+
+        <h:form>
+            <p:messages id="messages"/>
+            <div id="formulario" style="margin-left: 300px;margin-top: 10px">
+                <div id="materias" >
+                    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                        <p:outputLabel for="console" value="Franja" />
+                        <p:selectOneMenu id="console"  style="width:125px" value="#{MonitorMonitoria.franja}">
+                            <f:selectItem itemLabel="" itemValue="" />
+                            <f:selectItem itemLabel="7:00-8:30 (am)" itemValue="7:00-8:30 (am)" />
+                            <f:selectItem itemLabel="8:30-10:00 (am)" itemValue="8:30-10:00 (am)" />
+                            <f:selectItem itemLabel="10:00-11:30 (am)" itemValue="10:00-11:30 (am)" />
+                            <f:selectItem itemLabel="11:30-1:00 (m)" itemValue="11:30-1:00 (m)" />
+                            <f:selectItem itemLabel="1:00-2:30 (pm)" itemValue="1:00-2:30 (pm)" />
+                            <f:selectItem itemLabel="2:30-4:00 (pm)" itemValue="2:30-4:00 (pm)" />
+                            <f:selectItem itemLabel="4:00-5:30 (pm)" itemValue="4:00-5:30 (pm)" />
+                            <f:selectItem itemLabel="5:30-7:00 (pm)" itemValue="5:30-7:00 (pm)" />
+                        </p:selectOneMenu>
+                    </h:panelGrid>
+                </div>
+                <div id="fecha" >
+                    <p:growl id="msgs" showDetail="true" />
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <p:outputLabel for="button" value="Fecha: " />
+                        <p:calendar id="button" value="#{MonitorMonitoria.fecha}" showOn="button" />
+                    </h:panelGrid>
+
+                </div>
+                <br/>
+                <div id="botones">
+
+                    <p:commandButton  value="Limpiar" icon="ui-icon-star" action="horarioPublico.xhtml">
+
+                    </p:commandButton>    
+                    <p:commandButton value="Registrar" icon="ui-icon-star" action="registrarAsistenciaEstudiante.xhtml" actionListener="#{MonitorMonitoria.doAction()}">
+
+                    </p:commandButton>
+
+                </div>
+            </div>
+        </h:form>
     </ui:define>
 </ui:composition>
