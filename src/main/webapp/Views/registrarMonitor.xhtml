@@ -19,6 +19,7 @@
                             <h:panelGrid columns="3" cellpadding="5" id="grid">
                                 <h:outputLabel for="codigo" value="Codigo: " />
                                 <p:inputText id="codigo" label="Codigo Estudiante" required="true" value="#{monitorBean.codigo}"/>
+<<<<<<< aaad6511bb8224e61a54aa34a8934e568c62957a
 <<<<<<< c4c5ac3efc6ca29695747066137f0272fdcc8623
                                 <p:message for="codigo" display="icon"/>
                                 <h:outputLabel for="nombre" value="Nombres: " />
@@ -41,25 +42,32 @@
                                 <p:message for="telefono" display="icon"/>
 =======
                                 <p:message for="codigo"/>
+=======
+                                <p:message for="codigo" display="icon"/>
+>>>>>>> registro monitor finalizado
                                 <h:outputLabel for="nombre" value="Nombres: " />
                                 <p:inputText id="nombre" label="Nombre" required="true" value="#{monitorBean.nombres}"/>
-                                <p:message for="nombre"/>
+                                <p:message for="nombre" display="icon"/>
                                 <h:outputLabel for="apellidos" value="Apellidos: " />
                                 <p:inputText id="apellidos" label="Apellidos " required="true" value="#{monitorBean.apellidos}"/>
-                                <p:message for="apellidos" />
+                                <p:message for="apellidos" display="icon"/>
                                 <h:outputLabel for="mail" value="Correo: "/>
                                 <p:inputText id="mail" label="Correo" required="true" value="#{monitorBean.mail}"/> 
-                                <p:message for="mail"/>
+                                <p:message for="mail" display="icon"/>
                                 <h:outputLabel for="semestreIngreso" value="Semestre Ingreso: "/>
                                 <p:inputText id="semestreIngreso" label="Semestre Ingreso" required="true"  value="#{monitorBean.semestreIngreso}"/>
-                                <p:message for="semestreIngreso"/>
+                                <p:message for="semestreIngreso" display="icon"/>
                                 <h:outputLabel for="programaacademico" value="Programa academico: "/>
                                 <p:inputText id="programaacademico" label="Programa academico" required="true"  value="#{monitorBean.programaAcademico}"/>
-                                <p:message for="programaacademico"/>
+                                <p:message for="programaacademico" display="icon"/>
                                 <h:outputLabel for="telefono" value="Telefono: "/>
                                 <p:inputText  id="telefono" value="#{monitorBean.telefono}"/>  
+<<<<<<< aaad6511bb8224e61a54aa34a8934e568c62957a
                                 <p:message for="telefono"/>
 >>>>>>> cambios registros
+=======
+                                <p:message for="telefono" display="icon"/>
+>>>>>>> registro monitor finalizado
                             </h:panelGrid>
                             <p:commandButton value="Limpiar" update="grid :form:messages" process="@this" actionListener="#{monitorBean.limpiar()}">
                                 <p:resetInput target="grid"/>
@@ -70,6 +78,7 @@
                         </p:panel>
                     </center>
                 </div>
+<<<<<<< aaad6511bb8224e61a54aa34a8934e568c62957a
 <<<<<<< c4c5ac3efc6ca29695747066137f0272fdcc8623
                 <p:separator style="visibility: hidden;margin-top: 0.5%"/>
                 <p:growl id="msgs" showDetail="true"/>
@@ -78,6 +87,11 @@
                 <p:separator style="visibility: hidden"/>
                 <p:growl id="msgs" showDetail="true"/>
 >>>>>>> cambios registros
+=======
+                <p:separator style="visibility: hidden;margin-top: 0.5%"/>
+                <p:growl id="msgs" showDetail="true"/>
+                <p:messages id="messagesTable" for="messagesTable"/>
+>>>>>>> registro monitor finalizado
                 <p:dataTable id="monotor" var="mon" value="#{monitorBean.monitores}" editable="true" editMode="cell" style="margin-right: 60px">
                     <f:facet name="header">
                         Monitores Registrados
@@ -137,40 +151,45 @@
                     
                     <p:ajax event="cellEdit" listener="#{monitorBean.onCellEdit}" update=":form:msgs" />
                     
+<<<<<<< aaad6511bb8224e61a54aa34a8934e568c62957a
 >>>>>>> Tabla editable registro
                     <p:column headerText="Carnet">
                         <f:facet name="output"><h:outputText value="#{mon.codigoID}" /></f:facet>
+=======
+                    <p:column headerText="Carnet" filterBy="#{mon.codigoID}" sortBy="#{mon.codigoID}" filterMatchMode="startsWith">
+                        <h:outputText value="#{mon.codigoID}" />
+>>>>>>> registro monitor finalizado
                     </p:column>
 
-                    <p:column headerText="Nombre">
+                    <p:column headerText="Nombre" filterBy="#{mon.nombre}" sortBy="#{mon.nombre}" filterMatchMode="startsWith">
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{mon.nombre}" /></f:facet>
                             <f:facet name="input"><p:inputText value="#{mon.nombre}" style="width:96%" label="Nombre"/></f:facet>
                         </p:cellEditor>
                     </p:column>
 
-                    <p:column headerText="Apellidos">
+                    <p:column headerText="Apellidos" filterBy="#{mon.apellido}" sortBy="#{mon.apellido}" filterMatchMode="startsWith">
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{mon.apellido}" /></f:facet>
                             <f:facet name="input"><p:inputText value="#{mon.apellido}" style="width:96%" label="Apellido"/></f:facet>
                         </p:cellEditor>
                     </p:column>
 
-                    <p:column headerText="Correo">
+                    <p:column headerText="Correo" filterBy="#{mon.correo}" sortBy="#{mon.correo}" filterMatchMode="startsWith">
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{mon.correo}" /></f:facet>
                             <f:facet name="input"><p:inputText value="#{mon.correo}" style="width:96%" label="Correo"/></f:facet>
                         </p:cellEditor>
                     </p:column>
 
-                    <p:column headerText="Semestre Ingreso">
+                    <p:column headerText="Semestre Ingreso" filterBy="#{mon.semestreIngreso}" sortBy="#{mon.semestreIngreso}" filterMatchMode="startsWith">
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{mon.semestreIngreso}" /></f:facet>
                             <f:facet name="input"><p:inputText value="#{mon.semestreIngreso}" style="width:96%" label="Semestre Ingreso"/></f:facet>
                         </p:cellEditor>
                     </p:column>
 
-                    <p:column headerText="Programa academico">
+                    <p:column headerText="Programa academico" filterBy="#{mon.programaAcademico}" sortBy="#{mon.programaAcademico}" filterMatchMode="startsWith">
                         <p:cellEditor>
                             <f:facet name="output"><h:outputText value="#{mon.programaAcademico}" /></f:facet>
                             <f:facet name="input"><p:inputText value="#{mon.programaAcademico}" style="width:96%" label="Programa academico"/></f:facet>
@@ -178,8 +197,12 @@
                     </p:column>
 
                     <p:column style="width:32px">
+<<<<<<< aaad6511bb8224e61a54aa34a8934e568c62957a
                         <p:rowEditor />
 >>>>>>> cambios registros
+=======
+                        <p:commandButton icon="ui-icon-circle-close" actionListener="#{monitorBean.delete(mon.codigoID)}" update=":form:monotor :form:messagesTable"/>
+>>>>>>> registro monitor finalizado
                     </p:column>
 
                 </p:dataTable>
