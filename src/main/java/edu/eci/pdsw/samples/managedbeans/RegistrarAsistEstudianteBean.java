@@ -44,7 +44,7 @@ public class RegistrarAsistEstudianteBean implements Serializable {
     private List<String> codigos;
     private String profesor;
     private String observaciones;
-    private int carnetActual;
+    private Integer carnetActual;
     private String profesorSelected;
     private Map<String, Integer> profesores;
     private Map<String, Integer> temas;

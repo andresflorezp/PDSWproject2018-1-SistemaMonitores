@@ -5,32 +5,37 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="content">
-        <div id="contentPublic" style="margin-left: 0px;">
+        <div id="contentPublic" style="margin-left: -250px;">
             <h:form id="form">
-                <p:panel style="width: 270px">
-                    <h:outputText style="margin-left: 60px;font-size: 18px;color: #4c9ad2;" value="Registrar Docente"/>
-                    <p:messages id="messages"/>
-                    <h:panelGrid columns="3" cellpadding="5" id="grid" >
-                        <h:outputLabel for="id" value="Identificacion:" />
-                        <p:inputText id="id" required="true" value="#{profesorBean.identificacion}"/>
-                        <p:message for="id"/>
-                        <h:outputLabel for="nombre" value="Nombres:" />
-                        <p:inputText id="nombre" required="true" value="#{profesorBean.nombres}" />
-                        <p:message for="nombre"/>
-                        <h:outputLabel for="apellidos" value="Apellidos:" />
-                        <p:inputText id="apellidos" required="true" value="#{profesorBean.apellidos}"/>
-                        <p:message for="apellidos"/>
-                        <h:outputLabel for="mail" value="Mail:" />
-                        <p:inputText id="mail" required="true" value="#{profesorBean.mail}" /> 
-                        <p:message for="mail"/>
-                        <h:outputLabel for="telefono" value="Telefono:" />
-                        <p:inputText id="telefono" value="#{profesorBean.telefono}" /> 
-                        <p:message for="telefono"/>
-                    </h:panelGrid>
-                    <p:commandButton value="Registrar" update="grid :form:messages" actionListener="#{profesorBean.registrarProfesor()}" >
-                        <p:resetInput target="grid"/>
-                    </p:commandButton>
-                </p:panel>
+                <center>
+                    <p:panel style="width: 500px">
+                        <h:outputText style="font-size: 18px;color: #4c9ad2;" value="Registrar Docente"/>
+                        <p:messages id="messages"/>
+                        <h:panelGrid columns="3" cellpadding="5" id="grid" >
+                            <h:outputLabel for="id" value="Identificacion:" />
+                            <p:inputText id="id" required="true" label="Identificacion" value="#{profesorBean.identificacion}"/>
+                            <p:message for="id"/>
+                            <h:outputLabel for="nombre" value="Nombres:" />
+                            <p:inputText id="nombre" required="true" label="Nombres" value="#{profesorBean.nombres}" />
+                            <p:message for="nombre"/>
+                            <h:outputLabel for="apellidos" value="Apellidos:" />
+                            <p:inputText id="apellidos" required="true" label="Apellidos" value="#{profesorBean.apellidos}"/>
+                            <p:message for="apellidos"/>
+                            <h:outputLabel for="mail" value="Correo:" />
+                            <p:inputText id="mail" required="true" label="Correo" value="#{profesorBean.mail}" /> 
+                            <p:message for="mail"/>
+                            <h:outputLabel for="telefono" value="Telefono:" />
+                            <p:inputText id="telefono" label="Telefono" value="#{profesorBean.telefono}" /> 
+                            <p:message for="telefono"/>
+                        </h:panelGrid>
+                        <p:commandButton value="Limpiar" update="grid :form:messages" process="@this" actionListener="#{profesorBean.limpiar()}">
+                            <p:resetInput target="grid"/>
+                        </p:commandButton> 
+                        <p:commandButton value="Registrar" update="grid :form:messages" actionListener="#{profesorBean.registrarProfesor()}" >
+                            <p:resetInput target="grid"/>
+                        </p:commandButton>
+                    </p:panel>
+                </center>
             </h:form>
         </div>
     </ui:define>

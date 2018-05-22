@@ -5,17 +5,13 @@
  */
 package edu.eci.pdsw.samples.entities;
 
-import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.lang.Exception;
 
 /**
  *
  * @author sergiort
  */
-public class Monitor extends Persona implements Comparable<Monitor>, Serializable{
+public class Monitor extends Persona implements Comparable<Monitor>, Serializable {
 
     private String semestreIngreso;
     private int programaAcademico;
@@ -32,7 +28,7 @@ public class Monitor extends Persona implements Comparable<Monitor>, Serializabl
 
     @Override
     public String toString() {
-        return getApellido()+" "+getNombre();
+        return getApellido() + " " + getNombre();
     }
 
     @Override
@@ -55,6 +51,5 @@ public class Monitor extends Persona implements Comparable<Monitor>, Serializabl
     public void setProgramaAcademico(int programaAcademico) {
         this.programaAcademico = programaAcademico;
     }
-    
-    
+
 }

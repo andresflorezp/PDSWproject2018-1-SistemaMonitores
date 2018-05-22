@@ -33,9 +33,9 @@ public class MyBatisMonitorDAO implements MonitorDAO, Serializable {
     }
 
     @Override
-    public void save(Monitor monitor) throws PersistenceException {
+    public void save(String nombre, String apellido, String correo, long telefono, String semestreIngreso, int programaAcademico) throws PersistenceException {
         try{
-            monitorMapper.agregarMonitor(monitor.getCodigoID(), monitor.getNombre());
+            monitorMapper.agregarMonitor(nombre, apellido, correo, telefono, semestreIngreso, programaAcademico);
         }catch(org.apache.ibatis.exceptions.PersistenceException e){
             throw new UnsupportedOperationException("Not supported yet.");
         }
@@ -80,6 +80,15 @@ public class MyBatisMonitorDAO implements MonitorDAO, Serializable {
     public List<HashMap> consultaTema() throws PersistenceException {
         try{
             return monitorMapper.consultaTema();
+        }catch(org.apache.ibatis.exceptions.PersistenceException e){
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+    }
+
+    @Override
+    public void actualizarMonitor(int codigoID, String nombre, String apellido, String correo, long telefono, String semestreIngreso, int programaAcademico) throws PersistenceException {
+        try{
+            monitorMapper.actualizarMonitor(codigoID, nombre, apellido, correo, telefono, semestreIngreso, programaAcademico);
         }catch(org.apache.ibatis.exceptions.PersistenceException e){
             throw new UnsupportedOperationException("Not supported yet.");
         }

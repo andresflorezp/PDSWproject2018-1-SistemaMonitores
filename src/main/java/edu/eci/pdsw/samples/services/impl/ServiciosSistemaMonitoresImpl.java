@@ -18,6 +18,7 @@ import edu.eci.pdsw.samples.entities.Asesoria;
 import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Materia;
+import edu.eci.pdsw.samples.entities.Monitor;
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
 import java.io.Serializable;
@@ -81,8 +82,12 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
     }
 
     @Override
-    public void addMonitor(int grupoID, int monitorID) throws ExcepcionSistemaMonitores {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addMonitor(String nombre, String apellido, String correo, long telefono, String semestreIngreso, int programaAcademico) throws ExcepcionSistemaMonitores {
+        try {
+            daoMonitor.save(nombre, apellido,correo, telefono, semestreIngreso, programaAcademico);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
     }
 
     @Override
@@ -208,7 +213,7 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
     }
 
     @Override
-    public Asesoria consultaAsesoriaActualMonitor(int monitorID, Timestamp fechaInicio, int semestreID) throws ExcepcionSistemaMonitores{
+    public Asesoria consultaAsesoriaActualMonitor(int monitorID, Timestamp fechaInicio, int semestreID) throws ExcepcionSistemaMonitores {
         try {
             return daoAsesoria.consultaAsesoriaMonitor(monitorID, fechaInicio, semestreID);
         } catch (PersistenceException ex) {
@@ -217,9 +222,19 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
     }
 
     @Override
-    public void finalizarMonitoria(int asesoriaID, Timestamp fechaFin) throws ExcepcionSistemaMonitores{
+    public void finalizarMonitoria(int asesoriaID, Timestamp fechaFin) throws ExcepcionSistemaMonitores {
         try {
             daoAsesoria.finalizarMonitoria(asesoriaID, fechaFin);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public void actualizarMonitor(Monitor monitorUpdate) throws ExcepcionSistemaMonitores {
+        try {
+            daoMonitor.actualizarMonitor(monitorUpdate.getCodigoID(), monitorUpdate.getNombre(), monitorUpdate.getApellido(),
+                    monitorUpdate.getCorreo(), monitorUpdate.getTelefono(),monitorUpdate.getSemestreIngreso(),monitorUpdate.getProgramaAcademico());
         } catch (PersistenceException ex) {
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }

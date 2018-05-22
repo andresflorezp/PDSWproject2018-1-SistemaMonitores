@@ -14,17 +14,21 @@ import java.util.List;
  * @author tatiana
  */
 public interface MonitorDAO {
+
     public Monitor load(long codigo) throws PersistenceException;
-    
-    public void save(Monitor monitor) throws PersistenceException;
-    
+
+    public void save(String nombre, String apellido, String correo, long telefono, String semestreIngreso, int programaAcademico) throws PersistenceException;
+
     public List<Monitor> consultarMonitores() throws PersistenceException;
-    
+
     public List<HashMap> consultaMonitorias() throws PersistenceException;
-    
+
     public List<HashMap> consultaCurso() throws PersistenceException;
-    
+
     public List<HashMap> consultaGrupo() throws PersistenceException;
-    
+
     public List<HashMap> consultaTema() throws PersistenceException;
+
+    public void actualizarMonitor(int codigoID, String nombre, String apellido, String correo, long telefono,
+            String semestreIngreso, int programaAcademico) throws PersistenceException;
 }

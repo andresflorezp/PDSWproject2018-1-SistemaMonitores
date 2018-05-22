@@ -9,6 +9,7 @@ import edu.eci.pdsw.samples.entities.Asesoria;
 import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Materia;
+import edu.eci.pdsw.samples.entities.Monitor;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
@@ -52,14 +53,26 @@ public interface ServiciosSistemaMonitores {
 
     /**
      * Metodo con el cual se crea un grupo
+     * @param grupoID
+     * @param grupoNombre
+     * @param numeroEstudiantes
+     * @param Profesor
      */
     //El ID del Grupo se puede automatizar
     public void addGrupo(int grupoID, int grupoNombre, int numeroEstudiantes, String Profesor) throws ExcepcionSistemaMonitores;
 
     /**
      * Metodo con el cual se agrega un monitor a un grupo
+     * @param codigoID
+     * @param nombre
+     * @param apellido
+     * @param correo
+     * @param telefono
+     * @param semestreIngreso
+     * @param programaAcademico
+     * @throws ExcepcionSistemaMonitores
      */
-    public void addMonitor(int grupoID, int monitorID) throws ExcepcionSistemaMonitores;
+    public void addMonitor(String nombre, String apellido, String correo, long telefono, String semestreIngreso, int programaAcademico) throws ExcepcionSistemaMonitores;
 
     /**
      * Metodo con el cual se inicializa el semestre
@@ -175,6 +188,13 @@ public interface ServiciosSistemaMonitores {
      * @throws ExcepcionSistemaMonitores 
      */
     public void finalizarMonitoria(int asesoriaID, Timestamp fechaFin) throws ExcepcionSistemaMonitores;
+    
+    /**
+     * 
+     * @param monitorUpdate
+     * @throws ExcepcionSistemaMonitores 
+     */
+    public void actualizarMonitor(Monitor monitorUpdate) throws ExcepcionSistemaMonitores;
     
 
 }

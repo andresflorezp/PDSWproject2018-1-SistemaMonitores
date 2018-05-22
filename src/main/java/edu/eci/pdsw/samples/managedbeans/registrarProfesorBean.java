@@ -5,7 +5,6 @@
  */
 package edu.eci.pdsw.samples.managedbeans;
 
-
 import java.io.Serializable;
 import static java.util.logging.Level.SEVERE;
 import static java.util.logging.Logger.getLogger;
@@ -20,61 +19,70 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 
 public class registrarProfesorBean implements Serializable {
-	private int identificacion;
-	private int telefono;
-	private String nombres;
-	private String apellidos;
-	private String mail;
 
-	public registrarProfesorBean(){
-		identificacion = 0;
-		telefono = 0;
-		nombres = "";
-		apellidos = "";
-		mail= "";
-	}
-	public void registrarProfesor(){
+    private Integer identificacion;
+    private Integer telefono;
+    private String nombres;
+    private String apellidos;
+    private String mail;
 
-		getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(SEVERE, "Entro");
-	}
+    public registrarProfesorBean() {
+    }
 
-	public void setIdentificacion(int identificacion){
-		this.identificacion = identificacion;
-	}
+    public void registrarProfesor() {
 
-	public int getIdentificacion(){
-		return identificacion;
-	}
-	public void setTelefono(int telefono){
-		this.telefono = telefono;
-	}
+        getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(SEVERE, "Entro");
+    }
 
-	public int getTelefono(){
-		return telefono;
-	}
+    public void limpiar() {
+        identificacion = null;
+        telefono = null;
+        nombres = null;
+        apellidos = null;
+        mail = null;
 
-	public void setNombres(String nombres){
-		this.nombres = nombres;
-	}
+    }
 
-	public String getNombres(){
-		return nombres;
+    public void setIdentificacion(Integer identificacion) {
+        this.identificacion = identificacion;
+    }
 
-	}
+    public Integer getIdentificacion() {
+        return identificacion;
+    }
 
-	public void setApellidos(String apellidos){
-		this.apellidos=apellidos;
-	}
+    public void setTelefono(Integer telefono) {
+        this.telefono = telefono;
+    }
 
-	public String getApellidos(){
-		return apellidos;
-		
-	}
-	public void setMail(String mail){
-		this.mail= mail;
-	}
-	public String getMail(){
-		return mail;
-	}
+    public Integer getTelefono() {
+        return telefono;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+    public String getNombres() {
+        return nombres;
+
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getMail() {
+        return mail;
+    }
 
 }

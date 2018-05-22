@@ -15,18 +15,38 @@ import org.apache.ibatis.annotations.Param;
  * @author sergiort
  */
 public interface MonitorMapper {
-    public Monitor consultarMonitor(@Param("carnet") Long carnet);
-    
-    default List<Monitor> consultarMonitores(){
-        return consultarMonitorr(null);
+
+    default Monitor consultarMonitor(Long carnet){
+        return consultaMonitoresGeneral(carnet).get(0);
     }
-    
-    public void agregarMonitor(@Param("carnet") long carnet,@Param("nombre") String nombre);
-    
-    public List<Monitor> consultarMonitorr(@Param("carnet") Long carnet);
+
+    default List<Monitor> consultarMonitores() {
+        return consultaMonitoresGeneral(null);
+    }
+
+    public void agregarMonitor(@Param("nom") String nombre,
+                                @Param("apell") String apellido,
+                                @Param("mail") String correo,
+                                @Param("tel") long telefono,
+                                @Param("semI") String semestreIngreso,
+                                @Param("prog") int programaAcademico);
+
+    public List<Monitor> consultaMonitoresGeneral(@Param("monID") Long carnet);
+
     public List<HashMap> consultaMonitorias();
+
     public List<HashMap> consultaCurso();
+
     public List<HashMap> consultaGrupo();
+
     public List<HashMap> consultaTema();
-    
+
+    public void actualizarMonitor(@Param("carnet") int codigoID,
+                                @Param("nom") String nombre,
+                                @Param("apell") String apellido,
+                                @Param("mail") String correo,
+                                @Param("tel") long telefono,
+                                @Param("semI") String semestreIngreso,
+                                @Param("prog") int programaAcademico);
+
 }

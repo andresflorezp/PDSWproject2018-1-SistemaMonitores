@@ -6,6 +6,9 @@
 package edu.eci.pdsw.samples.managedbeans;
 
 import edu.eci.pdsw.samples.entities.Monitor;
+import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
+import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
+import static edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory.getInstance;
 import java.io.Serializable;
 import java.util.List;
 import static java.util.logging.Level.SEVERE;
@@ -14,7 +17,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import org.primefaces.event.RowEditEvent;
+import org.primefaces.event.CellEditEvent;
 
 /**
  *
@@ -24,8 +27,10 @@ import org.primefaces.event.RowEditEvent;
 @SessionScoped
 public class registrarMonitorBean implements Serializable {
 
-    private int codigo;
-    private long telefono;
+    ServiciosSistemaMonitores sp = getInstance().getServiciosSistemaMonitores();
+
+    private Integer codigo;
+    private Long telefono;
     private String nombres;
     private String apellidos;
     private String mail;
@@ -37,21 +42,34 @@ public class registrarMonitorBean implements Serializable {
     }
 
     public void registrarMonitor() {
-        
+
         getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(SEVERE, "Entro");
     }
-    
-    public void onRowEdit(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Car Edited", ((Monitor) event.getObject()).toString());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-     
-    public void onRowCancel(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Edit Cancelled", ((Monitor) event.getObject()).toString());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+
+    public void limpiar() {
+        codigo = null;
+        telefono = null;
+        nombres = null;
+        apellidos = null;
+        mail = null;
+        semestreIngreso = null;
+        facultad = null;
+        monitores = null;
     }
 
-    public int getCodigo() {
+    public void onCellEdit(CellEditEvent event) throws ExcepcionSistemaMonitores {
+        Object oldValue = event.getOldValue();
+        Object newValue = event.getNewValue();
+
+        if (newValue != null && !newValue.equals(oldValue)) {
+            Monitor monitorUpdate = monitores.get(event.getRowIndex());
+            sp.actualizarMonitor(monitorUpdate);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Celda Cambiada", "Antiguo: " + oldValue + ", Nueva:" + newValue);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
+
+    public Integer getCodigo() {
         return codigo;
     }
 
@@ -62,16 +80,16 @@ public class registrarMonitorBean implements Serializable {
     public void setMonitores(List<Monitor> monitores) {
         this.monitores = monitores;
     }
-    
-    public void setCodigo(int codigo) {
+
+    public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
 
-    public void setTelefono(long telefono) {
+    public void setTelefono(Long telefono) {
         this.telefono = telefono;
     }
 
-    public long getTelefono() {
+    public Long getTelefono() {
         return telefono;
     }
 
