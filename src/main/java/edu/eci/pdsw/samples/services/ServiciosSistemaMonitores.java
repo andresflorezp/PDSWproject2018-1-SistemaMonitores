@@ -212,8 +212,24 @@ public interface ServiciosSistemaMonitores {
      */
     public Monitor consulatarMonitor(Long codigo) throws ExcepcionSistemaMonitores;
     
-    
+    /**
+     * 
+     * @return
+     * @throws ExcepcionSistemaMonitores 
+     */
     public List<HashMap> consultaGrupoxTema() throws ExcepcionSistemaMonitores;
     
+    /**
+     * 
+     * @return
+     * @throws ExcepcionSistemaMonitores 
+     */
     public List<HashMap> consultaCursoxMonitor() throws ExcepcionSistemaMonitores;
+
+    /**
+     * 
+     * @param codigo 
+     */
+    public void deleteMonitor(Integer codigo) throws ExcepcionSistemaMonitores;
+
 }

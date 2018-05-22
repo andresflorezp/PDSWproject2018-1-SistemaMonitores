@@ -92,7 +92,16 @@ public class MyBatisMonitorDAO implements MonitorDAO, Serializable {
         try{
             monitorMapper.actualizarMonitor(codigoID, nombre, apellido, correo, telefono, semestreIngreso, programaAcademico);
         }catch(org.apache.ibatis.exceptions.PersistenceException e){
-            throw new UnsupportedOperationException("Not supported yet.");
+            throw new PersistenceException("Error al actualizar al monitor con carnet: "+codigoID+" "+nombre+e.getMessage());
+        }
+    }
+
+    @Override
+    public void delete(Integer codigo) throws PersistenceException {
+        try{
+            monitorMapper.deleteMonitor(codigo);
+        }catch(org.apache.ibatis.exceptions.PersistenceException e){
+            throw new PersistenceException("Error al Eliminar al monitor con carnet: "+codigo+" "+e.getMessage());
         }
     }
 

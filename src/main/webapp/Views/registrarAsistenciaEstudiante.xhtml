@@ -21,12 +21,12 @@
             <h:panelGrid columns="3" cellpadding="5" id="formInput">
                 <p:outputLabel for="codigo" value="Codigo "/>
                 <p:chips id="codigo" label="codigo Estudiante" required="true" value="#{RegistroAsistencia.codigos}" styleClass="chips-short"/>
-                <p:message for="codigo" />
+                <p:message for="codigo" display="icon"/>
                 <p:outputLabel value="Temas " for="temas"/>
                 <p:selectCheckboxMenu id="temas" required="true" value="#{RegistroAsistencia.temasSelected}" label="Temas" filter="true" filterMatchMode="startsWith" multiple="true">
                     <f:selectItems value="#{RegistroAsistencia.temas}"/>
                 </p:selectCheckboxMenu>
-                <p:message for="temas"/>
+                <p:message for="temas" display="icon"/>
             </h:panelGrid>
             <br/>
             <h:outputText value="Observaciones" style="margin-left: 60px;font-size: 18px;color: #dce9f0"/>

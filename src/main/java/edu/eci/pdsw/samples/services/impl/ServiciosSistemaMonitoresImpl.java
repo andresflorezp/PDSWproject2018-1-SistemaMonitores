@@ -262,10 +262,20 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
     public List<HashMap> consultaGrupoxTema() throws ExcepcionSistemaMonitores {
         try {
             return daoMonitor.consultaGrupoxTema();
+        }catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+    
+    @Override
+    public void deleteMonitor(Integer codigo) throws ExcepcionSistemaMonitores {
+        try {
+            daoMonitor.delete(codigo);
         } catch (PersistenceException ex) {
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }
     }
+
 
     @Override
     public List<HashMap> consultaCursoxMonitor() throws ExcepcionSistemaMonitores {
@@ -275,13 +285,5 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }
     }
-
-    /**
-     *
-     * @return
-     * @throws PersistenceException
-     */
-    
-
-    
+ 
 }

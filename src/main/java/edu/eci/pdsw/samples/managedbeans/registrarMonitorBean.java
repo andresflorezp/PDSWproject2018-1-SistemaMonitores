@@ -39,15 +39,17 @@ public class registrarMonitorBean implements Serializable {
     private List<Monitor> monitores;
 
     public registrarMonitorBean() throws ExcepcionSistemaMonitores {
+        getLogger(registrarMonitorBean.class.getName()).log(SEVERE, "\n\n\n\n\n Entro 0"+((monitores==null)?"null":monitores.toString()));
         consultar();
         getLogger(registrarMonitorBean.class.getName()).log(SEVERE, "\n\n\n\n\n Entro 1"+monitores.toString());
     }
 
     public void registrarMonitor() throws ExcepcionSistemaMonitores {
-        getLogger(registrarMonitorBean.class.getName()).log(SEVERE, "\n\n\n\nEntro Inicial");
+        getLogger(registrarMonitorBean.class.getName()).log(SEVERE, "\n\n\n\nEntro Inicial "+monitores.toString());
         sp.addMonitor(codigo,nombres, apellidos, mail, telefono, semestreIngreso, programaAcademico);
         consultar();
         getLogger(registrarMonitorBean.class.getName()).log(SEVERE, "\n\n\n\n\nEntro 2 "+monitores.toString());
+        save("Monitor Registrado.");
     }
 
     public void limpiar() {
@@ -74,6 +76,16 @@ public class registrarMonitorBean implements Serializable {
     
     public void consultar() throws ExcepcionSistemaMonitores{
         monitores = sp.consulatarMonitores();
+    }
+    
+    public void delete(Integer codigo) throws ExcepcionSistemaMonitores{
+        sp.deleteMonitor(codigo);
+        FacesContext.getCurrentInstance().addMessage("messagesTable", new FacesMessage("Registro Monitor con carnet "+codigo+" Eliminado."));
+        consultar();
+    }
+    
+    public void save(String text) {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(text));
     }
 
     public Integer getCodigo() {

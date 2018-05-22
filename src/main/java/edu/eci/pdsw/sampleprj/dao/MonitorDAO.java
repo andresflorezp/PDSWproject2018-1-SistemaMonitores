@@ -35,4 +35,6 @@ public interface MonitorDAO {
     
     public void actualizarMonitor(Integer codigoID, String nombre, String apellido, String correo, Long telefono,
             String semestreIngreso, Integer programaAcademico) throws PersistenceException;
+
+    public void delete(Integer codigo) throws PersistenceException;
 }

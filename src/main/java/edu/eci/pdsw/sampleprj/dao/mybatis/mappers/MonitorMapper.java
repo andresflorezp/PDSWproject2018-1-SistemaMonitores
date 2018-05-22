@@ -54,4 +54,6 @@ public interface MonitorMapper {
                                 @Param("semI") String semestreIngreso,
                                 @Param("prog") int programaAcademico);
 
+    public void deleteMonitor(@Param("carnet") Integer codigo);
+
 }
