@@ -90,6 +90,7 @@
 	WHERE codigo_id = #{carnet}
     </update>
     
+<<<<<<< 46d1d5590e8b25700a0ffcb6066d69b2f580b287
 <<<<<<< c4c5ac3efc6ca29695747066137f0272fdcc8623
     <insert parameterType="map" id="agregarMonitor">
         INSERT INTO monitor (codigo_id,nombres, apellidos, correo, telefono, semestreingreso, programa_academico)
@@ -104,6 +105,11 @@
     <insert parameterType="map" id="registroAsesoriaMonitor" useGeneratedKeys="true" keyProperty="codigoID">
         INSERT INTO monitor (nombres, apellidos, correo, telefono, semestreingreso, programa_academico)
         VALUES (#{nom},#{apell},#{mail},#{tel},#{semI},#{prog})
+=======
+    <insert parameterType="map" id="agregarMonitor">
+        INSERT INTO monitor (codigo_id,nombres, apellidos, correo, telefono, semestreingreso, programa_academico)
+        VALUES (#{codID},#{nom},#{apell},#{mail},#{tel},#{semI},#{prog})
+>>>>>>> Tabla editable registro
     </insert>
     
 >>>>>>> cambios registros

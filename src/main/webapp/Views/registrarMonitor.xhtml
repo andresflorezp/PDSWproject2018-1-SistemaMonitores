@@ -54,7 +54,7 @@
                                 <p:inputText id="semestreIngreso" label="Semestre Ingreso" required="true"  value="#{monitorBean.semestreIngreso}"/>
                                 <p:message for="semestreIngreso"/>
                                 <h:outputLabel for="programaacademico" value="Programa academico: "/>
-                                <p:inputText id="programaacademico" label="Programa academico" required="true"  value="#{monitorBean.facultad}"/>
+                                <p:inputText id="programaacademico" label="Programa academico" required="true"  value="#{monitorBean.programaAcademico}"/>
                                 <p:message for="programaacademico"/>
                                 <h:outputLabel for="telefono" value="Telefono: "/>
                                 <p:inputText  id="telefono" value="#{monitorBean.telefono}"/>  
@@ -82,6 +82,7 @@
                     <f:facet name="header">
                         Monitores Registrados
                     </f:facet>
+<<<<<<< 46d1d5590e8b25700a0ffcb6066d69b2f580b287
 <<<<<<< c4c5ac3efc6ca29695747066137f0272fdcc8623
                     
                     <p:ajax event="cellEdit" listener="#{monitorBean.onCellEdit}" update=":form:msgs" />
@@ -132,6 +133,11 @@
                     <p:ajax event="rowEdit" listener="#{monitorBean.onRowEdit}" update=":form:msgs" />
                     <p:ajax event="rowEditCancel" listener="#{monitorBean.onRowCancel}" update=":form:msgs" />
 
+=======
+                    
+                    <p:ajax event="cellEdit" listener="#{monitorBean.onCellEdit}" update=":form:msgs" />
+                    
+>>>>>>> Tabla editable registro
                     <p:column headerText="Carnet">
                         <f:facet name="output"><h:outputText value="#{mon.codigoID}" /></f:facet>
                     </p:column>
