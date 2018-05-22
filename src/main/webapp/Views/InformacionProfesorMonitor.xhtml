@@ -12,8 +12,8 @@
             <br/>
             <div id="tabla">
                 <p:messages id="messages" />
-                <p:dataTable var="asesorias" value="#{InformacionAsistenciaProfesor.asesorias}" id="asesoria" style="margin-right: 100px;"
-                             emptyMessage="No se encontraron asesorías" paginator="true"  rows="10" rowsPerPageTemplate="10,25,50" selectionMode="single"
+                <p:dataTable var="asesorias" value="#{InformacionAsistenciaProfesor.asesorias}" id="asesoria" style="margin-right: 2%;"
+                             emptyMessage="No se encontraron asesorías" paginator="true"  rows="5" rowsPerPageTemplate="5,10,25,50" selectionMode="single"
                              paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                              selection="#{InformacionAsistenciaProfesor.selectedAsistencia}" lazy="true">
                     <p:ajax event="rowSelect" listener="#{InformacionAsistenciaProfesor.onRowSelect}" update=":form:asesoriaDetalle" oncomplete="PF('asesoriaDialog').show()" />

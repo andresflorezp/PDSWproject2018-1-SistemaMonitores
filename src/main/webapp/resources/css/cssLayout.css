@@ -42,7 +42,7 @@
 .left_content {
     position: relative;
     padding: 5px;
-    margin-left: 250px;
+    margin-left: 10%;
 }
 
 .right_content {
@@ -62,9 +62,7 @@
      vertical-align: top;
 }
 
-.chips-short > .ui-chips-container{
-    width: 100%;
-}
+
 
 #top a:link, #top a:visited {
   color: white;

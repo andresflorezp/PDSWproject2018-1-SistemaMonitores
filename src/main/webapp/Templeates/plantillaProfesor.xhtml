@@ -7,69 +7,67 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet name="css/default.css"/>
-        <h:outputStylesheet name="css/cssLayout.css"/>
-        <h:outputStylesheet name="css/Cabecera.css"/>
-        <h:outputStylesheet name="css/StyleButton.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet name="css/estilo.css"/>
+        <h:outputStylesheet name="css/fontello.css"/>
         <h:outputStylesheet name="css/Progreso.css"/>
+        <h:outputStylesheet name="css/Cabecera.css"/>
         <title>Registro</title>
     </h:head>
+    
+    <h:body class="body">
+        <ui:insert name="top">
+            <h:form id="header">
+                <div class="menu_bar">
+                    <p:graphicImage name="/Imagenes/icon-School-R.png" class="logo"/>
+                    <h1 class="btn_menu"><span class="#"/>ECI-SISTEMA DE MONITORIAS</h1>
 
-    <h:body>
-        <div id="top">
-            <ui:insert name="top">
-                <h:form id="header">
-                    <div id="cabecera1">
-
-                        <h:outputLabel class="cabecera" value="PDSW"/>
-                        <h:outputLabel class="cabecera" value="Nombre Usuario: AAKAA" />
-                    </div>
-                    <div id="cabecera2">
-                        <p:poll id="pollConError" interval="1" rendered="#{MonitorMonitoria.showDo}" listener="#{MonitorMonitoria.decrement}" update="txt_count" />
-                        <h:panelGrid columns="1">
-                            <h:outputText id="txt_count" rendered="#{MonitorMonitoria.showDo}" value="Te falta #{MonitorMonitoria.numberHour} hora : #{MonitorMonitoria.numberMinute} minutos : #{MonitorMonitoria.numberSecond} segundos de Monitoria" />
-                            <p:commandButton id="terminar_Monitoria" value = "Terminar la Monitoria " rendered="#{MonitorMonitoria.showDo}">
-                                <p:confirm header="Confirmacion" message="Estas seguro de terminar la asesoria" icon="ui-icon-alert" />
-                            </p:commandButton>
-                        </h:panelGrid>
-
-                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                            <p:commandButton value="Si"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="/faces/Views/RegistrarMonitoria.xhtml" actionListener="#{MonitorMonitoria.endAction()}"/>
-                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                        </p:confirmDialog>
-                    </div>
+                </div>
+            </h:form>
+        </ui:insert>
+        <ui:insert name="left">
+            <div id="Menu">
+                <h:form >
+                    <header>
+                        <nav>
+                            <ul>
+                                <li>
+                                <p:graphicImage name="/Imagenes/avatar3.png" class="user"/>
+                                <br/>
+                                <h:outputLabel value="Nombre: Andres Florez"/>
+                                <br/>
+                                <h:outputLabel value="Curso: Pdsw"/>
+                                <br/>
+                                <h:outputLabel value="Rol: Monitor"/>
+                                </li>
+                                <li>
+                                <h:commandLink class="links" action="/faces/Views/InformacionProfesorAsistentes.xhtml">
+                                    <span class="icon-export"/>
+                                    Consultar asesorias de sus estudiantes
+                                </h:commandLink>
+                                </li>
+                                <li>
+                                <h:commandLink class="links" action="/faces/Views/InformacionProfesorMonitor.xhtml">
+                                    <span class="icon-export"/>
+                                    Consulta asesorias de sus monitores
+                                </h:commandLink>
+                                </li>
+                                <li>
+                                <h:commandLink class="links" action="/faces/Views/InformacionGraficaMonitorias.xhtml">
+                                    <span class="icon-export"/>
+                                    Información estadistica de sus cursos
+                                </h:commandLink>
+                                </li>
+                            </ul>
+                        </nav>
+                    </header>
                 </h:form>
-            </ui:insert>
-        </div>
-        <br/>
-        <div>
-            <div id="left">
-                <ui:insert name="left">
-                    <div id="Menu">
-                        <h:form>
-                            <p:panel style="width:200px;">
-                                <p:commandButton value="Consultar asesorias de sus estudiantes" action="/faces/Views/InformacionProfesorAsistentes.xhtml"/>
-                                <p:separator/>
-                                <p:commandButton value="Consulta asesorias de sus monitores" action="/faces/Views/InformacionProfesorMonitor.xhtml"/>
-                                <p:separator/>
-                                <p:commandButton value="Información estadistica de sus cursos" action="/faces/Views/InformacionGraficaMonitorias.xhtml"/>
-                            </p:panel>
-                        </h:form>
-                    </div>
-                </ui:insert>
             </div>
-            <div id="content" class="left_content">
+        </ui:insert>
+        <div id="content" class="left_content">
                 <ui:insert name="content">
                     Contenido Central
                 </ui:insert>
-            </div>
         </div>
-        <div id="bottom">
-            <ui:insert name="bottom">
-                Bottom Contenido
-            </ui:insert>
-        </div>
-
     </h:body>
-
 </html>
