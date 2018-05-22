@@ -24,12 +24,13 @@ public interface MonitorMapper {
         return consultaMonitoresGeneral(null);
     }
 
-    public void agregarMonitor(@Param("nom") String nombre,
+    public void agregarMonitor(@Param("codID") Integer codigoID,
+                                @Param("nom") String nombre,
                                 @Param("apell") String apellido,
                                 @Param("mail") String correo,
-                                @Param("tel") long telefono,
+                                @Param("tel") Long telefono,
                                 @Param("semI") String semestreIngreso,
-                                @Param("prog") int programaAcademico);
+                                @Param("prog") Integer programaAcademico);
 
     public List<Monitor> consultaMonitoresGeneral(@Param("monID") Long carnet);
 

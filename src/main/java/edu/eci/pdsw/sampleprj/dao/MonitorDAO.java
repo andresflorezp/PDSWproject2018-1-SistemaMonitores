@@ -17,7 +17,7 @@ public interface MonitorDAO {
 
     public Monitor load(long codigo) throws PersistenceException;
 
-    public void save(String nombre, String apellido, String correo, long telefono, String semestreIngreso, int programaAcademico) throws PersistenceException;
+    public void save(Integer codigoID, String nombre, String apellido, String correo, Long telefono, String semestreIngreso, Integer programaAcademico) throws PersistenceException;
 
     public List<Monitor> consultarMonitores() throws PersistenceException;
 
@@ -29,6 +29,6 @@ public interface MonitorDAO {
 
     public List<HashMap> consultaTema() throws PersistenceException;
 
-    public void actualizarMonitor(int codigoID, String nombre, String apellido, String correo, long telefono,
-            String semestreIngreso, int programaAcademico) throws PersistenceException;
+    public void actualizarMonitor(Integer codigoID, String nombre, String apellido, String correo, Long telefono,
+            String semestreIngreso, Integer programaAcademico) throws PersistenceException;
 }

@@ -28,16 +28,18 @@ public class MyBatisMonitorDAO implements MonitorDAO, Serializable {
         try{
             return monitorMapper.consultarMonitor(codigo);
         }catch(org.apache.ibatis.exceptions.PersistenceException e){
-            throw new UnsupportedOperationException("Not supported yet.");
+            throw new PersistenceException("Error al consular al monitor con identificador: "+codigo);
+        }catch(java.lang.IndexOutOfBoundsException e){
+            throw new PersistenceException("Monitor con identificador : "+codigo+" no encontrado.");
         }
     }
 
     @Override
-    public void save(String nombre, String apellido, String correo, long telefono, String semestreIngreso, int programaAcademico) throws PersistenceException {
+    public void save(Integer codigoID, String nombre, String apellido, String correo, Long telefono, String semestreIngreso, Integer programaAcademico) throws PersistenceException {
         try{
-            monitorMapper.agregarMonitor(nombre, apellido, correo, telefono, semestreIngreso, programaAcademico);
+            monitorMapper.agregarMonitor(codigoID, nombre, apellido, correo, telefono, semestreIngreso, programaAcademico);
         }catch(org.apache.ibatis.exceptions.PersistenceException e){
-            throw new UnsupportedOperationException("Not supported yet.");
+            throw new PersistenceException("Error al registar al monitor con identificador : "+codigoID+e.getMessage());
         }
     }
 
@@ -46,7 +48,7 @@ public class MyBatisMonitorDAO implements MonitorDAO, Serializable {
         try{
             return monitorMapper.consultarMonitores();
         }catch(org.apache.ibatis.exceptions.PersistenceException e){
-            throw new UnsupportedOperationException("Not supported yet.");
+            throw new PersistenceException("Error al consular a los monitores.");
         }
     }
     @Override
@@ -86,7 +88,7 @@ public class MyBatisMonitorDAO implements MonitorDAO, Serializable {
     }
 
     @Override
-    public void actualizarMonitor(int codigoID, String nombre, String apellido, String correo, long telefono, String semestreIngreso, int programaAcademico) throws PersistenceException {
+    public void actualizarMonitor(Integer codigoID, String nombre, String apellido, String correo, Long telefono, String semestreIngreso, Integer programaAcademico) throws PersistenceException {
         try{
             monitorMapper.actualizarMonitor(codigoID, nombre, apellido, correo, telefono, semestreIngreso, programaAcademico);
         }catch(org.apache.ibatis.exceptions.PersistenceException e){

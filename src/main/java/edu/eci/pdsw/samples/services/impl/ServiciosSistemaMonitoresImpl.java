@@ -82,9 +82,9 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
     }
 
     @Override
-    public void addMonitor(String nombre, String apellido, String correo, long telefono, String semestreIngreso, int programaAcademico) throws ExcepcionSistemaMonitores {
+    public void addMonitor(Integer codigoID ,String nombre, String apellido, String correo, Long telefono, String semestreIngreso, Integer programaAcademico) throws ExcepcionSistemaMonitores {
         try {
-            daoMonitor.save(nombre, apellido,correo, telefono, semestreIngreso, programaAcademico);
+            daoMonitor.save(codigoID,nombre, apellido,correo, telefono, semestreIngreso, programaAcademico);
         } catch (PersistenceException ex) {
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }
@@ -235,6 +235,24 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
         try {
             daoMonitor.actualizarMonitor(monitorUpdate.getCodigoID(), monitorUpdate.getNombre(), monitorUpdate.getApellido(),
                     monitorUpdate.getCorreo(), monitorUpdate.getTelefono(),monitorUpdate.getSemestreIngreso(),monitorUpdate.getProgramaAcademico());
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public List<Monitor> consulatarMonitores() throws ExcepcionSistemaMonitores {
+        try {
+            return daoMonitor.consultarMonitores();
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public Monitor consulatarMonitor(Long codigo) throws ExcepcionSistemaMonitores {
+        try {
+            return daoMonitor.load(codigo);
         } catch (PersistenceException ex) {
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }

@@ -72,7 +72,7 @@ public interface ServiciosSistemaMonitores {
      * @param programaAcademico
      * @throws ExcepcionSistemaMonitores
      */
-    public void addMonitor(String nombre, String apellido, String correo, long telefono, String semestreIngreso, int programaAcademico) throws ExcepcionSistemaMonitores;
+    public void addMonitor(Integer codigoID ,String nombre, String apellido, String correo, Long telefono, String semestreIngreso, Integer programaAcademico) throws ExcepcionSistemaMonitores;
 
     /**
      * Metodo con el cual se inicializa el semestre
@@ -196,5 +196,18 @@ public interface ServiciosSistemaMonitores {
      */
     public void actualizarMonitor(Monitor monitorUpdate) throws ExcepcionSistemaMonitores;
     
-
+    /**
+     * 
+     * @return 
+     * @throws ExcepcionSistemaMonitores 
+     */
+    public List<Monitor> consulatarMonitores() throws ExcepcionSistemaMonitores;
+    
+    /**
+     * 
+     * @param codigo
+     * @return 
+     * @throws ExcepcionSistemaMonitores 
+     */
+    public Monitor consulatarMonitor(Long codigo) throws ExcepcionSistemaMonitores;
 }

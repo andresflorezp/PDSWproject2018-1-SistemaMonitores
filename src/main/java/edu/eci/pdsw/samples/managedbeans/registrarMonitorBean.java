@@ -35,15 +35,19 @@ public class registrarMonitorBean implements Serializable {
     private String apellidos;
     private String mail;
     private String semestreIngreso;
-    private String facultad;
+    private Integer programaAcademico;
     private List<Monitor> monitores;
 
-    public registrarMonitorBean() {
+    public registrarMonitorBean() throws ExcepcionSistemaMonitores {
+        consultar();
+        getLogger(registrarMonitorBean.class.getName()).log(SEVERE, "\n\n\n\n\n Entro 1"+monitores.toString());
     }
 
-    public void registrarMonitor() {
-
-        getLogger(ConsultaInformacionAsistentesBean.class.getName()).log(SEVERE, "Entro");
+    public void registrarMonitor() throws ExcepcionSistemaMonitores {
+        getLogger(registrarMonitorBean.class.getName()).log(SEVERE, "\n\n\n\nEntro Inicial");
+        sp.addMonitor(codigo,nombres, apellidos, mail, telefono, semestreIngreso, programaAcademico);
+        consultar();
+        getLogger(registrarMonitorBean.class.getName()).log(SEVERE, "\n\n\n\n\nEntro 2 "+monitores.toString());
     }
 
     public void limpiar() {
@@ -53,8 +57,7 @@ public class registrarMonitorBean implements Serializable {
         apellidos = null;
         mail = null;
         semestreIngreso = null;
-        facultad = null;
-        monitores = null;
+        programaAcademico = null;
     }
 
     public void onCellEdit(CellEditEvent event) throws ExcepcionSistemaMonitores {
@@ -67,6 +70,10 @@ public class registrarMonitorBean implements Serializable {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Celda Cambiada", "Antiguo: " + oldValue + ", Nueva:" + newValue);
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
+    }
+    
+    public void consultar() throws ExcepcionSistemaMonitores{
+        monitores = sp.consulatarMonitores();
     }
 
     public Integer getCodigo() {
@@ -127,12 +134,12 @@ public class registrarMonitorBean implements Serializable {
         return semestreIngreso;
     }
 
-    public void setFacultad(String facultad) {
-        this.facultad = facultad;
+    public void setProgramaAcademico(Integer programaAcademico) {
+        this.programaAcademico = programaAcademico;
     }
 
-    public String getFacultad() {
-        return facultad;
+    public Integer getProgramaAcademico() {
+        return programaAcademico;
     }
 
 }

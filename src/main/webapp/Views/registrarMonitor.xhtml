@@ -29,7 +29,7 @@
                                 <p:inputText id="semestreIngreso" label="Semestre Ingreso" required="true"  value="#{monitorBean.semestreIngreso}"/>
                                 <p:message for="semestreIngreso"/>
                                 <h:outputLabel for="programaacademico" value="Programa academico: "/>
-                                <p:inputText id="programaacademico" label="Programa academico" required="true"  value="#{monitorBean.facultad}"/>
+                                <p:inputText id="programaacademico" label="Programa academico" required="true"  value="#{monitorBean.programaAcademico}"/>
                                 <p:message for="programaacademico"/>
                                 <h:outputLabel for="telefono" value="Telefono: "/>
                                 <p:inputText  id="telefono" value="#{monitorBean.telefono}"/>  
@@ -50,10 +50,9 @@
                     <f:facet name="header">
                         Monitores Registrados
                     </f:facet>
-
-                    <p:ajax event="rowEdit" listener="#{monitorBean.onRowEdit}" update=":form:msgs" />
-                    <p:ajax event="rowEditCancel" listener="#{monitorBean.onRowCancel}" update=":form:msgs" />
-
+                    
+                    <p:ajax event="cellEdit" listener="#{monitorBean.onCellEdit}" update=":form:msgs" />
+                    
                     <p:column headerText="Carnet">
                         <f:facet name="output"><h:outputText value="#{mon.codigoID}" /></f:facet>
                     </p:column>

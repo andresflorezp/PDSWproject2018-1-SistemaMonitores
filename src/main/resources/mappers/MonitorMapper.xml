@@ -64,9 +64,9 @@
 	WHERE codigo_id = #{carnet}
     </update>
     
-    <insert parameterType="map" id="registroAsesoriaMonitor" useGeneratedKeys="true" keyProperty="codigoID">
-        INSERT INTO monitor (nombres, apellidos, correo, telefono, semestreingreso, programa_academico)
-        VALUES (#{nom},#{apell},#{mail},#{tel},#{semI},#{prog})
+    <insert parameterType="map" id="agregarMonitor">
+        INSERT INTO monitor (codigo_id,nombres, apellidos, correo, telefono, semestreingreso, programa_academico)
+        VALUES (#{codID},#{nom},#{apell},#{mail},#{tel},#{semI},#{prog})
     </insert>
     
     <resultMap type="Monitor" id="MonitorResult" >
