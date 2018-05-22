@@ -25,10 +25,7 @@
         
     </select>
 
-<!--    <insert id="insertarMateria" parameterType="map" useGeneratedKey="true" keyProperty="materia_id">
-        INSERT INTO MATERIA (materia_id,materia_nombre,materia_nemonico,creditos,horas_monitorias_curso)
-        VALUES (#{materia.materia_nombre},#{materia.materia_nemonico},#{materia.creditos},#{})
-    </insert>-->
+
 
     <resultMap type='Materia' id='MateriaResult'>
         <id property='materiaID' column='materia_id'></id>

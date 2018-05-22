@@ -17,6 +17,7 @@
         <typeAlias type='edu.eci.pdsw.samples.entities.Asesoria' alias='Asesoria'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Estudiante' alias='Estudiante'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.AsesoriaEstudiante' alias='AsesoriaEstudiante'/>
+        <typeAlias type='edu.eci.pdsw.samples.entities.Horario' alias='horario'/>
     </typeAliases>          
     
     
@@ -42,6 +43,7 @@
         <mapper resource="mappers/AsesoriaMapper.xml"/>
         <mapper resource="mappers/EstudianteMapper.xml"/>
         <mapper resource="mappers/AsesoriaEstudianteMapper.xml"/>
+        <mapper resource="mappers/HorariosMapper.xml"/>
     </mappers>
         
 </configuration>

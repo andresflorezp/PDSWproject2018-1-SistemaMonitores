@@ -11,6 +11,7 @@ import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Materia;
 import edu.eci.pdsw.samples.entities.Monitor;
+import edu.eci.pdsw.samples.entities.Horario;;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
@@ -231,5 +232,7 @@ public interface ServiciosSistemaMonitores {
      * @param codigo 
      */
     public void deleteMonitor(Integer codigo) throws ExcepcionSistemaMonitores;
+
+    public Horario loadHorarios(int codigoMateria) throws ExcepcionSistemaMonitores;
 
 }
