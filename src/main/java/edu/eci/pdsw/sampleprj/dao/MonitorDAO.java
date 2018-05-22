@@ -37,4 +37,5 @@ public interface MonitorDAO {
             String semestreIngreso, Integer programaAcademico) throws PersistenceException;
 
     public void delete(Integer codigo) throws PersistenceException;
+    
 }

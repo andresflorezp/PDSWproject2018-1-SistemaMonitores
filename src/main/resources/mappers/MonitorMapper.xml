@@ -73,15 +73,24 @@
     
     <update id="actualizarMonitor" >
         UPDATE monitor SET
+<<<<<<< c4c5ac3efc6ca29695747066137f0272fdcc8623
 	nombres = #{nom},
         apellidos = #{apell},
         correo = #{mail},
         telefono = #{tel},
         semestreingreso = #{semI},
+=======
+	nombres = #{nom}
+        apellidos = #{apell} 
+        correo = #{mail}
+        telefono = #{tel}
+        semestreingreso = #{semI}
+>>>>>>> cambios registros
         programa_academico = #{prog}
 	WHERE codigo_id = #{carnet}
     </update>
     
+<<<<<<< c4c5ac3efc6ca29695747066137f0272fdcc8623
     <insert parameterType="map" id="agregarMonitor">
         INSERT INTO monitor (codigo_id,nombres, apellidos, correo, telefono, semestreingreso, programa_academico)
         VALUES (#{codID},#{nom},#{apell},#{mail},#{tel},#{semI},#{prog})
@@ -91,6 +100,13 @@
         DELETE FROM monitor WHERE codigo_id = #{carnet}
     </delete>
     
+=======
+    <insert parameterType="map" id="registroAsesoriaMonitor" useGeneratedKeys="true" keyProperty="codigoID">
+        INSERT INTO monitor (nombres, apellidos, correo, telefono, semestreingreso, programa_academico)
+        VALUES (#{nom},#{apell},#{mail},#{tel},#{semI},#{prog})
+    </insert>
+    
+>>>>>>> cambios registros
     <resultMap type="Monitor" id="MonitorResult" >
         <id property="codigoID" column="codigo_id"/>
         <result property="nombre" column="mo_nombres"/>

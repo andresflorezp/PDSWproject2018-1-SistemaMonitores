@@ -12,6 +12,7 @@ import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Materia;
 import edu.eci.pdsw.samples.entities.Monitor;
 import edu.eci.pdsw.samples.entities.Horario;;
+import edu.eci.pdsw.samples.entities.Monitor;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
@@ -74,6 +75,7 @@ public interface ServiciosSistemaMonitores {
      * @param programaAcademico
      * @throws ExcepcionSistemaMonitores
      */
+
     public void addMonitor(Integer codigoID ,String nombre, String apellido, String correo, Long telefono, String semestreIngreso, Integer programaAcademico) throws ExcepcionSistemaMonitores;
 
     /**
@@ -191,6 +193,7 @@ public interface ServiciosSistemaMonitores {
      */
     public void finalizarMonitoria(int asesoriaID, Timestamp fechaFin) throws ExcepcionSistemaMonitores;
     
+
     /**
      * 
      * @param monitorUpdate

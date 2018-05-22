@@ -7,7 +7,11 @@
     <ui:define name="content">
         <div id="contentPublic">
             <h:form id="form">
+<<<<<<< c4c5ac3efc6ca29695747066137f0272fdcc8623
                 <div id="cent" style="margin-right: 13%">
+=======
+                <div id="cent" style="margin-right: 250px">
+>>>>>>> cambios registros
                     <center>
                         <p:panel style="width: 500px">
                             <h:outputText style="font-size: 18px;color: #4c9ad2;" value="Registrar Monitor"/>
@@ -15,6 +19,7 @@
                             <h:panelGrid columns="3" cellpadding="5" id="grid">
                                 <h:outputLabel for="codigo" value="Codigo: " />
                                 <p:inputText id="codigo" label="Codigo Estudiante" required="true" value="#{monitorBean.codigo}"/>
+<<<<<<< c4c5ac3efc6ca29695747066137f0272fdcc8623
                                 <p:message for="codigo" display="icon"/>
                                 <h:outputLabel for="nombre" value="Nombres: " />
                                 <p:inputText id="nombre" label="Nombre" required="true" value="#{monitorBean.nombres}"/>
@@ -34,6 +39,27 @@
                                 <h:outputLabel for="telefono" value="Telefono: "/>
                                 <p:inputText  id="telefono" value="#{monitorBean.telefono}"/>  
                                 <p:message for="telefono" display="icon"/>
+=======
+                                <p:message for="codigo"/>
+                                <h:outputLabel for="nombre" value="Nombres: " />
+                                <p:inputText id="nombre" label="Nombre" required="true" value="#{monitorBean.nombres}"/>
+                                <p:message for="nombre"/>
+                                <h:outputLabel for="apellidos" value="Apellidos: " />
+                                <p:inputText id="apellidos" label="Apellidos " required="true" value="#{monitorBean.apellidos}"/>
+                                <p:message for="apellidos" />
+                                <h:outputLabel for="mail" value="Correo: "/>
+                                <p:inputText id="mail" label="Correo" required="true" value="#{monitorBean.mail}"/> 
+                                <p:message for="mail"/>
+                                <h:outputLabel for="semestreIngreso" value="Semestre Ingreso: "/>
+                                <p:inputText id="semestreIngreso" label="Semestre Ingreso" required="true"  value="#{monitorBean.semestreIngreso}"/>
+                                <p:message for="semestreIngreso"/>
+                                <h:outputLabel for="programaacademico" value="Programa academico: "/>
+                                <p:inputText id="programaacademico" label="Programa academico" required="true"  value="#{monitorBean.facultad}"/>
+                                <p:message for="programaacademico"/>
+                                <h:outputLabel for="telefono" value="Telefono: "/>
+                                <p:inputText  id="telefono" value="#{monitorBean.telefono}"/>  
+                                <p:message for="telefono"/>
+>>>>>>> cambios registros
                             </h:panelGrid>
                             <p:commandButton value="Limpiar" update="grid :form:messages" process="@this" actionListener="#{monitorBean.limpiar()}">
                                 <p:resetInput target="grid"/>
@@ -44,13 +70,19 @@
                         </p:panel>
                     </center>
                 </div>
+<<<<<<< c4c5ac3efc6ca29695747066137f0272fdcc8623
                 <p:separator style="visibility: hidden;margin-top: 0.5%"/>
                 <p:growl id="msgs" showDetail="true"/>
                 <p:messages id="messagesTable" for="messagesTable"/>
+=======
+                <p:separator style="visibility: hidden"/>
+                <p:growl id="msgs" showDetail="true"/>
+>>>>>>> cambios registros
                 <p:dataTable id="monotor" var="mon" value="#{monitorBean.monitores}" editable="true" editMode="cell" style="margin-right: 60px">
                     <f:facet name="header">
                         Monitores Registrados
                     </f:facet>
+<<<<<<< c4c5ac3efc6ca29695747066137f0272fdcc8623
                     
                     <p:ajax event="cellEdit" listener="#{monitorBean.onCellEdit}" update=":form:msgs" />
                     
@@ -95,6 +127,53 @@
 
                     <p:column style="width:32px">
                         <p:commandButton icon="ui-icon-circle-close" actionListener="#{monitorBean.delete(mon.codigoID)}" update=":form:monotor :form:messagesTable"/>
+=======
+
+                    <p:ajax event="rowEdit" listener="#{monitorBean.onRowEdit}" update=":form:msgs" />
+                    <p:ajax event="rowEditCancel" listener="#{monitorBean.onRowCancel}" update=":form:msgs" />
+
+                    <p:column headerText="Carnet">
+                        <f:facet name="output"><h:outputText value="#{mon.codigoID}" /></f:facet>
+                    </p:column>
+
+                    <p:column headerText="Nombre">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{mon.nombre}" /></f:facet>
+                            <f:facet name="input"><p:inputText value="#{mon.nombre}" style="width:96%" label="Nombre"/></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Apellidos">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{mon.apellido}" /></f:facet>
+                            <f:facet name="input"><p:inputText value="#{mon.apellido}" style="width:96%" label="Apellido"/></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Correo">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{mon.correo}" /></f:facet>
+                            <f:facet name="input"><p:inputText value="#{mon.correo}" style="width:96%" label="Correo"/></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Semestre Ingreso">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{mon.semestreIngreso}" /></f:facet>
+                            <f:facet name="input"><p:inputText value="#{mon.semestreIngreso}" style="width:96%" label="Semestre Ingreso"/></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Programa academico">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{mon.programaAcademico}" /></f:facet>
+                            <f:facet name="input"><p:inputText value="#{mon.programaAcademico}" style="width:96%" label="Programa academico"/></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column style="width:32px">
+                        <p:rowEditor />
+>>>>>>> cambios registros
                     </p:column>
 
                 </p:dataTable>
