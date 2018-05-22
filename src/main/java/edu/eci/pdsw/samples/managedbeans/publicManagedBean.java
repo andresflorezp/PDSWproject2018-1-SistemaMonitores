@@ -44,7 +44,8 @@ public class publicManagedBean implements Serializable {
         loadMateria();
         loadHorario();
     }
-    public void consultar() {
+    public void consultar() throws ExcepcionSistemaMonitores {
+        loadHorario();
         ArrayList<String> aux = new ArrayList<>();
         aux.add("700-830");
         aux.add("830-1000");
@@ -86,6 +87,7 @@ public class publicManagedBean implements Serializable {
     }
     private void loadMateria() throws ExcepcionSistemaMonitores {
         materias = sp.loadMaterias();
+        nombreMateriaSelected = materias.get(0).getNombre();
         nombreMateriaSelected=materias.get(0).getNombre();
         for (int i =0; i<materias.size();i++){
             mapMaterias.put(materias.get(i).getNombre(), materias.get(i));
@@ -93,7 +95,6 @@ public class publicManagedBean implements Serializable {
     }
     
     private void loadHorario() throws ExcepcionSistemaMonitores {
-        Logger.getLogger(Integer.toString(mapMaterias.get(nombreMateriaSelected).getMateriaID()));
         horario = sp.loadHorarios(mapMaterias.get(nombreMateriaSelected).getMateriaID());
     }
     public List<Materia> getMaterias() {
