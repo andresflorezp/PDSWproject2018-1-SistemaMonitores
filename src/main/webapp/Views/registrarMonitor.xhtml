@@ -94,7 +94,7 @@
                     </p:column>
 
                     <p:column style="width:32px">
-                        <p:commandButton icon="ui-icon-circle-close" actionListener="#{monitorBean.delete(mon.codigoID)}" update=":form:monotor :form:messagesTable"/>
+                        <p:commandButton icon="ui-icon-circle-close" immediate="true" actionListener="#{monitorBean.delete(mon.codigoID)}" update=":form:monotor :form:messagesTable"/>
                     </p:column>
 
                 </p:dataTable>
