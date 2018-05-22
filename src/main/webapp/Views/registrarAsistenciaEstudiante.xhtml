@@ -1,11 +1,14 @@
-<ui:composition template="./../Templeates/plantilla.xhtml"
+<ui:composition template="./../Templeates/plantilla3.xhtml"
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="content">
+        <section>
         <h:form id="registro">
+            
+                
             <div id="progreso" >
                 <p:steps activeIndex="1" styleClass="custom" readonly="false">
                     <p:menuitem value="Iniciar Monitoria" url="http://localhost:8080/faces/Views/RegistrarMonitoria.xhtml"/>
@@ -62,7 +65,7 @@
                     </p:dialog>
                 </div>
                 <br/><br/>
-                <div id="table" style="width: 1000px; margin-left: -100px" >
+                <div id="table" style="width: 1000px" >
                     <p:growl id="msgs" showDetail="true"/>
                     <p:dataTable value="#{RegistroAsistencia.asesoriaActual.asesoriasEstudiante}" var="asesoria" id="regist" editable="true" editMode="cell" widgetVar="cellAsesoria">
                         <p:ajax event="cellEdit" listener="#{RegistroAsistencia.onCellEdit}" update=":registro:msgs" />
@@ -91,6 +94,7 @@
                 </div>
             </div>
         </h:form>
+        </section>
     </ui:define>
 </ui:composition>
 

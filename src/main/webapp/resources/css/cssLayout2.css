@@ -1,25 +1,27 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: content-box;
+
+}
 
 #top {
     position: relative;
     background-color: #036fab;
     color: white;
-    padding: 50px;
-    margin: 0px 0px 10px 0px;
-    
+    padding: 60px;
+    padding-top: 0;
+   
+    width: 100%;
 }
 
 #left {
     float: left;
     position: relative;
-    align-content: center;
-    padding: 5px;
-    width: 200px;
+    width: 20%;
+    height: 100%;
 }
-#leftMenu {
-    float: left;
-    padding: 5px;
-    
-}
+
 #right {
     float: right;
     background-color: #ece3a5;
@@ -42,7 +44,8 @@
 .left_content {
     position: relative;
     padding: 5px;
-    margin-left: 250px;
+    width: 75%;
+    
 }
 
 .right_content {
@@ -78,4 +81,45 @@
   text-decoration : underline;
 }
 
+@media screen and (max-width:890px){
+    
+  position: relative;
+    background-color: #036fab;
+    color: white;
+    padding: 50px;
+    padding-top: 0;
+    border-top: 0;
+    width: 100%;
+}
+
+@media screen and (max-width:750px){
+    
+   #top {
+    position: relative;
+    background-color: #036fab;
+    color: white;
+    padding: 50px;
+    padding-top: 0;
+    border-top: 0;
+    width: 100%;
+}
+}
+@media screen and (max-width:550px){
+    
+   #top {
+    position: relative;
+    background-color: #036fab;
+    color: white;
+    padding: 40px;
+    padding-top: 0;
+    border-top: 0;
+    width: 100%;
+}
+}
+
+    
+    
+    
+    
+    
 

@@ -7,11 +7,10 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <h:outputStylesheet name="css/default.css"/>
         <h:outputStylesheet name="css/cssLayout.css"/>
         <h:outputStylesheet name="css/Cabecera.css"/>
-        <h:outputStylesheet name="css/StyleButton.css"/>
-        <h:outputStylesheet name="css/Progreso.css"/>
         <title>Registro</title>
     </h:head>
 
@@ -21,8 +20,8 @@
                 <h:form id="header">
                     <div id="cabecera1">
 
-                        <h:outputLabel class="cabecera" value="PDSW"/>
-                        <h:outputLabel class="cabecera" value="Nombre Usuario: AAKAA" />
+                        <h:outputLabel class="Curso" value="PDSW"/>
+                        <h:outputLabel class="Usuario" value="Nombre Usuario: AAKAA" />
                     </div>
                     <div id="cabecera2">
                         <p:poll id="pollConError" interval="1" rendered="#{MonitorMonitoria.showDo}" listener="#{MonitorMonitoria.decrement}" update="txt_count" />
@@ -34,27 +33,43 @@
                         </h:panelGrid>
 
                         <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                            <p:commandButton value="Si"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="/faces/Views/RegistrarMonitoria.xhtml">
-                                <f:actionListener binding="#{MonitorMonitoria.endAction()}"/>
-                                <f:actionListener binding="#{RegistroAsistencia.finMonitoria()}"/>
-                            </p:commandButton>
+                            <p:commandButton value="Si"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="/faces/Views/RegistrarMonitoria.xhtml"/>
                             <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
                         </p:confirmDialog>
-                    </div> 
+                    </div>
                 </h:form>
             </ui:insert>
         </div>
         <br/>
-        <div>
-            <div id="left">
+        
+            <div id="leftMenu">
                 <ui:insert name="left">
                     <div id="Menu">
-                        <h:form>
-                            <p:panel style="width:200px;">
-                                <p:commandButton value="Registrar Monitoria" action="/faces/Views/RegistrarMonitoria.xhtml"/>
-                                <p:separator />
-                                <p:commandButton value="Consulta Asistencia de Asesorias" action="/faces/Views/InformacionAsesorias.xhtml"/>         
-                            </p:panel>
+                        <h:form id="menu_L">
+                            <header>
+                                <nav>
+                                    <ul>
+                                        <li>
+                                            <a href="#">Imagen</a>
+                                        </li>
+                                        <li>
+                                           <a href="#">Datos</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Consultar Monitoria</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Registro Monitoria</a>
+                                             
+                                        </li>
+                                        <li>
+                                            <a href="#">Finalizar Sesion</a>
+                                        </li>  
+                                    </ul>
+                        
+                                </nav>
+ 
+                            </header>
                         </h:form>
                     </div>
                 </ui:insert>
@@ -64,7 +79,7 @@
                     Contenido Central
                 </ui:insert>
             </div>
-        </div>
+        
         <div id="bottom">
             <ui:insert name="bottom">
                 Bottom Contenido
