@@ -219,6 +219,7 @@
                 <configuration>
                     <port>8080</port>
                     <path>/</path>
+                    <tomcatUsers>${basedir}/src/test/resources/tomcat7-run/tomcat-users.xml</tomcatUsers>
                 </configuration>
             </plugin>
 
