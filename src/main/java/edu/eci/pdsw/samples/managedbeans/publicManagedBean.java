@@ -40,7 +40,7 @@ public class publicManagedBean implements Serializable {
         nombreMateriaSelected =" ";
         materias = new  ArrayList<>();
         nombresMaterias = new ArrayList<>();
-        mapMaterias = new HashMap<String, Materia>();
+        mapMaterias = new HashMap<>();
         loadMateria();
         loadHorario();
     }

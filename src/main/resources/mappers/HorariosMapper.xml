@@ -6,19 +6,24 @@
   
   
 <mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.HorariosMapper">
-    <select parameterType="map" id="consultaMateriaGeneral" resultMap="HorarioResult">
+    <select parameterType="map" id="consultarHorarioGeneral" resultMap="HorarioResult">
         select
             horario.horarioid, 
-            horario.descripcion,
-            materia.materia_id,
+            horario.descripcion as ho_descripcion,
+            materia.materia_id as materia_id,
+        
             materia.materia_nombre as m_nombre,
             materia.materia_nemonico as m_nemonico,
             materia.creditos as m_creditos,
             materia.horas_monitoria_curso as m_horas_monitoria_curso,
+            
+            tema.temaid,
+            tema.topic as tm_topic,
+            tema.descripcion as tm_descripcion
         
-        
-            FROM materia join horario on (horario.horarioid = materia.materia_id)
+            FROM materia join horario on (horario.materiaid = materia.materia_id)
             join tema on (tema.materia_materia_id = materia.materia_id)
+        
         <if test="codId != null" >
             where  materia.materia_id = #{codId}
         </if>
@@ -27,7 +32,7 @@
 
     <resultMap type='Horario' id='HorarioResult'>
         <id property='horarioID' column='horarioid'></id>
-        <result property='descripcion' column='horario.descripcion'></result>
+        <result property='descripcion' column='descripcion'></result>
         <association property="materia" javaType="Materia" resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.MateriaMapper.MateriaResult'/>
         
     </resultMap>

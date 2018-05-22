@@ -18,7 +18,7 @@
         <typeAlias type='edu.eci.pdsw.samples.entities.Asesoria' alias='Asesoria'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Estudiante' alias='Estudiante'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.AsesoriaEstudiante' alias='AsesoriaEstudiante'/>
-        <typeAlias type='edu.eci.pdsw.samples.entities.Horario' alias='horario'/>
+        <typeAlias type='edu.eci.pdsw.samples.entities.Horario' alias='Horario'/>
     </typeAliases>        
 
         

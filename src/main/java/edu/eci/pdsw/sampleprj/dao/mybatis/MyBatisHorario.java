@@ -10,12 +10,15 @@ import edu.eci.pdsw.sampleprj.dao.PersistenceException;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.HorariosMapper;
 import edu.eci.pdsw.samples.entities.Horario;
 import java.util.List;
+import javax.inject.Inject;
 
 /**
  *
  * @author rafaeljimenez
  */
 public class MyBatisHorario  implements HorarioDAO{
+    
+    @Inject
     private HorariosMapper horarioMapper;
 
     @Override
@@ -25,7 +28,13 @@ public class MyBatisHorario  implements HorarioDAO{
 
     @Override
     public Horario load(int codigo) throws PersistenceException {
-        return horarioMapper.consultarHorario(codigo); //To change body of generated methods, choose Tools | Templates. 
+        try {
+            return horarioMapper.consultarHorario(codigo);
+        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+            throw new PersistenceException("Error al realizar la consulta del horario para la materia con identificador: "+codigo+e.getMessage() );
+        } catch (java.lang.IndexOutOfBoundsException ex){
+            throw new PersistenceException("Horario para la materia con identificador: "+codigo+" no encontrado."+ex.getMessage() );
+        }
     }
 
     @Override

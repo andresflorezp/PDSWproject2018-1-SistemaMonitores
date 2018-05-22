@@ -4,10 +4,9 @@
  * and open the template in the editor.
  */
 package edu.eci.pdsw.sampleprj.dao.mybatis.mappers;
-
 import edu.eci.pdsw.samples.entities.Monitor;
-
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 /**

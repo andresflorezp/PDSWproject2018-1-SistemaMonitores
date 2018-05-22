@@ -16,7 +16,7 @@ import org.apache.ibatis.annotations.Param;
 public interface HorariosMapper {
     /**
      * Metodo para consultar un horario
-     * @param codigo es el codigo de la materia a consultar
+     * @param codId es el codigo de la materia a consultar
      * @return 
      */
     default Horario consultarHorario(Integer codId){

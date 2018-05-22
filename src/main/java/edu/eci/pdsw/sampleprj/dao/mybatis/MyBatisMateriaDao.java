@@ -17,6 +17,7 @@ import javax.inject.Inject;
  * @author tatiana
  */
 public class MyBatisMateriaDao implements MateriaDAO, Serializable {
+    
     @Inject
     private MateriaMapper materiaMapper;
     

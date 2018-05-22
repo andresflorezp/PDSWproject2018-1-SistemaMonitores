@@ -16,7 +16,7 @@ public class Horario {
     private List<String> hora;
     private List<String> lunes;
     private List<String> martes;
-    private List<String>miercoles;
+    private List<String> miercoles;
     private List<String> jueves;
     private List<String> viernes;
     private List<String> sabado;
@@ -28,6 +28,9 @@ public class Horario {
         this.horarioID = horariID;
         this.descripcion = descripcion;
         this.materia = materia;
+    }
+    
+    public Horario(){
     }
     
     public void horarioData(String hora, String lunes, String martes, String miercoles, String jueves, String viernes, String sabado) {
