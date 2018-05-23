@@ -86,7 +86,12 @@ Cualquier persona puede consultar el horario de atencion  a las monitorias, para
   ### Sprint 3
  ![](img/sp3.png)
 
-# BurndownChart
+## BurndownChart
+# BurndownChart Sprint 1
+![](img/backlog.png)
+# BurndownChart Sprint 2
+![](img/backlog.png)
+# BurndownChart Sprint 3
 ![](img/backlog.png)
 
 
