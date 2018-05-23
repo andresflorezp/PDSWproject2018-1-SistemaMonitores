@@ -75,6 +75,8 @@ Cualquier persona puede consultar el horario de atencion  a las monitorias, para
  ### Link Heroku: https://sistemamonitoriaaakaa.herokuapp.com/ 
  
  # Sprints
+ # Backlog Faltante
+  ![](img/backlogF.png)
  ### Sprint 1
  ![](img/sp1.png)
 
