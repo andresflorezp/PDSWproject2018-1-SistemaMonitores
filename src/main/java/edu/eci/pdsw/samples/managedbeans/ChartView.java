@@ -71,7 +71,7 @@ public class ChartView implements Serializable {
         asistencia_Monitorias_Monitor.setLegendPosition("ECI");
         yAxis = asistencia_Monitorias_Monitor.getAxis(Y);
         yAxis.setMin(0);
-        yAxis.setMax(200);
+        yAxis.setMax(100);
 
         asistencia_Monitorias_curso = initBarModelCurso();
         asistencia_Monitorias_curso.setTitle("Asistencia por Curso Monitorias");
@@ -79,7 +79,7 @@ public class ChartView implements Serializable {
         asistencia_Monitorias_curso.setLegendPosition("ECI");
         yAxis = asistencia_Monitorias_curso.getAxis(Y);
         yAxis.setMin(0);
-        yAxis.setMax(200);
+        yAxis.setMax(100);
 
         asistencia_Monitorias_grupo = initBarModelGrupo();
         asistencia_Monitorias_grupo.setTitle("Asistencia por Grupo Monitorias");
@@ -87,7 +87,7 @@ public class ChartView implements Serializable {
         asistencia_Monitorias_grupo.setLegendPosition("ECI");
         yAxis = asistencia_Monitorias_grupo.getAxis(Y);
         yAxis.setMin(0);
-        yAxis.setMax(200);
+        yAxis.setMax(100);
 
         asistencia_Monitorias_Tema = initBarModelTema();
         asistencia_Monitorias_Tema.setTitle("Asistencia por Tema Monitorias");
@@ -95,7 +95,7 @@ public class ChartView implements Serializable {
         asistencia_Monitorias_Tema.setLegendPosition("ECI");
         yAxis = asistencia_Monitorias_Tema.getAxis(Y);
         yAxis.setMin(0);
-        yAxis.setMax(200);
+        yAxis.setMax(100);
 
     }
 
