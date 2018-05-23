@@ -31,6 +31,13 @@ public class Horario {
     }
     
     public Horario(){
+       hora =  new ArrayList<>();
+       lunes = new ArrayList<>();
+       martes = new ArrayList<>();
+       miercoles = new ArrayList<>();
+       jueves = new ArrayList<>();
+       viernes = new ArrayList<>();
+       sabado = new ArrayList<>();
     }
     
     public void horarioData(String hora, String lunes, String martes, String miercoles, String jueves, String viernes, String sabado) {

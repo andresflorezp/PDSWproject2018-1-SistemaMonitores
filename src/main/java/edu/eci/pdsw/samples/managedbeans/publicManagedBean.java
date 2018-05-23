@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
-import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -35,6 +34,7 @@ public class publicManagedBean implements Serializable {
     private List<String> nombresMaterias;
     private String nombreMateriaSelected;
     private int codigoMateria;
+    
 
     public publicManagedBean() throws ExcepcionSistemaMonitores {
         nombreMateriaSelected =" ";
@@ -50,21 +50,22 @@ public class publicManagedBean implements Serializable {
         aux.add("700-830");
         aux.add("830-1000");
         aux.add("1000-1130");
-        aux.add("1130-1300");
+        aux.add("1130-1300");//3
         aux.add("1300-1430");
         aux.add("1430-1600");
         aux.add("1600-1730");
         aux.add("1730-1900");    
-        String[] b = horario.getDescripcion().split("]");
-        for (int i = 0; i < 8; i++) {
+        String a = horario.getDescripcion();
+        String[] b = a.split("]");
+        for (int i = 0; i < 8; i++) {            
             String[] aux1 = b[i].split(",");
             if(i<4){
                 horario.horarioData(aux.get(i), aux1[0], aux1[1],aux1[2],aux1[3],aux1[4],aux1[5]);
             }else{
-                horario.horarioData(aux.get(i), aux1[0], aux1[1],aux1[2],aux1[3],aux1[4],"");
+                horario.horarioData(aux.get(i), aux1[0], aux1[1],aux1[2],aux1[3],aux1[4]," ");
             }
             
-            }
+        }
         }
 
     public String getNombreMateriaSelected() {
