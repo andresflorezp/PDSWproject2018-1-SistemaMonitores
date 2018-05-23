@@ -1,0 +1,37 @@
+<ui:composition template="./../Templeates/plantillaAdministrador.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="content">
+        <div id="contentPublic" style="margin-left: 0px;">
+            <h:form id="form">
+                <p:panel style="width: 270px">
+                    <h:outputText style="margin-left: 60px;font-size: 18px;color: #4c9ad2;" value="Registrar Docente"/>
+                    <p:messages id="messages"/>
+                    <h:panelGrid columns="3" cellpadding="5" id="grid" >
+                        <h:outputLabel for="id" value="Identificacion:" />
+                        <p:inputText id="id" required="true" value="#{profesorBean.identificacion}"/>
+                        <p:message for="id"/>
+                        <h:outputLabel for="nombre" value="Nombres:" />
+                        <p:inputText id="nombre" required="true" value="#{profesorBean.nombres}" />
+                        <p:message for="nombre"/>
+                        <h:outputLabel for="apellidos" value="Apellidos:" />
+                        <p:inputText id="apellidos" required="true" value="#{profesorBean.apellidos}"/>
+                        <p:message for="apellidos"/>
+                        <h:outputLabel for="mail" value="Mail:" />
+                        <p:inputText id="mail" required="true" value="#{profesorBean.mail}" /> 
+                        <p:message for="mail"/>
+                        <h:outputLabel for="telefono" value="Telefono:" />
+                        <p:inputText id="telefono" value="#{profesorBean.telefono}" /> 
+                        <p:message for="telefono"/>
+                    </h:panelGrid>
+                    <p:commandButton value="Registrar" update="grid :form:messages" actionListener="#{profesorBean.registrarProfesor()}" >
+                        <p:resetInput target="grid"/>
+                    </p:commandButton>
+                </p:panel>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>

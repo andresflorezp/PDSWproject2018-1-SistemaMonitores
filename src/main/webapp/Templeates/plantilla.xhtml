@@ -30,11 +30,13 @@
                             <h:outputText id="txt_count" rendered="#{MonitorMonitoria.showDo}" value="Te falta #{MonitorMonitoria.numberHour} hora : #{MonitorMonitoria.numberMinute} minutos : #{MonitorMonitoria.numberSecond} segundos de Monitoria" />
                             <p:commandButton id="terminar_Monitoria" value = "Terminar la Monitoria " rendered="#{MonitorMonitoria.showDo}">
                                 <p:confirm header="Confirmacion" message="Estas seguro de terminar la asesoria" icon="ui-icon-alert" />
+                                <!--p:commandButton actionListener="# {loginManager.logout}" value="cerrar" action="/index?faces-redirect=true"/-->
                             </p:commandButton>
                         </h:panelGrid>
 
                         <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                            <p:commandButton value="Si"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="/faces/Views/RegistrarMonitoria.xhtml">
+                            <!--p:commandButton value="Si"  styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="/faces/Views/RegistrarMonitoria.xhtml"-->
+                            <p:commandButton actionListener="#{loginManager.logout}" value="si" action="/index?faces-redirect=true">
                                 <f:actionListener binding="#{MonitorMonitoria.endAction()}"/>
                                 <f:actionListener binding="#{RegistroAsistencia.finMonitoria()}"/>
                             </p:commandButton>

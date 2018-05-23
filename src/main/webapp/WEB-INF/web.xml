@@ -17,7 +17,6 @@
 
     <!-- ***************************************************************************************************************
        BEGIN: DEVELOPMENT ENVIRONMENT SETTINGS - Remove these settings when deploying to Production.
-
      -->
     <!--See: http://stackoverflow.com/a/21698467/1850609-->
     <context-param>
@@ -51,7 +50,6 @@
         <param-value>Development</param-value>
     </context-param>
     <!--
-
      END: DEVELOPMENT ENVIRONMENT SETTINGS
     **************************************************************************************************************** -->
 
@@ -101,12 +99,32 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Views only available when logged in as PUBLIC</web-resource-name>
-            <url-pattern>/public/*</url-pattern>
+            <url-pattern>/horarioPublico.xhtml</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>public</role-name>
         </auth-constraint>
     </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Views only available when logged in as PROFESOR</web-resource-name>
+            <url-pattern>/profesor/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>profesor</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Views only available when logged in as MONITOR</web-resource-name>
+            <url-pattern>/Monitor/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>Monitor</role-name>
+        </auth-constraint>
+    </security-constraint>        
 
     <login-config>
         <auth-method>FORM</auth-method>

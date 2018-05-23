@@ -1,0 +1,50 @@
+<ui:composition template="/Templeates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="left">
+    </ui:define>
+    <ui:define name="content">
+        <div id="contentPublic" style="margin-left: -250px;">
+            <h:form id="form">
+                <p:selectOneMenu id="materias" value="#{publicBean.nombreMateriaSelected}" 
+                                 effect="fade" style="width:160px" filter="true" filterMatchMode="startsWith">
+                    <f:selectItems value = "#{publicBean.nombresMaterias}"  />
+                </p:selectOneMenu>
+                <p:commandButton value="Consultar" update=":form:horarioTable" actionListener="#{publicBean.consultar()}">
+                    <p:resetInput target=":form:horarioTable"/>
+                </p:commandButton>
+                <p:layoutUnit position="north">
+                    <h1 style="text-align: center;">Horario de Atencion</h1>
+                </p:layoutUnit>
+                <p:layoutUnit  position="center">
+                    <p:dataTable id="horarioTable" var="horario" value="#{publicBean.horarios}" >
+                        <p:column headerText="horas" >
+                            <h:outputText  value="#{horario.hora}"  />
+                        </p:column>
+                        <p:column headerText="Lunes">
+                            <h:outputText value="#{horario.lunes}" />
+                        </p:column>
+                        <p:column headerText="Martes">
+                            <h:outputText value="#{horario.martes}" />
+                        </p:column>
+                        <p:column headerText="Miercoles">
+                            <h:outputText value="#{horario.miercoles}" />
+                        </p:column>
+                        <p:column headerText="Jueves">
+                            <h:outputText value="#{horario.jueves}" />
+                        </p:column>
+                        <p:column headerText="Viernes">
+                            <h:outputText value="#{horario.viernes}" />
+                        </p:column>
+                        <p:column headerText="Sabado">
+                            <h:outputText value="#{horario.sabado}" />
+                        </p:column>
+                    </p:dataTable>
+                </p:layoutUnit>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
