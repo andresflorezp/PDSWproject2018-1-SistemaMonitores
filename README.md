@@ -3,16 +3,33 @@
    - Curso: Proceso de Desarrollo de Software (PDSW)
 
 # Integrantes
-  - Andres Florez
-  - Andres Vasquez
+  - Andres Florez (Team Develop)
+  - Andres Vasquez (Team Develop)
   - Francisco Chavez (Product Owner)
-  - Karen Mora
-  - Rafael Jimenez
+  - Karen Mora (Team Develop)
+  - Rafael Jimenez (Team Develop)
   - Sergio Rodriguez (Scrum Master)
  
 # Descripcion del producto
 #####  Sistema de monitoria de la Escuela Colombiana de Ingenieria Julio Garavito
-El sisemta es capaz de realizar un control sobre las monitorias que se realizan en la institución y facilita la gestión de información  de los monitores y sobre el comportamiento de los estudiantes sobre las materias actualmente dictadas en la escuela.
+# Sistema General
+Como expicacion general de la aplicacion el sistema de monitorias se basa en diferentes roles que permiten registro de la monitoria, inicializacion de roles, horario publico ,estadisticas de las monitorias
+# Sistema explicacion Especifica
+El sistema de monitorias se basa en manejo de roles en este caso tenemos tres roles
+* Rol de Administrador
+* Rol de Profesor
+* Rol de Monitor
+* Usuario Publico
+# Rol de Monitor
+Para el rol de monitor el monitor puede registrar una monitoria y puede consultar sus monitorias en tal caso se tiene un reloj que contabiliza el tiempo de la monitoria
+# Rol Profesor
+Para el rol de profesor se tiene consultas estadisticas de consultas generales,consultas por monitor, consultas por curso
+se tiene analisis de graficas,ademas de las tablas con el discriminado de toda la informacion de las monitorias por profesor
+# Rol de Administrador
+Para el rol de administrador se tiene inserciones para tema de los cursos, monitores, profesores, materias o cursos
+# Usuario Publico
+Para el usuario Publico se tiene una vista inicial de los horarios desde hay inicia y es la raiz de la aplicacion para
+login y demas roles.
 
 ## Funcionalidades mas importantes
 
@@ -76,4 +93,9 @@ Cualquier persona puede consultar el horario de atencion  a las monitorias, para
 
 
 [![CircleCI](https://circleci.com/gh/PDSWproject2018-1/PDSWproject2018-1-SistemaMonitores.svg?style=svg)](https://circleci.com/gh/PDSWproject2018-1/PDSWproject2018-1-SistemaMonitores)
+
+# Reporte de pruebas y de cubrimiento de las mismas
+Para el reporte de pruebas se hicieron dos bloques de pruebas de aceptacion para registro de monitorias y para
+creacion de usuarios
+
  
