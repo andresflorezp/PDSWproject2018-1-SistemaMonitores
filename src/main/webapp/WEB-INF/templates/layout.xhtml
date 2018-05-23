@@ -5,7 +5,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 <h:head>
-    <title><ui:insert name="title">JSF Example Title</ui:insert></title>
+    <title><ui:insert name="title">Sistema Monitoria ECI</ui:insert></title>
 </h:head>
 <h:body>
     <h:outputStylesheet library="css" name="layout.css" />
@@ -16,27 +16,21 @@
     -->
     <p:layout fullPage="true">
 
-        <p:layoutUnit position="north" size="150" header="Top" resizable="true" closable="true" collapsible="true">
-            <h:outputText value="North unit content." />
+        <p:layoutUnit position="north"  header="Usuarios" resizable="false" closable="false" collapsible="false">
             <ui:include src="header.xhtml" />
-        </p:layoutUnit>
-
-        <p:layoutUnit position="south" size="100" header="Bottom" resizable="true" closable="true" collapsible="true">
-            <h:outputText value="South unit content." />
-        </p:layoutUnit>
-
-        <p:layoutUnit position="west" size="200" header="Left" resizable="true" closable="true" collapsible="true">
-            <h:outputText value="West unit content." />
-        </p:layoutUnit>
-
-        <p:layoutUnit position="east" size="200" header="Right" resizable="true" closable="true" collapsible="true" effect="drop">
-            <h:outputText value="Right unit content." />
         </p:layoutUnit>
 
         <p:layoutUnit position="center">
             <ui:insert name="content">Put default content here, if any.</ui:insert>
+        </p:layoutUnit>        
+        
+        <p:layoutUnit position="south" size="100" header="Info" resizable="false" closable="false" collapsible="false">
+            <h:outputText value="Aplicacion Hecha por:  " />
+            <h:outputText value="Sergio Rodriguez,  " />
+            <h:outputText value="Andres Florez,  " />
+            <h:outputText value="Karen Mora,  " />
+            <h:outputText value="Andres Vasquez" />
         </p:layoutUnit>
-
     </p:layout>
 </h:body>
 </html>

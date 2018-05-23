@@ -4,22 +4,31 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
 
-    <h:form>
-        <p:menubar>
-            <p:submenu label="Example Pages" icon="ui-icon-folder-open">
+    <h:form style="align-content: center">
+        <p:menubar style="align-content: center">
+            
+            <p:submenu label="INICIO" icon="ui-icon-folder-open">
                 <p:menuitem value="Home page" icon="ui-icon-document" outcome="/index"/>
-                <p:separator/>
-                <p:menuitem value="Sample page" icon="ui-icon-document" outcome="/samplePage"/>
-                <p:menuitem value="Public-only page" icon="ui-icon-document" outcome="/public/index"/>
-                <p:menuitem value="Admin-only page" icon="ui-icon-document" outcome="/admin/InformacionGraficaMonitorias"/>
-                <p:separator/>
-                <p:menuitem value="Login page" icon="ui-icon-check" outcome="/authentication/login"/>
+            </p:submenu>
+            
+            <p:submenu label="ADMINISTRADOR" icon="ui-icon-clipboard">
+                <p:menuitem value="Administracion Sitio" icon="ui-icon-document" outcome="/admin/registrarMonitor"/>
+                
+            </p:submenu>
+            <p:submenu label="PROFESOR" icon="ui-icon-clipboard">
+                <p:menuitem value="Profesor Sitio" icon="ui-icon-document" outcome="/profesor/InformacionGraficaMonitorias"/>
+                
+            </p:submenu>
+            <p:submenu label="MONITOR" icon="ui-icon-clipboard">
+                <p:menuitem value="Monitor Sitio" icon="ui-icon-document" outcome="/monitor/RegistrarMonitoria"/>
+                
             </p:submenu>
 
-            <p:submenu label="What is this?" icon="ui-icon-help">
-                <p:menuitem value="JSF 2.2 Prime Example" url="http://acdcjunior.github.io" icon="ui-icon-extlink"/>
-                <p:menuitem value="PrimeFaces MenuBar" url="http://www.primefaces.org/showcase/ui/menu/menubar.xhtml" icon="ui-icon-extlink"/>
+            <p:submenu label="Horario Publico" icon="ui-icon-clipboard">
+                <p:menuitem value="HORARIO PUBLICO" icon="ui-icon-clipboard" outcome="/horarioPublico"/>
+                
             </p:submenu>
+            
 
             <f:facet name="options">
                 <p:outputPanel rendered="#{!loginManager.userLoggedIn}">

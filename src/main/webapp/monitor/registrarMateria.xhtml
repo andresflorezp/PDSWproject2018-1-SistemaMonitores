@@ -1,0 +1,36 @@
+<ui:composition template="./../Templeates/plantillaAdministrador.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="content">
+        <div id="contentPublic" style="margin-left: 0px;">
+            <h:form id="form">
+                <p:layoutUnit position="north">
+                    <h1 style="text-align: center;">Registrar Materia</h1>
+                </p:layoutUnit>
+                <p:layoutUnit  position="center" >
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputLabel for="nombre" value="Nombre Materia:" />
+                        <p:inputText id="nombre" required="true" value="#{registrarMateria.nombre}"/>
+
+                        <h:outputLabel for="codigo" value="Nemotecnico:" />
+                        <p:inputText id="codigo" required="true" value="#{registrarMateria.nemotecnico} " />
+
+                        <h:outputLabel for="creditos" value="Creditos:" />
+                        <p:inputText id="creditos" required="true" value="#{registrarMateria.creditos}"/>
+
+                        <h:outputLabel for="horas" value="Horas Monitoria:" />
+                        <p:inputText id="horas" required="true" value="#{registrarMateria.horas}" /> 
+
+                         
+                    </h:panelGrid>
+                    <div>
+                        <p:commandButton value="Registrar"  />
+                    </div> 
+                </p:layoutUnit>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>

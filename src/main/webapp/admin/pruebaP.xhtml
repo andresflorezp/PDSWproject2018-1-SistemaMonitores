@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="css/default.css"/>
+        <h:outputStylesheet name="css/cssLayout.css"/>
+        <h:outputStylesheet name="css/Cabecera.css"/>
+        <h:outputStylesheet name="css/StyleButton.css"/>
+        <h:outputStylesheet name="css/Progreso.css"/>
+        <title>Registro</title>
+    </h:head>
+
+    <h:body>
+
+        <h:form id="registro">
+
+            <div id="top" class="card">
+                <ui:insert name="top"></ui:insert>
+                <div id="Encabezado">
+
+                    <h:outputLabel id="cabecera" value="PDSW &#160; &#160;"  style="font-size: 50px" styleClass="cabecera"/>
+                    <h:outputLabel id="cabecera2" value="Nombre Usuario: AAKAA &#160; &#160; &#160; &#160; &#160; &#160;" style="font-size: 50px" styleClass="cabecera"/>
+                    <h:outputLabel id="cabecera3" rendered="#{MonitorMonitoria.showDo}" value="#{MonitorMonitoria.horaActual}  -->  #{MonitorMonitoria.horaTerminacion}" style="font-size: 20px;color: #F5F2F1">
+                        <p:commandButton value="Terminar Monitoria" actionListener="#{MonitorMonitoria.messageLogOut}" rendered="#{MonitorMonitoria.showDo}" style="margin-left: 1020px;font-size: 20px;">
+                            <p:confirm header="Confirmacion" message="Estas seguro de terminar la asesoria" icon="ui-icon-alert" />
+                        </p:commandButton>
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="RegistrarMonitoria"/>
+                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </p:confirmDialog>
+
+                    </h:outputLabel>
+                </div>
+
+            </div>
+            <div>
+                <div id="left" class="card">
+                    <ui:insert name="left">
+                        <b:column span="3">
+                            <b:panel look="primary" title="Static sidebar" style="width: 200px">
+                                <b:listLinks>
+                                    <b:navLink header="BootsFaces" />
+                                    <b:navLink href="http://www.bootsfaces.net" value="BootsFaces"
+                                               icon="globe" iconAlign="right"/>
+                                    <b:navLink></b:navLink>
+                                    <b:navLink header="Bootstrap"/>
+                                    <b:navLink href="http://getbootstrap.com/components/#navbar" value="Bootstrap" icon="link"></b:navLink>
+                                    <b:navLink></b:navLink>
+                                    <b:navLink header="Preview"/>
+                                    <b:navLink value="Labels and Badges" outcome="/bootstrap/labelsbadge"
+                                               icon="tag" iconAlign="right"/>
+                                    <b:navLink value="Slider" outcome="/jquery-ui/slider" iconAwesome="sliders"/>
+
+
+                                    <b:messages />
+
+                                </b:listLinks>
+                            </b:panel>
+                        </b:column>
+
+                    </ui:insert>
+                </div>
+
+
+                <div id="content" class="card" >
+                    <ui:insert name="content">
+                        <div id="progreso" >
+                            <p:steps activeIndex="0" styleClass="custom" readonly="false">
+                                <p:menuitem value="Registrar Monitoria" url="http://localhost:8080/faces/Views/RegistrarMonitoria.xhtml"/>
+                                <p:menuitem value="Iniciar Monitoria" url="http://localhost:8080/faces/Views/IniciarMonitoria.xhtml"/>
+                                <p:menuitem value="Progreso Monitoria" url="http://localhost:8080/faces/Views/ProgresoMonitoria.xhtml"/>
+
+                            </p:steps>
+
+                        </div>
+                        <div id="formulario" style="margin-left: 500px;margin-top: 10px">
+                            <div id="materias" >
+                                <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                                    <p:outputLabel for="console" value="Franja" />
+                                    <p:selectOneMenu id="console"  style="width:125px" value="#{MonitorMonitoria.franja}">
+                                        <f:selectItem itemLabel="" itemValue="" />
+                                        <f:selectItem itemLabel="7:00-8:30 (am)" itemValue="7:00-8:30 (am)" />
+                                        <f:selectItem itemLabel="8:30-10:00 (am)" itemValue="8:30-10:00 (am)" />
+                                        <f:selectItem itemLabel="10:00-11:30 (am)" itemValue="10:00-11:30 (am)" />
+                                        <f:selectItem itemLabel="11:30-1:00 (m)" itemValue="11:30-1:00 (m)" />
+                                        <f:selectItem itemLabel="1:00-2:30 (pm)" itemValue="1:00-2:30 (pm)" />
+                                        <f:selectItem itemLabel="2:30-4:00 (pm)" itemValue="2:30-4:00 (pm)" />
+                                        <f:selectItem itemLabel="4:00-5:30 (pm)" itemValue="4:00-5:30 (pm)" />
+                                        <f:selectItem itemLabel="5:30-7:00 (pm)" itemValue="5:30-7:00 (pm)" />
+
+                                    </p:selectOneMenu>
+                                </h:panelGrid>
+                            </div>
+                            <div id="fecha" >
+                                <p:growl id="msgs" showDetail="true" />
+                                <h:panelGrid columns="2" cellpadding="5">
+                                    <p:outputLabel for="button" value="Fecha: " />
+                                    <p:calendar id="button" value="#{MonitorMonitoria.fecha}" showOn="button" />
+                                </h:panelGrid>
+
+                            </div>
+                            <br/>
+                            <div id="botones">
+
+                                <p:commandButton  value="Limpiar" icon="ui-icon-star">
+
+                                </p:commandButton>    
+                                <p:commandButton value="Registrar" icon="ui-icon-star" action="IniciarMonitoria" actionListener="#{MonitorMonitoria.guardarRegistro()}" >
+
+                                </p:commandButton>
+
+                            </div>
+                        </div>
+
+
+                    </ui:insert>
+                </div>
+            </div>
+
+
+        </h:form>
+    </h:body>
+
+</html>

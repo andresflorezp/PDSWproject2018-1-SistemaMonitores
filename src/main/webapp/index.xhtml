@@ -6,22 +6,27 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="title">
-        HOME JSF Example Page - Overriding the default title
+        SISTEMA MONITORIA ECI AKAA
     </ui:define>
 
     <ui:define name="content">
         <h:form>
             <p:panel header="Home Page">
-                <h1>Welcome, this is the HOME page.</h1>
+                <h1 align="center">Bienvenido, Sistema de Monitoria ECI.</h1>
+                <center>
+                <p:graphicImage name="/Imagenes/icon-School-R.png" width="200" height="200" style="align-content: center"/>
+                </center> 
             </p:panel>
 
-            <p:panel rendered="#{!loginManager.userLoggedIn}">
-                You are not logged in. To login, use the button on the top-right corner of this page.
+            <p:panel rendered="#{!loginManager.userLoggedIn}" >
+                <h3 align="center">No ha iniciado sesión. Para iniciar sesión, use el botón en la esquina superior derecha de esta página.</h3>
             </p:panel>
 
             <p:panel rendered="#{loginManager.userLoggedIn}">
-                Hello, <strong>#{loginManager.user}</strong>.
+                <h3 align="center">Hola!, <strong>#{loginManager.user}</strong>.</h3>
+                <center>
                 <h:outputText rendered="#{loginManager.isUserInRole('admin')}" value="I see you have administrator powers." />
+                </center>
             </p:panel>
         </h:form>
     </ui:define>

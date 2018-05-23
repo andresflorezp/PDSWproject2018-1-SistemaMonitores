@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="/css/inicio_default.css"/>
+        <h:outputStylesheet name="/css/inicio_layout.css"/>
+        <h:outputStylesheet name="css/Cabecera.css"/>
+        <h:outputStylesheet name="css/StyleButton.css"/>
+        <h:outputStylesheet name="css/Progreso.css"/>
+        <h:outputScript name="JavaScript/pdfmake.min.js" />
+        <h:outputScript name="JavaScript/vfs_fonts.js" />
+        <h:outputScript name="JavaScript/chartsScript.js" />
+        <title>Inicio</title>
+    </h:head>
+
+    <h:body>
+        <h:form>
+       
+            <div>
+                <div id="right" style="width: 315px;height: 630px;background: #ffffff">
+                    <ui:insert name="right">
+                        <p:graphicImage name="/Imagenes/icon-School-R.png" width="150" height="150" style="margin-left: 90px;margin-top: 70px"/>
+                        <div id="login" style="margin-top: 100px;margin-left: 40px">
+
+                            <p:outputLabel for="usuario" value="Username: "/> 
+                            <p:inputText id="usuario" />
+                            <br/>
+                            <br/>
+                            <p:outputLabel for="clave" value="PassWord: "/> 
+                            <p:password id="clave" value="Password" />
+                            <br/>
+                            <br/>
+                            <p:commandButton action="eleccionRol.xhtml" value="Sign In" icon="ui-icon-person" style="margin-right: 10px;background: #0066ff;border-color: #0066ff"/>
+                            <p:commandButton value="Forget Passsword" icon="ui-icon-key" style="background: #00cccc;border-color: #00cccc"/>
+                        </div>
+                    </ui:insert>
+                </div>
+                <div id="content">
+                    <p:graphicImage name="/Imagenes/fondo1.png" width="1500" height="960"/>
+                </div>
+            </div>
+        </h:form>
+
+    </h:body>
+
+</html>

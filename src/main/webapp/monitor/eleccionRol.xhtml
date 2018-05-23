@@ -1,0 +1,26 @@
+<ui:composition template="./../Templeates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="left">
+    </ui:define>
+    <ui:define name="content">
+        <h:form>
+            <div style="margin-left: -250px;">
+                <p:outputLabel value="Elige el Rol" style="font-size: 40px;color:#eeeaea "/>
+                <br/>
+                <div id="Roles" align="center">
+                    <p:commandButton value ="Rol Monitor" action="RegistrarMonitoria.xhtml" style="width: 400px;height: 80px"/>
+                    <br/>
+                    <br/>
+                    <p:commandButton value ="Rol Profesor" action="InformacionGraficaMonitorias.xhtml" style="width: 400px;height: 80px"/>
+                    <br/>
+                    <br/>
+                    <p:commandButton value ="Rol Administrador" action="/faces/Views/registrarMonitor.xhtml" style="width: 400px;height: 80px"/>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>

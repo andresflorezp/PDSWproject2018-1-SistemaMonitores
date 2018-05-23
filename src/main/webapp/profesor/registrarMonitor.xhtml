@@ -1,0 +1,108 @@
+<ui:composition template="./../Templeates/plantillaAdministrador.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="content">
+        <div id="contentPublic" style="margin-left: 0px;">
+            <h:form id="form">
+                <p:layout style="height: 700px;max-width: 1250;">
+                    <p:layoutUnit position="west" resizable="true" size="350" minSize="200" maxSize="500">
+                        <h:outputText style="margin-left: 60px;font-size: 18px;color: #4c9ad2;" value="Registrar Monitor"/>
+                        <p:messages id="messages"/>
+                        <h:panelGrid columns="3" cellpadding="5" id="grid">
+                            <h:outputLabel for="codigo" value="Codigo: " />
+                            <p:inputText id="codigo" label="Codigo Estudiante" required="true" value="#{monitorBean.codigo}"/>
+                            <p:message for="codigo"/>
+                            <h:outputLabel for="nombre" value="Nombres: " />
+                            <p:inputText id="nombre" label="Nombre" required="true" value="#{monitorBean.nombres}"/>
+                            <p:message for="nombre"/>
+                            <h:outputLabel for="apellidos" value="Apellidos: " />
+                            <p:inputText id="apellidos" label="Apellidos " required="true" value="#{monitorBean.apellidos}"/>
+                            <p:message for="apellidos" />
+                            <h:outputLabel for="mail" value="Correo: "/>
+                            <p:inputText id="mail" label="Correo" required="true" value="#{monitorBean.mail}"/> 
+                            <p:message for="mail"/>
+                            <h:outputLabel for="semestreIngreso" value="Semestre Ingreso: "/>
+                            <p:inputText id="semestreIngreso" label="Semestre Ingreso" required="true"  value="#{monitorBean.semestreIngreso}"/>
+                            <p:message for="semestreIngreso"/>
+                            <h:outputLabel for="programaacademico" value="Programa academico: "/>
+                            <p:inputText id="programaacademico" label="Programa academico" required="true"  value="#{monitorBean.facultad}"/>
+                            <p:message for="programaacademico"/>
+                            <h:outputLabel for="telefono" value="Telefono: "/>
+                            <p:inputText  id="telefono" value="#{monitorBean.telefono}"/>  
+                            <p:message for="telefono"/>
+                        </h:panelGrid>
+                        <p:commandButton value="Registrar" update="grid :form:messages" actionListener="#{monitorBean.registrarMonitor()}">
+                            <p:resetInput target="grid"/>
+                        </p:commandButton>
+                    </p:layoutUnit>
+
+                    <p:layoutUnit position="center" >
+                        <p:growl id="msgs" showDetail="true"/>
+                        <p:dataTable id="monotor" var="mon" value="#{monitorBean.monitores}" editable="true">
+                            <f:facet name="header">
+                                Monitores Registrados
+                            </f:facet>
+
+                            <p:ajax event="rowEdit" listener="#{monitorBean.onRowEdit}" update=":form:msgs" />
+                            <p:ajax event="rowEditCancel" listener="#{monitorBean.onRowCancel}" update=":form:msgs" />
+
+                            <p:column headerText="Carnet">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{mon.codigoID}" /></f:facet>
+                                    <f:facet name="input"><p:inputText id="modelInput" value="#{mon.codigoID}" label="Carnet"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="Nombre">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{mon.nombre}" /></f:facet>
+                                    <f:facet name="input"><p:inputText value="#{mon.nombre}" style="width:100%" label="Nombre"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="Apellidos">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{mon.apellido}" /></f:facet>
+                                    <f:facet name="input"><p:inputText value="#{mon.apellido}" style="width:100%" label="Apellido"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+                            
+                            <p:column headerText="Correo">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{mon.correo}" /></f:facet>
+                                    <f:facet name="input"><p:inputText value="#{mon.correo}" style="width:100%" label="Correo"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+                            
+                            <p:column headerText="Semestre Ingreso">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{mon.semestreIngreso}" /></f:facet>
+                                    <f:facet name="input"><p:inputText value="#{mon.semestreIngreso}" style="width:100%" label="Semestre Ingreso"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+                            
+                            <p:column headerText="Programa academico">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{mon.programaAcademico}" /></f:facet>
+                                    <f:facet name="input"><p:inputText value="#{mon.programaAcademico}" style="width:100%" label="Programa academico"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+                            
+                            <p:column style="width:32px">
+                                <p:rowEditor />
+                            </p:column>
+                            
+                        </p:dataTable>
+                    </p:layoutUnit>
+                </p:layout>
+                <p:panel style="width: 270px">
+
+                </p:panel>
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>

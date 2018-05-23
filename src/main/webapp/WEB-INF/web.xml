@@ -100,11 +100,21 @@
 
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>Views only available when logged in as PUBLIC</web-resource-name>
-            <url-pattern>/public/*</url-pattern>
+            <web-resource-name>Views only available when logged in as PROFESOR</web-resource-name>
+            <url-pattern>/profesor/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
-            <role-name>public</role-name>
+            <role-name>profesor</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Views only available when logged in as MONITOR</web-resource-name>
+            <url-pattern>/monitor/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>monitor</role-name>
         </auth-constraint>
     </security-constraint>
 
@@ -131,7 +141,10 @@
         <role-name>admin</role-name>
     </security-role>
     <security-role>
-        <role-name>public</role-name>
+        <role-name>profesor</role-name>
+    </security-role>
+    <security-role>
+        <role-name>monitor</role-name>
     </security-role>
     
     <mime-mapping>

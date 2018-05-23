@@ -1,0 +1,81 @@
+<ui:composition template="./../Templeates/plantillaProfesor.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="content">
+        <h:form id="form">
+            <div id="formula">
+                <h:outputText value="Consulta de Asesorias de sus monitores" style="font-size: 35px;font-weight: 100;color: #dce9f0"/>
+            </div>
+            <br/>
+            <div id="tabla">
+                <p:messages id="messages" />
+                <p:dataTable var="asesorias" value="#{InformacionAsistenciaProfesor.asesorias}" id="asesoria" style="width: 1200px;"
+                             emptyMessage="No se encontraron asesorías" paginator="true"  rows="10" rowsPerPageTemplate="10,25,50" selectionMode="single"
+                             paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                             selection="#{InformacionAsistenciaProfesor.selectedAsistencia}" lazy="true">
+                    <p:ajax event="rowSelect" listener="#{InformacionAsistenciaProfesor.onRowSelect}" update=":form:asesoriaDetalle" oncomplete="PF('asesoriaDialog').show()" />
+                    <f:facet name="header">
+                        <h:outputText value="Consultar asistencia a las asesorías"/>
+                    </f:facet>
+                    <p:column headerText="Materia" sortBy="#{asesorias.grupo.materia.nombre}" filterBy="#{asesorias.grupo.materia.nombre}">
+                        <h:outputText value="#{asesorias.grupo.materia.nombre}"/>
+                    </p:column>
+                    <p:column headerText="Grupo" sortBy="#{asesorias.grupo.grupoNombre}" filterBy="#{asesorias.grupo.grupoNombre}">
+                        <h:outputText value="#{asesorias.grupo.grupoNombre}"/>
+                    </p:column>
+                    <p:column headerText="Monitor" sortBy="#{asesorias.grupo.monitor}" filterBy="#{asesorias.grupo.monitor}">
+                        <h:outputText value="#{asesorias.grupo.monitor}"/>
+                    </p:column>
+                    <p:column headerText="Tema" filterBy="#{asesorias.temas}" > 
+                        <p:repeat var="tem" value="#{asesorias.temas}" id="tema">
+                            <h:outputText value="■ #{tem.topic}"/>
+                            <br/>
+                        </p:repeat>
+                    </p:column>
+                    <p:column headerText="Estudiantes" filterBy="#{asesorias.asesoriasEstudiante}">
+                        <p:repeat var="estudiante" value="#{asesorias.asesoriasEstudiante}" id="carnet" >
+                            <p:panelGrid columns="2" style="width: 100%; border-style: hidden" columnClasses="leftcol top-alignment, rightcol top-alignment" >
+                                <h:outputText value="#{estudiante.asistente.carnet}"/>
+                                <h:outputText value="#{estudiante.asistente.nombre}"/>
+                            </p:panelGrid>
+                        </p:repeat>
+                    </p:column>
+                    <p:column headerText="Fecha" filterBy="#{asesorias.fecha}" sortBy="#{asesorias.fecha}">
+                        <h:outputText value="#{asesorias.fecha}"/>
+                    </p:column>
+                </p:dataTable>
+
+                <p:dialog header="Detalles de la asesoria" widgetVar="asesoriaDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" style="margin-right: 250px;padding-bottom: 20px;padding-left: 10px;padding-right: 10px;">
+                    <p:outputPanel id="asesoriaDetalle">
+                        <p:dataTable var="detalle" value="#{InformacionAsistenciaProfesor.selectedAsistencia.asesoriasEstudiante}" id="detalleasesoria" emptyMessage="No se encontraron asesorías">
+                            <f:facet name="header">
+                                <h:outputText value="Detalles de la asesoria"/>
+                            </f:facet>
+                            <p:column headerText="Profesor" sortBy="#{detalle.asistente.profesor.apellido}" filterBy="#{detalle.asistente.profesor.apellido}">
+                                <h:outputText value="#{detalle.asistente.profesor.apellido} #{detalle.asistente.profesor.nombre}"/>
+                            </p:column>
+                            <p:column headerText="Carnet" sortBy="#{detalle.asistente.carnet}" filterBy="#{detalle.asistente.carnet}">
+                                <h:outputText value="#{detalle.asistente.carnet}"/>
+                            </p:column>
+                            <p:column headerText="Nombre" sortBy="#{detalle.asistente.nombre}" filterBy="#{detalle.asistente.nombre}">
+                                <h:outputText value="#{detalle.asistente.nombre}"/>
+                            </p:column>
+                            <p:column headerText="Nombre" filterBy="#{detalle.temas}" filterFunction="#{InformacionAsistenciaProfesor.filtrar}">
+                                <p:repeat var="tem" value="#{detalle.temas}" id="tema">
+                                    <h:outputText value="■ #{tem.topic}"/>
+                                    <br/>
+                                </p:repeat>
+                            </p:column>
+                            <p:column headerText="Observaciones" sortBy="#{detalle.observaciones}" filterBy="#{detalle.observaciones}">
+                                <h:outputText value="#{detalle.observaciones}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </p:outputPanel>
+                </p:dialog>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>
