@@ -19,7 +19,7 @@
                 <h1 style="text-align: center;">Horario de Atencion</h1>
             </p:layoutUnit>
             <p:layoutUnit  position="center">
-                <p:dataTable id="horarioTable" var="horario" value="#{publicBean.horario}" >
+                <p:dataTable id="horarioTable" var="horario" value="#{publicBean.horarios}" >
                     <p:column headerText="horas" >
                         <h:outputText  value="#{horario.hora}"  />
                     </p:column>

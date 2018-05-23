@@ -13,13 +13,15 @@ import java.util.List;
  * @author rafaeljimenez
  */
 public class Horario {
-    private List<String> hora;
-    private List<String> lunes;
-    private List<String> martes;
-    private List<String> miercoles;
-    private List<String> jueves;
-    private List<String> viernes;
-    private List<String> sabado;
+    private String hora;
+    private String salon;
+    private String curso;
+    private String lunes;
+    private String martes;
+    private String miercoles;
+    private String jueves;
+    private String viernes;
+    private String sabado;
     private Materia materia;
     private Integer horarioID;
     private String descripcion;
@@ -30,25 +32,20 @@ public class Horario {
         this.materia = materia;
     }
     
-    public Horario(){
-       hora =  new ArrayList<>();
-       lunes = new ArrayList<>();
-       martes = new ArrayList<>();
-       miercoles = new ArrayList<>();
-       jueves = new ArrayList<>();
-       viernes = new ArrayList<>();
-       sabado = new ArrayList<>();
+    public Horario(String hora, String lunes, String martes, String miercoles, String jueves, String viernes, String sabado, String Materia) {
+        this.hora = hora;
+        this.lunes = lunes;
+        this.martes = martes;
+        this.miercoles = miercoles;
+        this.jueves = jueves;
+        this.viernes = viernes;
+        this.sabado = sabado;
     }
     
-    public void horarioData(String hora, String lunes, String martes, String miercoles, String jueves, String viernes, String sabado) {
-        this.hora.add(hora);
-        this.lunes.add(lunes);
-        this.martes.add(martes);
-        this.miercoles.add(miercoles);
-        this.jueves.add(jueves);
-        this.viernes.add(viernes);
-        this.sabado.add(sabado);
+    public Horario(){
     }
+    
+
 
     public Integer getHorariID() {
         return horarioID;
@@ -77,61 +74,85 @@ public class Horario {
        return materia.getNombre();
     }
 
-    public List<String> getLunes() {
-        return lunes;
-    }
-
-    public void setLunes(ArrayList<String> lunes) {
-        this.lunes = lunes;
-    }
-
-    public List<String> getMartes() {
-        return martes;
-    }
-
-    public void setMartes(ArrayList<String> martes) {
-        this.martes = martes;
-    }
-
-    public List<String> getMiercoles() {
-        return miercoles;
-    }
-
-    public void setMiercoles(ArrayList<String> miercoles) {
-        this.miercoles = miercoles;
-    }
-
-    public List<String> getJueves() {
-        return jueves;
-    }
-
-    public void setJueves(ArrayList<String> jueves) {
-        this.jueves = jueves;
-    }
-
-    public List<String> getViernes() {
-        return viernes;
-    }
-
-    public void setViernes(ArrayList<String> viernes) {
-        this.viernes = viernes;
-    }
-
-    public List<String> getSabado() {
-        return sabado;
-    }
-
-    public void setSabado(ArrayList<String> sabado) {
-        this.sabado = sabado;
-    }
-    
-    
-
-    public List<String> getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(ArrayList<String> hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
+
+    public String getSalon() {
+        return salon;
+    }
+
+    public void setSalon(String salon) {
+        this.salon = salon;
+    }
+
+    public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+
+    public String getLunes() {
+        return lunes;
+    }
+
+    public void setLunes(String lunes) {
+        this.lunes = lunes;
+    }
+
+    public String getMartes() {
+        return martes;
+    }
+
+    public void setMartes(String martes) {
+        this.martes = martes;
+    }
+
+    public String getMiercoles() {
+        return miercoles;
+    }
+
+    public void setMiercoles(String miercoles) {
+        this.miercoles = miercoles;
+    }
+
+    public String getJueves() {
+        return jueves;
+    }
+
+    public void setJueves(String jueves) {
+        this.jueves = jueves;
+    }
+
+    public String getViernes() {
+        return viernes;
+    }
+
+    public void setViernes(String viernes) {
+        this.viernes = viernes;
+    }
+
+    public String getSabado() {
+        return sabado;
+    }
+
+    public void setSabado(String sabado) {
+        this.sabado = sabado;
+    }
+
+    public Integer getHorarioID() {
+        return horarioID;
+    }
+
+    public void setHorarioID(Integer horarioID) {
+        this.horarioID = horarioID;
+    }
+
+  
 }
