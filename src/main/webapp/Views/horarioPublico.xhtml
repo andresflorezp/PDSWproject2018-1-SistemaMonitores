@@ -8,6 +8,8 @@
     </ui:define>
     <ui:define name="content">
         <h:form id="form" style="margin-left: -13%">
+            <p:commandButton value ="Login" action="/faces/Views/Inicio.xhtml" style="margin-left: 90%"/>
+            <p:separator style="visibility: hidden;margin-top: 0.2%"/>
             <p:selectOneMenu id="materias" value="#{publicBean.nombreMateriaSelected}" 
                              effect="fade" style="width:160px" filter="true" filterMatchMode="startsWith">
                 <f:selectItems value = "#{publicBean.nombresMaterias}"  />

@@ -23,7 +23,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>faces/Views/Inicio.xhtml</welcome-file>
+        <welcome-file>faces/Views/horarioPublico.xhtml</welcome-file>
     </welcome-file-list>
     <mime-mapping>
             <extension>ttf</extension>

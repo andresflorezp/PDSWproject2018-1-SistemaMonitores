@@ -11,7 +11,7 @@
             <p:spacer width="100" height="10"/><p:outputLabel value="Elige el Rol" style="font-size: 40px;color:#e7dfdf;margin-top: 3% "/>
             <br/>
             <div id="Roles" align="center">
-                <p:commandButton value ="Rol Monitor" action="RegistrarMonitoria.xhtml" style="width: 400px;height: 80px"/>
+                <p:commandButton value ="Rol Monitor" action="/faces/Views/registrarAsistenciaEstudiante.xhtml" actionListener="#{MonitorMonitoria.doAction()}" style="width: 400px;height: 80px"/>
                 <br/>
                 <br/>
                 <p:commandButton value ="Rol Profesor" action="InformacionGraficaMonitorias.xhtml" style="width: 400px;height: 80px"/>
