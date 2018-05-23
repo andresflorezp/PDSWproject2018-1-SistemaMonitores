@@ -5,6 +5,38 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ProfesorMapper">
     
+    <select parameterType="map" id="consultaProfesorGeneral" resultMap="ProfesorResult">
+        select 
+            profesorGrupo.profesorid as pr_profesorid,
+            profesorGrupo.nombres as pr_nombres,
+            profesorGrupo.apellidos as pr_apellidos,
+            profesorGrupo.correo as pr_correo,
+            profesorGrupo.telefono as pr_telefono
+        
+            from profesor as profesorGrupo
+        <if test="proID != null">
+            where profesorGrupo.profesorid = #{proID}
+        </if>
+    </select>
+    
+    <update id="actualizarProfesor" >
+        UPDATE profesor SET
+	nombres = #{nom},
+        apellidos = #{apell}, 
+        correo = #{mail},
+        telefono = #{tel}
+	WHERE profesorid = #{id}
+    </update>
+    
+    <insert parameterType="map" id="agregarProfesor">
+        INSERT INTO profesor (profesorid, nombres, apellidos, correo, telefono)
+        VALUES (#{codID},#{nom},#{apell},#{mail},#{tel})
+    </insert>
+    
+    <delete id="deleteProfesor">
+        DELETE FROM profesor WHERE profesorid = #{id}
+    </delete>
+    
     <resultMap type="Profesor" id="ProfesorResult" >
         <id property="codigoID" column="pr_profesorid"/>
         <result property="nombre" column="pr_nombres"/>

@@ -28,9 +28,9 @@ public class MyBatisMonitorDAO implements MonitorDAO, Serializable {
         try{
             return monitorMapper.consultarMonitor(codigo);
         }catch(org.apache.ibatis.exceptions.PersistenceException e){
-            throw new PersistenceException("Error al consular al monitor con identificador: "+codigo);
+            throw new PersistenceException("Error al consular al monitor con carnet: "+codigo);
         }catch(java.lang.IndexOutOfBoundsException e){
-            throw new PersistenceException("Monitor con identificador : "+codigo+" no encontrado.");
+            throw new PersistenceException("Monitor con carnet : "+codigo+" no encontrado.");
         }
     }
 
@@ -39,7 +39,7 @@ public class MyBatisMonitorDAO implements MonitorDAO, Serializable {
         try{
             monitorMapper.agregarMonitor(codigoID, nombre, apellido, correo, telefono, semestreIngreso, programaAcademico);
         }catch(org.apache.ibatis.exceptions.PersistenceException e){
-            throw new PersistenceException("Error al registar al monitor con identificador : "+codigoID+e.getMessage());
+            throw new PersistenceException("Error al registar al monitor con carnet : "+codigoID+e.getMessage());
         }
     }
 

@@ -14,6 +14,7 @@ import edu.eci.pdsw.sampleprj.dao.MateriaDAO;
 import edu.eci.pdsw.sampleprj.dao.MonitorDAO;
 import edu.eci.pdsw.sampleprj.dao.HorarioDAO;
 import edu.eci.pdsw.sampleprj.dao.PersistenceException;
+import edu.eci.pdsw.sampleprj.dao.ProfesorDAO;
 import edu.eci.pdsw.sampleprj.dao.TemaDAO;
 import edu.eci.pdsw.samples.entities.Asesoria;
 import edu.eci.pdsw.samples.entities.Estudiante;
@@ -21,6 +22,7 @@ import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Horario;
 import edu.eci.pdsw.samples.entities.Materia;
 import edu.eci.pdsw.samples.entities.Monitor;
+import edu.eci.pdsw.samples.entities.Profesor;
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
 import java.io.Serializable;
@@ -39,10 +41,10 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
 
     @Inject
     private GrupoDAO daoGrupo;
-//    
+
     @Inject
     private MateriaDAO daoMateria;
-//
+
     @Inject
     private TemaDAO daoTema;
 
@@ -57,6 +59,9 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
 
     @Inject
     private HorarioDAO daoHorario;
+
+    @Inject
+    private ProfesorDAO daoProfesor;
 
     @Override
     public List<Asesoria> consultaAsesoriaMonitor(Integer monitorID, Integer semestreID) throws ExcepcionSistemaMonitores {
@@ -87,9 +92,9 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
     }
 
     @Override
-    public void addMonitor(Integer codigoID ,String nombre, String apellido, String correo, Long telefono, String semestreIngreso, Integer programaAcademico) throws ExcepcionSistemaMonitores {
+    public void addMonitor(Integer codigoID, String nombre, String apellido, String correo, Long telefono, String semestreIngreso, Integer programaAcademico) throws ExcepcionSistemaMonitores {
         try {
-            daoMonitor.save(codigoID,nombre, apellido,correo, telefono, semestreIngreso, programaAcademico);
+            daoMonitor.save(codigoID, nombre, apellido, correo, telefono, semestreIngreso, programaAcademico);
         } catch (PersistenceException ex) {
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }
@@ -162,15 +167,15 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }
     }
+
     @Override
     public Horario loadHorarios(int codigoMateria) throws ExcepcionSistemaMonitores {
-       try {
+        try {
             return daoHorario.load(codigoMateria);
         } catch (PersistenceException ex) {
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }
     }
-        
 
     @Override
     public List<HashMap> consultaMonitorias() throws ExcepcionSistemaMonitores {
@@ -248,7 +253,7 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
     public void actualizarMonitor(Monitor monitorUpdate) throws ExcepcionSistemaMonitores {
         try {
             daoMonitor.actualizarMonitor(monitorUpdate.getCodigoID(), monitorUpdate.getNombre(), monitorUpdate.getApellido(),
-                    monitorUpdate.getCorreo(), monitorUpdate.getTelefono(),monitorUpdate.getSemestreIngreso(),monitorUpdate.getProgramaAcademico());
+                    monitorUpdate.getCorreo(), monitorUpdate.getTelefono(), monitorUpdate.getSemestreIngreso(), monitorUpdate.getProgramaAcademico());
         } catch (PersistenceException ex) {
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }
@@ -295,9 +300,46 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
     public List<HashMap> consultaCursoxMonitor() throws ExcepcionSistemaMonitores {
         try {
             return daoMonitor.consultaCursoxMonitor();
+        }catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+            
+    @Override
+    public void addProfesor(Integer identificacion, String nombre, String apellidos, String mail, Long telefono) throws ExcepcionSistemaMonitores {
+        try {
+            daoProfesor.save(identificacion, nombre, apellidos, mail, telefono);
         } catch (PersistenceException ex) {
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }
     }
- 
+
+    @Override
+    public void actualizarProfesor(Profesor profesorUpdate) throws ExcepcionSistemaMonitores {
+        try {
+            daoProfesor.actualizarProfesor(profesorUpdate.getCodigoID(), profesorUpdate.getNombre(), profesorUpdate.getApellido(),
+                    profesorUpdate.getCorreo(), profesorUpdate.getTelefono());
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public List<Profesor> consulatarProfesores() throws ExcepcionSistemaMonitores {
+        try {
+            return daoProfesor.loadAll();
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public void deleteProfesor(Integer codigo) throws ExcepcionSistemaMonitores {
+        try {
+            daoProfesor.delete(codigo);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
 }

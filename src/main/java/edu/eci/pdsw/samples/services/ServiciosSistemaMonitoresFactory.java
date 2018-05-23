@@ -14,6 +14,7 @@ import edu.eci.pdsw.sampleprj.dao.GrupoDAO;
 import edu.eci.pdsw.sampleprj.dao.HorarioDAO;
 import edu.eci.pdsw.sampleprj.dao.MateriaDAO;
 import edu.eci.pdsw.sampleprj.dao.MonitorDAO;
+import edu.eci.pdsw.sampleprj.dao.ProfesorDAO;
 import edu.eci.pdsw.sampleprj.dao.TemaDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisAsesoriaDao;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisAsesoriaEstudianteDao;
@@ -22,6 +23,7 @@ import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisHorario;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisGrupoDao;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisMateriaDao;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisMonitorDAO;
+import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisProfesorDao;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisTemaDao;
 import edu.eci.pdsw.samples.entities.PieChartData;
 import edu.eci.pdsw.samples.managedbeans.ComboChartBean;
@@ -56,6 +58,7 @@ public class ServiciosSistemaMonitoresFactory {
                 bind(AsesoriaEstudianteDAO.class).to(MyBatisAsesoriaEstudianteDao.class);
                 bind(HorarioDAO.class).to(MyBatisHorario.class);
                 bind(MonitorDAO.class).to(MyBatisMonitorDAO.class);
+                bind(ProfesorDAO.class).to(MyBatisProfesorDao.class);
             }
         });
     }

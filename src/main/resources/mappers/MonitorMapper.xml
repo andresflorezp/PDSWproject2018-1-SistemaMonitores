@@ -73,11 +73,11 @@
     
     <update id="actualizarMonitor" >
         UPDATE monitor SET
-	nombres = #{nom}
-        apellidos = #{apell} 
-        correo = #{mail}
-        telefono = #{tel}
-        semestreingreso = #{semI}
+	nombres = #{nom},
+        apellidos = #{apell},
+        correo = #{mail},
+        telefono = #{tel},
+        semestreingreso = #{semI},
         programa_academico = #{prog}
 	WHERE codigo_id = #{carnet}
     </update>

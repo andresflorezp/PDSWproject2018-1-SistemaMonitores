@@ -5,101 +5,108 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="content">
-        <div id="contentPublic">
-            <h:form id="form">
-                <div id="cent" style="margin-right: 13%">
-                    <center>
-                        <p:panel style="width: 500px">
-                            <h:outputText style="font-size: 18px;color: #4c9ad2;" value="Registrar Monitor"/>
-                            <p:messages id="messages"/>
-                            <h:panelGrid columns="3" cellpadding="5" id="grid">
-                                <h:outputLabel for="codigo" value="Codigo: " />
-                                <p:inputText id="codigo" label="Codigo Estudiante" required="true" value="#{monitorBean.codigo}"/>
-                                <p:message for="codigo" display="icon"/>
-                                <h:outputLabel for="nombre" value="Nombres: " />
-                                <p:inputText id="nombre" label="Nombre" required="true" value="#{monitorBean.nombres}"/>
-                                <p:message for="nombre" display="icon"/>
-                                <h:outputLabel for="apellidos" value="Apellidos: " />
-                                <p:inputText id="apellidos" label="Apellidos " required="true" value="#{monitorBean.apellidos}"/>
-                                <p:message for="apellidos" display="icon"/>
-                                <h:outputLabel for="mail" value="Correo: "/>
-                                <p:inputText id="mail" label="Correo" required="true" value="#{monitorBean.mail}"/> 
-                                <p:message for="mail" display="icon"/>
-                                <h:outputLabel for="semestreIngreso" value="Semestre Ingreso: "/>
-                                <p:inputText id="semestreIngreso" label="Semestre Ingreso" required="true"  value="#{monitorBean.semestreIngreso}"/>
-                                <p:message for="semestreIngreso" display="icon"/>
-                                <h:outputLabel for="programaacademico" value="Programa academico: "/>
-                                <p:inputText id="programaacademico" label="Programa academico" required="true"  value="#{monitorBean.programaAcademico}"/>
-                                <p:message for="programaacademico" display="icon"/>
-                                <h:outputLabel for="telefono" value="Telefono: "/>
-                                <p:inputText  id="telefono" value="#{monitorBean.telefono}"/>  
-                                <p:message for="telefono" display="icon"/>
-                            </h:panelGrid>
-                            <p:commandButton value="Limpiar" update="grid :form:messages" process="@this" actionListener="#{monitorBean.limpiar()}">
-                                <p:resetInput target="grid"/>
-                            </p:commandButton> 
-                            <p:commandButton value="Registrar" update="grid :form:messages" actionListener="#{monitorBean.registrarMonitor()}">
-                                <p:resetInput target="grid"/>
-                            </p:commandButton>
-                        </p:panel>
-                    </center>
-                </div>
-                <p:separator style="visibility: hidden;margin-top: 0.5%"/>
-                <p:growl id="msgs" showDetail="true"/>
-                <p:messages id="messagesTable" for="messagesTable"/>
-                <p:dataTable id="monotor" var="mon" value="#{monitorBean.monitores}" editable="true" editMode="cell" style="margin-right: 60px">
-                    <f:facet name="header">
-                        Monitores Registrados
-                    </f:facet>
-                    
-                    <p:ajax event="cellEdit" listener="#{monitorBean.onCellEdit}" update=":form:msgs" />
-                    
-                    <p:column headerText="Carnet" filterBy="#{mon.codigoID}" sortBy="#{mon.codigoID}" filterMatchMode="startsWith">
-                        <h:outputText value="#{mon.codigoID}" />
-                    </p:column>
+        <h:form id="form">
+            <div id="cent" style="margin-right: 13%">
+                <center>
+                    <p:panel style="width: 500px">
+                        <h:outputText style="font-size: 18px;color: #4c9ad2;" value="Registrar Monitor"/>
+                        <p:messages id="messages"/>
+                        <h:panelGrid columns="3" cellpadding="5" id="grid">
+                            <h:outputLabel for="codigo" value="Codigo: " />
+                            <p:inputText id="codigo" label="Codigo Estudiante" required="true" value="#{monitorBean.codigo}"/>
+                            <p:message for="codigo" display="icon"/>
+                            <h:outputLabel for="nombre" value="Nombres: " />
+                            <p:inputText id="nombre" label="Nombre" required="true" value="#{monitorBean.nombres}"/>
+                            <p:message for="nombre" display="icon"/>
+                            <h:outputLabel for="apellidos" value="Apellidos: " />
+                            <p:inputText id="apellidos" label="Apellidos " required="true" value="#{monitorBean.apellidos}"/>
+                            <p:message for="apellidos" display="icon"/>
+                            <h:outputLabel for="mail" value="Correo: "/>
+                            <p:inputText id="mail" label="Correo" required="true" value="#{monitorBean.mail}"/> 
+                            <p:message for="mail" display="icon"/>
+                            <h:outputLabel for="semestreIngreso" value="Semestre Ingreso: "/>
+                            <p:inputText id="semestreIngreso" label="Semestre Ingreso" required="true"  value="#{monitorBean.semestreIngreso}"/>
+                            <p:message for="semestreIngreso" display="icon"/>
+                            <h:outputLabel for="programaacademico" value="Programa academico: "/>
+                            <p:inputText id="programaacademico" label="Programa academico" required="true"  value="#{monitorBean.programaAcademico}"/>
+                            <p:message for="programaacademico" display="icon"/>
+                            <h:outputLabel for="telefono" value="Telefono: "/>
+                            <p:inputText  id="telefono" value="#{monitorBean.telefono}"/>  
+                            <p:message for="telefono" display="icon"/>
+                        </h:panelGrid>
+                        <p:commandButton value="Limpiar" update="grid :form:messages" process="@this" actionListener="#{monitorBean.limpiar()}">
+                            <p:resetInput target="grid"/>
+                        </p:commandButton> 
+                        <p:commandButton value="Registrar" update="grid :form:messages" actionListener="#{monitorBean.registrarMonitor()}">
+                            <p:resetInput target="grid"/>
+                        </p:commandButton>
+                    </p:panel>
+                </center>
+            </div>
+            <p:separator style="visibility: hidden;margin-top: 0.5%"/>
+            <p:growl id="msgs" showDetail="true"/>
+            <p:messages id="messagesTable" for="messagesTable"/>
+            <p:dataTable id="monotor" var="mon" value="#{monitorBean.monitores}" editable="true" editMode="cell">
+                <f:facet name="header">
+                    Monitores Registrados
+                </f:facet>
 
-                    <p:column headerText="Nombre" filterBy="#{mon.nombre}" sortBy="#{mon.nombre}" filterMatchMode="startsWith">
-                        <p:cellEditor>
-                            <f:facet name="output"><h:outputText value="#{mon.nombre}" /></f:facet>
-                            <f:facet name="input"><p:inputText value="#{mon.nombre}" style="width:96%" label="Nombre"/></f:facet>
-                        </p:cellEditor>
-                    </p:column>
+                <p:ajax event="cellEdit" listener="#{monitorBean.onCellEdit}" update=":form:msgs" />
 
-                    <p:column headerText="Apellidos" filterBy="#{mon.apellido}" sortBy="#{mon.apellido}" filterMatchMode="startsWith">
-                        <p:cellEditor>
-                            <f:facet name="output"><h:outputText value="#{mon.apellido}" /></f:facet>
-                            <f:facet name="input"><p:inputText value="#{mon.apellido}" style="width:96%" label="Apellido"/></f:facet>
-                        </p:cellEditor>
-                    </p:column>
+                <p:column headerText="Carnet" filterBy="#{mon.codigoID}" sortBy="#{mon.codigoID}" filterMatchMode="startsWith">
+                    <h:outputText value="#{mon.codigoID}" />
+                </p:column>
 
-                    <p:column headerText="Correo" filterBy="#{mon.correo}" sortBy="#{mon.correo}" filterMatchMode="startsWith">
-                        <p:cellEditor>
-                            <f:facet name="output"><h:outputText value="#{mon.correo}" /></f:facet>
-                            <f:facet name="input"><p:inputText value="#{mon.correo}" style="width:96%" label="Correo"/></f:facet>
-                        </p:cellEditor>
-                    </p:column>
+                <p:column headerText="Nombre" filterBy="#{mon.nombre}" sortBy="#{mon.nombre}" filterMatchMode="startsWith">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{mon.nombre}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{mon.nombre}" style="width:96%" label="Nombre"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
 
-                    <p:column headerText="Semestre Ingreso" filterBy="#{mon.semestreIngreso}" sortBy="#{mon.semestreIngreso}" filterMatchMode="startsWith">
-                        <p:cellEditor>
-                            <f:facet name="output"><h:outputText value="#{mon.semestreIngreso}" /></f:facet>
-                            <f:facet name="input"><p:inputText value="#{mon.semestreIngreso}" style="width:96%" label="Semestre Ingreso"/></f:facet>
-                        </p:cellEditor>
-                    </p:column>
+                <p:column headerText="Apellidos" filterBy="#{mon.apellido}" sortBy="#{mon.apellido}" filterMatchMode="startsWith">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{mon.apellido}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{mon.apellido}" style="width:96%" label="Apellido"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
 
-                    <p:column headerText="Programa academico" filterBy="#{mon.programaAcademico}" sortBy="#{mon.programaAcademico}" filterMatchMode="startsWith">
-                        <p:cellEditor>
-                            <f:facet name="output"><h:outputText value="#{mon.programaAcademico}" /></f:facet>
-                            <f:facet name="input"><p:inputText value="#{mon.programaAcademico}" style="width:96%" label="Programa academico"/></f:facet>
-                        </p:cellEditor>
-                    </p:column>
+                <p:column headerText="Correo" filterBy="#{mon.correo}" sortBy="#{mon.correo}" filterMatchMode="startsWith">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{mon.correo}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{mon.correo}" style="width:96%" label="Correo"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
 
-                    <p:column style="width:32px">
-                        <p:commandButton icon="ui-icon-circle-close" immediate="true" actionListener="#{monitorBean.delete(mon.codigoID)}" update=":form:monotor :form:messagesTable"/>
-                    </p:column>
+                <p:column headerText="Semestre Ingreso" filterBy="#{mon.semestreIngreso}" sortBy="#{mon.semestreIngreso}" filterMatchMode="startsWith">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{mon.semestreIngreso}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{mon.semestreIngreso}" style="width:96%" label="Semestre Ingreso"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
 
-                </p:dataTable>
+                <p:column headerText="Programa academico" filterBy="#{mon.programaAcademico}" sortBy="#{mon.programaAcademico}" filterMatchMode="startsWith">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{mon.programaAcademico}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{mon.programaAcademico}" style="width:96%" label="Programa academico"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
 
-            </h:form>
-        </div>
+                <p:column headerText="Telefono" filterBy="#{mon.telefono}" sortBy="#{mon.telefono}" filterMatchMode="startsWith">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{mon.telefono}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{mon.telefono}" style="width:96%" label="Telefono"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column style="width:32px">
+                    <p:commandButton icon="ui-icon-circle-close" immediate="true" actionListener="#{monitorBean.delete(mon.codigoID)}" update=":form:monotor :form:messagesTable"/>
+                </p:column>
+
+            </p:dataTable>
+            <p:commandButton value="Actualizar" icon="ui-icon-star" update=":form" actionListener="#{monitorBean.consultar()}" style="margin-left: 10px" immediate="true">
+                <p:resetInput target=":form"/>
+            </p:commandButton>
+        </h:form>
     </ui:define>
 </ui:composition>

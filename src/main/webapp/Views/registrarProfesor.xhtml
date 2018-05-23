@@ -5,8 +5,8 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="content">
-        <div id="contentPublic" style="margin-right: 13%">
-            <h:form id="form">
+        <h:form id="form">
+            <div id="contentPublic" style="margin-right: 13%">
                 <center>
                     <p:panel style="width: 500px">
                         <h:outputText style="font-size: 18px;color: #4c9ad2;" value="Registrar Docente"/>
@@ -14,19 +14,19 @@
                         <h:panelGrid columns="3" cellpadding="5" id="grid" >
                             <h:outputLabel for="id" value="Identificacion:" />
                             <p:inputText id="id" required="true" label="Identificacion" value="#{profesorBean.identificacion}"/>
-                            <p:message for="id"/>
+                            <p:message for="id" display="icon"/>
                             <h:outputLabel for="nombre" value="Nombres:" />
                             <p:inputText id="nombre" required="true" label="Nombres" value="#{profesorBean.nombres}" />
-                            <p:message for="nombre"/>
+                            <p:message for="nombre" display="icon"/>
                             <h:outputLabel for="apellidos" value="Apellidos:" />
                             <p:inputText id="apellidos" required="true" label="Apellidos" value="#{profesorBean.apellidos}"/>
-                            <p:message for="apellidos"/>
+                            <p:message for="apellidos" display="icon"/>
                             <h:outputLabel for="mail" value="Correo:" />
                             <p:inputText id="mail" required="true" label="Correo" value="#{profesorBean.mail}" /> 
-                            <p:message for="mail"/>
+                            <p:message for="mail" display="icon"/>
                             <h:outputLabel for="telefono" value="Telefono:" />
                             <p:inputText id="telefono" label="Telefono" value="#{profesorBean.telefono}" /> 
-                            <p:message for="telefono"/>
+                            <p:message for="telefono" display="icon"/>
                         </h:panelGrid>
                         <p:commandButton value="Limpiar" update="grid :form:messages" process="@this" actionListener="#{profesorBean.limpiar()}">
                             <p:resetInput target="grid"/>
@@ -36,7 +36,58 @@
                         </p:commandButton>
                     </p:panel>
                 </center>
-            </h:form>
-        </div>
+            </div>
+            <p:separator style="visibility: hidden;margin-top: 0.5%"/>
+            <p:growl id="msgs" showDetail="true"/>
+            <p:messages id="messagesTable" for="messagesTable"/>
+            <p:dataTable id="profesor" var="pro" value="#{profesorBean.profesores}" editable="true" editMode="cell">
+                <f:facet name="header">
+                    Profesores Registrados
+                </f:facet>
+
+                <p:ajax event="cellEdit" listener="#{profesorBean.onCellEdit}" update=":form:msgs" />
+
+                <p:column headerText="Carnet" filterBy="#{pro.codigoID}" sortBy="#{pro.codigoID}" filterMatchMode="startsWith">
+                    <h:outputText value="#{pro.codigoID}" />
+                </p:column>
+
+                <p:column headerText="Nombre" filterBy="#{pro.nombre}" sortBy="#{pro.nombre}" filterMatchMode="startsWith">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{pro.nombre}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{pro.nombre}" style="width:96%" label="Nombre"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Apellidos" filterBy="#{pro.apellido}" sortBy="#{pro.apellido}" filterMatchMode="startsWith">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{pro.apellido}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{pro.apellido}" style="width:96%" label="Apellido"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Correo" filterBy="#{pro.correo}" sortBy="#{pro.correo}" filterMatchMode="startsWith">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{pro.correo}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{pro.correo}" style="width:96%" label="Correo"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Telefono" filterBy="#{pro.telefono}" sortBy="#{pro.telefono}" filterMatchMode="startsWith">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{pro.telefono}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{pro.telefono}" style="width:96%" label="Telefono"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column style="width:32px">
+                    <p:commandButton icon="ui-icon-circle-close" immediate="true" actionListener="#{profesorBean.delete(pro.codigoID)}" update=":form:profesor :form:messagesTable"/>
+                </p:column>
+
+            </p:dataTable>
+            <p:separator style="visibility: hidden;margin-top: 0.2%"/>
+            <p:commandButton value="Actualizar" icon="ui-icon-star" update=":form" actionListener="#{profesorBean.consultar()}" style="margin-left: 10px" immediate="true">
+                <p:resetInput target=":form"/>
+            </p:commandButton>
+        </h:form>
     </ui:define>
 </ui:composition>

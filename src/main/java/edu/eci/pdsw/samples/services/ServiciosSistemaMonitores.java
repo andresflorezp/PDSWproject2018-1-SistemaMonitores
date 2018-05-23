@@ -11,7 +11,13 @@ import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Materia;
 import edu.eci.pdsw.samples.entities.Monitor;
-import edu.eci.pdsw.samples.entities.Horario;;
+import edu.eci.pdsw.samples.entities.Horario;
+;
+import edu.eci.pdsw.samples.entities.Monitor;
+import edu.eci.pdsw.samples.entities.Profesor;
+import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.List;
 import edu.eci.pdsw.samples.entities.Monitor;
 import java.sql.Timestamp;
 import java.util.HashMap;
@@ -21,21 +27,24 @@ import java.util.List;
  *
  * @author SergioRt
  */
+
+
 public interface ServiciosSistemaMonitores {
+
     /**
-     * 
+     *
      * @param monitorID identificador del monitor.
      * @param semestreID identificador del semestre.
      * @return Consulta las asesorias dadas por in monitor en un semestre.
-     * @throws ExcepcionSistemaMonitores 
+     * @throws ExcepcionSistemaMonitores
      */
     public abstract List<Asesoria> consultaAsesoriaMonitor(Integer monitorID, Integer semestreID) throws ExcepcionSistemaMonitores;
-    
+
     /**
-     * 
+     *
      * @param profesorID
      * @param semestreID
-     * @return 
+     * @return
      */
     public List<Asesoria> consultaAsesoriaProfesor(Integer profesorID, Integer semestreID) throws ExcepcionSistemaMonitores;
 
@@ -47,6 +56,7 @@ public interface ServiciosSistemaMonitores {
 
     /**
      * Metodo con el cual se agrega un estudiante
+     *
      * @param carnet
      * @param nombre
      * @param profesorID
@@ -56,6 +66,7 @@ public interface ServiciosSistemaMonitores {
 
     /**
      * Metodo con el cual se crea un grupo
+     *
      * @param grupoID
      * @param grupoNombre
      * @param numeroEstudiantes
@@ -66,6 +77,7 @@ public interface ServiciosSistemaMonitores {
 
     /**
      * Metodo con el cual se agrega un monitor a un grupo
+     *
      * @param codigoID
      * @param nombre
      * @param apellido
@@ -75,8 +87,7 @@ public interface ServiciosSistemaMonitores {
      * @param programaAcademico
      * @throws ExcepcionSistemaMonitores
      */
-
-    public void addMonitor(Integer codigoID ,String nombre, String apellido, String correo, Long telefono, String semestreIngreso, Integer programaAcademico) throws ExcepcionSistemaMonitores;
+    public void addMonitor(Integer codigoID, String nombre, String apellido, String correo, Long telefono, String semestreIngreso, Integer programaAcademico) throws ExcepcionSistemaMonitores;
 
     /**
      * Metodo con el cual se inicializa el semestre
@@ -86,136 +97,136 @@ public interface ServiciosSistemaMonitores {
 
     /**
      * Metodo con el cual se le asigna a un grupo la materia a la que pertenece
+     *
      * @param grupoID
      * @param nemonicoMatria
-     * @throws ExcepcionSistemaMonitores 
+     * @throws ExcepcionSistemaMonitores
      */
     public void addGrupoMateria(int grupoID, String nemonicoMatria) throws ExcepcionSistemaMonitores;
-    
+
     /**
      * Agrega una nueva asesoria a un monitor.
+     *
      * @param monitorID
      * @param ip
      * @param fechaInicio
-     * @throws ExcepcionSistemaMonitores 
+     * @throws ExcepcionSistemaMonitores
      */
     public void addAsesoria(int monitorID, String ip, Timestamp fechaInicio) throws ExcepcionSistemaMonitores;
-    
+
     /**
      * Agrega un registro de que un estudiante asistio a una monitoria.
+     *
      * @param asesoriaID
      * @param codigoInt
      * @param observaciones
-     * @throws ExcepcionSistemaMonitores 
+     * @throws ExcepcionSistemaMonitores
      */
     public void addAsesoriaEstudiante(int asesoriaID, int codigoInt, String observaciones) throws ExcepcionSistemaMonitores;
-    
-   /**
-    * @param materiaId identificador de la materia.
-    * @param semestreID identificador del semestre.
-    * @return consulta de todos los grupos de una materia en un semestre especifico.
-    */
-    public List<Grupo> consultaGruposMateria(int materiaId, int semestreID) throws ExcepcionSistemaMonitores;
-    
+
     /**
-     * 
+     * @param materiaId identificador de la materia.
+     * @param semestreID identificador del semestre.
+     * @return consulta de todos los grupos de una materia en un semestre
+     * especifico.
+     */
+    public List<Grupo> consultaGruposMateria(int materiaId, int semestreID) throws ExcepcionSistemaMonitores;
+
+    /**
+     *
      * @param carnet carnet del estudiante.
      * @return estudiante con el carnet dado.
      * @throws ExcepcionSistemaMonitores si no existe el estudiante.
      */
     public Estudiante consultaEstudiante(long carnet) throws ExcepcionSistemaMonitores;
-    
+
     /**
      * Agrega un tema a una asesoria.
+     *
      * @param asesoriaID identificador del monitor.
      * @param codigoInt carnet del estudiante.
      * @param temaID identificador del tema.
      */
     public void addTemaMonitoria(int asesoriaID, int codigoInt, Integer temaID) throws ExcepcionSistemaMonitores;
-    
+
     /**
-     * Metodo con el cual se cargan todas las materias       
+     * Metodo con el cual se cargan todas las materias
+     *
      * @throws ExcepcionSistemaMonitores
-     * @return 
+     * @return
      */
     public List<Materia> loadMaterias() throws ExcepcionSistemaMonitores;
-    
+
     /**
-     * 
-     * @return
-     * @throws ExcepcionSistemaMonitores 
+     *
+     * @return @throws ExcepcionSistemaMonitores
      */
     public List<HashMap> consultaMonitorias() throws ExcepcionSistemaMonitores;
-    
+
     /**
-     * 
-     * @return
-     * @throws ExcepcionSistemaMonitores 
+     *
+     * @return @throws ExcepcionSistemaMonitores
      */
     public List<HashMap> consultaCurso() throws ExcepcionSistemaMonitores;
-    
+
     /**
-     * 
-     * @return
-     * @throws ExcepcionSistemaMonitores 
+     *
+     * @return @throws ExcepcionSistemaMonitores
      */
     public List<HashMap> consultaGrupo() throws ExcepcionSistemaMonitores;
-    
+
     /**
-     * 
-     * @return
-     * @throws ExcepcionSistemaMonitores 
+     *
+     * @return @throws ExcepcionSistemaMonitores
      */
-    public List<HashMap> consultaTema() throws ExcepcionSistemaMonitores; 
-    
+    public List<HashMap> consultaTema() throws ExcepcionSistemaMonitores;
+
     /**
-     * 
+     *
      * @param profesorID
      * @param semestreID
      * @return
-     * @throws ExcepcionSistemaMonitores 
+     * @throws ExcepcionSistemaMonitores
      */
     public List<Asesoria> consultaAsistentesProfesor(int profesorID, int semestreID) throws ExcepcionSistemaMonitores;
-    
-    /**
-     * 
-     * @param monitorID
-     * @param fechaInicio
-     * @return 
-     */
-    public Asesoria consultaAsesoriaActualMonitor(int monitorID, Timestamp fechaInicio, int semestreID) throws ExcepcionSistemaMonitores;
-    
-    /**
-     * 
-     * @param asesoriaID
-     * @param fechaFin
-     * @throws ExcepcionSistemaMonitores 
-     */
-    public void finalizarMonitoria(int asesoriaID, Timestamp fechaFin) throws ExcepcionSistemaMonitores;
-    
 
     /**
-     * 
+     *
+     * @param monitorID
+     * @param fechaInicio
+     * @return
+     */
+    public Asesoria consultaAsesoriaActualMonitor(int monitorID, Timestamp fechaInicio, int semestreID) throws ExcepcionSistemaMonitores;
+
+    /**
+     *
+     * @param asesoriaID
+     * @param fechaFin
+     * @throws ExcepcionSistemaMonitores
+     */
+    public void finalizarMonitoria(int asesoriaID, Timestamp fechaFin) throws ExcepcionSistemaMonitores;
+
+    /**
+     *
      * @param monitorUpdate
-     * @throws ExcepcionSistemaMonitores 
+     * @throws ExcepcionSistemaMonitores
      */
     public void actualizarMonitor(Monitor monitorUpdate) throws ExcepcionSistemaMonitores;
-    
+
     /**
-     * 
-     * @return 
-     * @throws ExcepcionSistemaMonitores 
+     *
+     * @return @throws ExcepcionSistemaMonitores
      */
     public List<Monitor> consulatarMonitores() throws ExcepcionSistemaMonitores;
-    
+
     /**
-     * 
+     *
      * @param codigo
-     * @return 
-     * @throws ExcepcionSistemaMonitores 
+     * @return
+     * @throws ExcepcionSistemaMonitores
      */
     public Monitor consulatarMonitor(Long codigo) throws ExcepcionSistemaMonitores;
-    
+
     /**
      * 
      * @return
@@ -233,9 +244,46 @@ public interface ServiciosSistemaMonitores {
     /**
      * 
      * @param codigo 
+     *
+     * @param codigo
+     * @throws ExcepcionSistemaMonitores
      */
     public void deleteMonitor(Integer codigo) throws ExcepcionSistemaMonitores;
 
+    /**
+     *
+     * @param codigoMateria
+     * @return
+     * @throws ExcepcionSistemaMonitores
+     */
     public Horario loadHorarios(int codigoMateria) throws ExcepcionSistemaMonitores;
+
+    /**
+     *
+     * @param identificacion
+     * @param nombres
+     * @param apellidos
+     * @param mail
+     * @param telefono
+     */
+    public void addProfesor(Integer identificacion, String nombres, String apellidos, String mail, Long telefono) throws ExcepcionSistemaMonitores;
+
+    /**
+     *
+     * @param profesorUpdate
+     */
+    public void actualizarProfesor(Profesor profesorUpdate) throws ExcepcionSistemaMonitores;
+
+    /**
+     *
+     * @return
+     */
+    public List<Profesor> consulatarProfesores() throws ExcepcionSistemaMonitores;
+
+    /**
+     *
+     * @param codigo
+     */
+    public void deleteProfesor(Integer codigo) throws ExcepcionSistemaMonitores;
 
 }
