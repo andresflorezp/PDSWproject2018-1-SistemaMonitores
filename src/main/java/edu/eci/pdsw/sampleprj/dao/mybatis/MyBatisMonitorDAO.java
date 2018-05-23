@@ -95,4 +95,13 @@ public class MyBatisMonitorDAO implements MonitorDAO, Serializable {
             throw new UnsupportedOperationException("Not supported yet.");
         }
     }
+
+    @Override
+    public List<HashMap> consultaGrupoxTema() throws PersistenceException {
+         try{
+            return monitorMapper.consultaGrupoxTema();
+        }catch(org.apache.ibatis.exceptions.PersistenceException e){
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+    }
 }

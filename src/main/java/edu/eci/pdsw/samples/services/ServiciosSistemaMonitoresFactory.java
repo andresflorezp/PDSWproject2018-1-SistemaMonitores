@@ -21,6 +21,8 @@ import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisGrupoDao;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisMateriaDao;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisMonitorDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBatisTemaDao;
+import edu.eci.pdsw.samples.entities.PieChartData;
+import edu.eci.pdsw.samples.managedbeans.KeyValue;
 import edu.eci.pdsw.samples.services.impl.ServiciosSistemaMonitoresImpl;
 import static java.lang.System.out;
 import org.mybatis.guice.XMLMyBatisModule;
@@ -74,8 +76,9 @@ public class ServiciosSistemaMonitoresFactory {
         ServiciosSistemaMonitores servicios = getInstance().getServiciosSistemaMonitores();
         //System.out.println("Entra a valor");
         out.println(servicios.consultaMonitorias().get(0).get("numero_monitorias"));
-        out.println(servicios.consultaCurso());
-        out.println(servicios.consultaGrupo());
+        //out.println(servicios.consultaCurso());
+        //out.println(servicios.consultaGrupo());
+        System.out.println(servicios.consultaGrupoxTema());
         
     }
 }

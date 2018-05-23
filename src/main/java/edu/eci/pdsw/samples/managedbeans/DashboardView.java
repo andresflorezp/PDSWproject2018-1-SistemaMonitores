@@ -38,6 +38,9 @@ public class DashboardView implements Serializable {
         
         column2.addWidget("tema");
         
+        column2.addWidget("datosAsistencia");
+        column2.addWidget("Pgrupo");
+        
          
  
         model.addColumn(column1);

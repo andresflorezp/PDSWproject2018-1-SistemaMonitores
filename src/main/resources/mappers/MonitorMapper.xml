@@ -37,6 +37,15 @@
         and grupo.profesor_profesor_id=profesor.profesorid and tema.materia_materia_id=materia.materia_id
         GROUP BY tema
     </select>
+    <select parameterType="map" id="consultaGrupoxTema" resultType="hashmap" >
+        SELECT  grupo.grupoid as grupo , tema.topic as tema,COUNT (grupo.grupoid) as numero_asesorias
+        FROM monitor,asesoriamonitor,asesoriaestudiante,estudiante,grupo,semestre,materia,profesor,tema
+        WHERE monitor.codigo_id=asesoriamonitor.monitor_asesoria_id and asesoriaestudiante.asesoria_monitor_asesoriaid=asesoriamonitor.asesoriaid and 
+        asesoriaestudiante.estudiante_carnet=estudiante.carnet and grupo.semestre_semestre_id=semestre.semestre_id and grupo.materia_materia_id=materia.materia_id
+        and grupo.profesor_profesor_id=profesor.profesorid and tema.materia_materia_id=materia.materia_id
+        GROUP BY tema.topic,grupo.grupoid
+        ORDER BY grupo.grupoid
+    </select>
     
     <select parameterType="map" id="consultaMonitoresGeneral" resultMap="MonitorResult">
         select 

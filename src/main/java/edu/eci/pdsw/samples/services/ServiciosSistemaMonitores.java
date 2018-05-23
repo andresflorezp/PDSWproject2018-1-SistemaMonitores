@@ -210,4 +210,7 @@ public interface ServiciosSistemaMonitores {
      * @throws ExcepcionSistemaMonitores 
      */
     public Monitor consulatarMonitor(Long codigo) throws ExcepcionSistemaMonitores;
+    
+    
+    public List<HashMap> consultaGrupoxTema() throws ExcepcionSistemaMonitores; 
 }

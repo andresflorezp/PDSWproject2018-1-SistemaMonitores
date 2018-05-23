@@ -258,4 +258,13 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
         }
     }
 
+    @Override
+    public List<HashMap> consultaGrupoxTema() throws ExcepcionSistemaMonitores {
+        try {
+            return daoMonitor.consultaGrupoxTema();
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
 }

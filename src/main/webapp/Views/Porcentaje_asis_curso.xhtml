@@ -1,0 +1,215 @@
+<ui:composition template="./../Templeates/plantillaProfesor.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="content">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+         <script type="text/javascript">
+            google.charts.load("current", {packages:["corechart"]});
+            google.charts.setOnLoadCallback(asistenciaXcursos);
+            function asistenciaXcursos() {
+              var data = google.visualization.arrayToDataTable([
+                ['Cursos', 'Asistencia'],
+                #{chartPie.pieChartXCurso}
+              ]);
+
+              var options = {
+                title: 'Asistencia por Cursos',
+                is3D: true,
+              };
+
+              var chart = new google.visualization.PieChart(document.getElementById('asistenciaCurso'));
+              chart.draw(data, options);
+            }
+            google.charts.load('current', {'packages':['table']});
+            google.charts.setOnLoadCallback(tablaAsistencia);
+
+            function tablaAsistencia() {
+              var data = new google.visualization.DataTable();
+              data.addColumn('string', 'Curso');
+              data.addColumn('number', 'Total Asistencia');
+              data.addColumn('number', 'Asistencia del Curso');
+              data.addColumn('number', 'Porcentaje');
+              data.addRows([
+                ['PDSW',  {v: 15, f: '15'},{v: 11, f: '11'},{v: 11, f: '11'}],
+                ['LCAL',  {v: 15, f: '15'},{v: 11, f: '11'},{v: 11, f: '11'}],
+                ['MDIS',  {v: 15, f: '15'},{v: 11, f: '11'},{v: 11, f: '11'}],
+                ['TPRO',  {v: 15, f: '15'},{v: 11, f: '11'},{v: 11, f: '11'}],
+                ['PIMB',  {v: 15, f: '15'},{v: 11, f: '11'},{v: 11, f: '11'}],
+                ['TPRO',  {v: 15, f: '15'},{v: 11, f: '11'},{v: 11, f: '11'}],
+                ['TPRO',  {v: 15, f: '15'},{v: 11, f: '11'},{v: 11, f: '11'}],
+                ['TPRO',  {v: 15, f: '15'},{v: 11, f: '11'},{v: 11, f: '11'}],
+                ['TPRO',  {v: 15, f: '15'},{v: 11, f: '11'},{v: 11, f: '11'}],
+              ]);
+
+              var table = new google.visualization.Table(document.getElementById('tablaAsis'));
+
+              table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+            }
+            google.charts.load("current", {packages:["corechart"]});
+            google.charts.setOnLoadCallback(asistenciaXgrupo);
+            function asistenciaXgrupo() {
+              var data = google.visualization.arrayToDataTable([
+                ['Grupo', 'Asistencia'],
+                #{chartPie.pieChartXgrupos}
+              ]);
+
+              var options = {
+                title: 'Aistencia por Grupos',
+                pieHole: 0.4,
+               
+              };
+
+              var chart = new google.visualization.PieChart(document.getElementById('asistenciaGrupo'));
+              chart.draw(data, options);
+            }
+            google.charts.load('current', {'packages':['table']});
+            google.charts.setOnLoadCallback(tablaAsistenciaXgrupo);
+            function tablaAsistenciaXgrupo() {
+              var data = new google.visualization.DataTable();
+              data.addColumn('string', 'Grupo');
+              data.addColumn('number', 'Porcentaje');
+              data.addRows([
+                ['Grupo1',  {v: 15, f: '15'}],
+                ['Grupo2',  {v: 15, f: '15'}],
+                ['Grupo3',  {v: 15, f: '15'}],
+                ['Grupo4',  {v: 15, f: '15'}],
+                ['Grupo5',  {v: 15, f: '15'}],
+                ['Grupo6',  {v: 15, f: '15'}],
+              ]);
+
+              var table = new google.visualization.Table(document.getElementById('tablaGrupo'));
+
+              table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+            }
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(asistenciaXtema);
+
+            function asistenciaXtema() {
+              // Some raw data (not necessarily accurate)
+              var data = google.visualization.arrayToDataTable([
+               ['Tema', 'Asistencia',  'Asistencia del Grupo1','Asistencia del Grupo2'],
+               ['Grafos',  165,    614.6,165],
+               ['DP',  135,    682,135],
+               ['Pruebas Unitarias',  157,    623,16],
+               ['Arboles',  139,    609.4,15],
+               ['Complejidad Computacional',  136,569.6,12]
+            ]);
+
+          var options = {
+            title : 'Asistencia por Temas',
+            vAxis: {title: 'Asistencia'},
+            hAxis: {title: 'Tema'},
+            seriesType: 'bars',
+            series: {1: {type: 'line'},2: {type: 'line'}}
+         
+            
+          };
+
+          var chart = new google.visualization.ComboChart(document.getElementById('asistenciaTema'));
+          chart.draw(data, options);
+        }
+        google.charts.load('current', {'packages':['table']});
+            google.charts.setOnLoadCallback(tablaAsistenciaXtema);
+            function tablaAsistenciaXtema() {
+              var data = new google.visualization.DataTable();
+              data.addColumn('string', 'Tema');
+              data.addColumn('number', 'Porcentaje');
+              data.addColumn('number', 'Grupo 1');
+              data.addColumn('number', 'Grupo 2');
+              data.addRows([
+                ['Grafos',  {v: 15, f: '15'},{v: 11, f: '11'},{v: 11, f: '11'}],
+                ['DP',  {v: 15, f: '15'},{v: 11, f: '11'},{v: 11, f: '11'}],
+                ['Pruebas Unitarias',  {v: 15, f: '15'},{v: 11, f: '11'},{v: 11, f: '11'}],
+                ['Arboles',  {v: 15, f: '15'},{v: 11, f: '11'},{v: 11, f: '11'}],
+                ['Complejidad Computacional',  {v: 15, f: '15'},{v: 11, f: '11'},{v: 11, f: '11'}],
+               
+              ]);
+
+              var table = new google.visualization.Table(document.getElementById('tablaTema'));
+
+              table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+            }
+          </script>
+        
+        
+        
+        
+        
+        <h:form id="registro">
+            <div style="height:500px">
+                <h:form>
+                    <p:growl id="msgs" showDetail="true" />
+                    <p:messages id="messages" />
+                    <p:dashboard id="board" model="#{dashboardView.model}">
+                        <p:ajax event="reorder" listener="#{dashboardView.handleReorder}" update="msgs" />
+
+                        <p:panel id="asistencia" header="Asistencia">
+                            <h:panelGrid columns="1" cellpadding="10" >
+                                <div id="asistenciaCurso" style="width: 600px; height: 300px;" ></div>
+                                <p:commandLink onclick="exportChartInPDF1()">
+                                    <p:graphicImage name="/Imagenes/pdf.png" width="40"/>
+                                </p:commandLink>
+                            </h:panelGrid>
+                            
+
+                        </p:panel>
+                        <p:panel id="datosAsistencia" header="Datos de Asistencia">
+                             <h:panelGrid columns="2" cellpadding="10">
+                               
+                                <div id="tablaAsis" style="width: 600px; height: 300px;" ></div>
+                         
+                            </h:panelGrid>
+                                
+                          
+                            
+
+                        </p:panel>
+
+                       
+
+                        <p:panel id="Pgrupo" header="Detalles Por Grupo">
+                            <h:panelGrid columns="1" cellpadding="10">
+                               
+                                <div id="asistenciaGrupo" style="width: 600px; height: 300px;" ></div>
+                                <p:commandLink onclick="exportChartInPDF1()">
+                                    <p:graphicImage name="/Imagenes/pdf.png" width="40"/>
+                                </p:commandLink>
+                            </h:panelGrid> 
+                            <h:panelGrid columns="1" cellpadding="10">
+                               
+                                <div id="tablaGrupo" style="width: 600px; height: 300px;" ></div>
+                               
+                            </h:panelGrid> 
+                        </p:panel>
+                        
+                        <p:panel id="tema" header="Detalles Por Tema">
+
+                            <h:panelGrid columns="1" cellpadding="10">
+                               
+                                <div id="asistenciaTema" style="width: 600px; height: 300px;" ></div>
+                                <p:commandLink onclick="exportChartInPDF1()">
+                                    <p:graphicImage name="/Imagenes/pdf.png" width="40"/>
+                                </p:commandLink>
+                            </h:panelGrid> 
+                            <h:panelGrid columns="1" cellpadding="10">
+                               
+                                <div id="tablaTema" style="width: 600px; height: 300px;" ></div>
+                                
+                            </h:panelGrid> 
+
+                        </p:panel>
+
+
+                    </p:dashboard>
+
+                    <div style="clear:both" />
+                </h:form>
+            </div>
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>
