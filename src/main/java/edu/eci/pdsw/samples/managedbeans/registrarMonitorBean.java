@@ -11,8 +11,6 @@ import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
 import static edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory.getInstance;
 import java.io.Serializable;
 import java.util.List;
-import static java.util.logging.Level.SEVERE;
-import static java.util.logging.Logger.getLogger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;

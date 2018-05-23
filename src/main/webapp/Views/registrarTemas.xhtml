@@ -8,37 +8,37 @@
         <h:form id="form">
             <div id="cent" style="margin-right: 13%">
                 <div id="progreso" >
-                    <p:steps activeIndex="0" styleClass="custom" readonly="false" >
-                        <p:menuitem value="Registro materia" url="/faces/Views/registrarMateria.xhtml"/>
-                        <p:menuitem value="Registro de Temas" url="/faces/Views/registrarTemas.xhtml"/>
-                    </p:steps>
+                    <center>
+                        <p:steps activeIndex="1" styleClass="custom" readonly="false" >
+                            <p:menuitem value="Registro materia" url="/faces/Views/registrarMateria.xhtml"/>
+                            <p:menuitem value="Registro de Temas" url="/faces/Views/registrarTemas.xhtml"/>
+                        </p:steps>
+                    </center>
                 </div>
                 <center>
                     <p:panel style="width: 500px">
-                        <h:outputText style="font-size: 18px;color: #4c9ad2;" value="Registrar Materia"/>
+                        <h:outputText style="font-size: 18px;color: #4c9ad2;" value="Registrar Temas"/>
                         <p:messages id="messages"/>
                         <h:panelGrid columns="3" cellpadding="5" id="grid">
-                            <h:outputLabel for="nombre" value="Nombre completo: " />
-                            <p:inputText id="nombre" label="Nombre completo" required="true" value="#{registrarMateria.nombre}"/>
+
+                            <h:outputLabel for="nombre" value="Nombre mnemotecnico materia: " />
+                            <p:inputText id="nombre" label="Nombre mnemotecnico" required="true" value="#{registrarMateria.nemotecnicoTema}"/>
                             <p:message for="nombre" display="icon"/>
 
-                            <h:outputLabel for="nemotecnico" value="Nombre mnemotecnico: " />
-                            <p:inputText id="nemotecnico" label="Nombre mnemotecnico " required="true" value="#{registrarMateria.nemotecnico}"/>
-                            <p:message for="nemotecnico" display="icon"/>
+                            <h:outputLabel for="topic" value="Tema: " />
+                            <p:inputText id="topic" label="Tema " required="true" value="#{registrarMateria.tema}"/>
+                            <p:message for="topic" display="icon"/>
 
-                            <h:outputLabel for="creditos" value="Creditos: "/>
-                            <p:inputText id="creditos" label="Creditos" required="true" value="#{registrarMateria.creditos}"/> 
-                            <p:message for="creditos" display="icon"/>
+                            <h:outputLabel for="descripcion" value="Descripcion: "/>
+                            <p:inputText id="descripcion" label="Descripcion" required="true" value="#{registrarMateria.descripcionTema}"/> 
+                            <p:message for="descripcion" display="icon"/>
 
-                            <h:outputLabel for="horas" value="Horas: "/>
-                            <p:inputText id="horas" label="Horas" required="true"  value="#{registrarMateria.horas}"/>
-                            <p:message for="horas" display="icon"/>
                         </h:panelGrid>
 
-                        <p:commandButton value="Limpiar" update="grid :form:messages" process="@this" actionListener="#{registrarMateria.limpiar()}">
+                        <p:commandButton value="Limpiar" update="grid :form:messages" process="@this" actionListener="#{registrarMateria.limpiarTema()}">
                             <p:resetInput target="grid"/>
                         </p:commandButton> 
-                        <p:commandButton value="Registrar" update="grid :form:messages" actionListener="#{registrarMateria.registrarMateria()}" action="/faces/Views/registrarTemas.xhtml">
+                        <p:commandButton value="Registrar" update="grid :form:messages" actionListener="#{registrarMateria.registrarTema()}" action="/faces/Views/registrarTemas.xhtml">
                             <p:resetInput target="grid"/>
                         </p:commandButton>
                     </p:panel>

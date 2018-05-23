@@ -6,15 +6,6 @@
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="content">
         <h:form id="registro">
-
-
-            <div id="progreso" >
-                <p:steps activeIndex="1" styleClass="custom" readonly="false">
-                    <p:menuitem value="Iniciar Monitoria" url="http://localhost:8080/faces/Views/RegistrarMonitoria.xhtml"/>
-                    <p:menuitem value="Registro de Estudiantes" url="http://localhost:8080/faces/Views/registrarAsistenciaEstudiante.xhtml"/>
-                    <p:menuitem value="Fin de Monitoria" url="http://localhost:8080/faces/Views/ProgresoMonitoria.xhtml"/>
-                </p:steps>
-            </div>
             <h:outputText value="Registrar Nuevo Estudiante" style="font-size: 35px;font-weight: 100;color: #dce9f0"/>
             <p:messages id="messages" />
             <br/>
@@ -63,33 +54,32 @@
                 </p:dialog>
             </div>
             <br/><br/>
-            <div id="table" style="width: 1000px" >
-                <p:growl id="msgs" showDetail="true"/>
-                <p:dataTable value="#{RegistroAsistencia.asesoriaActual.asesoriasEstudiante}" var="asesoria" id="regist" editable="true" editMode="cell" widgetVar="cellAsesoria">
-                    <p:ajax event="cellEdit" listener="#{RegistroAsistencia.onCellEdit}" update=":registro:msgs" />
+            
+            <p:growl id="msgs" showDetail="true"/>
+            <p:dataTable value="#{RegistroAsistencia.asesoriaActual.asesoriasEstudiante}" var="asesoria" id="regist" editable="true" editMode="cell" widgetVar="cellAsesoria">
+                <p:ajax event="cellEdit" listener="#{RegistroAsistencia.onCellEdit}" update=":registro:msgs" />
 
-                    <p:column headerText="Codigo">
-                        <h:outputText value="#{asesoria.estudianteID}"/>
-                    </p:column>
+                <p:column headerText="Codigo">
+                    <h:outputText value="#{asesoria.estudianteID}"/>
+                </p:column>
 
-                    <p:column headerText="Profesor">
-                        <h:outputText value="#{asesoria.asistente.profesor.nombre} #{asesoria.asistente.profesor.apellido}" />
-                    </p:column>
+                <p:column headerText="Profesor">
+                    <h:outputText value="#{asesoria.asistente.profesor.nombre} #{asesoria.asistente.profesor.apellido}" />
+                </p:column>
 
-                    <p:column headerText="Temas">
-                        <p:repeat var="tem" value="#{asesoria.temas}" id="tema">
-                            <h:outputText value="■ #{tem.topic}"/>
-                            <br/>
-                        </p:repeat>
-                    </p:column>
-                    <p:column headerText="Observaciones">
-                        <p:cellEditor>
-                            <f:facet name="output"><h:outputText value="#{asesoria.observaciones}" /></f:facet>
-                            <f:facet name="input"><p:inputText value="#{asesoria.observaciones}" style="width:96%" label="Observaciones"/></f:facet>
-                        </p:cellEditor>
-                    </p:column>
-                </p:dataTable>
-            </div>
+                <p:column headerText="Temas">
+                    <p:repeat var="tem" value="#{asesoria.temas}" id="tema">
+                        <h:outputText value="■ #{tem.topic}"/>
+                        <br/>
+                    </p:repeat>
+                </p:column>
+                <p:column headerText="Observaciones">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{asesoria.observaciones}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{asesoria.observaciones}" style="width:96%" label="Observaciones"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+            </p:dataTable>
 
         </h:form>
     </ui:define>

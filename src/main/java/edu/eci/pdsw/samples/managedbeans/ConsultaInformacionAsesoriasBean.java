@@ -20,7 +20,7 @@ import static java.util.logging.Logger.getLogger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import static javax.faces.context.FacesContext.getCurrentInstance;
+import javax.faces.context.FacesContext;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.LazyDataModel;
 
@@ -71,7 +71,7 @@ public class ConsultaInformacionAsesoriasBean implements Serializable {
 
     public void onRowSelect(SelectEvent event) {
         FacesMessage msg = new FacesMessage("Asesoria seleccionada", valueOf(((Asesoria) event.getObject()).getAsesoriaID()));
-        getCurrentInstance().addMessage(null, msg);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
     public LazyDataModel<Asesoria> getAsesorias() {

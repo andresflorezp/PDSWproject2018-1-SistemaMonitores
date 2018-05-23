@@ -6,19 +6,21 @@ import edu.eci.pdsw.samples.entities.Tema;
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
 import static edu.eci.pdsw.samples.services.ServiciosSistemaMonitoresFactory.getInstance;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.Serializable;
 import static java.lang.Integer.parseInt;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import static java.net.NetworkInterface.getNetworkInterfaces;
-import java.net.SocketException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.Timestamp;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Level;
 import static java.util.logging.Level.SEVERE;
+import java.util.logging.Logger;
 import static java.util.logging.Logger.getLogger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -65,18 +67,25 @@ public class RegistrarAsistEstudianteBean implements Serializable {
 
     public String getIp() throws ExcepcionSistemaMonitores {
         try {
-            Enumeration e = getNetworkInterfaces();
-            while (e.hasMoreElements()) {
-                NetworkInterface n = (NetworkInterface) e.nextElement();
-                Enumeration ee = n.getInetAddresses();
-                while (ee.hasMoreElements()) {
-                    InetAddress i = (InetAddress) ee.nextElement();
-                    if (i.getHostAddress().startsWith("10.") || i.getHostAddress().startsWith("192.") || i.getHostAddress().startsWith("172.")) {
-                        return i.getHostAddress();
+            URL whatismyip = new URL("http://checkip.amazonaws.com");
+            BufferedReader in = null;
+            try {
+                in = new BufferedReader(new InputStreamReader(
+                        whatismyip.openStream()));
+                String ip = in.readLine();
+                return ip;
+            } catch (IOException ex) {
+                Logger.getLogger(RegistrarAsistEstudianteBean.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                if (in != null) {
+                    try {
+                        in.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 }
             }
-        } catch (SocketException ex) {
+        }   catch (MalformedURLException ex) {
             throw new ExcepcionSistemaMonitores("Error encontrando la direccion ip.");
         }
         throw new ExcepcionSistemaMonitores("Ip no encontrada.");
@@ -219,5 +228,5 @@ public class RegistrarAsistEstudianteBean implements Serializable {
     public void setNombreRegisro(String nombreRegisro) {
         this.nombreRegisro = nombreRegisro;
     }
-
+   
 }

@@ -23,6 +23,7 @@ import edu.eci.pdsw.samples.entities.Horario;
 import edu.eci.pdsw.samples.entities.Materia;
 import edu.eci.pdsw.samples.entities.Monitor;
 import edu.eci.pdsw.samples.entities.Profesor;
+import edu.eci.pdsw.samples.entities.Tema;
 import edu.eci.pdsw.samples.services.ExcepcionSistemaMonitores;
 import edu.eci.pdsw.samples.services.ServiciosSistemaMonitores;
 import java.io.Serializable;
@@ -337,6 +338,88 @@ public class ServiciosSistemaMonitoresImpl implements ServiciosSistemaMonitores,
     public void deleteProfesor(Integer codigo) throws ExcepcionSistemaMonitores {
         try {
             daoProfesor.delete(codigo);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public void addMateria(String nombre, String nemotecnico, Integer creditos, Integer horas) throws ExcepcionSistemaMonitores {
+        try {
+            daoMateria.save(nombre, nemotecnico, creditos, horas);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public Materia consultaMateriaActualRegistro(String nemotecnico) throws ExcepcionSistemaMonitores {
+        try {
+            return daoMateria.consultaActual(nemotecnico);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public void actualizarMateria(Materia materiaUpdate) throws ExcepcionSistemaMonitores {
+        try {
+            daoMateria.actualizarMateria(materiaUpdate.getMateriaID(), materiaUpdate.getNombre(), materiaUpdate.getMemoico(), materiaUpdate.getCreditos(),
+                    materiaUpdate.getHoras());
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public List<Materia> consulatarMaterias() throws ExcepcionSistemaMonitores {
+        try {
+            return daoMateria.loadAll();
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public void deleteMateria(String id) throws ExcepcionSistemaMonitores {
+        try {
+            daoMateria.delete(id);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public void addTema(int materiaID, String tema, String descripcion) throws ExcepcionSistemaMonitores {
+        try {
+            daoTema.save(materiaID, tema, descripcion);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public void deleteTema(Integer id) throws ExcepcionSistemaMonitores {
+        try {
+            daoTema.delete(id);
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public void actualizarTema(Tema temaUpdate) throws ExcepcionSistemaMonitores {
+        try {
+            daoTema.actualizarTema(temaUpdate.getTemaId(), temaUpdate.getTopic(),temaUpdate.getDescripcion());
+        } catch (PersistenceException ex) {
+            throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
+        }
+    }
+
+    @Override
+    public List<Tema> consulatarTemas(int materiaID) throws ExcepcionSistemaMonitores {
+        try {
+            return daoTema.loadAllMateria(materiaID);
         } catch (PersistenceException ex) {
             throw new ExcepcionSistemaMonitores(ex.getMessage(), ex);
         }

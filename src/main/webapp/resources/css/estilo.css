@@ -105,8 +105,10 @@ section{
 
 }
 #progreso{
-    padding: 50px;
-    margin: 30px;
+    padding: 40px;
+    margin: 25px;
+    margin-top: -2%;
+
 }
 #formulario{
     padding: 50px;

@@ -15,6 +15,13 @@
             org.primefaces.application.exceptionhandler.PrimeExceptionHandlerFactory
         </exception-handler-factory>
     </factory>    
+    <render-kit>
+        <renderer>
+            <component-family>org.primefaces.component</component-family>
+            <renderer-type>org.primefaces.component.StepsRenderer</renderer-type>
+            <renderer-class>faces.CustomStepsRenderer</renderer-class>
+        </renderer>
+    </render-kit>
 
 </faces-config>
 

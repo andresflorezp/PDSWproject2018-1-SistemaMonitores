@@ -19,6 +19,15 @@ import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import edu.eci.pdsw.samples.entities.Monitor;
+import edu.eci.pdsw.samples.entities.Tema;
+import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.List;import edu.eci.pdsw.samples.entities.Monitor;
+import edu.eci.pdsw.samples.entities.Profesor;
+import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.List;
+import edu.eci.pdsw.samples.entities.Monitor;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
@@ -285,5 +294,75 @@ public interface ServiciosSistemaMonitores {
      * @param codigo
      */
     public void deleteProfesor(Integer codigo) throws ExcepcionSistemaMonitores;
+    
+    /**
+     * 
+     * @param nombre
+     * @param nemotecnico
+     * @param creditos
+     * @param horas
+     * @throws ExcepcionSistemaMonitores 
+     */
+    public void addMateria(String nombre, String nemotecnico, Integer creditos, Integer horas) throws ExcepcionSistemaMonitores;
+    
+    /**
+     * 
+     * @param nemotecnico
+     * @return
+     * @throws ExcepcionSistemaMonitores 
+     */
+    public Materia consultaMateriaActualRegistro(String nemotecnico) throws ExcepcionSistemaMonitores;
+    
+    /**
+     * 
+     * @param materiaUpdate
+     * @throws ExcepcionSistemaMonitores 
+     */
+    public void actualizarMateria(Materia materiaUpdate) throws ExcepcionSistemaMonitores;
+    
+    /**
+     * 
+     * @return
+     * @throws ExcepcionSistemaMonitores 
+     */
+    public List<Materia> consulatarMaterias() throws ExcepcionSistemaMonitores;
+    
+    /**
+     * 
+     * @param id
+     * @throws ExcepcionSistemaMonitores 
+     */
+    public void deleteMateria(String id) throws ExcepcionSistemaMonitores;
+    
+    /**
+     * 
+     * @param materiaID
+     * @param tema
+     * @param descripcionTema
+     * @throws ExcepcionSistemaMonitores 
+     */
+    public void addTema(int materiaID, String tema, String descripcionTema) throws ExcepcionSistemaMonitores;
+    
+    /**
+     * 
+     * @param id
+     * @throws ExcepcionSistemaMonitores 
+     */
+    public void deleteTema(Integer id) throws ExcepcionSistemaMonitores;
+
+    /**
+     * 
+     * @param temaUpdate
+     * @throws ExcepcionSistemaMonitores 
+     */
+    public void actualizarTema(Tema temaUpdate) throws ExcepcionSistemaMonitores;
+
+    /**
+     * 
+     * @param materiaID
+     * @return
+     * @throws ExcepcionSistemaMonitores 
+     */
+    public List<Tema> consulatarTemas(int materiaID) throws ExcepcionSistemaMonitores;
 
 }

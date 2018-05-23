@@ -10,8 +10,8 @@
                     <h:outputText value="Consulta de Asesorias" style="font-size: 35px;font-weight: 100;color: #dce9f0"/>
                 </div>
                 <br/>
+                <p:messages id="messages"/>
                 <div id="tabla">
-                    <p:messages id="messages" />
                     <p:dataTable var="asesorias" value="#{InformacionAsesorias.asesorias}" id="asesoria"
                                  emptyMessage="No se encontraron asesorías" paginator="true"  rows="10" rowsPerPageTemplate="10,25,50" selectionMode="single"
                                  paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"

@@ -14,11 +14,16 @@ import java.util.List;
  */
 public interface MateriaDAO {
 
-    public void save(Materia materia) throws PersistenceException;
+    public void save(String nombre, String nemotecnico, Integer creditos, Integer horas) throws PersistenceException;
 
     public Materia load(int codigo) throws PersistenceException;
 
     public List<Materia> loadAll() throws PersistenceException;
 
-}
+    public void delete(String id) throws PersistenceException;
 
+    public void actualizarMateria(Integer id, String nombre, String memoico, int creditos, int horas) throws PersistenceException;
+
+    public Materia consultaActual(String nemotecnico) throws PersistenceException;
+
+}

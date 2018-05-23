@@ -13,24 +13,43 @@
             materia.materia_nemonico as m_nemonico,
             materia.creditos as m_creditos,
             materia.horas_monitoria_curso as m_horas_monitoria_curso,
-            
-            tema.temaId,
-            tema.topic as tema_topic,
-            tema.Descripcion as tema_Descripcion
+
+            tema.temaid,
+            tema.topic as tm_topic,
+            tema.descripcion as tm_descripcion
         
-        FROM materia join tema on (tema.materia_materia_id = materia.materia_id)
+        FROM materia left join tema on (tema.materia_materia_id = materia.materia_id)
         <if test="codId != null" >
             where materia.materia_id = #{codId}
         </if>
+        <if test="men != null">
+            where materia.materia_nemonico = #{men}
+        </if>
         
     </select>
-
-
+    
+    <update id="actualizarMateria" >
+        UPDATE materia SET
+	materia_nombre = #{nom},
+        materia_nemonico = #{men},
+        creditos = #{cre},
+        horas_monitoria_curso = #{hora}
+	WHERE materia_id = #{codId}
+    </update>
+    
+    <insert parameterType="map" id="insertarMateria" useGeneratedKeys="true" keyProperty="materiaID">
+        INSERT INTO materia (materia_nombre, materia_nemonico, creditos, horas_monitoria_curso)
+        VALUES (#{nom}, #{men}, #{cre}, #{hora})
+    </insert>
+    
+    <delete id="deleteMateria">
+        DELETE FROM materia WHERE materia_nemonico = #{memo}
+    </delete>
 
     <resultMap type='Materia' id='MateriaResult'>
         <id property='materiaID' column='materia_id'></id>
+        <id property='nemonico' column='m_nemonico'></id>
         <result property='nombre' column='m_nombre'></result>
-        <result property='nemonico' column='m_nemonico'></result>
         <result property='creditos' column='m_creditos'></result>
         <result property='horas' column='m_horas_monitoria_curso'></result>
         <collection property="temas" ofType="Tema" resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TemaMapper.TemaResult"/>
