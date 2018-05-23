@@ -20,17 +20,23 @@ import javax.faces.bean.ViewScoped;
 public class PieChartMBean {
     private String pieChartXgrupos;
     private List<KeyValue> pieDataListGrupo;
+    private String pieChartXmonitor;
+    private List<KeyValue> pieDataListMonitor;
     private PieChartData pieXCurso;
     private String pieChartXCurso;
     private List<KeyValue> pieDataListCurso;
     private PieChartData pieXGrupo;
+    private PieChartData pieXMonitor;
     public PieChartMBean() throws ExcepcionSistemaMonitores{
         pieXGrupo = new PieChartData();
         pieXCurso = new PieChartData();
+        pieXMonitor = new PieChartData();
         pieDataListGrupo = pieXGrupo.pieDataListDetallesXgrupo;
         pieDataListCurso = pieXGrupo.pieDataListDetallesXcurso;
+        pieDataListMonitor = pieXGrupo.pieDataListDetallesXmonitor;
         populateDataGrupo();
         populateDataCurso();
+        populateDataMonitor();
     
     }
     
@@ -63,6 +69,21 @@ public class PieChartMBean {
             stringBuilder.append(",");
         }
         pieChartXCurso = stringBuilder.toString().substring(0,
+        stringBuilder.toString().length() - 1);
+    }
+     private void populateDataMonitor() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (KeyValue pieData : pieDataListMonitor) {
+            stringBuilder.append("[");
+            stringBuilder.append("'");
+            stringBuilder.append(pieData.getKey());
+            stringBuilder.append("'");
+            stringBuilder.append(",");
+            stringBuilder.append(pieData.getValue());
+            stringBuilder.append("]");
+            stringBuilder.append(",");
+        }
+        pieChartXmonitor = stringBuilder.toString().substring(0,
         stringBuilder.toString().length() - 1);
     }
     public String getPieChartXgrupos() {
@@ -111,6 +132,30 @@ public class PieChartMBean {
 
     public void setPieDataListCurso(List<KeyValue> pieDataListCurso) {
         this.pieDataListCurso = pieDataListCurso;
+    }
+
+    public String getPieChartXmonitor() {
+        return pieChartXmonitor;
+    }
+
+    public void setPieChartXmonitor(String pieChartXmonitor) {
+        this.pieChartXmonitor = pieChartXmonitor;
+    }
+
+    public List<KeyValue> getPieDataListMonitor() {
+        return pieDataListMonitor;
+    }
+
+    public void setPieDataListMonitor(List<KeyValue> pieDataListMonitor) {
+        this.pieDataListMonitor = pieDataListMonitor;
+    }
+
+    public PieChartData getPieXMonitor() {
+        return pieXMonitor;
+    }
+
+    public void setPieXMonitor(PieChartData pieXMonitor) {
+        this.pieXMonitor = pieXMonitor;
     }
     
 

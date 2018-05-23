@@ -8,19 +8,19 @@
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
          <script type="text/javascript">
             google.charts.load("current", {packages:["corechart"]});
-            google.charts.setOnLoadCallback(asistenciaXcursos);
-            function asistenciaXcursos() {
+            google.charts.setOnLoadCallback(asistenciaXmonitor);
+            function asistenciaXmonitor() {
               var data = google.visualization.arrayToDataTable([
                 ['Cursos', 'Asistencia'],
-                #{chartPie.pieChartXCurso}
+                #{chartPie.pieChartXmonitor}
               ]);
 
               var options = {
-                title: 'Asistencia por Cursos',
+                title: 'Asistencia por Monitores',
                 is3D: true,
               };
 
-              var chart = new google.visualization.PieChart(document.getElementById('asistenciaCurso'));
+              var chart = new google.visualization.PieChart(document.getElementById('asistenciaMonitor'));
               chart.draw(data, options);
             }
             google.charts.load('current', {'packages':['table']});
@@ -28,9 +28,9 @@
 
             function tablaAsistencia() {
               var data = new google.visualization.DataTable();
-              data.addColumn('string', 'Curso');
+              data.addColumn('string', 'Monitor');
               data.addColumn('number', 'Total Asistencia');
-              data.addColumn('number', 'Asistencia del Curso');
+              data.addColumn('number', 'Asistencia al monitor');
               data.addColumn('number', 'Porcentaje');
               data.addRows([
                 ['PDSW',  {v: 15, f: '15'},{v: 11, f: '11'},{v: 11, f: '11'}],
@@ -85,25 +85,25 @@
               table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
             }
             google.charts.load('current', {'packages':['corechart']});
-            google.charts.setOnLoadCallback(asistenciaXtema);
+            google.charts.setOnLoadCallback(asistenciaXcurso);
 
-            function asistenciaXtema() {
+            function asistenciaXcurso() {
               // Some raw data (not necessarily accurate)
               var data = google.visualization.arrayToDataTable([
-              #{comboChart.comboChartXtema}
+              #{comboChart.comboChartXmonitor}
             ]);
 
           var options = {
-            title : 'Asistencia por Temas',
+            title : 'Asistencia por Curso',
             vAxis: {title: 'Asistencia'},
-            hAxis: {title: 'Tema'},
+            hAxis: {title: 'Materia'},
             seriesType: 'bars',
-            series: {1: {type: 'line'},2: {type: 'line'}}
+            series: {1: {type: 'line'},2: {type: 'line'},3: {type: 'line'}}
          
             
           };
 
-          var chart = new google.visualization.ComboChart(document.getElementById('asistenciaTema'));
+          var chart = new google.visualization.ComboChart(document.getElementById('asistenciaCurso'));
           chart.draw(data, options);
         }
         google.charts.load('current', {'packages':['table']});
@@ -127,6 +127,27 @@
 
               table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
             }
+            google.charts.load('current', {'packages':['table']});
+            google.charts.setOnLoadCallback(tablaAsistenciaXCurso);
+            function tablaAsistenciaXCurso() {
+              var data = new google.visualization.DataTable();
+              data.addColumn('string', 'Tema');
+              data.addColumn('number', 'Porcentaje');
+              data.addColumn('number', 'Grupo 1');
+              data.addColumn('number', 'Grupo 2');
+              data.addRows([
+                ['Grafos',  {v: 15, f: '15'},{v: 11, f: '11'},{v: 11, f: '11'}],
+                ['DP',  {v: 15, f: '15'},{v: 11, f: '11'},{v: 11, f: '11'}],
+                ['Pruebas Unitarias',  {v: 15, f: '15'},{v: 11, f: '11'},{v: 11, f: '11'}],
+                ['Arboles',  {v: 15, f: '15'},{v: 11, f: '11'},{v: 11, f: '11'}],
+                ['Complejidad Computacional',  {v: 15, f: '15'},{v: 11, f: '11'},{v: 11, f: '11'}],
+               
+              ]);
+
+              var table = new google.visualization.Table(document.getElementById('asisCurso'));
+
+              table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+            }
           </script>
         
         
@@ -143,7 +164,7 @@
 
                         <p:panel id="asistencia" header="Asistencia">
                             <h:panelGrid columns="1" cellpadding="10" >
-                                <div id="asistenciaCurso" style="width: 600px; height: 300px;" ></div>
+                                <div id="asistenciaMonitor" style="width: 600px; height: 300px;" ></div>
                                 <p:commandLink onclick="exportChartInPDF1()">
                                     <p:graphicImage name="/Imagenes/pdf.png" width="40"/>
                                 </p:commandLink>
@@ -180,23 +201,19 @@
                             </h:panelGrid> 
                         </p:panel>
                         
-                        <p:panel id="tema" header="Detalles Por Tema">
+                        
+                        <p:panel id="curso" header="Detalles Por Curso">
 
                             <h:panelGrid columns="1" cellpadding="10">
                                
-                                <div id="asistenciaTema" style="width: 600px; height: 300px;" ></div>
+                                <div id="asistenciaCurso" style="width: 600px; height: 300px;" ></div>
                                 <p:commandLink onclick="exportChartInPDF1()">
                                     <p:graphicImage name="/Imagenes/pdf.png" width="40"/>
                                 </p:commandLink>
                             </h:panelGrid> 
-                            <h:panelGrid columns="1" cellpadding="10">
-                               
-                                <div id="tablaTema" style="width: 600px; height: 300px;" ></div>
-                                
-                            </h:panelGrid> 
-
+   
                         </p:panel>
-
+                            
 
                     </p:dashboard>
 

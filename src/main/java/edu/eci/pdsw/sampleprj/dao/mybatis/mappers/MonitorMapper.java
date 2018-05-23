@@ -43,6 +43,8 @@ public interface MonitorMapper {
     public List<HashMap> consultaTema();
     
     public List<HashMap> consultaGrupoxTema();
+    
+    public List<HashMap> consultaCursoxMonitor();
 
     public void actualizarMonitor(@Param("carnet") int codigoID,
                                 @Param("nom") String nombre,

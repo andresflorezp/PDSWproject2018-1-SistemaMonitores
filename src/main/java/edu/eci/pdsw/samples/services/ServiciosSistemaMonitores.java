@@ -5,6 +5,7 @@
  */
 package edu.eci.pdsw.samples.services;
 
+import edu.eci.pdsw.sampleprj.dao.PersistenceException;
 import edu.eci.pdsw.samples.entities.Asesoria;
 import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Grupo;
@@ -212,5 +213,7 @@ public interface ServiciosSistemaMonitores {
     public Monitor consulatarMonitor(Long codigo) throws ExcepcionSistemaMonitores;
     
     
-    public List<HashMap> consultaGrupoxTema() throws ExcepcionSistemaMonitores; 
+    public List<HashMap> consultaGrupoxTema() throws ExcepcionSistemaMonitores;
+    
+    public List<HashMap> consultaCursoxMonitor() throws ExcepcionSistemaMonitores;
 }

@@ -17,6 +17,7 @@ import java.util.*;
 
 public class PieChartData {
     public List<KeyValue> pieDataListDetallesXgrupo;
+    public List<KeyValue> pieDataListDetallesXmonitor;
     public List<KeyValue> pieDataListDetallesXcurso;
     public ServiciosSistemaMonitores servicios;
     public PieChartData() throws ExcepcionSistemaMonitores{
@@ -28,6 +29,7 @@ public class PieChartData {
     public void init() throws ExcepcionSistemaMonitores{
         initDetallesXgrupo();
         initDetallesXcurso();
+        initDetallesXmonitor();
         
         
     
@@ -50,6 +52,16 @@ public class PieChartData {
             String curso =  (String) consultaXcurso.get(i).get("curso");
             
             pieDataListDetallesXcurso.add(new KeyValue(curso, Long.toString(numeroMonitorias)));
+        }
+    }
+    public void initDetallesXmonitor() throws ExcepcionSistemaMonitores{
+        pieDataListDetallesXmonitor = new ArrayList<>();
+        List<HashMap> consultaXmonitor = servicios.consultaMonitorias();
+        for (int i = 0; i < consultaXmonitor.size(); i++) {
+            long numeroMonitorias =  (long) consultaXmonitor.get(i).get("numero_monitorias");
+            String monitor =  (String) consultaXmonitor.get(i).get("monitor");
+            
+            pieDataListDetallesXmonitor.add(new KeyValue(monitor, Long.toString(numeroMonitorias)));
         }
     }
     
@@ -76,6 +88,15 @@ public class PieChartData {
     public void setServicios(ServiciosSistemaMonitores servicios) {
         this.servicios = servicios;
     }
+
+    public List<KeyValue> getPieDataListDetallesXmonitor() {
+        return pieDataListDetallesXmonitor;
+    }
+
+    public void setPieDataListDetallesXmonitor(List<KeyValue> pieDataListDetallesXmonitor) {
+        this.pieDataListDetallesXmonitor = pieDataListDetallesXmonitor;
+    }
+    
     
     
     

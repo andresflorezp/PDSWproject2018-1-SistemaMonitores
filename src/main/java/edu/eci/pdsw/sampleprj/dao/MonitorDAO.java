@@ -30,7 +30,9 @@ public interface MonitorDAO {
     public List<HashMap> consultaTema() throws PersistenceException;
     
     public List<HashMap> consultaGrupoxTema() throws PersistenceException;
-
+    
+    public List<HashMap> consultaCursoxMonitor() throws PersistenceException;
+    
     public void actualizarMonitor(Integer codigoID, String nombre, String apellido, String correo, Long telefono,
             String semestreIngreso, Integer programaAcademico) throws PersistenceException;
 }
